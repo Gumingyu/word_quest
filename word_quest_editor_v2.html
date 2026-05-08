@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Quest · 题库编辑器</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Cinzel:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg-deep:#1a0f08;
+  --bg-mid:#2d1b0f;
+  --bg-light:#3d2818;
+  --bg-panel:#f5e6c8;
+  --bg-paper:#fbf6e8;
+  --sand:#d4a045;
+  --gold:#ffd166;
+  --gold-deep:#c08a2e;
+  --blood:#c1272d;
+  --blood-dark:#7a1a1d;
+  --green:#5cb85c;
+  --green-deep:#3a8a3a;
+  --ink:#1a0f08;
+  --paper:#f5e6c8;
+  --gray:#6b6055;
+  --pixel:'Press Start 2P', monospace;
+  --display:'Cinzel', serif;
+  --body:'Noto Sans SC', system-ui, sans-serif;
+}
+
+html, body {
+  font-family:var(--body);
+  color:var(--ink);
+  background:
+    radial-gradient(ellipse at 50% 0%, #2d1b0f 0%, transparent 60%),
+    linear-gradient(180deg, #1a0f08 0%, #0d0604 100%);
+  min-height:100vh;
+}
+
+/* ===================== 顶部栏 ===================== */
+.app-header {
+  background:var(--bg-deep);
+  border-bottom:3px solid var(--gold);
+  padding:14px 20px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+}
+.header-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  max-width:1280px;
+  margin:0 auto;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.app-title {
+  font-family:var(--pixel);
+  font-size:14px;
+  color:var(--gold);
+  letter-spacing:2px;
+  text-shadow: 2px 2px 0 #000;
+}
+.app-title small {
+  display:block;
+  font-size:9px;
+  color:var(--paper);
+  margin-top:4px;
+  letter-spacing:1px;
+}
+.header-actions {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.btn {
+  background:var(--blood);
+  border:2px solid var(--ink);
+  color:var(--paper);
+  font-family:var(--body);
+  font-weight:700;
+  font-size:13px;
+  padding:9px 14px;
+  border-radius:4px;
+  cursor:pointer;
+  box-shadow: 0 3px 0 var(--ink);
+  transition: transform .08s, box-shadow .08s;
+  white-space:nowrap;
+}
+.btn:active {
+  transform:translateY(2px);
+  box-shadow: 0 1px 0 var(--ink);
+}
+.btn.gold { background:var(--gold); color:var(--ink); }
+.btn.green { background:var(--green); color:#fff; }
+.btn.dark { background:var(--bg-light); color:var(--paper); }
+.btn.ghost { background:transparent; color:var(--paper); border-color:var(--paper); box-shadow: 0 3px 0 #000; }
+.btn.sm { font-size:11px; padding:6px 10px; box-shadow: 0 2px 0 var(--ink); }
+.btn.lg { font-size:14px; padding:11px 18px; }
+.btn.danger { background:var(--blood-dark); }
+
+/* ===================== 主体布局 ===================== */
+.layout {
+  display:grid;
+  grid-template-columns: 280px 1fr;
+  gap:16px;
+  padding:16px 20px;
+  max-width:1280px;
+  margin:0 auto;
+  align-items:start;
+}
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+/* ===================== 左侧：关卡导航 ===================== */
+.sidebar {
+  background:var(--bg-mid);
+  border:2px solid var(--gold-deep);
+  border-radius:6px;
+  padding:14px;
+  position:sticky;
+  top:90px;
+}
+.side-title {
+  font-family:var(--pixel);
+  font-size:10px;
+  color:var(--gold);
+  letter-spacing:1px;
+  margin-bottom:10px;
+  padding-bottom:8px;
+  border-bottom:1px dashed var(--gold-deep);
+}
+.stage-item {
+  background:var(--bg-light);
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:10px;
+  margin-bottom:8px;
+  cursor:pointer;
+  color:var(--paper);
+  transition: border-color .15s, transform .08s;
+  position:relative;
+}
+.stage-item:hover {
+  border-color:var(--gold);
+}
+.stage-item.active {
+  border-color:var(--gold);
+  background:var(--bg-deep);
+  box-shadow: 0 0 12px rgba(255,209,102,.3);
+}
+.stage-item .stg-no {
+  font-family:var(--pixel);
+  font-size:9px;
+  color:var(--gold);
+  letter-spacing:1px;
+}
+.stage-item .stg-name {
+  font-size:14px;
+  font-weight:700;
+  margin-top:3px;
+  margin-bottom:4px;
+}
+.stage-item .stg-meta {
+  font-size:11px;
+  color:var(--sand);
+}
+.stage-item .stg-count {
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:var(--blood);
+  color:#fff;
+  font-family:var(--pixel);
+  font-size:9px;
+  padding:3px 6px;
+  border-radius:2px;
+  border:1px solid var(--ink);
+}
+
+.stat-box {
+  margin-top:14px;
+  padding:10px;
+  background:var(--bg-deep);
+  border:2px solid var(--ink);
+  border-radius:4px;
+  font-size:12px;
+  color:var(--paper);
+}
+.stat-box .row {
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:5px;
+}
+.stat-box .row .num {
+  font-family:var(--pixel);
+  font-size:11px;
+  color:var(--gold);
+}
+
+/* ===================== 右侧：编辑区 ===================== */
+.main {
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.section {
+  background:var(--bg-paper);
+  border:3px solid var(--ink);
+  border-radius:6px;
+  box-shadow: 0 4px 0 var(--ink);
+  overflow:hidden;
+}
+
+.sec-header {
+  background:var(--bg-mid);
+  color:var(--paper);
+  padding:12px 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.sec-title {
+  font-family:var(--display);
+  font-weight:700;
+  font-size:18px;
+  color:var(--gold);
+  letter-spacing:1px;
+}
+.sec-title small {
+  display:inline-block;
+  margin-left:10px;
+  font-family:var(--body);
+  font-weight:500;
+  font-size:13px;
+  color:var(--sand);
+}
+
+.sec-body {
+  padding:14px;
+}
+
+/* ===================== 题目列表 ===================== */
+.q-list {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.q-card {
+  background:#fff;
+  border:2px solid var(--ink);
+  border-radius:5px;
+  padding:12px 14px;
+  position:relative;
+  box-shadow: 0 2px 0 var(--ink);
+  cursor:pointer;
+  transition: border-color .15s;
+}
+.q-card:hover { border-color:var(--gold-deep); }
+
+.q-head {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:8px;
+  flex-wrap:wrap;
+}
+.q-no {
+  font-family:var(--pixel);
+  font-size:9px;
+  background:var(--ink);
+  color:var(--gold);
+  padding:3px 6px;
+  border-radius:2px;
+}
+.tag {
+  font-family:var(--pixel);
+  font-size:8px;
+  padding:3px 6px;
+  border-radius:2px;
+  border:1.5px solid var(--ink);
+  letter-spacing:.5px;
+}
+.tag.normal { background:#fff5d4; color:#8a5a00; }
+.tag.crit   { background:#ffe4cc; color:#a85500; }
+.tag.ulti   { background:#e6d4ff; color:#4a1a8a; }
+.tag.dmg    { background:var(--ink); color:var(--gold); }
+.tag.type-mc{ background:#d4e8ff; color:#1a4a8a; }
+
+.q-prompt {
+  font-size:11px;
+  color:var(--gray);
+  margin-bottom:3px;
+}
+.q-text {
+  font-family:var(--display);
+  font-weight:700;
+  font-size:17px;
+  color:var(--ink);
+  margin-bottom:6px;
+  line-height:1.4;
+}
+.q-text .blank {
+  display:inline-block;
+  min-width:50px;
+  border-bottom:2px solid var(--blood);
+  text-align:center;
+  color:var(--blood);
+  padding:0 4px;
+}
+.q-opts {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:6px;
+}
+.q-opt {
+  font-size:13px;
+  padding:4px 10px;
+  background:#f5f5f0;
+  border:1.5px solid #ccc;
+  border-radius:3px;
+}
+.q-opt.correct {
+  background:#d4f5d4;
+  border-color:var(--green-deep);
+  color:var(--green-deep);
+  font-weight:700;
+}
+.q-learn {
+  font-size:12px;
+  color:var(--gray);
+  border-top:1px dashed #ccc;
+  padding-top:6px;
+  margin-top:6px;
+}
+.q-learn b { color:var(--blood-dark); }
+
+.q-actions {
+  position:absolute;
+  top:10px;
+  right:10px;
+  display:flex;
+  gap:5px;
+  opacity:0;
+  transition: opacity .15s;
+}
+.q-card:hover .q-actions { opacity:1; }
+.icon-btn {
+  background:var(--bg-light);
+  border:1.5px solid var(--ink);
+  color:var(--paper);
+  padding:4px 8px;
+  border-radius:3px;
+  font-size:11px;
+  cursor:pointer;
+}
+.icon-btn:hover { background:var(--blood); }
+.icon-btn.danger:hover { background:var(--blood-dark); }
+
+/* ===================== 编辑表单 ===================== */
+.editor-mask {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  overflow-y:auto;
+}
+.editor-mask.show { display:flex; animation: fade .2s; }
+@keyframes fade { from { opacity:0; } to { opacity:1; } }
+
+.editor {
+  background:var(--bg-paper);
+  border:3px solid var(--gold);
+  border-radius:8px;
+  width:100%;
+  max-width:640px;
+  max-height:90vh;
+  overflow-y:auto;
+  box-shadow: 0 0 30px rgba(255,209,102,.4);
+}
+.ed-header {
+  background:var(--bg-mid);
+  color:var(--paper);
+  padding:14px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1;
+}
+.ed-title {
+  font-family:var(--display);
+  font-size:18px;
+  color:var(--gold);
+  font-weight:700;
+}
+.ed-close {
+  background:none;
+  border:none;
+  color:var(--paper);
+  font-size:22px;
+  cursor:pointer;
+  width:32px;
+  height:32px;
+  border-radius:4px;
+}
+.ed-close:hover { background:var(--blood); }
+
+.ed-body {
+  padding:18px;
+}
+
+.field {
+  margin-bottom:14px;
+}
+.field label {
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:5px;
+}
+.field label .req { color:var(--blood); }
+.field label .hint {
+  font-weight:500;
+  font-size:11px;
+  color:var(--gray);
+  margin-left:6px;
+}
+
+.input, .select, .textarea {
+  width:100%;
+  padding:9px 11px;
+  background:#fff;
+  border:2px solid var(--ink);
+  border-radius:4px;
+  font-size:14px;
+  font-family:var(--body);
+  color:var(--ink);
+  transition: border-color .15s;
+}
+.input:focus, .select:focus, .textarea:focus {
+  outline:none;
+  border-color:var(--gold-deep);
+  box-shadow: 0 0 0 3px rgba(255,209,102,.25);
+}
+.textarea { resize:vertical; min-height:60px; }
+.select { cursor:pointer; }
+
+.field-row {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+
+.opts-editor {
+  background:#fff;
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:8px;
+}
+.opt-row {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:6px;
+}
+.opt-row:last-child { margin-bottom:0; }
+.opt-radio {
+  width:22px;
+  height:22px;
+  border:2px solid var(--ink);
+  border-radius:50%;
+  background:#fff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.opt-radio.checked { background:var(--green); border-color:var(--green-deep); }
+.opt-radio.checked::after {
+  content:'✓';
+  color:#fff;
+  font-weight:bold;
+  font-size:14px;
+}
+.opt-row .input { padding:6px 10px; font-size:13px; }
+.opt-letter {
+  font-family:var(--pixel);
+  font-size:10px;
+  background:var(--ink);
+  color:var(--gold);
+  padding:3px 5px;
+  border-radius:2px;
+  flex-shrink:0;
+}
+
+.learn-box {
+  background:#fff5d4;
+  border:2px dashed var(--gold-deep);
+  padding:12px;
+  border-radius:4px;
+}
+.learn-box-title {
+  font-size:12px;
+  color:var(--gold-deep);
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+.ed-footer {
+  background:var(--bg-paper);
+  border-top:2px solid var(--ink);
+  padding:14px 18px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  position:sticky;
+  bottom:0;
+}
+.ed-footer .left, .ed-footer .right {
+  display:flex;
+  gap:8px;
+}
+
+/* ===================== 预览面板 ===================== */
+.preview-toggle {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:90;
+}
+.preview-panel {
+  position:fixed;
+  bottom:80px;
+  right:20px;
+  width:340px;
+  max-height:70vh;
+  background:#1a0f08;
+  border:3px solid var(--gold);
+  border-radius:8px;
+  display:none;
+  flex-direction:column;
+  z-index:90;
+  overflow:hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,.6);
+}
+.preview-panel.show { display:flex; animation: slideUp .3s; }
+@keyframes slideUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.prev-header {
+  background:var(--bg-mid);
+  color:var(--gold);
+  padding:8px 12px;
+  font-family:var(--pixel);
+  font-size:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.prev-body {
+  padding:14px;
+  overflow-y:auto;
+  background: linear-gradient(180deg, #2d1b0f, #1a0f08);
+  flex:1;
+}
+.prev-card {
+  background:var(--paper);
+  border:2.5px solid var(--ink);
+  border-radius:5px;
+  padding:14px;
+  position:relative;
+  box-shadow: 0 3px 0 var(--ink);
+  color:var(--ink);
+}
+.prev-corner {
+  position:absolute;
+  top:-10px;
+  left:10px;
+  background:var(--blood);
+  color:#fff;
+  padding:3px 8px;
+  font-family:var(--pixel);
+  font-size:8px;
+  border:2px solid var(--ink);
+  border-radius:2px;
+}
+.prev-corner.crit { background:#d97706; }
+.prev-corner.ulti { background:#7c3aed; }
+.prev-dmg {
+  position:absolute;
+  top:-10px;
+  right:10px;
+  background:var(--ink);
+  color:var(--gold);
+  padding:3px 8px;
+  font-family:var(--pixel);
+  font-size:8px;
+  border-radius:2px;
+}
+.prev-prompt {
+  font-family:var(--display);
+  font-size:12px;
+  color:#5a3a1a;
+  margin-bottom:5px;
+  margin-top:5px;
+}
+.prev-q {
+  font-family:var(--display);
+  font-weight:700;
+  font-size:18px;
+  margin-bottom:11px;
+  line-height:1.3;
+}
+.prev-q .blank {
+  display:inline-block;
+  min-width:55px;
+  border-bottom:3px solid var(--blood);
+  text-align:center;
+  color:var(--blood);
+  padding:0 4px;
+}
+.prev-q .ipa {
+  font-family:var(--body);
+  font-size:13px;
+  color:#8a5a2a;
+  margin-left:5px;
+  font-weight:500;
+}
+.prev-opts {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:6px;
+}
+.prev-opt {
+  background:#fff;
+  border:2px solid var(--ink);
+  padding:8px 6px;
+  font-size:12px;
+  text-align:center;
+  border-radius:3px;
+  box-shadow: 0 2px 0 var(--ink);
+}
+.prev-opt.correct {
+  background:#a3d977;
+}
+.prev-opt .lbl {
+  display:inline-block;
+  background:var(--ink);
+  color:var(--gold);
+  font-family:var(--pixel);
+  font-size:7px;
+  padding:1px 4px;
+  border-radius:1px;
+  margin-right:4px;
+  vertical-align:middle;
+}
+
+/* ===================== 提示框 ===================== */
+.toast {
+  position:fixed;
+  top:80px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--bg-deep);
+  color:var(--paper);
+  padding:10px 18px;
+  border:2px solid var(--gold);
+  border-radius:4px;
+  font-size:13px;
+  z-index:200;
+  box-shadow: 0 4px 12px rgba(0,0,0,.4);
+  animation: toastIn .3s;
+}
+@keyframes toastIn {
+  from { opacity:0; transform:translate(-50%, -10px); }
+  to   { opacity:1; transform:translate(-50%, 0); }
+}
+.toast.success { border-color:var(--green); }
+.toast.error { border-color:var(--blood); }
+
+/* 空状态 */
+.empty {
+  text-align:center;
+  padding:40px 20px;
+  color:var(--gray);
+  font-size:14px;
+}
+.empty-icon { font-size:42px; margin-bottom:12px; opacity:.4; }
+
+/* 隐藏的导入文件输入 */
+.hidden-input { display:none; }
+
+/* 帮助文档 */
+.help-content {
+  font-size:13px;
+  line-height:1.7;
+  color:var(--ink);
+}
+.help-content h3 {
+  font-family:var(--display);
+  color:var(--blood-dark);
+  font-size:16px;
+  margin:14px 0 6px;
+}
+.help-content code {
+  background:#f0e5cc;
+  padding:1px 5px;
+  border-radius:2px;
+  font-family:'Courier New', monospace;
+  font-size:12px;
+}
+.help-content ul { padding-left:20px; margin:6px 0; }
+.help-content li { margin-bottom:4px; }
+
+/* ===================== v0.6: 分享对话框 ===================== */
+.share-modal-mask {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  z-index:200;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  overflow-y:auto;
+}
+.share-modal-mask.show { display:flex; animation: fade .2s; }
+
+.share-modal {
+  background:var(--bg-paper);
+  border:3px solid var(--gold);
+  border-radius:8px;
+  width:100%;
+  max-width:520px;
+  max-height:92vh;
+  overflow-y:auto;
+  box-shadow: 0 0 30px rgba(255,209,102,.4);
+}
+.share-header {
+  background:var(--bg-mid);
+  padding:14px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1;
+}
+.share-title {
+  font-family:var(--display);
+  font-size:18px;
+  color:var(--gold);
+  font-weight:700;
+}
+.share-body { padding:18px; }
+.share-section { margin-bottom:18px; }
+.share-section-title {
+  font-size:14px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+.share-section-title .num {
+  display:inline-block;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--gold);
+  color:var(--ink);
+  text-align:center;
+  line-height:22px;
+  font-family:var(--pixel);
+  font-size:10px;
+  margin-right:8px;
+}
+
+.student-form {
+  background:#fff;
+  border:2px solid var(--ink);
+  border-radius:5px;
+  padding:12px;
+}
+.form-row {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:8px;
+}
+.form-row:last-child { margin-bottom:0; }
+.form-row label {
+  display:block;
+  font-size:12px;
+  color:var(--gray);
+  margin-bottom:3px;
+}
+.form-row .input {
+  padding:7px 10px;
+  font-size:13px;
+}
+
+.qr-area {
+  background:#fff;
+  border:2px dashed var(--gold-deep);
+  padding:18px;
+  border-radius:5px;
+  text-align:center;
+}
+.qr-canvas-wrap {
+  display:inline-block;
+  background:#fff;
+  padding:10px;
+  border:2px solid var(--ink);
+  border-radius:4px;
+  margin-bottom:10px;
+  position:relative;
+}
+.qr-canvas-wrap .qr-watermark {
+  position:absolute;
+  bottom:-2px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--gold);
+  color:var(--ink);
+  font-family:var(--pixel);
+  font-size:7px;
+  padding:3px 6px;
+  border-radius:2px 2px 0 0;
+  white-space:nowrap;
+}
+.qr-info {
+  font-size:12px;
+  color:var(--gray);
+  margin-top:6px;
+}
+
+.url-display {
+  background:#f5f0e0;
+  border:2px solid var(--ink);
+  padding:8px 10px;
+  border-radius:4px;
+  font-family:'Courier New', monospace;
+  font-size:11px;
+  word-break:break-all;
+  max-height:80px;
+  overflow-y:auto;
+  color:var(--ink);
+}
+
+.share-actions {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.share-actions .btn { flex:1; min-width:120px; }
+
+.alert-box {
+  background:#fff5d4;
+  border:2px solid var(--gold-deep);
+  padding:10px 12px;
+  border-radius:4px;
+  font-size:12px;
+  color:var(--ink);
+  line-height:1.6;
+}
+.alert-box b { color:var(--blood-dark); }
+
+.tabbar {
+  display:flex;
+  gap:4px;
+  margin-bottom:14px;
+  border-bottom:2px solid var(--ink);
+}
+.tab {
+  background:transparent;
+  border:none;
+  border-bottom:3px solid transparent;
+  padding:8px 14px;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  color:var(--gray);
+  margin-bottom:-2px;
+}
+.tab.active {
+  color:var(--blood);
+  border-bottom-color:var(--blood);
+}
+
+.host-config {
+  background:#e6f3ff;
+  border:2px solid #4a9fd4;
+  padding:10px 12px;
+  border-radius:4px;
+  margin-bottom:14px;
+  font-size:12px;
+  color:var(--ink);
+  line-height:1.6;
+}
+.host-config .input {
+  margin-top:6px;
+  padding:6px 8px;
+  font-size:12px;
+  font-family:'Courier New', monospace;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     顶部
+     ============================================================ -->
+<div class="app-header">
+  <div class="header-row">
+    <div class="app-title">
+      WORD QUEST · EDITOR
+      <small>题库编辑器 v1.0 · 谷sir说英语</small>
+    </div>
+    <div class="header-actions">
+      <button class="btn ghost sm" onclick="showHelp()">📖 使用说明</button>
+      <input type="file" id="importInput" class="hidden-input" accept=".json" onchange="handleImport(event)">
+      <button class="btn dark" onclick="document.getElementById('importInput').click()">📥 导入题库</button>
+      <button class="btn green" onclick="exportJson()">💾 导出 JSON</button>
+      <button class="btn gold" onclick="openShareDialog()">🔗 生成学生链接</button>
+      <button class="btn ghost sm" onclick="exportToGame()">🎮 复制代码</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     主体
+     ============================================================ -->
+<div class="layout">
+
+  <!-- 侧边栏：关卡列表 -->
+  <aside class="sidebar">
+    <div class="side-title">▾ 章节关卡</div>
+    <div id="stageList"></div>
+
+    <div class="stat-box">
+      <div class="row"><span>题目总数</span><span class="num" id="totalCount">0</span></div>
+      <div class="row"><span>基础题</span><span class="num" id="normalCount">0</span></div>
+      <div class="row"><span>暴击题</span><span class="num" id="critCount">0</span></div>
+      <div class="row"><span>必杀题</span><span class="num" id="ultiCount">0</span></div>
+    </div>
+  </aside>
+
+  <!-- 主内容 -->
+  <main class="main">
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-title" id="currentStageTitle">
+          关卡 1 · 沙丘哨站
+          <small id="currentStageMeta">DUNE OUTPOST · 12 题</small>
+        </div>
+        <button class="btn gold" onclick="newQuestion()">+ 添加题目</button>
+      </div>
+      <div class="sec-body">
+        <div class="q-list" id="qList"></div>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<!-- ============================================================
+     编辑器弹窗
+     ============================================================ -->
+<div class="editor-mask" id="editorMask">
+  <div class="editor">
+    <div class="ed-header">
+      <div class="ed-title" id="edTitle">编辑题目</div>
+      <button class="ed-close" onclick="closeEditor()">×</button>
+    </div>
+
+    <div class="ed-body">
+
+      <div class="field-row">
+        <div class="field">
+          <label>题目类型 <span class="req">*</span></label>
+          <select class="select" id="edType" onchange="onTypeChange()">
+            <option value="normal">基础攻击 (10 伤害)</option>
+            <option value="crit">暴击 · 词组/语境 (25 伤害)</option>
+            <option value="ulti">必杀 · 语法/翻译 (50 伤害)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>伤害值 <span class="hint">(默认值已根据类型自动设置)</span></label>
+          <input type="number" class="input" id="edDmg" min="1" max="200">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>题干提示 <span class="req">*</span> <span class="hint">如"选出正确的中文意思"</span></label>
+        <input type="text" class="input" id="edPrompt" placeholder="选出正确的英文">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>题目正文 <span class="req">*</span> <span class="hint">用 ___ 表示填空位</span></label>
+          <input type="text" class="input" id="edQ" placeholder="如：water 或 a ___ of sand">
+        </div>
+        <div class="field">
+          <label>音标 <span class="hint">(可选，仅英文单词题需要)</span></label>
+          <input type="text" class="input" id="edIpa" placeholder="/ˈwɔːtər/">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>四个选项 <span class="req">*</span> <span class="hint">点击左侧圆圈选择正确答案</span></label>
+        <div class="opts-editor">
+          <div class="opt-row">
+            <div class="opt-letter">A</div>
+            <div class="opt-radio" data-idx="0" onclick="selectCorrect(0)"></div>
+            <input type="text" class="input" id="edOpt0">
+          </div>
+          <div class="opt-row">
+            <div class="opt-letter">B</div>
+            <div class="opt-radio" data-idx="1" onclick="selectCorrect(1)"></div>
+            <input type="text" class="input" id="edOpt1">
+          </div>
+          <div class="opt-row">
+            <div class="opt-letter">C</div>
+            <div class="opt-radio" data-idx="2" onclick="selectCorrect(2)"></div>
+            <input type="text" class="input" id="edOpt2">
+          </div>
+          <div class="opt-row">
+            <div class="opt-letter">D</div>
+            <div class="opt-radio" data-idx="3" onclick="selectCorrect(3)"></div>
+            <input type="text" class="input" id="edOpt3">
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="learn-box">
+          <div class="learn-box-title">📚 学习卡内容（关卡通关后展示给学生）</div>
+          <div class="field-row">
+            <div class="field" style="margin-bottom:10px;">
+              <label>核心词 <span class="req">*</span></label>
+              <input type="text" class="input" id="edLearnWord" placeholder="water">
+            </div>
+            <div class="field" style="margin-bottom:10px;">
+              <label>音标</label>
+              <input type="text" class="input" id="edLearnIpa" placeholder="/ˈwɔːtər/">
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:10px;">
+            <label>词性 + 中文释义 <span class="req">*</span></label>
+            <input type="text" class="input" id="edLearnMean" placeholder="n. 水；水域　v. 浇水">
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label>例句 <span class="hint">(可选)</span></label>
+            <input type="text" class="input" id="edLearnExample" placeholder="Drink more water in the desert.">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ed-footer">
+      <div class="left">
+        <button class="btn danger sm" id="edDeleteBtn" onclick="deleteQuestion()" style="display:none;">🗑 删除</button>
+      </div>
+      <div class="right">
+        <button class="btn dark sm" onclick="closeEditor()">取消</button>
+        <button class="btn green" onclick="saveQuestion()">✓ 保存题目</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     预览面板
+     ============================================================ -->
+<button class="btn gold preview-toggle" onclick="togglePreview()">👀 实时预览</button>
+
+<div class="preview-panel" id="previewPanel">
+  <div class="prev-header">
+    <span>实时预览（学生端样式）</span>
+    <button class="ed-close" onclick="togglePreview()" style="font-size:16px; width:24px; height:24px; padding:0;">×</button>
+  </div>
+  <div class="prev-body">
+    <div class="prev-card" id="previewCard">
+      <div class="empty" style="color:#888;">填写题目后会在此预览</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     v0.6: 分享对话框
+     ============================================================ -->
+<div class="share-modal-mask" id="shareMask">
+  <div class="share-modal">
+    <div class="share-header">
+      <div class="share-title">🔗 生成学生定制链接</div>
+      <button class="ed-close" onclick="closeShareDialog()">×</button>
+    </div>
+    <div class="share-body">
+
+      <div class="alert-box">
+        <b>📌 工作流：</b> 填学生信息 → 生成二维码 → 微信发给家长 → 学生扫码就能玩你定制的题库 → 通关后家长复制成绩发你
+      </div>
+
+      <div class="share-section" style="margin-top:16px;">
+        <div class="share-section-title"><span class="num">1</span>填写学生信息</div>
+        <div class="student-form">
+          <div class="form-row">
+            <div>
+              <label>学生姓名</label>
+              <input type="text" class="input" id="shareName" placeholder="如：张三" oninput="regenerateShare()">
+            </div>
+            <div>
+              <label>班级/标签 <span style="font-size:10px;">(可选)</span></label>
+              <input type="text" class="input" id="shareClass" placeholder="如：六年级·王老师" oninput="regenerateShare()">
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label>本周题库范围</label>
+              <select class="select" id="shareScope" onchange="regenerateShare()">
+                <option value="first1">仅第1关 (~15题，二维码最稳)</option>
+                <option value="first2">前2关 (~30题)</option>
+                <option value="ch1-easy">所有关卡·只挑基础题</option>
+                <option value="all">全部章节 (~75题，可能超QR上限)</option>
+              </select>
+            </div>
+            <div>
+              <label>有效期</label>
+              <select class="select" id="shareExpire" onchange="regenerateShare()">
+                <option value="0">永久</option>
+                <option value="7">7天</option>
+                <option value="14">14天</option>
+                <option value="30">30天</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="share-section">
+        <div class="share-section-title"><span class="num">2</span>游戏地址 <span style="font-weight:400; font-size:11px; color:var(--gray);">(学生打开游戏的网址)</span></div>
+        <div class="host-config">
+          📍 把游戏HTML上传到任何能访问的位置（自己服务器/GitHub Pages/你的Bilibili主页链接），把网址填到这里。<br>
+          也可以暂时填 <code>file:///本地路径</code> 自己测试。
+          <input type="text" class="input" id="shareHost" placeholder="如：https://你的网址.com/word_quest_v6.html" oninput="regenerateShare()" style="width:100%;">
+        </div>
+      </div>
+
+      <div class="share-section">
+        <div class="share-section-title"><span class="num">3</span>分享方式</div>
+        <div class="tabbar">
+          <button class="tab active" onclick="switchShareTab('qr')" id="tabQr">📱 二维码</button>
+          <button class="tab" onclick="switchShareTab('url')" id="tabUrl">🔗 链接</button>
+        </div>
+
+        <div id="tabContentQr">
+          <div class="qr-area">
+            <div class="qr-canvas-wrap" id="qrWrap">
+              <canvas id="qrCanvas" width="200" height="200"></canvas>
+              <div class="qr-watermark" id="qrWatermark">谷sir说英语 · WORD QUEST</div>
+            </div>
+            <div class="qr-info" id="qrInfo">填写学生信息和地址生成二维码</div>
+            <div class="share-actions">
+              <button class="btn green" onclick="downloadQR()">💾 下载二维码图片</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="tabContentUrl" style="display:none;">
+          <div class="url-display" id="urlDisplay">填写学生信息和地址后会显示链接</div>
+          <div class="share-actions">
+            <button class="btn green" onclick="copyShareUrl()">📋 复制链接</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 引入 QR 生成库（CDN） -->
+<!-- LZ-string 压缩库（用于压缩题库到URL） -->
+<script src="https://cdn.jsdelivr.net/npm/lz-string@1.5.0/libs/lz-string.min.js"></script>
+<!-- 二维码生成库 -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
+<!-- ============================================================
+     帮助弹窗
+     ============================================================ -->
+<div class="editor-mask" id="helpMask">
+  <div class="editor" style="max-width:560px;">
+    <div class="ed-header">
+      <div class="ed-title">使用说明</div>
+      <button class="ed-close" onclick="closeHelp()">×</button>
+    </div>
+    <div class="ed-body help-content">
+
+      <h3>🎯 这个工具是干嘛的？</h3>
+      <p>让你完全脱离代码，自己管理 Word Quest 游戏的题库。所有改动都保存在浏览器里，导出 JSON 后可以分享给学生或备份。</p>
+
+      <h3>✏️ 基本操作</h3>
+      <ul>
+        <li>左侧选择关卡（5个章节关卡）</li>
+        <li>点击题目卡片可<b>编辑</b>，悬停显示<b>删除</b>按钮</li>
+        <li>右上"+ 添加题目"创建新题</li>
+        <li>右下"实时预览"看学生端的呈现效果</li>
+      </ul>
+
+      <h3>🎨 三种题型设计</h3>
+      <ul>
+        <li><b style="color:#8a5a00;">基础攻击 (10 伤害)</b>：单词中英互译，最简单</li>
+        <li><b style="color:#a85500;">暴击 (25 伤害)</b>：词组搭配、反义词、语境填词</li>
+        <li><b style="color:#4a1a8a;">必杀 (50 伤害)</b>：语法选择、句子翻译，最难</li>
+      </ul>
+
+      <h3>📥 导入 / 📤 导出</h3>
+      <ul>
+        <li><b>导出 JSON</b>：保存当前题库到本地文件，作为备份或分享</li>
+        <li><b>导入题库</b>：上传之前导出的 JSON 文件，恢复或替换题库</li>
+        <li><b>复制到游戏</b>：生成可以粘贴到游戏 HTML 文件里替换题库的代码</li>
+      </ul>
+
+      <h3>💡 出题小贴士</h3>
+      <ul>
+        <li>题干用 <code>___</code> 表示填空（3个下划线）</li>
+        <li>音标用斜杠包裹：<code>/ˈwɔːtər/</code></li>
+        <li>例句最好和题目主题相关，便于课堂引申</li>
+        <li>干扰项要"像但不对"——用学生真实犯的错来做干扰</li>
+      </ul>
+
+      <h3>⚠️ 注意</h3>
+      <p>题库改动只保存在你当前浏览器里。<b>关闭页面前记得导出 JSON</b>，否则换电脑就找不到了。</p>
+
+    </div>
+    <div class="ed-footer">
+      <div></div>
+      <div class="right">
+        <button class="btn gold" onclick="closeHelp()">明白了</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==========================================================
+   1. 关卡元数据
+   ========================================================== */
+const STAGES = [
+  { id:1, name:'沙丘哨站',  en:'DUNE OUTPOST',     theme:'身体&动物' },
+  { id:2, name:'圣甲虫巢',  en:'SCARAB NEST',      theme:'动作动词' },
+  { id:3, name:'遗迹回廊',  en:'RUIN CORRIDOR',    theme:'颜色&形容词' },
+  { id:4, name:'秘宝祭坛',  en:'TREASURE ALTAR',   theme:'物品&介词' },
+  { id:5, name:'法老之墓',  en:"PHARAOH'S TOMB",   theme:'综合 BOSS' },
+];
+
+/* ==========================================================
+   2. 默认题库（与 v0.3 保持一致）
+   ========================================================== */
+const DEFAULT_POOL = {
+  stage1: [
+    { type:'normal', dmg:10, prompt:'选出"眼睛"的英文', q:'眼睛',
+      options:['ear','eye','nose','mouth'], correct:1,
+      learn:{ word:'eye', ipa:'/aɪ/', meaning:'n. 眼睛', example:'I have two eyes.' } },
+    { type:'normal', dmg:10, prompt:'选出 hand 的中文意思', q:'hand', ipa:'/hænd/',
+      options:['脚','头','手','腿'], correct:2,
+      learn:{ word:'hand', ipa:'/hænd/', meaning:'n. 手；指针　v. 递交', example:'Wash your hands before dinner.' } },
+    { type:'normal', dmg:10, prompt:'选出"猫"的英文', q:'猫',
+      options:['dog','cat','pig','rat'], correct:1,
+      learn:{ word:'cat', ipa:'/kæt/', meaning:'n. 猫', example:'A black cat is on the wall.' } },
+    { type:'crit', dmg:25, prompt:'选出正确的搭配', q:'I have ___ eyes.',
+      options:['a','two','many','much'], correct:1,
+      learn:{ word:'two eyes', ipa:'', meaning:'phr. 两只眼睛（复数前用数词）', example:'I have two eyes and one nose.' } },
+    { type:'normal', dmg:10, prompt:'选出 fish 的中文意思', q:'fish', ipa:'/fɪʃ/',
+      options:['鸟','鱼','虫','马'], correct:1,
+      learn:{ word:'fish', ipa:'/fɪʃ/', meaning:'n. 鱼　v. 钓鱼', example:'Fish can swim in the water.' } },
+    { type:'crit', dmg:25, prompt:'选出最合适的词', q:'A ___ has wings and can fly.',
+      options:['fish','bird','dog','cow'], correct:1,
+      learn:{ word:'bird', ipa:'/bɜːrd/', meaning:'n. 鸟；禽', example:'A bird flies in the sky.' } },
+    { type:'normal', dmg:10, prompt:'选出"脚"的英文', q:'脚',
+      options:['foot','head','arm','knee'], correct:0,
+      learn:{ word:'foot', ipa:'/fʊt/', meaning:'n. 脚（复数 feet）', example:'My foot hurts after running.' } },
+    { type:'crit', dmg:25, prompt:'选出正确的搭配', q:'Look ___ me!',
+      options:['at','on','in','to'], correct:0,
+      learn:{ word:'look at', ipa:'', meaning:'phr. 看；注视', example:'Look at the desert sun!' } },
+    { type:'normal', dmg:10, prompt:'选出 mouth 的中文意思', q:'mouth', ipa:'/maʊθ/',
+      options:['鼻子','耳朵','嘴巴','下巴'], correct:2,
+      learn:{ word:'mouth', ipa:'/maʊθ/', meaning:'n. 嘴；口', example:'Open your mouth, please.' } },
+    { type:'ulti', dmg:50, prompt:'选出语法正确的句子', q:'_____',
+      options:['This are my hand.','This is my hands.','These are my hands.','These is my hand.'], correct:2,
+      learn:{ word:'this/these', ipa:'', meaning:'gram. 单数用this is，复数用these are', example:'These are my hands.' } },
+    { type:'crit', dmg:25, prompt:'选出最合适的词', q:'A ___ says "woof woof".',
+      options:['cat','dog','duck','sheep'], correct:1,
+      learn:{ word:'dog', ipa:'/dɔːɡ/', meaning:'n. 狗', example:'My dog likes to run on the sand.' } },
+    { type:'normal', dmg:10, prompt:'选出"耳朵"的英文', q:'耳朵',
+      options:['eye','ear','nose','hair'], correct:1,
+      learn:{ word:'ear', ipa:'/ɪr/', meaning:'n. 耳朵', example:'A rabbit has long ears.' } },
+  ],
+  stage2: [
+    { type:'normal', dmg:10, prompt:'选出 run 的中文意思', q:'run', ipa:'/rʌn/',
+      options:['走','跑','跳','飞'], correct:1,
+      learn:{ word:'run', ipa:'/rʌn/', meaning:'v. 跑　n. 奔跑', example:'I run every morning.' } },
+    { type:'normal', dmg:10, prompt:'选出"游泳"的英文', q:'游泳',
+      options:['swim','dance','sing','jump'], correct:0,
+      learn:{ word:'swim', ipa:'/swɪm/', meaning:'v. 游泳', example:'Fish can swim very fast.' } },
+    { type:'crit', dmg:25, prompt:'选出正确的搭配', q:'I want to ___ TV.',
+      options:['look','watch','see','read'], correct:1,
+      learn:{ word:'watch TV', ipa:'', meaning:'phr. 看电视（固定搭配）', example:'I watch TV after dinner.' } },
+    { type:'normal', dmg:10, prompt:'选出 read 的中文意思', q:'read', ipa:'/riːd/',
+      options:['写','读','听','说'], correct:1,
+      learn:{ word:'read', ipa:'/riːd/', meaning:'v. 阅读；朗读', example:'I read books every night.' } },
+    { type:'crit', dmg:25, prompt:'选出正确的搭配', q:'listen ___ music',
+      options:['at','on','to','for'], correct:2,
+      learn:{ word:'listen to', ipa:'', meaning:'phr. 听……（to 不可省）', example:'I listen to music every day.' } },
+    { type:'crit', dmg:25, prompt:'选出最合适的词', q:'I am thirsty. I want to ___ water.',
+      options:['eat','drink','take','make'], correct:1,
+      learn:{ word:'drink', ipa:'/drɪŋk/', meaning:'v. 喝　n. 饮料', example:'Drink more water in summer.' } },
+    { type:'normal', dmg:10, prompt:'选出"唱歌"的英文', q:'唱歌',
+      options:['dance','sing','play','smile'], correct:1,
+      learn:{ word:'sing', ipa:'/sɪŋ/', meaning:'v. 唱歌', example:'Birds sing in the morning.' } },
+    { type:'ulti', dmg:50, prompt:'选出语法正确的句子', q:'_____',
+      options:['I am run now.','I am running now.','I running now.','I is running now.'], correct:1,
+      learn:{ word:'be + V-ing', ipa:'', meaning:'gram. 现在进行时', example:'I am running.' } },
+    { type:'crit', dmg:25, prompt:'选出正确的be动词', q:'She ___ writing a letter.',
+      options:['am','is','are','be'], correct:1,
+      learn:{ word:'is + V-ing', ipa:'', meaning:'gram. 第三人称单数用 is', example:'She is writing.' } },
+    { type:'normal', dmg:10, prompt:'选出 jump 的中文意思', q:'jump', ipa:'/dʒʌmp/',
+      options:['爬','飞','跳','滑'], correct:2,
+      learn:{ word:'jump', ipa:'/dʒʌmp/', meaning:'v. 跳；跃过', example:'The cat can jump high.' } },
+    { type:'crit', dmg:25, prompt:'选出最合适的词', q:"I am hungry. Let's ___ something.",
+      options:['drink','eat','watch','sing'], correct:1,
+      learn:{ word:'eat', ipa:'/iːt/', meaning:'v. 吃', example:"We eat lunch at 12 o'clock." } },
+    { type:'ulti', dmg:50, prompt:'选出最佳翻译', q:'圣甲虫正在飞。',
+      options:['A scarab can fly.','A scarab is flying.','A scarab flies now.','A scarab fly now.'], correct:1,
+      learn:{ word:'is flying', ipa:'', meaning:'gram. 现在进行时：表达"正在……"', example:'Look! A scarab is flying.' } },
+  ],
+  stage3: [
+    { type:'normal', dmg:10, prompt:'选出 red 的中文意思', q:'red', ipa:'/red/',
+      options:['黑色','红色','蓝色','绿色'], correct:1,
+      learn:{ word:'red', ipa:'/red/', meaning:'adj./n. 红色（的）', example:'The desert sun is red at dusk.' } },
+    { type:'crit', dmg:25, prompt:'选出 big 的反义词', q:'big ↔ ___',
+      options:['tall','small','short','old'], correct:1,
+      learn:{ word:'big / small', ipa:'', meaning:'adj. 大的 / 小的', example:'A big lion vs. a small cat.' } },
+    { type:'normal', dmg:10, prompt:'选出"高的"的英文', q:'高的',
+      options:['short','tall','long','large'], correct:1,
+      learn:{ word:'tall', ipa:'/tɔːl/', meaning:'adj. 高的', example:'A tall pyramid stands here.' } },
+    { type:'crit', dmg:25, prompt:'选出 happy 的反义词', q:'happy ↔ ___',
+      options:['sad','angry','tired','sleepy'], correct:0,
+      learn:{ word:'happy / sad', ipa:'', meaning:'adj. 快乐的 / 伤心的', example:'I am happy today, not sad.' } },
+    { type:'crit', dmg:25, prompt:'选出最合适的颜色', q:'The grass is ___.',
+      options:['red','green','black','pink'], correct:1,
+      learn:{ word:'green', ipa:'/ɡriːn/', meaning:'adj./n. 绿色（的）', example:'The grass is green in spring.' } },
+    { type:'normal', dmg:10, prompt:'选出 cold 的中文意思', q:'cold', ipa:'/koʊld/',
+      options:['热的','暖的','冷的','凉的'], correct:2,
+      learn:{ word:'cold', ipa:'/koʊld/', meaning:'adj. 冷的', example:'It is cold at night in the desert.' } },
+    { type:'ulti', dmg:50, prompt:'选出语法正确的句子', q:'_____',
+      options:['I have a cat black.','I have black a cat.','I have a black cat.','I have black cat a.'], correct:2,
+      learn:{ word:'a + 形容词 + 名词', ipa:'', meaning:'gram. 形容词放在名词前面', example:'a red apple, a tall boy' } },
+    { type:'normal', dmg:10, prompt:'选出"老的/旧的"的英文', q:'老的；旧的',
+      options:['new','old','young','fresh'], correct:1,
+      learn:{ word:'old', ipa:'/oʊld/', meaning:'adj. 老的；旧的', example:'My grandpa is old.' } },
+    { type:'crit', dmg:25, prompt:'选出正确的搭配', q:"How ___ are you? — I'm 1.5 meters.",
+      options:['old','tall','many','much'], correct:1,
+      learn:{ word:'How tall', ipa:'', meaning:'phr. 多高（问身高）', example:'How tall is the pyramid?' } },
+    { type:'crit', dmg:25, prompt:'选出 hot 的反义词', q:'hot ↔ ___',
+      options:['warm','cool','cold','wet'], correct:2,
+      learn:{ word:'hot / cold', ipa:'', meaning:'adj. 热的 / 冷的', example:'The desert is hot by day, cold by night.' } },
+    { type:'crit', dmg:25, prompt:'选出最合适的词', q:'An elephant is very ___.',
+      options:['small','tiny','big','short'], correct:2,
+      learn:{ word:'big', ipa:'/bɪɡ/', meaning:'adj. 大的', example:'An elephant is big and strong.' } },
+    { type:'ulti', dmg:50, prompt:'选出最佳翻译', q:'我有一只小白狗。',
+      options:['I have a dog small white.','I have a small white dog.','I have a white small dog.','I have small a white dog.'], correct:1,
+      learn:{ word:'形容词排序', ipa:'', meaning:'gram. 大小+颜色+名词', example:'a small white dog' } },
+  ],
+  stage4: [
+    { type:'normal', dmg:10, prompt:'选出 book 的中文意思', q:'book', ipa:'/bʊk/',
+      options:['钢笔','书','尺子','袋子'], correct:1,
+      learn:{ word:'book', ipa:'/bʊk/', meaning:'n. 书；本子', example:'I read a book every day.' } },
+    { type:'crit', dmg:25, prompt:'选出正确的介词', q:'The cat is ___ the box.',
+      options:['in','on','under','at'], correct:0,
+      learn:{ word:'in', ipa:'/ɪn/', meaning:'prep. 在……里面', example:'The cat is in the box.' } },
+    { type:'crit', dmg:25, prompt:'选出正确的介词', q:'The book is ___ the desk.',
+      options:['in','on','under','behind'], correct:1,
+      learn:{ word:'on', ipa:'/ɒn/', meaning:'prep. 在……上面', example:'The book is on the desk.' } },
+    { type:'normal', dmg:10, prompt:'选出"钢笔"的英文', q:'钢笔',
+      options:['pen','pencil','book','bag'], correct:0,
+      learn:{ word:'pen', ipa:'/pen/', meaning:'n. 钢笔', example:'I have a new pen.' } },
+    { type:'ulti', dmg:50, prompt:'选出最合适的介词', q:'The ball is ___ the bed (在床下面).',
+      options:['on','in','under','behind'], correct:2,
+      learn:{ word:'in / on / under', ipa:'', meaning:'prep. 在里面 / 上面 / 下面', example:'in the box, on the desk, under the bed' } },
+    { type:'crit', dmg:25, prompt:'选出正确的句型', q:'___ a book on the desk.',
+      options:['It is','There is','This is','Have'], correct:1,
+      learn:{ word:'There is/are', ipa:'', meaning:'gram. 有……（There be 句型）', example:'There is a book.' } },
+    { type:'ulti', dmg:50, prompt:'选出语法正确的句子', q:'_____',
+      options:['There is two pens on the desk.','There are two pen on the desk.','There are two pens on the desk.','There is two pen on the desk.'], correct:2,
+      learn:{ word:'There are + 复数', ipa:'', meaning:'gram. 复数用 are，名词加 s', example:'There are two pens.' } },
+    { type:'crit', dmg:25, prompt:'选出正确的搭配', q:'The map is ___ the wall.',
+      options:['in','on','under','at'], correct:1,
+      learn:{ word:'on the wall', ipa:'', meaning:'phr. 在墙上', example:'There is a map on the wall.' } },
+    { type:'normal', dmg:10, prompt:'选出 bag 的中文意思', q:'bag', ipa:'/bæɡ/',
+      options:['桌子','椅子','袋子','床'], correct:2,
+      learn:{ word:'bag', ipa:'/bæɡ/', meaning:'n. 包；袋子', example:'My bag is heavy today.' } },
+    { type:'crit', dmg:25, prompt:'选出最合适的词', q:'I write with a ___.',
+      options:['book','pen','bag','hat'], correct:1,
+      learn:{ word:'write with', ipa:'', meaning:'phr. 用……写', example:'I write with a pen.' } },
+    { type:'normal', dmg:10, prompt:'选出"尺子"的英文', q:'尺子',
+      options:['ruler','rubber','pencil','marker'], correct:0,
+      learn:{ word:'ruler', ipa:'/ˈruːlər/', meaning:'n. 尺子', example:'Use a ruler to draw a line.' } },
+    { type:'ulti', dmg:50, prompt:'选出最佳翻译', q:'桌子下面有一只猫。',
+      options:['There is a cat on the desk.','There is a cat in the desk.','There is a cat under the desk.','A cat is the desk.'], correct:2,
+      learn:{ word:'under the desk', ipa:'', meaning:'phr. 在桌子下面', example:'There is a cat under the desk.' } },
+  ],
+  stage5: [
+    { type:'crit', dmg:30, prompt:'选出正确的句子', q:'A bird ___ fly.',
+      options:['cans','can','can to','is can'], correct:1,
+      learn:{ word:'can + 动词原形', ipa:'', meaning:'gram. can 后接动词原形', example:'I can swim.' } },
+    { type:'crit', dmg:30, prompt:'选出 tall 的比较级', q:'tall → ___',
+      options:['taller','more tall','tallest','tall'], correct:0,
+      learn:{ word:'tall / taller', ipa:'', meaning:'gram. 短形容词比较级加 -er', example:'Tom is taller than Jim.' } },
+    { type:'crit', dmg:30, prompt:'选出 go 的过去式', q:'go → ___',
+      options:['goed','went','goes','going'], correct:1,
+      learn:{ word:'go / went', ipa:'', meaning:'gram. go 过去式 went（不规则）', example:'I went to school yesterday.' } },
+    { type:'normal', dmg:12, prompt:'选出 yesterday 的中文意思', q:'yesterday', ipa:'/ˈjestərdeɪ/',
+      options:['今天','明天','昨天','前天'], correct:2,
+      learn:{ word:'yesterday', ipa:'/ˈjestərdeɪ/', meaning:'n./adv. 昨天', example:'I read a book yesterday.' } },
+    { type:'crit', dmg:30, prompt:'选出最合适的词', q:'It rained yesterday, so the road was ___.',
+      options:['dry','wet','hot','clean'], correct:1,
+      learn:{ word:'wet', ipa:'/wet/', meaning:'adj. 湿的', example:'My clothes are wet after the rain.' } },
+    { type:'crit', dmg:30, prompt:'选出正确的句子', q:'I ___ visit Egypt next year.',
+      options:['am','will','was','do'], correct:1,
+      learn:{ word:'will + 动词原形', ipa:'', meaning:'gram. 一般将来时', example:'I will visit Egypt next year.' } },
+    { type:'ulti', dmg:60, prompt:'选出最佳翻译', q:'我比我哥哥更高。',
+      options:['I am taller than my brother.','I am tall than my brother.','I am more tall my brother.','I taller than my brother.'], correct:0,
+      learn:{ word:'比较级 + than', ipa:'', meaning:'gram. A + be + 比较级 + than + B', example:'I am taller than my brother.' } },
+    { type:'crit', dmg:30, prompt:'选出 strong 的反义词', q:'strong ↔ ___',
+      options:['weak','tall','small','bad'], correct:0,
+      learn:{ word:'strong / weak', ipa:'', meaning:'adj. 强壮的 / 虚弱的', example:'The lion is strong, the cat is weak.' } },
+    { type:'normal', dmg:12, prompt:'选出"国王"的英文', q:'国王',
+      options:['queen','prince','king','knight'], correct:2,
+      learn:{ word:'king', ipa:'/kɪŋ/', meaning:'n. 国王', example:'The king ruled the desert kingdom.' } },
+    { type:'crit', dmg:30, prompt:'选出正确的介词', q:'I am good ___ English.',
+      options:['in','on','at','for'], correct:2,
+      learn:{ word:'be good at', ipa:'', meaning:'phr. 擅长……', example:'I am good at English and math.' } },
+    { type:'ulti', dmg:60, prompt:'选出最合适的词', q:'A: Where ___ you yesterday? B: I was at home.',
+      options:['are','were','is','was'], correct:1,
+      learn:{ word:'were (you/we/they)', ipa:'', meaning:'gram. you/we/they 用 were', example:'Where were you yesterday?' } },
+    { type:'ulti', dmg:60, prompt:'选出最佳翻译', q:'勇者打败了暗黑法老。',
+      options:['The warrior beats the dark pharaoh.','The warrior beat the dark pharaoh.','The warrior is beat the dark pharaoh.','The warrior beated the dark pharaoh.'], correct:1,
+      learn:{ word:'beat / beat / beaten', ipa:'/biːt/', meaning:'v. 打败（不规则动词）', example:'The warrior beat the dark pharaoh at last.' } },
+  ],
+};
+
+/* ==========================================================
+   3. 状态
+   ========================================================== */
+let pool = JSON.parse(JSON.stringify(DEFAULT_POOL));
+let currentStage = 1;
+let editingIdx = -1; // -1 表示新建
+let pendingCorrect = 0;
+
+/* ==========================================================
+   4. 渲染：侧边栏 / 题目列表 / 统计
+   ========================================================== */
+function renderSidebar() {
+  const list = document.getElementById('stageList');
+  list.innerHTML = '';
+  STAGES.forEach(s => {
+    const count = (pool['stage'+s.id] || []).length;
+    const div = document.createElement('div');
+    div.className = 'stage-item' + (s.id === currentStage ? ' active' : '');
+    div.innerHTML = `
+      <div class="stg-no">CHAPTER 1 · LV.${s.id}</div>
+      <div class="stg-name">${s.name}</div>
+      <div class="stg-meta">${s.theme}</div>
+      <div class="stg-count">${count}</div>
+    `;
+    div.onclick = () => { currentStage = s.id; renderAll(); };
+    list.appendChild(div);
+  });
+}
+
+function renderStats() {
+  let total = 0, normal = 0, crit = 0, ulti = 0;
+  for (const k of Object.keys(pool)) {
+    pool[k].forEach(q => {
+      total++;
+      if (q.type === 'normal') normal++;
+      else if (q.type === 'crit') crit++;
+      else if (q.type === 'ulti') ulti++;
+    });
+  }
+  document.getElementById('totalCount').textContent = total;
+  document.getElementById('normalCount').textContent = normal;
+  document.getElementById('critCount').textContent = crit;
+  document.getElementById('ultiCount').textContent = ulti;
+}
+
+function renderQuestions() {
+  const stage = STAGES.find(s => s.id === currentStage);
+  const qs = pool['stage'+currentStage] || [];
+
+  document.getElementById('currentStageTitle').innerHTML =
+    `关卡 ${stage.id} · ${stage.name} <small>${stage.en} · ${qs.length} 题</small>`;
+  document.getElementById('currentStageMeta').textContent =
+    `${stage.en} · ${qs.length} 题`;
+
+  const list = document.getElementById('qList');
+  list.innerHTML = '';
+
+  if (qs.length === 0) {
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">📭</div>
+        这个关卡还没有题目。<br>点击右上"+ 添加题目"来创建第一道题。
+      </div>
+    `;
+    return;
+  }
+
+  qs.forEach((q, idx) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    const typeLabel = { normal:'基础攻击', crit:'暴击', ulti:'必杀' }[q.type];
+    const qHtml = q.q.replace(/___/g, '<span class="blank">___</span>');
+    const ipa = q.ipa ? ` <span style="font-size:13px; color:#8a5a2a; font-weight:500;">${q.ipa}</span>` : '';
+
+    card.innerHTML = `
+      <div class="q-actions">
+        <button class="icon-btn" onclick="event.stopPropagation(); editQuestion(${idx})">✎</button>
+        <button class="icon-btn danger" onclick="event.stopPropagation(); confirmDelete(${idx})">🗑</button>
+      </div>
+      <div class="q-head">
+        <span class="q-no">#${idx+1}</span>
+        <span class="tag ${q.type}">${typeLabel}</span>
+        <span class="tag dmg">DMG ${q.dmg}</span>
+      </div>
+      <div class="q-prompt">${q.prompt}</div>
+      <div class="q-text">${qHtml}${ipa}</div>
+      <div class="q-opts">
+        ${q.options.map((o, i) =>
+          `<div class="q-opt ${i === q.correct ? 'correct' : ''}">${'ABCD'[i]}. ${o}</div>`
+        ).join('')}
+      </div>
+      <div class="q-learn">
+        <b>${q.learn.word}</b> ${q.learn.ipa || ''} · ${q.learn.meaning}
+        ${q.learn.example ? `<br><i style="color:#5a3a1a;">"${q.learn.example}"</i>` : ''}
+      </div>
+    `;
+    card.onclick = () => editQuestion(idx);
+    list.appendChild(card);
+  });
+}
+
+function renderAll() {
+  renderSidebar();
+  renderStats();
+  renderQuestions();
+}
+
+/* ==========================================================
+   5. 编辑器
+   ========================================================== */
+function newQuestion() {
+  editingIdx = -1;
+  pendingCorrect = 0;
+  document.getElementById('edTitle').textContent = `添加题目 · ${STAGES.find(s=>s.id===currentStage).name}`;
+  document.getElementById('edType').value = 'normal';
+  document.getElementById('edDmg').value = 10;
+  document.getElementById('edPrompt').value = '';
+  document.getElementById('edQ').value = '';
+  document.getElementById('edIpa').value = '';
+  for (let i=0;i<4;i++) document.getElementById('edOpt'+i).value = '';
+  document.getElementById('edLearnWord').value = '';
+  document.getElementById('edLearnIpa').value = '';
+  document.getElementById('edLearnMean').value = '';
+  document.getElementById('edLearnExample').value = '';
+  updateRadios();
+  document.getElementById('edDeleteBtn').style.display = 'none';
+  document.getElementById('editorMask').classList.add('show');
+  updatePreview();
+}
+
+function editQuestion(idx) {
+  const q = pool['stage'+currentStage][idx];
+  editingIdx = idx;
+  pendingCorrect = q.correct;
+  document.getElementById('edTitle').textContent = `编辑题目 #${idx+1}`;
+  document.getElementById('edType').value = q.type;
+  document.getElementById('edDmg').value = q.dmg;
+  document.getElementById('edPrompt').value = q.prompt;
+  document.getElementById('edQ').value = q.q;
+  document.getElementById('edIpa').value = q.ipa || '';
+  for (let i=0;i<4;i++) document.getElementById('edOpt'+i).value = q.options[i] || '';
+  document.getElementById('edLearnWord').value = q.learn.word || '';
+  document.getElementById('edLearnIpa').value = q.learn.ipa || '';
+  document.getElementById('edLearnMean').value = q.learn.meaning || '';
+  document.getElementById('edLearnExample').value = q.learn.example || '';
+  updateRadios();
+  document.getElementById('edDeleteBtn').style.display = 'inline-block';
+  document.getElementById('editorMask').classList.add('show');
+  updatePreview();
+}
+
+function closeEditor() {
+  document.getElementById('editorMask').classList.remove('show');
+}
+
+function selectCorrect(idx) {
+  pendingCorrect = idx;
+  updateRadios();
+  updatePreview();
+}
+
+function updateRadios() {
+  document.querySelectorAll('.opt-radio').forEach(r => {
+    r.classList.toggle('checked', parseInt(r.dataset.idx) === pendingCorrect);
+  });
+}
+
+function onTypeChange() {
+  const type = document.getElementById('edType').value;
+  const defaults = { normal:10, crit:25, ulti:50 };
+  document.getElementById('edDmg').value = defaults[type];
+  updatePreview();
+}
+
+function deleteQuestion() {
+  if (editingIdx < 0) return;
+  if (!confirm('确认删除这道题？此操作无法撤销。')) return;
+  pool['stage'+currentStage].splice(editingIdx, 1);
+  closeEditor();
+  renderAll();
+  showToast('题目已删除', 'success');
+}
+
+function confirmDelete(idx) {
+  if (!confirm(`确认删除第 ${idx+1} 题？`)) return;
+  pool['stage'+currentStage].splice(idx, 1);
+  renderAll();
+  showToast('题目已删除', 'success');
+}
+
+function saveQuestion() {
+  // 校验
+  const prompt = document.getElementById('edPrompt').value.trim();
+  const q = document.getElementById('edQ').value.trim();
+  const opts = [0,1,2,3].map(i => document.getElementById('edOpt'+i).value.trim());
+  const word = document.getElementById('edLearnWord').value.trim();
+  const meaning = document.getElementById('edLearnMean').value.trim();
+
+  if (!prompt) return showToast('请填写题干提示', 'error');
+  if (!q) return showToast('请填写题目正文', 'error');
+  if (opts.some(o => !o)) return showToast('请填写全部4个选项', 'error');
+  if (!word) return showToast('请填写学习卡的核心词', 'error');
+  if (!meaning) return showToast('请填写学习卡的释义', 'error');
+
+  const newQ = {
+    type: document.getElementById('edType').value,
+    dmg: parseInt(document.getElementById('edDmg').value) || 10,
+    prompt,
+    q,
+    options: opts,
+    correct: pendingCorrect,
+    learn: {
+      word,
+      ipa: document.getElementById('edLearnIpa').value.trim(),
+      meaning,
+      example: document.getElementById('edLearnExample').value.trim(),
+    },
+  };
+  const ipa = document.getElementById('edIpa').value.trim();
+  if (ipa) newQ.ipa = ipa;
+
+  if (editingIdx < 0) {
+    pool['stage'+currentStage].push(newQ);
+    showToast('✓ 题目已添加', 'success');
+  } else {
+    pool['stage'+currentStage][editingIdx] = newQ;
+    showToast('✓ 题目已保存', 'success');
+  }
+  closeEditor();
+  renderAll();
+}
+
+/* ==========================================================
+   6. 实时预览
+   ========================================================== */
+function togglePreview() {
+  const panel = document.getElementById('previewPanel');
+  panel.classList.toggle('show');
+  if (panel.classList.contains('show')) updatePreview();
+}
+
+function updatePreview() {
+  const card = document.getElementById('previewCard');
+  if (!document.getElementById('editorMask').classList.contains('show')) return;
+
+  const type = document.getElementById('edType').value;
+  const dmg = document.getElementById('edDmg').value;
+  const prompt = document.getElementById('edPrompt').value || '题干提示...';
+  const qText = document.getElementById('edQ').value || '题目正文';
+  const ipa = document.getElementById('edIpa').value;
+  const opts = [0,1,2,3].map(i => document.getElementById('edOpt'+i).value || `选项${'ABCD'[i]}`);
+
+  const typeLabel = { normal:'基础攻击', crit:'暴击 · 词组', ulti:'必杀 · 句子' }[type];
+  const qHtml = qText.replace(/___/g, '<span class="blank">___</span>');
+  const ipaHtml = ipa ? `<span class="ipa">${ipa}</span>` : '';
+
+  card.innerHTML = `
+    <div class="prev-corner ${type}">${typeLabel}</div>
+    <div class="prev-dmg">DMG ${dmg}</div>
+    <div class="prev-prompt">${prompt}</div>
+    <div class="prev-q">${qHtml}${ipaHtml}</div>
+    <div class="prev-opts">
+      ${opts.map((o, i) => `
+        <div class="prev-opt ${i === pendingCorrect ? 'correct' : ''}">
+          <span class="lbl">${'ABCD'[i]}</span>${o}
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+// 实时预览：监听所有输入变化
+document.addEventListener('input', e => {
+  if (e.target.closest('#editorMask')) updatePreview();
+});
+
+/* ==========================================================
+   7. 导入 / 导出
+   ========================================================== */
+function exportJson() {
+  const data = JSON.stringify(pool, null, 2);
+  const blob = new Blob([data], { type:'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const date = new Date().toISOString().slice(0,10);
+  a.download = `word_quest_questions_${date}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('✓ 已导出 JSON 文件', 'success');
+}
+
+function handleImport(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      // 简单校验
+      if (typeof data !== 'object') throw new Error('格式错误');
+      const validStages = STAGES.map(s => 'stage'+s.id);
+      const hasAny = Object.keys(data).some(k => validStages.includes(k));
+      if (!hasAny) throw new Error('未找到 stage1-5 数据');
+
+      if (!confirm('确认导入？这将覆盖当前所有题库。')) return;
+      pool = data;
+      // 补全缺失的 stage
+      validStages.forEach(k => { if (!pool[k]) pool[k] = []; });
+      renderAll();
+      showToast('✓ 题库已导入', 'success');
+    } catch (err) {
+      showToast('导入失败：' + err.message, 'error');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = ''; // reset
+}
+
+function exportToGame() {
+  // 生成可以直接粘贴到游戏 HTML 中替换 const QUESTION_POOL 的代码
+  const code = 'const QUESTION_POOL = ' + JSON.stringify(pool, null, 2) + ';';
+
+  // 复制到剪贴板
+  navigator.clipboard.writeText(code).then(() => {
+    showToast('✓ 已复制游戏代码到剪贴板！粘贴替换游戏HTML里的 QUESTION_POOL', 'success');
+  }).catch(() => {
+    // 降级方案：弹窗显示
+    const w = window.open('', '_blank');
+    w.document.write(`
+      <head><meta charset="UTF-8"><title>复制以下代码</title></head>
+      <body style="font-family:monospace; padding:20px;">
+        <h3>请复制以下代码，粘贴到游戏 HTML 替换 const QUESTION_POOL = {...};</h3>
+        <textarea style="width:100%; height:80vh; font-family:monospace;">${code.replace(/</g,'&lt;')}</textarea>
+      </body>
+    `);
+  });
+}
+
+/* ==========================================================
+   8. UI 帮助
+   ========================================================== */
+function showHelp() { document.getElementById('helpMask').classList.add('show'); }
+function closeHelp() { document.getElementById('helpMask').classList.remove('show'); }
+
+function showToast(text, type='success') {
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  t.textContent = text;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2200);
+}
+
+// 关闭弹窗（点击遮罩）
+document.getElementById('editorMask').addEventListener('click', e => {
+  if (e.target.id === 'editorMask') closeEditor();
+});
+document.getElementById('helpMask').addEventListener('click', e => {
+  if (e.target.id === 'helpMask') closeHelp();
+});
+
+// 防止意外关闭页面
+window.addEventListener('beforeunload', e => {
+  // 这里可以加未保存检测，目前简化
+});
+
+/* ==========================================================
+   9. 初始化
+   ========================================================== */
+renderAll();
+
+
+/* ==========================================================
+   v0.6: 分享 / 二维码
+   ========================================================== */
+
+let lastShareUrl = '';
+
+function openShareDialog() {
+  document.getElementById('shareMask').classList.add('show');
+  // 检查 host 输入是否记忆过
+  const savedHost = ''; // sessionStorage 在artifacts里不可用，但实际网页可用
+  if (savedHost) {
+    document.getElementById('shareHost').value = savedHost;
+  }
+  regenerateShare();
+}
+
+function closeShareDialog() {
+  document.getElementById('shareMask').classList.remove('show');
+}
+
+function switchShareTab(tab) {
+  document.getElementById('tabQr').classList.toggle('active', tab === 'qr');
+  document.getElementById('tabUrl').classList.toggle('active', tab === 'url');
+  document.getElementById('tabContentQr').style.display = tab === 'qr' ? 'block' : 'none';
+  document.getElementById('tabContentUrl').style.display = tab === 'url' ? 'block' : 'none';
+}
+
+function buildSharePool() {
+  // 根据范围构造要分享的题库
+  const scope = document.getElementById('shareScope').value;
+  let outPool = {};
+
+  // 只用 stage1-5 中存在的关卡
+  for (const k of Object.keys(pool)) {
+    if (pool[k] && pool[k].length > 0) {
+      outPool[k] = pool[k];
+    }
+  }
+
+  if (scope === 'ch1-easy') {
+    // 只挑 normal 类型的题
+    const easyPool = {};
+    for (const k of Object.keys(outPool)) {
+      easyPool[k] = outPool[k].filter(q => q.type === 'normal');
+    }
+    return easyPool;
+  }
+  if (scope === 'first2') {
+    // 只前 2 关
+    return { stage1: outPool.stage1 || [], stage2: outPool.stage2 || [] };
+  }
+  if (scope === 'first1') {
+    // 只第 1 关
+    return { stage1: outPool.stage1 || [] };
+  }
+  return outPool;
+}
+
+function regenerateShare() {
+  const name = document.getElementById('shareName').value.trim();
+  const cls = document.getElementById('shareClass').value.trim();
+  const expire = document.getElementById('shareExpire').value;
+  const host = document.getElementById('shareHost').value.trim();
+
+  if (!host) {
+    document.getElementById('qrInfo').innerHTML = '<span style="color:var(--blood);">⚠ 请先填写游戏地址（第2步）</span>';
+    document.getElementById('urlDisplay').textContent = '请先填写游戏地址';
+    clearQR();
+    return;
+  }
+
+  const sharePool = buildSharePool();
+  const totalQs = Object.values(sharePool).reduce((s, arr) => s + (arr?.length || 0), 0);
+
+  if (totalQs === 0) {
+    document.getElementById('qrInfo').innerHTML = '<span style="color:var(--blood);">⚠ 当前选择的范围内没有题目</span>';
+    clearQR();
+    return;
+  }
+
+  // 构造 payload
+  const payload = {
+    n: name || '同学',
+    c: cls || '',
+    p: sharePool,
+    e: expire !== '0' ? Date.now() + parseInt(expire) * 86400000 : 0,
+    t: Date.now(),
+  };
+
+  // 用 LZ-string 压缩（如果可用）
+  const jsonStr = JSON.stringify(payload);
+  let encoded, useCompress = false;
+  if (typeof LZString !== 'undefined') {
+    encoded = LZString.compressToEncodedURIComponent(jsonStr);
+    useCompress = true;
+  } else {
+    // 降级：base64
+    try {
+      encoded = btoa(unescape(encodeURIComponent(jsonStr)));
+    } catch (e) {
+      encoded = btoa(jsonStr);
+    }
+  }
+
+  // 用 # 锚点（HASH不发到服务器，更安全）
+  const url = host + '#wq=' + (useCompress ? '1' : '0') + encoded;
+  lastShareUrl = url;
+
+  // 显示
+  document.getElementById('urlDisplay').textContent = url;
+
+  const sizeStr = url.length < 1024 ? url.length + ' 字符' : (url.length / 1024).toFixed(1) + ' KB';
+  const expireText = expire === '0' ? '永久有效' : expire + '天后过期';
+  const compressText = useCompress ? '· LZ压缩' : '· base64';
+
+  let qrStatus, qrColor;
+  if (url.length < 1500) {
+    qrStatus = '✅ QR码清晰，扫码体验好';
+    qrColor = '#3a8a3a';
+  } else if (url.length < 2300) {
+    qrStatus = '⚠️ QR码偏密集，建议手机近距离扫描';
+    qrColor = '#a85500';
+  } else {
+    qrStatus = '❌ 超过QR容量(2300)，需减少题量';
+    qrColor = 'var(--blood)';
+  }
+
+  document.getElementById('qrInfo').innerHTML = `
+    🎯 <b>${name || '同学'}</b> · ${totalQs} 道题 · ${expireText}<br>
+    📏 链接 ${sizeStr} ${compressText}<br>
+    <span style="color:${qrColor};">${qrStatus}</span>
+  `;
+
+  // 生成 QR
+  if (typeof QRCode !== 'undefined' && url.length < 2300) {
+    QRCode.toCanvas(document.getElementById('qrCanvas'), url, {
+      width: 220,
+      margin: 2,
+      color: { dark:'#1a0f08', light:'#ffffff' },
+      errorCorrectionLevel: 'L'
+    }, function(err) {
+      if (err) {
+        document.getElementById('qrInfo').innerHTML += '<br><span style="color:var(--blood);">⚠ QR生成失败：' + err.message + '</span>';
+      }
+    });
+  } else if (url.length >= 2300) {
+    clearQR();
+    // 提示用户用别的方式
+    document.getElementById('qrInfo').innerHTML += `
+      <br><br>
+      <span style="font-size:12px; color:var(--ink);">
+      💡 替代方案：<br>
+      ① 切换"题库范围"到 <b>仅第1关</b> 或 <b>前2关</b><br>
+      ② 复制链接到短链工具（如新浪短链/百度短链）转短链后再生成QR<br>
+      ③ 直接发送链接给家长（在"链接"标签页）
+      </span>
+    `;
+  }
+}
+
+function clearQR() {
+  const c = document.getElementById('qrCanvas');
+  if (c) {
+    const ctx = c.getContext('2d');
+    ctx.clearRect(0, 0, c.width, c.height);
+  }
+}
+
+function copyShareUrl() {
+  if (!lastShareUrl) {
+    showToast('请先生成链接', 'error');
+    return;
+  }
+  navigator.clipboard.writeText(lastShareUrl).then(() => {
+    showToast('✓ 链接已复制', 'success');
+  }).catch(() => {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = lastShareUrl;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('✓ 链接已复制', 'success');
+  });
+}
+
+function downloadQR() {
+  const canvas = document.getElementById('qrCanvas');
+  const name = document.getElementById('shareName').value.trim() || 'student';
+
+  // 创建一个新canvas，把QR + 水印画上去
+  const finalCanvas = document.createElement('canvas');
+  finalCanvas.width = 280;
+  finalCanvas.height = 320;
+  const ctx = finalCanvas.getContext('2d');
+
+  // 白底
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, 280, 320);
+
+  // 顶部标签
+  ctx.fillStyle = '#1a0f08';
+  ctx.font = 'bold 14px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('为 ' + name + ' 定制', 140, 24);
+  ctx.font = '11px sans-serif';
+  ctx.fillStyle = '#8a5a2a';
+  ctx.fillText('扫码开始单词远征', 140, 40);
+
+  // QR 居中
+  ctx.drawImage(canvas, 40, 50, 200, 200);
+
+  // 底部水印
+  ctx.fillStyle = '#1a0f08';
+  ctx.fillRect(0, 270, 280, 30);
+  ctx.fillStyle = '#ffd166';
+  ctx.font = 'bold 12px sans-serif';
+  ctx.fillText('谷sir说英语 · WORD QUEST', 140, 290);
+
+  // 下载
+  const dataUrl = finalCanvas.toDataURL('image/png');
+  const a = document.createElement('a');
+  a.href = dataUrl;
+  a.download = `WordQuest_${name}_${new Date().toISOString().slice(0,10)}.png`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  showToast('✓ 二维码已下载', 'success');
+}
+
+// 关闭遮罩点击
+document.getElementById('shareMask').addEventListener('click', e => {
+  if (e.target.id === 'shareMask') closeShareDialog();
+});
+
+
+</script>
+</body>
+</html>
