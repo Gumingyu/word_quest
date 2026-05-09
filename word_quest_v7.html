@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#1a0f08">
-<title>Word Quest · 单词远征 v0.2</title>
+<title>Word Quest · 单词远征</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
 
@@ -3497,7 +3497,6 @@ function resetToDefaultPool() {
 const _origRenderMap = (typeof renderMap === 'function') ? renderMap : null;
 
 function renderMap() {
-  const ch = getCurrentChapter();
   const hero = HEROES.find(h => h.id === SAVE.selectedHero);
 
   // 标题
@@ -3669,8 +3668,7 @@ function startBattle(stageId) {
 function spawnAmbientParticles() {
   const battleScreen = $('battleScreen');
   battleScreen.querySelectorAll('.dust, .firefly').forEach(d => d.remove());
-  const ch = getCurrentChapter();
-  const isForest = ch.theme === 'forest';
+  const isForest = false; // v0.7 统一沙漠主题
 
   for (let i = 0; i < 14; i++) {
     const d = document.createElement('div');
