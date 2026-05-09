@@ -1,0 +1,1168 @@
+{
+  "stage1": [
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 perfect 的正确用法",
+      "q": "The weather was ___ for sightseeing.",
+      "options": [
+        "perfectness",
+        "perfectly",
+        "perfection",
+        "perfect"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "perfect（形容词）",
+        "ipa": "/ˈpɜːfɪkt/",
+        "meaning": "adj. 正合适的；完美的（修饰名词用形容词，不用副词）",
+        "example": "It was a perfect day for a trip."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出\"海岸；海滨\"的英文",
+      "q": "海岸；海滨",
+      "options": [
+        "range",
+        "wild",
+        "coast",
+        "volcano"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "coast",
+        "ipa": "/kəʊst/",
+        "meaning": "n. 海岸；海滨",
+        "example": "We drove along the coast for hours."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 unique 的中文意思",
+      "q": "unique",
+      "ipa": "/juːˈniːk/",
+      "options": [
+        "普通的",
+        "常见的",
+        "独特的；罕见的",
+        "危险的"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "unique",
+        "ipa": "/juːˈniːk/",
+        "meaning": "adj. 独特的；罕见的（只有一个，无法比较）",
+        "example": "Every person is unique."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出最合适的词",
+      "q": "She loves coffee. Let's find a nice ___ nearby.",
+      "options": [
+        "coast",
+        "café",
+        "lift",
+        "stair"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "café",
+        "ipa": "/ˈkæfeɪ/",
+        "meaning": "n. 咖啡馆；小餐馆（法语词，注意重音在后）",
+        "example": "Let's have a rest in that café."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出最合适的词",
+      "q": "The giant panda is ___ to China — you can only find it there.",
+      "options": [
+        "perfect",
+        "huge",
+        "excellent",
+        "unique"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "unique to",
+        "ipa": "",
+        "meaning": "phr. 独属于……（unique to + 地点/人）",
+        "example": "The giant panda is unique to China."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 rich 的中文意思",
+      "q": "rich",
+      "ipa": "/rɪtʃ/",
+      "options": [
+        "贫穷的",
+        "丰富多彩的；富有的",
+        "简单的",
+        "普通的"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "rich",
+        "ipa": "/rɪtʃ/",
+        "meaning": "adj. 丰富多彩的；富有的（反义 poor）",
+        "example": "China has a rich culture and history."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "这片海岸独特而美丽，是游览的绝佳之地。",
+      "options": [
+        "This coast is unique and beautiful, and is a perfect place for sightseeing.",
+        "This coast is unique and beautiful, and is a perfectly place for sightseeing.",
+        "This coast unique and beautiful, and is a perfect place for sightseeing.",
+        "This coast is unique and beautiful, and is perfect places for sightseeing."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "unique / perfect / sightseeing",
+        "ipa": "",
+        "meaning": "gram. is a perfect place（冠词+形容词+名词）；place 单数",
+        "example": "It is a perfect place for sightseeing."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 huge 的中文意思",
+      "q": "huge",
+      "ipa": "/hjuːdʒ/",
+      "options": [
+        "微小的",
+        "巨大的；极多的",
+        "普通的",
+        "危险的"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "huge",
+        "ipa": "/hjuːdʒ/",
+        "meaning": "adj. 巨大的；极多的（= very big）",
+        "example": "The volcano was huge and scary."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 wild 的中文意思",
+      "q": "wild",
+      "ipa": "/waɪld/",
+      "options": [
+        "驯服的",
+        "安全的",
+        "野生的；野的　n.自然环境",
+        "城市的"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "wild",
+        "ipa": "/waɪld/",
+        "meaning": "adj. 野生的；野的　n. 自然环境；野生状态",
+        "example": "Wild animals should live in the wild."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 excellent 的反义词",
+      "q": "excellent ↔ ___",
+      "options": [
+        "terrible",
+        "perfect",
+        "good",
+        "unique"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "excellent / terrible",
+        "ipa": "",
+        "meaning": "adj. 极好的 / 极差的（一对反义词）",
+        "example": "The food was excellent, but the service was terrible."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 excellent 的中文意思",
+      "q": "excellent",
+      "ipa": "/ˈeksələnt/",
+      "options": [
+        "优秀的；极好的",
+        "良好的",
+        "一般的",
+        "完美的"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "excellent",
+        "ipa": "/ˈeksələnt/",
+        "meaning": "adj. 优秀的；极好的（比 good 语气更强）",
+        "example": "The food at this café is excellent!"
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出语法正确的句子",
+      "q": "_____",
+      "options": [
+        "The view from the coast are hugely beautiful.",
+        "The views from the coast are huge beautiful.",
+        "The view from the coast is huge beautiful.",
+        "The view from the coast is hugely beautiful."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "hugely（副词修饰形容词）",
+        "ipa": "",
+        "meaning": "gram. huge 是形容词，修饰动词/形容词要用副词 hugely",
+        "example": "The scenery is hugely beautiful."
+      }
+    }
+  ],
+  "stage2": [
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出正确的搭配",
+      "q": "We went ___ in Beijing and visited the Great Wall.",
+      "options": [
+        "sightsee",
+        "sightseeing",
+        "go sightseeing",
+        "to sightseeing"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "go sightseeing",
+        "ipa": "",
+        "meaning": "phr. 去观光（go + V-ing 表示去做某活动）",
+        "example": "We went sightseeing in the old town."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 imagine 的中文意思",
+      "q": "imagine",
+      "ipa": "/ɪˈmædʒɪm/",
+      "options": [
+        "计划",
+        "想象；设想",
+        "记住",
+        "描述"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "imagine",
+        "ipa": "/ɪˈmædʒɪm/",
+        "meaning": "v. 想象；设想（imagination n. 想象力）",
+        "example": "Imagine standing on top of a volcano!"
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "那座山脉绵延数百公里，景色壮观。",
+      "options": [
+        "The mountain range stretches hundreds of kilometres and the scenery is magnificent.",
+        "The mountain range stretch for hundreds of kilometres and the scenery is magnificent.",
+        "The mountain range stretches for hundreds of kilometres and the scenery is magnificent.",
+        "The mountain range is stretching for hundreds kilometres and the scenery is magnificent."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "stretches for + 距离",
+        "ipa": "",
+        "meaning": "gram. stretch for + 数字 + 单位（绵延多远，介词 for 不可省）",
+        "example": "The road stretches for 500 kilometres."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 receive 的中文意思",
+      "q": "receive",
+      "ipa": "/rɪˈsiːv/",
+      "options": [
+        "发送",
+        "拒绝",
+        "失去",
+        "接待；招待；收到"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "receive",
+        "ipa": "/rɪˈsiːv/",
+        "meaning": "v. 接待；招待；收到",
+        "example": "The hotel received us warmly."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 match 的中文意思",
+      "q": "match",
+      "ipa": "/mætʃ/",
+      "options": [
+        "配对；相配",
+        "断开",
+        "竞争",
+        "失败"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "match",
+        "ipa": "/mætʃ/",
+        "meaning": "v. 配对；相配　n. 比赛；火柴",
+        "example": "The colour of the shirt matches your eyes."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 imagine 的正确搭配",
+      "q": "I can't ___ living without music.",
+      "options": [
+        "imagine",
+        "imagine living",
+        "imagine to live",
+        "imagining"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "imagine + V-ing",
+        "ipa": "",
+        "meaning": "gram. imagine 后接动名词（V-ing），不接 to do",
+        "example": "I can't imagine living without music."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 lie 的过去式（位于）",
+      "q": "The ancient city ___ near the river.",
+      "options": [
+        "lied",
+        "laid",
+        "lain",
+        "lay"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "lie / lay / lain（位于）",
+        "ipa": "",
+        "meaning": "gram. 表\"位于\"的 lie 过去式是 lay（不规则）",
+        "example": "The ancient city lay near the river."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "很难想象没有网络的生活。",
+      "options": [
+        "It's hard imagining live without the Internet.",
+        "It's hard to imagine live without the Internet.",
+        "It's hard to imagine to live without the Internet.",
+        "It's hard to imagine living without the Internet."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "imagine + V-ing",
+        "ipa": "",
+        "meaning": "gram. imagine 后必须接 V-ing；it's hard to do 固定句型",
+        "example": "It's hard to imagine living without electricity."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 stretch 的中文意思",
+      "q": "stretch",
+      "ipa": "/stretʃ/",
+      "options": [
+        "延伸；绵延",
+        "缩短",
+        "弯曲",
+        "消失"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "stretch",
+        "ipa": "/stretʃ/",
+        "meaning": "v. 延伸；绵延（描述地形连续延展）",
+        "example": "The mountains stretch for hundreds of kilometres."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出最合适的词",
+      "q": "Scientists ___ that the species had been living there for thousands of years.",
+      "options": [
+        "imagined",
+        "received",
+        "discovered",
+        "matched"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "discovered（语境）",
+        "ipa": "",
+        "meaning": "v. 发现——科学家研究后得出结论，用 discovered",
+        "example": "Scientists discovered that pandas eat mostly bamboo."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 discover 的中文意思",
+      "q": "discover",
+      "ipa": "/dɪˈskʌvər/",
+      "options": [
+        "发现；了解到",
+        "隐藏",
+        "发明",
+        "忘记"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "discover",
+        "ipa": "/dɪˈskʌvər/",
+        "meaning": "v. 发现；了解到（discover 是偶然发现，invent 是发明）",
+        "example": "We discovered a beautiful waterfall on our trip."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 lie 在句中的意思",
+      "q": "The village lies between two mountains.",
+      "options": [
+        "说谎",
+        "躺下",
+        "位于；坐落在",
+        "消失"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "lie",
+        "ipa": "/laɪ/",
+        "meaning": "v. 位于；坐落在（lie-lay-lain）　也可指说谎、躺下",
+        "example": "The city lies on the coast."
+      }
+    }
+  ],
+  "stage3": [
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 department store 的中文意思",
+      "q": "department store",
+      "options": [
+        "便利店",
+        "百货商店",
+        "超市",
+        "书店"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "department store",
+        "ipa": "",
+        "meaning": "n. 百货商店（department 部门 + store 商店）",
+        "example": "You can buy almost anything in a department store."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出正确的搭配",
+      "q": "What's your home ___? I need to send you a letter.",
+      "options": [
+        "destination",
+        "government",
+        "address",
+        "range"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "address",
+        "ipa": "/əˈdres/",
+        "meaning": "n. 住址；地址（home address 家庭住址）",
+        "example": "Please write your full address here."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "我们的目的地是云南，那里有独特的自然风光。",
+      "options": [
+        "Our destination is Yunnan, which has unique natural scenery.",
+        "Our destination is Yunnan, that has unique natural scenery.",
+        "Our destination is Yunnan, which have unique natural scenery.",
+        "Our destination Yunnan, which has unique natural scenery."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "which（定语从句）",
+        "ipa": "",
+        "meaning": "gram. which 引导非限制性定语从句，补充说明前面的名词",
+        "example": "We visited Yunnan, which has unique scenery."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 volcano 的正确复数",
+      "q": "volcano → ___",
+      "options": [
+        "volcanos",
+        "volcano's",
+        "volcanoes",
+        "volcanes"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "volcanoes",
+        "ipa": "",
+        "meaning": "gram. 以 o 结尾且有生命感的名词加 -es（volcanoes, heroes, potatoes）",
+        "example": "There are many active volcanoes in Japan."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出\"政府\"的英文",
+      "q": "政府",
+      "options": [
+        "department",
+        "destination",
+        "address",
+        "government"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "government",
+        "ipa": "/ˈɡʌvənmənt/",
+        "meaning": "n. 政府",
+        "example": "The government set up a nature reserve to protect pandas."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出最合适的词",
+      "q": "In winter, people in the snowy north use ___ to travel across the ice.",
+      "options": [
+        "motorcycle",
+        "lift",
+        "snowmobile",
+        "stair"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "snowmobile",
+        "ipa": "/ˈsnəʊməbiːl/",
+        "meaning": "n. 雪地机动车（snow+mobile，雪地专用交通工具）",
+        "example": "We took a snowmobile across the frozen lake."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 destination 的中文意思",
+      "q": "destination",
+      "ipa": "/ˌdestrˈneɪʃn/",
+      "options": [
+        "出发地",
+        "途中",
+        "方向",
+        "终点；目的地"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "destination",
+        "ipa": "/ˌdestrˈneɪʃn/",
+        "meaning": "n. 终点；目的地",
+        "example": "Our destination is Yunnan province."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 endangered 的中文意思",
+      "q": "endangered",
+      "ipa": "/ɪnˈdeɪndʒəd/",
+      "options": [
+        "受保护的",
+        "濒危的",
+        "普通的",
+        "野生的"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "endangered",
+        "ipa": "/ɪnˈdeɪndʒəd/",
+        "meaning": "adj. 濒危的（endanger v. 使危险 + ed）",
+        "example": "The giant panda is an endangered animal."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 range 的中文意思",
+      "q": "range",
+      "ipa": "/reɪndʒ/",
+      "options": [
+        "火山",
+        "湖泊",
+        "平原",
+        "山脉"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "range",
+        "ipa": "/reɪndʒ/",
+        "meaning": "n. 山脉；范围（mountain range 山脉）",
+        "example": "The Himalayas is the highest mountain range in the world."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 wolf 的中文意思",
+      "q": "wolf",
+      "ipa": "/wʊlf/",
+      "options": [
+        "狼",
+        "熊",
+        "狐狸",
+        "老虎"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "wolf",
+        "ipa": "/wʊlf/",
+        "meaning": "n. 狼（复数 wolves）",
+        "example": "Golden monkeys and wolves both live in the wild."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 volcano 的中文意思",
+      "q": "volcano",
+      "ipa": "/vɒlˈkeɪməʊ/",
+      "options": [
+        "山脉",
+        "火山",
+        "沙漠",
+        "海岛"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "volcano",
+        "ipa": "/vɒlˈkeɪməʊ/",
+        "meaning": "n. 火山（复数 volcanoes）",
+        "example": "Hawaii has several active volcanoes."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "政府建立了自然保护区来保护濒危动物。",
+      "options": [
+        "The government set up a nature reserve to protect endangered animals.",
+        "The government set up a nature reserve to protect endangering animals.",
+        "The government sets up nature reserve to protect endangered animals.",
+        "The government set up a nature reserve for protect endangered animals."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "set up / to protect / endangered",
+        "ipa": "",
+        "meaning": "gram. set up 建立（过去时）；to protect 目的状语；protect + 宾语",
+        "example": "They set up a reserve to protect endangered animals."
+      }
+    }
+  ],
+  "stage4": [
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 all year round 的中文意思",
+      "q": "all year round",
+      "options": [
+        "每年一次",
+        "一年一半",
+        "全年；一年到头",
+        "仅在夏天"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "all year round",
+        "ipa": "",
+        "meaning": "phr. 全年；一年到头（round = around，强调持续不断）",
+        "example": "Sanya has warm weather all year round."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 mostly 的中文意思",
+      "q": "mostly",
+      "ipa": "/ˈməʊstli/",
+      "options": [
+        "从不",
+        "很少",
+        "主要地；通常",
+        "总是"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "mostly",
+        "ipa": "/ˈməʊstli/",
+        "meaning": "adv. 主要地；通常（= mainly）",
+        "example": "Giant pandas eat mostly bamboo."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 prefer to 的正确用法",
+      "q": "I ___ travel by train than by plane.",
+      "options": [
+        "prefer",
+        "prefer to",
+        "prefer to travel",
+        "prefer travelling"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "prefer to do rather than do",
+        "ipa": "",
+        "meaning": "phr. 更喜欢做A而不是B（prefer to A rather than B）",
+        "example": "I prefer to travel by train rather than by plane."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 remain 的正确用法",
+      "q": "The number of wild pandas ___ very small.",
+      "options": [
+        "remaining",
+        "remain",
+        "remains",
+        "remained"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "remains（三单）",
+        "ipa": "",
+        "meaning": "gram. 主语 The number（单数）用三单 remains；remain + 形容词",
+        "example": "The number of wild pandas remains very small."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 by hand 的中文意思",
+      "q": "by hand",
+      "options": [
+        "用手工",
+        "用机器",
+        "亲自",
+        "手动关闭"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "by hand",
+        "ipa": "",
+        "meaning": "phr. 用手工（不用机器，强调手工制作）",
+        "example": "This bag was made by hand, not by machine."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出正确的搭配",
+      "q": "Let's ___ in the mountains this weekend.",
+      "options": [
+        "go to hike",
+        "go hiking",
+        "go hike",
+        "hiking go"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "go hiking",
+        "ipa": "",
+        "meaning": "phr. 去远足（go + V-ing 表示进行某种活动）",
+        "example": "We go hiking every weekend."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出正确的搭配",
+      "q": "We're going ___ a trip to Sichuan next month.",
+      "options": [
+        "to",
+        "on",
+        "in",
+        "for"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "go on a trip",
+        "ipa": "",
+        "meaning": "phr. 去旅行（固定搭配，on 不能换成 to/in/for）",
+        "example": "We go on a trip every summer holiday."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 set up 的中文意思",
+      "q": "set up",
+      "options": [
+        "建立；创立",
+        "拆除",
+        "找到",
+        "打扫"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "set up",
+        "ipa": "",
+        "meaning": "phr. 建立；创立（set up a school/company/reserve）",
+        "example": "They set up a nature reserve for giant pandas."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 key 在句中的词性和意思",
+      "q": "Water is a key resource for all living things.",
+      "options": [
+        "n. 钥匙",
+        "adv. 关键地",
+        "v. 输入",
+        "adj. 主要的；关键的"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "key（形容词）",
+        "ipa": "/kiː/",
+        "meaning": "adj. 主要的；关键的（key 既可作名词也可作形容词）",
+        "example": "Tourism is a key industry in this area."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "这件衬衫是手工制作的，是这家商店的主打产品。",
+      "options": [
+        "This shirt made by hand and is a key product of the shop.",
+        "This shirt was make by hand and is a key product of the shop.",
+        "This shirt was made by hand and is a key products of the shop.",
+        "This shirt was made by hand and is a key product of the shop."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "made by hand / key product",
+        "ipa": "",
+        "meaning": "gram. 被动语态 was made；key 作形容词修饰 product（单数）",
+        "example": "This is made by hand and is a key product."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 in the wild 的中文意思",
+      "q": "in the wild",
+      "options": [
+        "在动物园",
+        "在学校",
+        "在家里",
+        "在野外"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "in the wild",
+        "ipa": "",
+        "meaning": "phr. 在野外；在自然环境中（反义 in captivity 在人工饲养中）",
+        "example": "There are fewer than 2,000 giant pandas living in the wild."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "熊猫全年都生活在野外，主要以竹子为食。",
+      "options": [
+        "Both A and B are correct.",
+        "Pandas live in the wild all year round and eat mostly bamboo.",
+        "Pandas live in the wild all year round and mostly eats bamboo.",
+        "Pandas live in the wild all year round and mostly eat bamboo."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "mostly 的位置",
+        "ipa": "",
+        "meaning": "gram. mostly 既可放动词前（mostly eat）也可放宾语前（eat mostly bamboo），两者均正确",
+        "example": "They mostly eat bamboo. / They eat mostly bamboo."
+      }
+    }
+  ],
+  "stage5": [
+    {
+      "type": "normal",
+      "dmg": 12,
+      "prompt": "选出\"去远足\"的英文",
+      "q": "去远足",
+      "options": [
+        "go hiking",
+        "go sightseeing",
+        "go on a trip",
+        "go swimming"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "go hiking",
+        "ipa": "",
+        "meaning": "phr. 去远足（hiking 指长时间徒步旅行，比 walking 更有目的性）",
+        "example": "We go hiking in the mountains every spring."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 sightseeing 的正确搭配",
+      "q": "We ___ in the old town and took lots of photos.",
+      "options": [
+        "went to sightseeing",
+        "go sightseeing",
+        "went sightseeing",
+        "did sightseeing"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "went sightseeing（过去时）",
+        "ipa": "",
+        "meaning": "gram. go sightseeing 的过去时 went sightseeing（不规则）",
+        "example": "We went sightseeing yesterday."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 prefer to 的完整句型",
+      "q": "I prefer ___ by bike ___ by bus.",
+      "options": [
+        "to travel / rather than",
+        "travelling / than",
+        "to travel / than",
+        "travel / rather than"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "prefer to do rather than do",
+        "ipa": "",
+        "meaning": "gram. prefer to A rather than B（宁可A也不B）",
+        "example": "I prefer to walk rather than take the bus."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译",
+      "q": "我们宁愿乘雪地机动车探索荒野，也不愿待在酒店里。",
+      "options": [
+        "We prefer to explore the wild by snowmobile rather than stay in the hotel.",
+        "Both A and C are correct.",
+        "We prefer exploring the wild by snowmobile rather than staying in the hotel.",
+        "We prefer to explore the wild by snowmobile than to stay in the hotel."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "prefer to do rather than do / prefer doing rather than doing",
+        "ipa": "",
+        "meaning": "gram. 两种句型都正确：prefer to do A rather than do B / prefer doing A rather than doing B",
+        "example": "We prefer to explore rather than stay. = We prefer exploring rather than staying."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 rich 的最合适用法",
+      "q": "Yunnan is ___ in natural resources and cultural diversity.",
+      "options": [
+        "richness",
+        "richly",
+        "richer",
+        "rich"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "be rich in",
+        "ipa": "",
+        "meaning": "phr. 富含……；在……方面丰富（be rich in + 名词）",
+        "example": "China is rich in natural resources."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译",
+      "q": "由于政府的努力，濒危动物的数量仍然保持稳定。",
+      "options": [
+        "Thanks to the government's efforts, the number of endangered animals remain stable.",
+        "Thanks to the government's efforts, the numbers of endangered animals remain stable.",
+        "Thanks to the government efforts, the number of endangered animals remains stable.",
+        "Thanks to the government's efforts, the number of endangered animals remains stable."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "the number of + 复数 + 单数动词",
+        "ipa": "",
+        "meaning": "gram. the number of 后接复数名词，但谓语动词用单数（因主语是 the number）",
+        "example": "The number of pandas remains stable."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译",
+      "q": "保护野生动物是当今世界的关键问题之一。",
+      "options": [
+        "Protecting wild animals is one of the keys issues in today's world.",
+        "Protect wild animals is one of the key issues in today's world.",
+        "Protecting wild animals are one of the key issues in today's world.",
+        "Protecting wild animals is one of the key issues in today's world."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "V-ing 作主语 + 单数动词",
+        "ipa": "",
+        "meaning": "gram. 动名词做主语，谓语用单数；key 作形容词修饰 issues，本身不加 s",
+        "example": "Protecting animals is important."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 12,
+      "prompt": "选出 address 在句中的词性和意思",
+      "q": "Please write your address on the form.",
+      "options": [
+        "n. 住址；地址",
+        "adj. 详细的",
+        "v. 演讲",
+        "v. 处理"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "address（名词）",
+        "ipa": "/əˈdres/",
+        "meaning": "n. 住址；地址　也可作动词（address a problem 处理问题）",
+        "example": "Write your name and address at the top."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 endangered 的构词法分析",
+      "q": "endangered = en + danger + ___",
+      "options": [
+        "s",
+        "ed",
+        "ly",
+        "ment"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "endangered（词根分析）",
+        "ipa": "",
+        "meaning": "en（使）+ danger（危险）+ ed（形容词后缀）= 使处于危险中的 = 濒危的",
+        "example": "The panda is endangered. There are only 1,800 left."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译",
+      "q": "这座城市坐落在两座火山之间，全年气候温暖。",
+      "options": [
+        "The city lays between two volcanoes and has warm weather all year round.",
+        "The city lies between two volcano and has warm weather all year round.",
+        "The city lies between two volcanoes and has warm weather all year round.",
+        "The city lies between two volcanoes and has warm weather all the year round."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "lies between / volcanoes / all year round",
+        "ipa": "",
+        "meaning": "gram. lie 表位于，三单 lies；volcano 复数 volcanoes；all year round（不加 the）",
+        "example": "The city lies between two volcanoes."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 destination 的正确用法",
+      "q": "Chengdu is a popular tourist ___.",
+      "options": [
+        "destinate",
+        "destiny",
+        "destination",
+        "destinational"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "tourist destination",
+        "ipa": "",
+        "meaning": "phr. 旅游目的地（固定搭配）",
+        "example": "Paris is one of the most popular tourist destinations in the world."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 mostly 在句中的正确位置",
+      "q": "Tourists ___ visit the coast in summer.",
+      "options": [
+        "most",
+        "mostly",
+        "almost",
+        "nearly"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "mostly（频率副词）",
+        "ipa": "",
+        "meaning": "gram. mostly 是频率副词，放在行为动词前（visit 前）",
+        "example": "Tourists mostly visit in summer."
+      }
+    }
+  ]
+}
