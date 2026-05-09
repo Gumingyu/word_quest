@@ -8,7 +8,12 @@
       "ipa": "/brɑːntʃ/",
       "options": ["树叶", "树干", "树枝", "树根"],
       "correct": 2,
-      "learn": { "word": "branch", "ipa": "/brɑːntʃ/", "meaning": "n. 树枝", "example": "A bird is sitting on the branch." }
+      "learn": {
+        "word": "branch",
+        "ipa": "/brɑːntʃ/",
+        "meaning": "n. 树枝（复数 branches，加 -es 不是 -s）",
+        "example": "A bird is sitting on the branch."
+      }
     },
     {
       "type": "normal",
@@ -16,18 +21,28 @@
       "prompt": "选出 root 的中文意思",
       "q": "root",
       "ipa": "/ruːt/",
-      "options": ["根；根茎", "树枝", "叶子", "花朵"],
+      "options": ["根；根茎", "树枝", "树干", "叶子"],
       "correct": 0,
-      "learn": { "word": "root", "ipa": "/ruːt/", "meaning": "n. 根；根茎", "example": "The tree's roots grow deep into the soil." }
+      "learn": {
+        "word": "root",
+        "ipa": "/ruːt/",
+        "meaning": "n. 根；根茎（注意发音和 route /ruːt/ 路线相同，但意思完全不同）",
+        "example": "The tree's roots grow deep into the soil."
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出最合适的词",
-      "q": "The ___ of a tree take in water from the soil.",
-      "options": ["branches", "leaves", "roots", "sticks"],
-      "correct": 2,
-      "learn": { "word": "roots（语境）", "ipa": "", "meaning": "n. 根——树根从土壤中吸收水分", "example": "Tree roots take in water and nutrients." }
+      "prompt": "选出最合适的词（注意单复数）",
+      "q": "The ___ of a tree absorb water from the soil.",
+      "options": ["root", "roots", "branch", "branchs"],
+      "correct": 1,
+      "learn": {
+        "word": "roots（复数 + 动词一致）",
+        "ipa": "",
+        "meaning": "gram. absorb 是原形动词 → 主语必须是复数。root → roots；branch → branches（不是 branchs！）",
+        "example": "The roots absorb water. (The root absorbs water.)"
+      }
     },
     {
       "type": "normal",
@@ -35,9 +50,14 @@
       "prompt": "选出 wood 的中文意思",
       "q": "wood",
       "ipa": "/wʊd/",
-      "options": ["塑料", "金属", "玻璃", "木；木头"],
-      "correct": 3,
-      "learn": { "word": "wood", "ipa": "/wʊd/", "meaning": "n. 木；木头", "example": "The table is made of wood." }
+      "options": ["塑料", "木；木头", "金属", "玻璃"],
+      "correct": 1,
+      "learn": {
+        "word": "wood",
+        "ipa": "/wʊd/",
+        "meaning": "n. 木；木头（wooden 是形容词"木制的"）",
+        "example": "The table is made of wood. → a wooden table"
+      }
     },
     {
       "type": "normal",
@@ -47,7 +67,12 @@
       "ipa": "/stɪk/",
       "options": ["棍；条", "石头", "叶子", "羽毛"],
       "correct": 0,
-      "learn": { "word": "stick", "ipa": "/stɪk/", "meaning": "n. 棍；条", "example": "He picked up a stick from the ground." }
+      "learn": {
+        "word": "stick",
+        "ipa": "/stɪk/",
+        "meaning": "n. 棍；条（也可作动词"粘住" stick-stuck-stuck）",
+        "example": "He picked up a stick from the ground."
+      }
     },
     {
       "type": "normal",
@@ -57,48 +82,73 @@
       "ipa": "/dɪɡ/",
       "options": ["挖；掘", "推", "拉", "搬"],
       "correct": 0,
-      "learn": { "word": "dig", "ipa": "/dɪɡ/", "meaning": "v. 掘（地）；凿（洞）；挖（土）", "example": "The dog is digging a hole in the garden." }
+      "learn": {
+        "word": "dig",
+        "ipa": "/dɪɡ/",
+        "meaning": "v. 掘（地）；凿（洞）；挖（土）— 过去式 dug，不是 digged！",
+        "example": "The dog is digging a hole in the garden."
+      }
     },
     {
       "type": "normal",
       "dmg": 10,
       "prompt": "选出\"洞；孔；坑\"的英文",
       "q": "洞；孔；坑",
-      "options": ["stick", "hole", "root", "side"],
+      "options": ["whole", "hole", "hall", "hold"],
       "correct": 1,
-      "learn": { "word": "hole", "ipa": "/həʊl/", "meaning": "n. 洞；孔；坑", "example": "The rabbit lives in a hole under the tree." }
+      "learn": {
+        "word": "hole",
+        "ipa": "/həʊl/",
+        "meaning": "n. 洞；孔；坑（注意：whole /həʊl/ 意思是"整个"，同音不同义）",
+        "example": "The rabbit lives in a hole under the tree."
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出正确的搭配",
+      "prompt": "选出正确的复数形式",
       "q": "The tree has many ___ and deep ___.",
-      "options": ["branchs / root", "branches / roots", "branches / rootes", "branchies / roots"],
-      "correct": 1,
-      "learn": { "word": "branches / roots（复数）", "ipa": "", "meaning": "gram. branch → branches（加-es）；root → roots（加-s）", "example": "The tree has many branches and deep roots." }
+      "options": ["branches / roots", "branchs / roots", "branches / rootes", "branchies / root"],
+      "correct": 0,
+      "learn": {
+        "word": "branches / roots（复数辨析）",
+        "ipa": "",
+        "meaning": "gram. 以 -ch 结尾加 -es（branches）；以 -t 结尾直接加 -s（roots）。最常错的是写成 branchs。",
+        "example": "The tree has many branches and deep roots."
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出 be made of 的中文意思",
-      "q": "be made of",
-      "options": ["被制造", "由……制成", "制造……", "为了……而做"],
-      "correct": 1,
-      "learn": { "word": "be made of", "ipa": "", "meaning": "phr. 由……制成（能看出原材料）", "example": "The chair is made of wood." }
+      "prompt": "选出正确的动词形式",
+      "q": "The dog ___ a deep hole yesterday.",
+      "options": ["dig", "digged", "dug", "digs"],
+      "correct": 2,
+      "learn": {
+        "word": "dig → dug（不规则过去式）",
+        "ipa": "",
+        "meaning": "gram. dig 的过去式是 dug（不规则），不是 digged！类似 sing → sang，不是 singed。",
+        "example": "The dog dug a hole yesterday. (NOT: digged)"
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出正确的介词搭配",
-      "q": "The desk is made ___ wood.",
+      "prompt": "选出 be made of 和 be made from 的区别",
+      "q": "The chair is made ___ wood. (看得出是木头)",
       "options": ["in", "of", "from", "by"],
       "correct": 1,
-      "learn": { "word": "be made of + 材料", "ipa": "", "meaning": "phr. 由……制成（of 后接原材料，看得出原料）", "example": "This bridge is made of stone." }
+      "learn": {
+        "word": "be made of（看得出原料）",
+        "ipa": "",
+        "meaning": "phr. 看得出原料用 of，看不出用 from。The chair is made of wood.（看得出木头）Paper is made from wood.（看不出木头）",
+        "example": "The chair is made of wood. Paper is made from wood."
+      }
     },
     {
       "type": "ulti",
       "dmg": 50,
-      "prompt": "选出最佳翻译",
+      "prompt": "选出最佳翻译（逐项检查）",
       "q": "这棵树有粗壮的树枝和很深的根。",
       "options": [
         "The tree has thick branch and deep root.",
@@ -107,21 +157,31 @@
         "The tree has thick branchs and deep roots."
       ],
       "correct": 1,
-      "learn": { "word": "branches / roots（主谓一致+复数）", "ipa": "", "meaning": "gram. 三单主语 The tree，用 has；branches 复数加 -es", "example": "The tree has thick branches and deep roots." }
+      "learn": {
+        "word": "branches / roots / has",
+        "ipa": "",
+        "meaning": "gram. 三个易错点：①三单主语 The tree → has（不是 have）②树枝复数 branches（不是 branchs）③根复数 roots",
+        "example": "The tree has thick branches and deep roots."
+      }
     },
     {
       "type": "ulti",
       "dmg": 50,
-      "prompt": "选出最佳翻译",
-      "q": "这个洞是狗用棍子挖出来的。",
+      "prompt": "选出语法正确的句子",
+      "q": "_____ (关于洞是谁挖的)",
       "options": [
         "The hole was digged by the dog with a stick.",
         "The hole was dug by the dog with a stick.",
         "The hole dug by the dog with a stick.",
-        "The hole was dig by the dog with a stick."
+        "The dog digged the hole with a stick."
       ],
       "correct": 1,
-      "learn": { "word": "dig → dug（不规则过去分词）", "ipa": "", "meaning": "gram. dig 过去式/过去分词都是 dug（不是 digged）", "example": "The hole was dug by the dog." }
+      "learn": {
+        "word": "被动语态 + dug",
+        "ipa": "",
+        "meaning": "gram. 被动语态 was + 过去分词；dig 的过去分词是 dug，不是 digged。选项 D 时态和动词形式都不对。",
+        "example": "The hole was dug by the dog. (NOT: was digged)"
+      }
     }
   ],
   "stage2": [
@@ -131,18 +191,29 @@
       "prompt": "选出 oxygen 的中文意思",
       "q": "oxygen",
       "ipa": "/ˈɒksɪdʒn/",
-      "options": ["氧；氧气", "二氧化碳", "水蒸气", "氮气"],
+      "options": ["氧；氧气", "二氧化碳", "氢气", "氮气"],
       "correct": 0,
-      "learn": { "word": "oxygen", "ipa": "/ˈɒksɪdʒn/", "meaning": "n. 氧；氧气", "example": "Trees produce oxygen for us to breathe." }
+      "learn": {
+        "word": "oxygen",
+        "ipa": "/ˈɒksɪdʒn/",
+        "meaning": "n. 氧；氧气（carbon dioxide 二氧化碳 CO₂）",
+        "example": "Trees produce oxygen for us to breathe."
+      }
     },
     {
       "type": "normal",
       "dmg": 10,
-      "prompt": "选出\"创造\"的英文",
-      "q": "创造",
-      "options": ["take", "make", "create", "produce"],
-      "correct": 2,
-      "learn": { "word": "create", "ipa": "/kriˈeɪt/", "meaning": "v. 创造", "example": "Trees help create a better environment." }
+      "prompt": "选出 create 的中文意思",
+      "q": "create",
+      "ipa": "/kriˈeɪt/",
+      "options": ["制造", "创造", "生产", "发现"],
+      "correct": 1,
+      "learn": {
+        "word": "create",
+        "ipa": "/kriˈeɪt/",
+        "meaning": "v. 创造（强调"从无到有"地创新；make 偏"制作"；produce 偏"生产"）",
+        "example": "Trees help create a better environment."
+      }
     },
     {
       "type": "normal",
@@ -150,9 +221,14 @@
       "prompt": "选出 environment 的中文意思",
       "q": "environment",
       "ipa": "/ɪnˈvaɪrənmənt/",
-      "options": ["大自然", "环境", "天气", "气候"],
-      "correct": 1,
-      "learn": { "word": "environment", "ipa": "/ɪnˈvaɪrənmənt/", "meaning": "n. 自然环境", "example": "We should protect the environment." }
+      "options": ["自然环境", "天气", "气候", "大自然"],
+      "correct": 0,
+      "learn": {
+        "word": "environment",
+        "ipa": "/ɪnˈvaɪrənmənt/",
+        "meaning": "n. 自然环境（注意：nature 偏"大自然"，environment 偏"环境·生存条件"）",
+        "example": "We should protect the environment."
+      }
     },
     {
       "type": "crit",
@@ -161,16 +237,26 @@
       "q": "take in",
       "options": ["拿出", "吸收；摄入", "带走", "放进"],
       "correct": 1,
-      "learn": { "word": "take in", "ipa": "", "meaning": "phr. 吸收；摄入", "example": "Trees take in carbon dioxide and give out oxygen." }
+      "learn": {
+        "word": "take in",
+        "ipa": "",
+        "meaning": "phr. 吸收；摄入（反义 give out 释放）。注意：take on 是"承担"，take off 是"脱下/起飞"，容易混。",
+        "example": "Trees take in carbon dioxide and give out oxygen."
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出 greenhouse gas 的中文意思",
+      "prompt": "选出 greenhouse gas 的正确翻译",
       "q": "greenhouse gas",
-      "options": ["氧气", "温室气体", "天然气", "煤气"],
-      "correct": 1,
-      "learn": { "word": "greenhouse gas", "ipa": "", "meaning": "n. 温室气体", "example": "Carbon dioxide is a greenhouse gas." }
+      "options": ["温室气体", "绿色气体", "天然气", "煤气的温室"],
+      "correct": 0,
+      "learn": {
+        "word": "greenhouse gas",
+        "ipa": "",
+        "meaning": "n. 温室气体（greenhouse 温室 + gas 气体；两个词组合，不是 greenhouse's gas）",
+        "example": "Carbon dioxide is a greenhouse gas."
+      }
     },
     {
       "type": "normal",
@@ -178,23 +264,33 @@
       "prompt": "选出 human 的中文意思",
       "q": "human",
       "ipa": "/ˈhjuːmən/",
-      "options": ["动物", "人类", "植物", "生物"],
+      "options": ["动物", "人；人类", "植物", "生物"],
       "correct": 1,
-      "learn": { "word": "human", "ipa": "/ˈhjuːmən/", "meaning": "n. 人", "example": "Humans need oxygen to live." }
+      "learn": {
+        "word": "human",
+        "ipa": "/ˈhjuːmən/",
+        "meaning": "n. 人（复数 humans；human being 也是"人类"，更正式）",
+        "example": "Humans need oxygen to live."
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出正确的搭配",
+      "prompt": "选出正确的搭配（注意两个短语的方向）",
       "q": "Trees ___ carbon dioxide and ___ oxygen.",
-      "options": ["take in / give out", "take on / give in", "take off / give up", "take in / give off"],
+      "options": ["take in / give out", "take off / give in", "take in / give off", "take over / give up"],
       "correct": 0,
-      "learn": { "word": "take in / give out", "ipa": "", "meaning": "phr. 吸收 / 释放", "example": "Plants take in CO₂ and give out O₂." }
+      "learn": {
+        "word": "take in / give out",
+        "ipa": "",
+        "meaning": "phr. 吸收 / 释放（一对反义词组）。give off 也是"释放"但偏"散发气味/光/热"，give out 偏"释放气体/物质"。",
+        "example": "Plants take in CO₂ and give out O₂."
+      }
     },
     {
       "type": "ulti",
       "dmg": 50,
-      "prompt": "选出最佳翻译",
+      "prompt": "选出最佳翻译（检查每个词的语法）",
       "q": "树木吸收温室气体并制造氧气供人类呼吸。",
       "options": [
         "Trees take in greenhouse gas and create oxygen for human to breathe.",
@@ -203,21 +299,31 @@
         "Trees takes in greenhouse gases and creates oxygen for humans to breathe."
       ],
       "correct": 1,
-      "learn": { "word": "humans / to breathe", "ipa": "", "meaning": "gram. for + 名词 + to do；humans 复数", "example": "Trees create oxygen for humans to breathe." }
+      "learn": {
+        "word": "humans / to breathe / 主谓一致",
+        "ipa": "",
+        "meaning": "gram. 四个考点：①gas → gases 复数②humans 复数③for + 名词 + to do（不能省 to）④主语 trees 复数，动词 take 和 create 用原形（不是 takes/creates）",
+        "example": "Trees create oxygen for humans to breathe."
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
       "prompt": "选出 come from 的中文意思",
       "q": "come from",
-      "options": ["去往", "来自", "经过", "靠近"],
+      "options": ["去往", "来自；产自", "经过", "靠近"],
       "correct": 1,
-      "learn": { "word": "come from", "ipa": "", "meaning": "phr. 来自", "example": "Most of our wood comes from trees." }
+      "learn": {
+        "word": "come from",
+        "ipa": "",
+        "meaning": "phr. 来自（be from 是"籍贯/出身"；come from 也可以是"产自/源自"）",
+        "example": "Most of our wood comes from trees."
+      }
     },
     {
       "type": "ulti",
       "dmg": 50,
-      "prompt": "选出最佳翻译",
+      "prompt": "选出最佳翻译（注意固定搭配）",
       "q": "首先，树木对环境非常重要。",
       "options": [
         "To begin with, trees is very important for the environment.",
@@ -226,25 +332,40 @@
         "To begin, trees are very important for the environment."
       ],
       "correct": 2,
-      "learn": { "word": "to begin with / be important for", "ipa": "", "meaning": "phr. 首先；第一点（用 to begin with）；important for + 名词", "example": "To begin with, trees are important for the environment." }
+      "learn": {
+        "word": "to begin with / important for",
+        "ipa": "",
+        "meaning": "gram. 三个易错点：①固定搭配 to begin with（三个词，不能省 with）②trees 复数 + are ③important for + 名词（对……重要），不是 important to！important to 后面接人。",
+        "example": "To begin with, trees are important for the environment. / Trees are important to us."
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出 to begin with 的中文意思",
-      "q": "to begin with",
-      "options": ["最后一点", "首先；第一点", "中间", "总之"],
+      "prompt": "选出 important 的正确介词搭配",
+      "q": "The environment is very important ___ humans.",
+      "options": ["for", "to", "with", "at"],
       "correct": 1,
-      "learn": { "word": "to begin with", "ipa": "", "meaning": "phr. 首先；第一点", "example": "To begin with, let's talk about why trees matter." }
+      "learn": {
+        "word": "important to / important for",
+        "ipa": "",
+        "meaning": "phr. important to + 人（对某人重要），important for + 事物/事情。The environment is important to us. 但 It's important for the environment.",
+        "example": "Trees are important to humans. Trees are important for the ecosystem."
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出 look around 的中文意思",
-      "q": "look around",
-      "options": ["寻找", "环视；四下察看", "向上看", "回头看"],
+      "prompt": "选出 look around 的语境用法",
+      "q": "When I entered the forest, I ___ and saw trees everywhere.",
+      "options": ["looked after", "looked around", "looked for", "looked up"],
       "correct": 1,
-      "learn": { "word": "look around", "ipa": "", "meaning": "phr. 环视；环顾；四下察看", "example": "He looked around the forest and felt amazed." }
+      "learn": {
+        "word": "look around（语境辨析）",
+        "ipa": "",
+        "meaning": "phr. 环视；四下察看。look after 照顾，look for 寻找，look up 查阅。四者都常见，语境决定用哪个。",
+        "example": "I looked around and felt amazed by the forest."
+      }
     }
   ],
   "stage3": [
@@ -254,9 +375,14 @@
       "prompt": "选出 convenient 的中文意思",
       "q": "convenient",
       "ipa": "/kənˈviːniənt/",
-      "options": ["困难的", "昂贵的", "便利的；方便的", "快速的"],
-      "correct": 2,
-      "learn": { "word": "convenient", "ipa": "/kənˈviːniənt/", "meaning": "adj. 便利的；方便的", "example": "Online shopping is very convenient." }
+      "options": ["便利的；方便的", "便宜的", "快速的", "容易的"],
+      "correct": 0,
+      "learn": {
+        "word": "convenient",
+        "ipa": "/kənˈviːniənt/",
+        "meaning": "adj. 便利的；方便的（注意：不说 sb is convenient，要说 sth is convenient for sb）",
+        "example": "Online shopping is very convenient."
+      }
     },
     {
       "type": "normal",
@@ -264,18 +390,28 @@
       "prompt": "选出 furniture 的中文意思",
       "q": "furniture",
       "ipa": "/ˈfɜːnɪtʃə(r)/",
-      "options": ["家具", "电器", "装饰", "建筑"],
+      "options": ["家具", "电器", "装饰品", "工具"],
       "correct": 0,
-      "learn": { "word": "furniture", "ipa": "/ˈfɜːnɪtʃə(r)/", "meaning": "n.（可移动的）家具", "example": "We bought some new furniture for the living room." }
+      "learn": {
+        "word": "furniture",
+        "ipa": "/ˈfɜːnɪtʃə(r)/",
+        "meaning": "n.（可移动的）家具。重点：不可数名词！不说 furnitures，不说 a furniture。",
+        "example": "We bought some new furniture. (NOT: a furniture)"
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出 furniture 的正确用法",
+      "prompt": "选出 furniture 的正确量词搭配",
       "q": "There is ___ furniture in the room.",
       "options": ["many", "a few", "some", "several"],
       "correct": 2,
-      "learn": { "word": "furniture（不可数）", "ipa": "", "meaning": "gram. furniture 是不可数名词，不用 many/a few/several", "example": "some furniture, a piece of furniture" }
+      "learn": {
+        "word": "some furniture（不可数名词）",
+        "ipa": "",
+        "meaning": "gram. furniture 不可数 → 不用 many/a few/several → 用 some/much/a piece of。最常错的是 many furnitures。",
+        "example": "some furniture, a piece of furniture (NOT: a furniture)"
+      }
     },
     {
       "type": "normal",
@@ -283,18 +419,28 @@
       "prompt": "选出 product 的中文意思",
       "q": "product",
       "ipa": "/ˈprɒdʌkt/",
-      "options": ["产品；制品", "过程", "项目", "生产"],
+      "options": ["产品；制品", "过程", "项目", "垃圾"],
       "correct": 0,
-      "learn": { "word": "product", "ipa": "/ˈprɒdʌkt/", "meaning": "n. 产品；制品", "example": "Wood can be made into many products." }
+      "learn": {
+        "word": "product",
+        "ipa": "/ˈprɒdʌkt/",
+        "meaning": "n. 产品；制品（produce v. 生产 → product n. 产品 → production n. 生产过程）",
+        "example": "Wood can be made into many products."
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出 be made of 和 be made from 的区别",
-      "q": "Paper is made ___ wood. (看不出原料)",
-      "options": ["of", "from", "by", "in"],
+      "prompt": "选出正确的介词",
+      "q": "Paper is made ___ wood. (纸看不出木头的样子了)",
+      "options": ["of", "from", "with", "in"],
       "correct": 1,
-      "learn": { "word": "be made from", "ipa": "", "meaning": "phr. 由……制成（看不出原料）→ be made from", "example": "Paper is made from wood. (看不出木头)" }
+      "learn": {
+        "word": "be made from（看不出原料）",
+        "ipa": "",
+        "meaning": "phr. 看不出原料 → from。看得出原料 → of。这是常考点。Paper from wood. Chair of wood.",
+        "example": "Paper is made from wood. The chair is made of wood."
+      }
     },
     {
       "type": "normal",
@@ -302,9 +448,14 @@
       "prompt": "选出 borrow 的中文意思",
       "q": "borrow",
       "ipa": "/ˈbɒrəʊ/",
-      "options": ["借出", "借入；借用", "购买", "归还"],
-      "correct": 1,
-      "learn": { "word": "borrow", "ipa": "/ˈbɒrəʊ/", "meaning": "v. 借；借用（借入 borrow from，借出 lend to）", "example": "Can I borrow your pen?" }
+      "options": ["借；借用（借入）", "借出", "购买", "归还"],
+      "correct": 0,
+      "learn": {
+        "word": "borrow",
+        "ipa": "/ˈbɒrəʊ/",
+        "meaning": "v. 借入（borrow sth from sb 向某人借入）。借出是 lend sb sth。容易搞反。",
+        "example": "Can I borrow your pen? (借入) / Can you lend me your pen? (借出)"
+      }
     },
     {
       "type": "normal",
@@ -312,14 +463,19 @@
       "prompt": "选出 side 的中文意思",
       "q": "side",
       "ipa": "/saɪd/",
-      "options": ["前面", "后面", "一面；侧面", "中间"],
-      "correct": 2,
-      "learn": { "word": "side", "ipa": "/saɪd/", "meaning": "n. 一面", "example": "There is a door on the side of the house." }
+      "options": ["一面；侧面", "前面", "后面", "中间"],
+      "correct": 0,
+      "learn": {
+        "word": "side",
+        "ipa": "/saɪd/",
+        "meaning": "n. 一面（on the side of... 在……的一边）",
+        "example": "There is a door on the side of the house."
+      }
     },
     {
       "type": "ulti",
       "dmg": 50,
-      "prompt": "选出最佳翻译",
+      "prompt": "选出最佳翻译（检查不可数名词和形容词形式）",
       "q": "这家商店的木制家具很方便购买。",
       "options": [
         "The shop's wood furniture are convenient to buy.",
@@ -328,21 +484,31 @@
         "The shop's wooden furnitures are convenient to buy."
       ],
       "correct": 1,
-      "learn": { "word": "wooden / furniture（不可数）", "ipa": "", "meaning": "gram. 木制的用 wooden；furniture 不可数，搭配 is", "example": "The wooden furniture is beautiful." }
+      "learn": {
+        "word": "wooden / furniture（不可数）",
+        "ipa": "",
+        "meaning": "gram. 四个考点：①"木制的"用 wooden（不是 wood）②furniture 不可数 + is ③convenient to + 动词原形④shop's 要有所有格 's",
+        "example": "The shop's wooden furniture is convenient to buy."
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出最合适的词",
+      "prompt": "选出最合适的词（borrow 还是 lend？）",
       "q": "She ___ a book from the library yesterday.",
-      "options": ["borrowed", "lent", "gave", "bought"],
+      "options": ["borrowed", "lent", "gave", "returned"],
       "correct": 0,
-      "learn": { "word": "borrow（借入）", "ipa": "", "meaning": "v. 借入——从图书馆借书用 borrow；lend 是借出", "example": "I borrowed a book from the library." }
+      "learn": {
+        "word": "borrow from（借入）",
+        "ipa": "",
+        "meaning": "gram. 从图书馆借 → borrow from（借入）。lend 是借出，后面直接接人：lend sb sth。",
+        "example": "I borrowed a book from the library. / The library lent me a book."
+      }
     },
     {
       "type": "ulti",
       "dmg": 50,
-      "prompt": "选出最佳翻译",
+      "prompt": "选出最佳翻译（检查每个词的准确性）",
       "q": "例如，木制产品既美观又环保。",
       "options": [
         "For example, wood products are both beautiful and environment-friendly.",
@@ -351,25 +517,40 @@
         "For example, wooden product is both beautiful and environment-friendly."
       ],
       "correct": 1,
-      "learn": { "word": "wooden / for example", "ipa": "", "meaning": "gram. for example（不加 s）；wooden 是形容词", "example": "For example, wooden products are eco-friendly." }
+      "learn": {
+        "word": "wooden / for example / environment-friendly",
+        "ipa": "",
+        "meaning": "gram. 四个考点：①for example 不加 s ②"木制的"wooden ③环保的 environment-friendly（不是 environmental-friendly）④products 复数 + are",
+        "example": "For example, wooden products are environment-friendly."
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出 for example 的中文意思",
-      "q": "for example",
-      "options": ["例如；譬如", "总结", "对比", "转折"],
-      "correct": 0,
-      "learn": { "word": "for example", "ipa": "", "meaning": "phr. 例如；譬如", "example": "Many trees are important, for example, oaks and pines." }
-    },
-    {
-      "type": "crit",
-      "dmg": 25,
-      "prompt": "选出 borrow 和 lend 的区别",
-      "q": "Can you ___ me your pen? I forgot mine.",
-      "options": ["borrow", "lend", "give", "take"],
+      "prompt": "选出 for example 的用法",
+      "q": "Many things come from trees. ___, paper and furniture.",
+      "options": ["Such as", "For example", "Like", "Such"],
       "correct": 1,
-      "learn": { "word": "lend（借出）", "ipa": "", "meaning": "gram. lend sb sth 借给某人某物；borrow sth from sb 向某人借", "example": "Can you lend me your pen? = Can I borrow your pen?" }
+      "learn": {
+        "word": "For example（后接逗号）",
+        "ipa": "",
+        "meaning": "phr. For example, + 句子（有逗号）。such as + 名词（无逗号）。like + 名词（口语化）。",
+        "example": "For example, paper comes from trees. / Things such as paper come from trees."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出正确的句子（borrow vs lend）",
+      "q": "Can you ___ me your ruler? I forgot ___.",
+      "options": ["borrow / me", "lend / mine", "lend / my", "borrow / myself"],
+      "correct": 1,
+      "learn": {
+        "word": "lend sb sth / mine",
+        "ipa": "",
+        "meaning": "gram. lend sb sth 借给某人某物；mine = my ruler（名词性物主代词）。Can you lend me your ruler? I forgot mine.",
+        "example": "Can you lend me your pen? I forgot mine."
+      }
     }
   ],
   "stage4": [
@@ -379,9 +560,14 @@
       "prompt": "选出 silent 的中文意思",
       "q": "silent",
       "ipa": "/ˈsaɪlənt/",
-      "options": ["大声的", "不说话的；沉默的", "快速的", "温柔的"],
-      "correct": 1,
-      "learn": { "word": "silent", "ipa": "/ˈsaɪlənt/", "meaning": "adj. 不说话的；沉默的", "example": "He remained silent during the meeting." }
+      "options": ["不说话的；沉默的", "安静的（没声音）", "平静的", "害羞的"],
+      "correct": 0,
+      "learn": {
+        "word": "silent",
+        "ipa": "/ˈsaɪlənt/",
+        "meaning": "adj. 不说话的；沉默的（偏"不说话"；quiet 偏"没声音"）。stay silent 保持沉默。",
+        "example": "He remained silent during the meeting."
+      }
     },
     {
       "type": "normal",
@@ -389,9 +575,14 @@
       "prompt": "选出 overlook 的中文意思",
       "q": "overlook",
       "ipa": "/ˌəʊvəˈlʊk/",
-      "options": ["观看", "忽略；未注意到", "调查", "仔细看"],
-      "correct": 1,
-      "learn": { "word": "overlook", "ipa": "/ˌəʊvəˈlʊk/", "meaning": "v. 忽略；未注意到", "example": "Don't overlook the small details." }
+      "options": ["忽略；未注意到", "俯视", "超过", "仔细检查"],
+      "correct": 0,
+      "learn": {
+        "word": "overlook",
+        "ipa": "/ˌəʊvəˈlʊk/",
+        "meaning": "v. 忽略；未注意到（= miss = ignore）。也可指"俯视"（over + look 从上面看）。",
+        "example": "Don't overlook the small details."
+      }
     },
     {
       "type": "normal",
@@ -399,18 +590,28 @@
       "prompt": "选出 communicate 的中文意思",
       "q": "communicate",
       "ipa": "/kəˈmjuːnɪkeɪt/",
-      "options": ["争论", "交流；沟通", "写作", "演讲"],
-      "correct": 1,
-      "learn": { "word": "communicate", "ipa": "/kəˈmjuːnɪkeɪt/", "meaning": "v. 交流；沟通", "example": "We communicate with each other every day." }
+      "options": ["交流；沟通", "争吵", "演讲", "写作"],
+      "correct": 0,
+      "learn": {
+        "word": "communicate",
+        "ipa": "/kəˈmjuːnɪkeɪt/",
+        "meaning": "v. 交流；沟通（不及物动词！communicate with sb 与某人沟通。不说 communicate sb）",
+        "example": "We communicate with each other every day."
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出 communicate with 的中文意思",
-      "q": "communicate with",
-      "options": ["与……争吵", "与……沟通", "向……解释", "对……说"],
+      "prompt": "选出正确的介词搭配",
+      "q": "Trees can communicate ___ each other through roots.",
+      "options": ["to", "with", "for", "不填"],
       "correct": 1,
-      "learn": { "word": "communicate with", "ipa": "", "meaning": "phr. 与……沟通", "example": "Trees can communicate with each other through their roots." }
+      "learn": {
+        "word": "communicate with",
+        "ipa": "",
+        "meaning": "phr. communicate 是不及物动词，后必须加 with 再接人。不说 communicate sb，要说 communicate with sb。",
+        "example": "Trees can communicate with each other. (NOT: communicate each other)"
+      }
     },
     {
       "type": "normal",
@@ -418,19 +619,29 @@
       "prompt": "选出 knowledge 的中文意思",
       "q": "knowledge",
       "ipa": "/ˈnɒlɪdʒ/",
-      "options": ["知识；学问", "信息", "数据", "消息"],
+      "options": ["知识；学问", "信息", "消息", "数据"],
       "correct": 0,
-      "learn": { "word": "knowledge", "ipa": "/ˈnɒlɪdʒ/", "meaning": "n. 知识；学问", "example": "Reading books increases our knowledge." }
+      "learn": {
+        "word": "knowledge",
+        "ipa": "/ˈnɒlɪdʒ/",
+        "meaning": "n. 知识；学问。不可数名词！不说 a knowledge，不说 knowledges。",
+        "example": "Reading books increases our knowledge."
+      }
     },
     {
       "type": "normal",
       "dmg": 10,
-      "prompt": "选出 character 在句中的意思",
+      "prompt": "选出 character 在本单元的意思",
       "q": "character",
       "ipa": "/ˈkærəktə(r)/",
-      "options": ["性格", "人物", "文字", "品质"],
-      "correct": 2,
-      "learn": { "word": "character", "ipa": "/ˈkærəktə(r)/", "meaning": "n. 文字（也可指性格、人物角色）", "example": "Chinese characters are beautiful." }
+      "options": ["文字", "性格", "人物角色", "品质"],
+      "correct": 0,
+      "learn": {
+        "word": "character",
+        "ipa": "/ˈkærəktə(r)/",
+        "meaning": "n. 文字（本单元含义）→ Chinese characters 汉字。也可指性格/人物。",
+        "example": "Chinese characters have a long history."
+      }
     },
     {
       "type": "normal",
@@ -440,16 +651,26 @@
       "ipa": "/spred/",
       "options": ["传播；扩散", "收集", "隐藏", "关闭"],
       "correct": 0,
-      "learn": { "word": "spread", "ipa": "/spred/", "meaning": "v. 传播（过去式也是 spread）", "example": "News spread quickly through the village." }
+      "learn": {
+        "word": "spread",
+        "ipa": "/spred/",
+        "meaning": "v. 传播（过去式 spread，过去分词 spread，三形不变！不是 spreaded）",
+        "example": "News spread quickly through the village."
+      }
     },
     {
       "type": "crit",
       "dmg": 25,
-      "prompt": "选出 spread 的正确用法",
+      "prompt": "选出 spread 的正确过去式",
       "q": "The news ___ fast yesterday.",
-      "options": ["spreaded", "spread", "spreads", "spreading"],
+      "options": ["spreaded", "spread", "spreads", "was spread"],
       "correct": 1,
-      "learn": { "word": "spread（不规则动词）", "ipa": "", "meaning": "gram. spread 过去式也是 spread（不变）", "example": "The news spread fast yesterday." }
+      "learn": {
+        "word": "spread（不规则动词）",
+        "ipa": "",
+        "meaning": "gram. spread-spread-spread 三形相同。最常错的是写成 spreaded。类似 cut-cut-cut、put-put-put。",
+        "example": "The news spread fast yesterday. (NOT: spreaded)"
+      }
     },
     {
       "type": "normal",
@@ -459,7 +680,12 @@
       "ipa": "/trænzˈleɪʃn/",
       "options": ["译文；翻译", "原文", "笔迹", "发音"],
       "correct": 0,
-      "learn": { "word": "translation", "ipa": "/trænzˈleɪʃn/", "meaning": "n. 译文；翻译", "example": "Can you read the English translation?" }
+      "learn": {
+        "word": "translation",
+        "ipa": "/trænzˈleɪʃn/",
+        "meaning": "n. 译文；翻译（translate v. 翻译 → translation n. 译文 → translator n. 译者）",
+        "example": "Can you read the English translation?"
+      }
     },
     {
       "type": "crit",
@@ -468,26 +694,36 @@
       "q": "Trees can ___ with each other through roots.",
       "options": ["communicat", "communicate", "communicating", "communicated"],
       "correct": 1,
-      "learn": { "word": "communicate with", "ipa": "", "meaning": "phr. 与……沟通（can 后接动词原形）", "example": "Trees can communicate with each other." }
+      "learn": {
+        "word": "communicate（can + 原形）",
+        "ipa": "",
+        "meaning": "gram. 情态动词 can 后面用动词原形（communicate），不用 -ing 或 -ed。",
+        "example": "Trees can communicate with each other."
+      }
     },
     {
       "type": "ulti",
       "dmg": 50,
-      "prompt": "选出最佳翻译",
+      "prompt": "选出最佳翻译（检查每个词）",
       "q": "知识通过翻译和文字在世界各地传播。",
       "options": [
         "Knowledge spreads around the world through translation and characters.",
         "Knowledge spread around the world through translations and characters.",
         "Knowledge spreads around the world through translations and character.",
-        "Knowledge is spread around the world through translation and characters."
+        "Knowledge is spreaded around the world through translations and characters."
       ],
       "correct": 0,
-      "learn": { "word": "spreads / through", "ipa": "", "meaning": "gram. knowledge 不可数，用三单 spreads；through 表示通过……方式", "example": "Knowledge spreads through books and translations." }
+      "learn": {
+        "word": "spreads / through / 不可数名词",
+        "ipa": "",
+        "meaning": "gram. 四个考点：①knowledge 不可数 + spreads（三单）②through 表"通过"③translation 和 character 都用单数（泛指）④spread 不是 spreaded",
+        "example": "Knowledge spreads through books and translations."
+      }
     },
     {
       "type": "ulti",
       "dmg": 50,
-      "prompt": "选出最佳翻译",
+      "prompt": "选出最佳翻译（注意不可数名词）",
       "q": "不要忽略沉默的人，他们可能有很多知识。",
       "options": [
         "Don't overlook the silent people — they may have many knowledge.",
@@ -496,7 +732,12 @@
         "Don't overlook silent people — they may have a knowledge."
       ],
       "correct": 1,
-      "learn": { "word": "overlook / knowledge（不可数）", "ipa": "", "meaning": "gram. Don't + 动词原形；knowledge 不可数，用 much", "example": "Don't overlook silent people." }
+      "learn": {
+        "word": "overlook / knowledge（不可数）",
+        "ipa": "",
+        "meaning": "gram. 三个考点：①Don't + 动词原形（不是 overlooking）②knowledge 不可数，用 much，不是 many ③不说 a knowledge",
+        "example": "Don't overlook silent people. They may have much knowledge."
+      }
     }
   ],
   "stage5": [
@@ -506,9 +747,14 @@
       "prompt": "选出 species 的中文意思",
       "q": "species",
       "ipa": "/ˈspiːʃiːz/",
-      "options": ["种；物种", "家族", "群", "类"],
+      "options": ["种；物种", "家族", "品种", "类别"],
       "correct": 0,
-      "learn": { "word": "species", "ipa": "/ˈspiːʃiːz/", "meaning": "n. 种；物种（单复数同形）", "example": "There are many species of trees in the forest." }
+      "learn": {
+        "word": "species",
+        "ipa": "/ˈspiːʃiːz/",
+        "meaning": "n. 种；物种。单复数同形！one species → many species（不加 -s 或 -es）",
+        "example": "There are many species of trees in the forest."
+      }
     },
     {
       "type": "crit",
@@ -516,32 +762,47 @@
       "prompt": "选出 accident 的中文意思",
       "q": "accident",
       "ipa": "/ˈæksɪdənt/",
-      "options": ["意外；偶然的事", "事件", "计划", "结果"],
+      "options": ["意外；偶然的事", "事故；车祸", "事件", "灾难"],
       "correct": 0,
-      "learn": { "word": "accident", "ipa": "/ˈæksɪdənt/", "meaning": "n. 意外；偶然的事", "example": "He found the treasure by accident." }
+      "learn": {
+        "word": "accident",
+        "ipa": "/ˈæksɪdənt/",
+        "meaning": "n. 意外；偶然的事（by accident 偶然）。也可指"事故"（car accident 车祸）。",
+        "example": "He found the treasure by accident."
+      }
     },
     {
       "type": "crit",
       "dmg": 30,
       "prompt": "选出 by accident 的中文意思",
       "q": "by accident",
-      "options": ["故意地", "偶然；意外地", "快速地", "慢慢地"],
+      "options": ["故意地", "偶然；意外地", "快速地", "小心地"],
       "correct": 1,
-      "learn": { "word": "by accident", "ipa": "", "meaning": "phr. 偶然；意外地", "example": "I met her by accident at the bookstore." }
+      "learn": {
+        "word": "by accident",
+        "ipa": "",
+        "meaning": "phr. 偶然；意外地（= by chance，反义 on purpose 故意地）",
+        "example": "I met her by accident at the bookstore."
+      }
     },
     {
       "type": "ulti",
       "dmg": 60,
-      "prompt": "选出最佳翻译",
+      "prompt": "选出最佳翻译（检查语序和搭配）",
       "q": "据科学家所说，树木能通过根部互相交流。",
       "options": [
         "According to scientists, trees can communicate with each other through roots.",
-        "According scientists, trees can communicate with each other through their roots.",
+        "According to scientists, trees can communicate with each other through their roots.",
         "According to scientists, trees can communicat with each other through their roots.",
-        "According to scientists, trees can communicate each other through their roots."
+        "According scientists, trees can communicate with each other through their roots."
       ],
       "correct": 0,
-      "learn": { "word": "according to / communicate with", "ipa": "", "meaning": "gram. according to 据……所说；communicate 后必须加 with", "example": "According to scientists, trees can communicate with each other." }
+      "learn": {
+        "word": "according to / communicate with",
+        "ipa": "",
+        "meaning": "gram. 四个考点：①According to（必须加 to）②communicate with（必须加 with）③through roots（"通过根部"，不用加 their 也正确，加了也对但第一个选项更精简）④can + 原形 communicate",
+        "example": "According to scientists, trees can communicate with each other through roots."
+      }
     },
     {
       "type": "crit",
@@ -550,7 +811,12 @@
       "q": "according to",
       "options": ["据（……所说）", "关于", "除了", "包括"],
       "correct": 0,
-      "learn": { "word": "according to", "ipa": "", "meaning": "phr. 据（……所说）；按（……所报道）", "example": "According to the report, the forest is growing." }
+      "learn": {
+        "word": "according to",
+        "ipa": "",
+        "meaning": "phr. 据……所说（注意：according to 不能省略 to。不说 according the report）",
+        "example": "According to the report, the forest is growing."
+      }
     },
     {
       "type": "crit",
@@ -558,14 +824,19 @@
       "prompt": "选出 treat 的中文意思",
       "q": "treat",
       "ipa": "/triːt/",
-      "options": ["伤害", "以……态度对待", "忽略", "帮助"],
-      "correct": 1,
-      "learn": { "word": "treat", "ipa": "/triːt/", "meaning": "v. 以……态度对待；以……方式对待", "example": "We should treat nature with respect." }
+      "options": ["以……态度对待", "治疗", "请客", "伤害"],
+      "correct": 0,
+      "learn": {
+        "word": "treat",
+        "ipa": "/triːt/",
+        "meaning": "v. 以……态度对待（treat sb well/badly）。也可指"治疗/请客"。",
+        "example": "We should treat nature with respect."
+      }
     },
     {
       "type": "ulti",
       "dmg": 60,
-      "prompt": "选出最佳翻译",
+      "prompt": "选出最佳翻译（检查搭配和词性）",
       "q": "我们应该善待环境，而不是忽略它的重要性。",
       "options": [
         "We should treat the environment good and not overlook its important.",
@@ -574,7 +845,12 @@
         "We should treat environment well and not overlook it's importance."
       ],
       "correct": 1,
-      "learn": { "word": "treat / importance", "ipa": "", "meaning": "gram. treat...well 善待；important 名词形式 importance", "example": "We should treat nature well." }
+      "learn": {
+        "word": "treat well / importance / its",
+        "ipa": "",
+        "meaning": "gram. 四个考点：①treat...well（副词修饰动词，不是 good）②not overlook（动词原形，不是 overlooking）③importance 是名词（不是 important）④its 物主代词（不是 it's = it is）",
+        "example": "We should treat nature well and not overlook its importance."
+      }
     },
     {
       "type": "crit",
@@ -583,44 +859,64 @@
       "q": "When I entered the forest, I ___ and saw beautiful trees everywhere.",
       "options": ["looked after", "looked around", "looked for", "looked up"],
       "correct": 1,
-      "learn": { "word": "look around（语境）", "ipa": "", "meaning": "phr. 环顾——进入森林后四下看", "example": "I looked around and felt the beauty of nature." }
+      "learn": {
+        "word": "look around（语境）",
+        "ipa": "",
+        "meaning": "phr. 环顾——进入森林后四下看。不要和 look after（照顾）、look for（寻找）、look up（查阅）混淆。",
+        "example": "I looked around and felt the beauty of nature."
+      }
     },
     {
       "type": "ulti",
       "dmg": 60,
-      "prompt": "选出最佳翻译",
-      "q": "环顾四周，你会看到树木创造的美丽环境。",
+      "prompt": "选出语法正确的句子（陷阱题）",
+      "q": "关于树木如何交流",
       "options": [
-        "Look around, and you will see the beautiful environment create by trees.",
         "Look around, and you will see the beautiful environment created by trees.",
-        "Looking around, and you will see the beautiful environment created by trees.",
-        "Look around, and you'll see the beautiful environment creating by trees."
+        "Look around, and you'll see the beautiful environment created by trees.",
+        "Both A and B are correct.",
+        "Looking around, and you will see the beautiful environment created by trees."
       ],
-      "correct": 1,
-      "learn": { "word": "look around / created", "ipa": "", "meaning": "gram. 祈使句 Look around + and you will；created 过去分词表被动", "example": "Look around, and you'll see the beauty created by nature." }
+      "correct": 2,
+      "learn": {
+        "word": "Both A and B are correct.",
+        "ipa": "",
+        "meaning": "gram. 祈使句 + and you will/can...是标准句型。you will = you'll 两者都正确。C 的 Looking 是分词，不能独立做主句。",
+        "example": "Look around, and you will see... = Look around, and you'll see..."
+      }
     },
     {
       "type": "crit",
       "dmg": 30,
       "prompt": "选出 call on 的中文意思",
       "q": "call on",
-      "options": ["号召；动员", "打电话", "取消", "拜访"],
+      "options": ["号召；动员", "打电话给", "取消", "拜访"],
       "correct": 0,
-      "learn": { "word": "call on", "ipa": "", "meaning": "phr. 号召；动员；要求", "example": "The teacher called on students to plant more trees." }
+      "learn": {
+        "word": "call on",
+        "ipa": "",
+        "meaning": "phr. 号召；动员（call on sb to do sth）。call sb 是打电话，call off 是取消。三者的区别是本单元考点。",
+        "example": "The teacher called on students to plant more trees."
+      }
     },
     {
       "type": "ulti",
       "dmg": 60,
-      "prompt": "选出语法正确的句子",
+      "prompt": "选出语法正确的句子（检查主谓一致和固定搭配）",
       "q": "_____",
       "options": [
-        "According to the study, trees absorb carbon dioxide and take in CO₂.",
         "According to the study, trees produce oxygen and absorbs CO₂.",
         "According to the study, trees produce oxygen and absorb CO₂.",
-        "Accordings to the study, trees produce oxygen and absorb CO₂."
+        "Accordings to the study, trees produce oxygen and absorb CO₂.",
+        "According the study, trees produce oxygen and absorb CO₂."
       ],
-      "correct": 2,
-      "learn": { "word": "according to / 主语一致", "ipa": "", "meaning": "gram. according to 必须加 to；主语 trees 复数，动词 produce 和 absorb 都用原形", "example": "According to the study, trees help clean the air." }
+      "correct": 1,
+      "learn": {
+        "word": "according to / 主语一致",
+        "ipa": "",
+        "meaning": "gram. 四个考点：①According to（不加 s，必须加 to）②主语 trees 复数 → 动词 produce 和 absorb 都用原形（不是 produces/absorbs）③两者并列用 and，不用 comma",
+        "example": "According to the study, trees produce oxygen and absorb CO₂."
+      }
     },
     {
       "type": "crit",
@@ -629,7 +925,12 @@
       "q": "Many ___ of plants live in this forest.",
       "options": ["specie", "species", "specieses", "speciess"],
       "correct": 1,
-      "learn": { "word": "species（单复数同形）", "ipa": "", "meaning": "gram. species 单数和复数形式一样，不加 -s 或 -es", "example": "one species → many species" }
+      "learn": {
+        "word": "species（单复数同形）",
+        "ipa": "",
+        "meaning": "gram. species 单数和复数形式一样，不加 -s 或 -es。one species → many species。常错的写法：specie、specieses。",
+        "example": "one species → many species (NOT: specieses)"
+      }
     }
   ]
 }
