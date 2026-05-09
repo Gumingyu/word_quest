@@ -1,0 +1,3983 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1a0f08">
+<title>Word Quest · 单词远征</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+:root {
+  --bg-deep:#1a0f08;
+  --bg-mid:#2d1b0f;
+  --bg-light:#3d2818;
+  --sand:#d4a045;
+  --sand-bright:#f4c95d;
+  --gold:#ffd166;
+  --gold-deep:#c08a2e;
+  --blood:#c1272d;
+  --blood-dark:#7a1a1d;
+  --leaf:#4a7c2e;
+  --hp-green:#5cb85c;
+  --hp-red:#d9534f;
+  --mp-blue:#4a9fd4;
+  --ink:#1a0f08;
+  --paper:#f5e6c8;
+  --paper-dark:#d4c4a0;
+  --shadow:rgba(0,0,0,.5);
+  --pixel:'Press Start 2P', monospace;
+  --display:'Cinzel', serif;
+  --body:'Noto Sans SC', system-ui, sans-serif;
+  /* 新增：题目内容专用字体（英文用Inter，中文用Noto Sans SC，都很清晰） */
+  --content:'Inter', 'Noto Sans SC', system-ui, sans-serif;
+}
+
+html, body {
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family:var(--body);
+  color:var(--paper);
+  background:var(--bg-deep);
+  user-select:none;
+  -webkit-user-select:none;
+  position:fixed;
+}
+
+/* ===================== 全局容器 (移动优先 + 桌面居中) ===================== */
+.app {
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+}
+@media (min-width: 600px) {
+  body { background:#0a0604; }
+  .app {
+    max-width:430px;
+    left:50%;
+    transform:translateX(-50%);
+    box-shadow: 0 0 40px rgba(255,209,102,.15);
+  }
+}
+
+/* ===================== 屏幕(scene)系统 ===================== */
+.screen {
+  position:absolute;
+  inset:0;
+  display:none;
+  flex-direction:column;
+  background:var(--bg-deep);
+}
+.screen.active { display:flex; animation: screenIn .4s ease-out; }
+@keyframes screenIn {
+  from { opacity:0; transform:translateY(8px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ===================== 共用按钮 ===================== */
+.btn {
+  background:var(--blood);
+  border:3px solid var(--ink);
+  color:var(--paper);
+  font-family:var(--pixel);
+  font-size:11px;
+  letter-spacing:1.5px;
+  padding:13px 22px;
+  border-radius:4px;
+  cursor:pointer;
+  box-shadow: 0 4px 0 var(--ink);
+  transition:transform .08s, box-shadow .08s;
+}
+.btn:active {
+  transform:translateY(2px);
+  box-shadow: 0 2px 0 var(--ink);
+}
+.btn.gold { background:var(--gold); color:var(--ink); }
+.btn.dark { background:var(--bg-light); }
+.btn.sm { font-size:9px; padding:8px 14px; }
+
+/* =====================================================================
+   场景 1：标题画面
+   ===================================================================== */
+#titleScreen {
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(244,201,93,.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, #6b3410 0%, transparent 60%),
+    linear-gradient(180deg, #1a0f08 0%, #2d1b0f 50%, #0d0604 100%);
+}
+.title-stars {
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.star {
+  position:absolute;
+  width:2px; height:2px;
+  background:var(--paper);
+  border-radius:50%;
+  animation: twinkle linear infinite;
+}
+@keyframes twinkle {
+  0%,100% { opacity:0; }
+  50%     { opacity:1; }
+}
+
+.title-content {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:30px 24px;
+  position:relative;
+}
+
+.title-pyramid {
+  width:140px;
+  height:120px;
+  margin-bottom:20px;
+  filter: drop-shadow(0 8px 24px rgba(255,209,102,.4));
+  animation: pyraGlow 3s ease-in-out infinite;
+}
+@keyframes pyraGlow {
+  0%,100% { filter: drop-shadow(0 8px 24px rgba(255,209,102,.4)); }
+  50%     { filter: drop-shadow(0 8px 32px rgba(255,209,102,.7)); }
+}
+
+.title-main {
+  font-family:var(--pixel);
+  font-size:28px;
+  letter-spacing:3px;
+  color:var(--gold);
+  text-shadow:
+    3px 3px 0 var(--ink),
+    0 0 20px rgba(255,209,102,.6);
+  margin-bottom:8px;
+  text-align:center;
+}
+.title-sub {
+  font-family:var(--display);
+  font-weight:900;
+  font-size:20px;
+  letter-spacing:6px;
+  color:var(--sand-bright);
+  text-shadow: 2px 2px 0 var(--ink);
+  margin-bottom:6px;
+}
+.title-cn {
+  font-size:14px;
+  color:var(--paper-dark);
+  letter-spacing:8px;
+  margin-bottom:36px;
+}
+.title-tagline {
+  background:var(--bg-light);
+  border:2px solid var(--gold);
+  padding:8px 14px;
+  font-family:var(--pixel);
+  font-size:9px;
+  color:var(--sand-bright);
+  letter-spacing:1px;
+  margin-bottom:30px;
+  border-radius:3px;
+}
+.title-buttons {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  width:220px;
+  margin-bottom:24px;
+}
+.title-credit {
+  position:absolute;
+  bottom:14px;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:var(--pixel);
+  font-size:7px;
+  color:var(--paper-dark);
+  letter-spacing:1px;
+  opacity:.6;
+}
+
+/* =====================================================================
+   场景 2：角色选择
+   ===================================================================== */
+.scr-header {
+  padding:18px 16px 10px;
+  text-align:center;
+  background:linear-gradient(180deg, rgba(13,6,4,.95), rgba(13,6,4,.5));
+}
+.scr-title {
+  font-family:var(--pixel);
+  font-size:14px;
+  color:var(--gold);
+  letter-spacing:2px;
+  text-shadow: 2px 2px 0 var(--ink);
+  margin-bottom:4px;
+}
+.scr-sub {
+  font-family:var(--display);
+  font-size:13px;
+  color:var(--sand-bright);
+  letter-spacing:3px;
+}
+.back-btn {
+  position:absolute;
+  top:18px;
+  left:14px;
+  background:var(--bg-light);
+  border:2px solid var(--ink);
+  color:var(--paper);
+  font-family:var(--pixel);
+  font-size:9px;
+  padding:6px 10px;
+  border-radius:3px;
+  cursor:pointer;
+  box-shadow: 0 2px 0 var(--ink);
+  z-index:5;
+}
+.back-btn:active { transform:translateY(1px); box-shadow:0 1px 0 var(--ink); }
+
+#selectScreen {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(74,159,212,.1) 0%, transparent 60%),
+    linear-gradient(180deg, #1a1828 0%, #0d0a18 100%);
+}
+.char-grid {
+  flex:1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  padding:14px;
+  align-content:start;
+  overflow-y:auto;
+}
+.char-card {
+  background:var(--bg-mid);
+  border:3px solid var(--ink);
+  border-radius:6px;
+  padding:12px 8px;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  box-shadow: 0 4px 0 var(--ink);
+  transition: transform .1s, border-color .15s;
+}
+.char-card.selected {
+  border-color:var(--gold);
+  box-shadow: 0 4px 0 var(--ink), 0 0 20px rgba(255,209,102,.5);
+}
+.char-card.locked {
+  opacity:.5;
+  cursor:not-allowed;
+}
+.char-card .lock-icon {
+  position:absolute;
+  top:8px;
+  right:8px;
+  font-size:14px;
+}
+.char-portrait {
+  width:80px;
+  height:80px;
+  margin:0 auto 6px;
+  filter: drop-shadow(2px 3px 0 var(--ink));
+}
+.char-card .name {
+  font-family:var(--pixel);
+  font-size:9px;
+  color:var(--gold);
+  letter-spacing:1px;
+  margin-bottom:3px;
+}
+.char-card .role {
+  font-size:11px;
+  color:var(--paper-dark);
+  margin-bottom:8px;
+}
+.char-stats {
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  font-family:var(--pixel);
+  font-size:7px;
+}
+.stat-pill {
+  background:var(--bg-deep);
+  padding:3px 5px;
+  border-radius:2px;
+  color:var(--paper);
+}
+.stat-pill.hp { color:#7dd87d; }
+.stat-pill.atk { color:#ff8a8a; }
+
+.select-footer {
+  padding:14px 16px 22px;
+  background:linear-gradient(180deg, transparent, rgba(13,6,4,.9) 30%);
+}
+.select-info {
+  background:var(--bg-deep);
+  border:2px solid var(--gold-deep);
+  border-radius:4px;
+  padding:10px 12px;
+  margin-bottom:12px;
+  min-height:46px;
+}
+.select-info .who {
+  font-family:var(--pixel);
+  font-size:9px;
+  color:var(--gold);
+  margin-bottom:4px;
+}
+.select-info .desc {
+  font-size:12px;
+  color:var(--paper);
+  line-height:1.5;
+}
+.confirm-row {
+  display:flex;
+  gap:10px;
+}
+.confirm-row .btn { flex:1; }
+
+/* =====================================================================
+   场景 3：章节地图
+   ===================================================================== */
+#mapScreen {
+  background:
+    radial-gradient(ellipse at 50% 100%, #6b3410 0%, transparent 60%),
+    linear-gradient(180deg, #2d1b0f 0%, #1a0f08 100%);
+}
+.map-area {
+  flex:1;
+  position:relative;
+  overflow:hidden;
+}
+.map-bg {
+  position:absolute;
+  inset:0;
+}
+.map-pyr {
+  position:absolute;
+  width:0; height:0;
+  border-style:solid;
+  opacity:.5;
+}
+.map-pyr.p1 { bottom:8%; left:5%;  border-width:0 50px 75px 50px; border-color:transparent transparent #5a3315 transparent; }
+.map-pyr.p2 { bottom:10%; right:8%; border-width:0 70px 105px 70px; border-color:transparent transparent #4a2810 transparent; }
+.map-pyr.p3 { bottom:35%; left:35%; border-width:0 40px 60px 40px; border-color:transparent transparent #3a1f0a transparent; }
+
+.map-path {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+
+.stage-node {
+  position:absolute;
+  width:60px;
+  height:60px;
+  transform:translate(-50%,-50%);
+  cursor:pointer;
+  z-index:3;
+}
+.node-circle {
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  background:var(--bg-mid);
+  border:4px solid var(--ink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--pixel);
+  font-size:14px;
+  color:var(--paper);
+  box-shadow: 0 4px 0 var(--ink);
+  transition: transform .15s;
+  position:relative;
+}
+.stage-node.cleared .node-circle {
+  background:linear-gradient(180deg, #7dd87d, #5cb85c);
+  color:var(--ink);
+  border-color:#2a5a2a;
+}
+.stage-node.cleared .node-circle::after {
+  content:'★';
+  position:absolute;
+  top:-6px;
+  right:-6px;
+  font-size:18px;
+  color:var(--gold);
+  text-shadow: 1px 1px 0 var(--ink);
+  filter: drop-shadow(0 0 4px rgba(255,209,102,.8));
+}
+.stage-node.current .node-circle {
+  background:var(--blood);
+  color:var(--paper);
+  border-color:var(--blood-dark);
+  animation: nodePulse 1.5s ease-in-out infinite;
+}
+@keyframes nodePulse {
+  0%,100% { transform:scale(1); box-shadow: 0 4px 0 var(--ink), 0 0 0 0 rgba(193,39,45,.5); }
+  50%     { transform:scale(1.08); box-shadow: 0 4px 0 var(--ink), 0 0 0 12px rgba(193,39,45,0); }
+}
+.stage-node.locked .node-circle {
+  background:var(--bg-light);
+  color:#5a4a30;
+  cursor:not-allowed;
+}
+.stage-node.locked .node-circle::after {
+  content:'🔒';
+  position:absolute;
+  font-size:16px;
+}
+.stage-node:active:not(.locked) .node-circle { transform:scale(.94); }
+.stage-label {
+  position:absolute;
+  bottom:-22px;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:var(--pixel);
+  font-size:7px;
+  color:var(--paper-dark);
+  white-space:nowrap;
+  text-shadow: 1px 1px 0 var(--ink);
+}
+
+.path-line {
+  stroke:var(--gold-deep);
+  stroke-width:3;
+  stroke-dasharray:6 4;
+  fill:none;
+  opacity:.7;
+}
+.path-line.active { stroke:var(--gold); opacity:1; }
+
+.map-footer {
+  padding:14px 16px;
+  background:linear-gradient(180deg, transparent, rgba(13,6,4,.95) 40%);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.player-info {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.mini-portrait {
+  width:42px; height:42px;
+  background:var(--bg-light);
+  border:2px solid var(--gold);
+  border-radius:50%;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.mini-portrait svg { width:90%; height:90%; }
+.player-meta {
+  font-family:var(--pixel);
+  font-size:9px;
+}
+.player-meta .name { color:var(--gold); margin-bottom:3px; }
+.player-meta .stats { color:var(--paper-dark); font-size:8px; }
+.player-meta .stats .gold-num { color:var(--gold); }
+
+/* =====================================================================
+   场景 4：战斗（继承v1）
+   ===================================================================== */
+#battleScreen {
+  background:
+    radial-gradient(ellipse at 50% 100%, #6b3410 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 30%, #4a2810 0%, transparent 70%),
+    linear-gradient(180deg, #2d1b0f 0%, #1a0f08 50%, #0d0604 100%);
+}
+.battle-bg-elements {
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.pyramid {
+  position:absolute;
+  bottom:42%;
+  width:0; height:0;
+  border-style:solid;
+  opacity:.6;
+  filter: drop-shadow(0 0 20px rgba(0,0,0,.5));
+}
+.pyramid.left  { left:8%;  border-width:0 60px 90px 60px;  border-color:transparent transparent #5a3315 transparent; }
+.pyramid.right { right:5%; border-width:0 80px 120px 80px; border-color:transparent transparent #4a2810 transparent; }
+.sand-floor {
+  position:absolute;
+  bottom:0; left:0; right:0;
+  height:42%;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(244,201,93,.2) 0%, transparent 50%),
+    linear-gradient(180deg, #6b3410 0%, #3d2818 100%);
+}
+.sand-floor::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:4px;
+  background:repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 8px);
+}
+.dust {
+  position:absolute;
+  width:3px; height:3px;
+  background:var(--sand);
+  border-radius:50%;
+  opacity:.4;
+  animation: dustFloat linear infinite;
+}
+@keyframes dustFloat {
+  0%   { transform:translate(0, 0); opacity:0; }
+  10%  { opacity:.5; }
+  90%  { opacity:.5; }
+  100% { transform:translate(-100vw, -30vh); opacity:0; }
+}
+
+.top-bar {
+  position:absolute;
+  top:0; left:0; right:0;
+  padding:12px 14px 10px;
+  z-index:10;
+  background:linear-gradient(180deg, rgba(13,6,4,.95) 0%, rgba(13,6,4,.7) 80%, transparent 100%);
+}
+.top-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:6px;
+}
+.level-tag {
+  font-family:var(--pixel);
+  font-size:9px;
+  color:var(--sand-bright);
+  letter-spacing:1px;
+}
+.level-tag .ch1 { color:var(--gold); }
+.score-block {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  font-family:var(--pixel);
+  font-size:9px;
+}
+.score-block .item {
+  display:flex;
+  align-items:center;
+  gap:4px;
+  padding:3px 7px;
+  background:var(--bg-light);
+  border:2px solid var(--ink);
+  border-radius:2px;
+  box-shadow: 0 2px 0 var(--ink);
+}
+.score-block .icon { font-size:11px; }
+.score-block .combo { color:var(--gold); }
+.stage-name {
+  font-family:var(--display);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:2px;
+  text-align:center;
+  color:var(--sand-bright);
+  text-shadow: 1px 1px 0 var(--ink), 0 0 8px rgba(244,201,93,.3);
+}
+
+.battle-stage {
+  position:absolute;
+  top:74px;
+  left:0; right:0;
+  bottom:54%;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  padding:0 26px;
+  z-index:5;
+}
+
+.char {
+  position:relative;
+  width:110px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.char.player { animation: playerIdle 2s ease-in-out infinite; }
+.char.enemy  { animation: enemyIdle 1.8s ease-in-out infinite; transform: scaleX(-1); }
+.char.enemy .name-plate { transform:scaleX(-1); }
+
+@keyframes playerIdle {
+  0%,100% { transform:translateY(0); }
+  50%     { transform:translateY(-3px); }
+}
+@keyframes enemyIdle {
+  0%,100% { transform:translateY(0) scaleX(-1); }
+  50%     { transform:translateY(-2px) scaleX(-1); }
+}
+.char.attacking { animation: attack .35s ease-out; }
+@keyframes attack {
+  0%   { transform:translate(0,0); }
+  40%  { transform:translate(40px,-8px); }
+  100% { transform:translate(0,0); }
+}
+.char.enemy.attacking { animation: enemyAttack .35s ease-out; }
+@keyframes enemyAttack {
+  0%   { transform:translate(0,0) scaleX(-1); }
+  40%  { transform:translate(-40px,-8px) scaleX(-1); }
+  100% { transform:translate(0,0) scaleX(-1); }
+}
+.char.hit { animation: hitShake .4s; }
+@keyframes hitShake {
+  0%, 100% { filter:none; }
+  10%, 30%, 50%, 70%, 90% { transform:translateX(-4px); filter: brightness(2) hue-rotate(-30deg); }
+  20%, 40%, 60%, 80%      { transform:translateX(4px); filter: brightness(2) hue-rotate(-30deg); }
+}
+.char.enemy.hit { animation: hitShakeE .4s; }
+@keyframes hitShakeE {
+  0%, 100% { filter:none; transform:scaleX(-1); }
+  10%, 30%, 50%, 70%, 90% { transform:translateX(-4px) scaleX(-1); filter: brightness(2) hue-rotate(-30deg); }
+  20%, 40%, 60%, 80%      { transform:translateX(4px) scaleX(-1); filter: brightness(2) hue-rotate(-30deg); }
+}
+.char.defeated { animation: defeat 1s forwards; }
+@keyframes defeat {
+  0%   { transform:scaleX(-1) translateY(0); opacity:1; }
+  100% { transform:scaleX(-1) translateY(40px) rotate(90deg); opacity:0; }
+}
+
+.char-art { width:100px; height:100px; filter: drop-shadow(2px 4px 0 var(--ink)); }
+
+.name-plate { margin-top:6px; width:108px; text-align:center; }
+.char-name {
+  font-family:var(--pixel);
+  font-size:8px;
+  letter-spacing:1px;
+  margin-bottom:4px;
+  color:var(--paper);
+  text-shadow: 1px 1px 0 var(--ink);
+}
+.char.player .char-name { color:var(--sand-bright); }
+.char.enemy .char-name  { color:#a8d97c; }
+
+.hp-bar {
+  height:10px;
+  background:var(--bg-deep);
+  border:2px solid var(--ink);
+  border-radius:1px;
+  overflow:hidden;
+  position:relative;
+  box-shadow: 0 2px 0 var(--ink);
+}
+.hp-fill {
+  height:100%;
+  background:linear-gradient(180deg, #7dd87d 0%, var(--hp-green) 50%, #3a8a3a 100%);
+  transition:width .5s cubic-bezier(.22,.61,.36,1);
+  position:relative;
+}
+.hp-fill::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(90deg, transparent 0 6px, rgba(255,255,255,.15) 6px 7px);
+}
+.char.enemy .hp-fill {
+  background:linear-gradient(180deg, #ee6e6e 0%, var(--hp-red) 50%, #8a2a2a 100%);
+}
+.hp-text {
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--pixel);
+  font-size:7px;
+  color:var(--paper);
+  text-shadow: 1px 1px 0 var(--ink);
+  letter-spacing:.5px;
+}
+
+.damage-pop {
+  position:absolute;
+  top:30%;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:var(--pixel);
+  font-size:18px;
+  font-weight:bold;
+  pointer-events:none;
+  text-shadow: 2px 2px 0 var(--ink);
+  z-index:20;
+}
+.damage-pop.show { animation: dmgPop 1s ease-out forwards; }
+.damage-pop.normal { color:var(--sand-bright); font-size:16px; }
+.damage-pop.crit   { color:#ff6b6b; font-size:24px; }
+.damage-pop.ulti   { color:var(--gold); font-size:28px; }
+@keyframes dmgPop {
+  0%   { opacity:0; transform:translate(-50%, 0) scale(.5); }
+  20%  { opacity:1; transform:translate(-50%, -30px) scale(1.2); }
+  60%  { opacity:1; transform:translate(-50%, -50px) scale(1); }
+  100% { opacity:0; transform:translate(-50%, -80px) scale(1); }
+}
+
+.slash {
+  position:absolute;
+  top:30%;
+  left:50%;
+  width:80px; height:80px;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  opacity:0;
+  z-index:15;
+}
+.slash.show { animation: slashFx .4s ease-out; }
+@keyframes slashFx {
+  0%   { opacity:0; transform:translate(-50%,-50%) scale(.3) rotate(-30deg); }
+  50%  { opacity:1; transform:translate(-50%,-50%) scale(1.2) rotate(0deg); }
+  100% { opacity:0; transform:translate(-50%,-50%) scale(1.5) rotate(20deg); }
+}
+
+.quiz-panel {
+  position:absolute;
+  bottom:0; left:0; right:0;
+  background:linear-gradient(180deg, transparent 0%, rgba(13,6,4,.92) 12%, var(--bg-deep) 100%);
+  padding:20px 16px 22px;
+  z-index:8;
+  min-height:50%;
+}
+.quiz-card {
+  background:var(--paper);
+  border:3px solid var(--ink);
+  border-radius:6px;
+  padding:18px 16px 16px;
+  position:relative;
+  box-shadow: 0 4px 0 var(--ink), 0 8px 20px rgba(0,0,0,.5), inset 0 0 0 2px rgba(0,0,0,.06);
+  color:var(--ink);
+  animation: cardEnter .4s cubic-bezier(.22,.61,.36,1);
+}
+@keyframes cardEnter {
+  0%   { opacity:0; transform:translateY(30px); }
+  100% { opacity:1; transform:translateY(0); }
+}
+.quiz-card.exit { animation: cardExit .3s forwards; }
+@keyframes cardExit {
+  0%   { opacity:1; transform:translateY(0); }
+  100% { opacity:0; transform:translateY(20px); }
+}
+.quiz-corner {
+  position:absolute;
+  top:-12px; left:14px;
+  background:var(--blood);
+  color:var(--paper);
+  padding:4px 10px;
+  font-family:var(--pixel);
+  font-size:9px;
+  letter-spacing:1px;
+  border:2px solid var(--ink);
+  border-radius:2px;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.quiz-corner.crit { background:#d97706; }
+.quiz-corner.ulti { background:#7c3aed; }
+.quiz-dmg {
+  position:absolute;
+  top:-12px; right:14px;
+  background:var(--ink);
+  color:var(--gold);
+  padding:4px 10px;
+  font-family:var(--pixel);
+  font-size:9px;
+  border:2px solid var(--ink);
+  border-radius:2px;
+  box-shadow: 2px 2px 0 var(--blood-dark);
+}
+.quiz-prompt {
+  font-family:var(--content);
+  font-weight:500;
+  font-size:13px;
+  color:#5a3a1a;
+  margin-bottom:6px;
+  letter-spacing:0;
+}
+.quiz-question {
+  font-family:var(--content);
+  font-weight:600;
+  font-size:20px;
+  line-height:1.4;
+  margin-bottom:14px;
+  color:var(--ink);
+  letter-spacing:0;
+}
+.quiz-question .blank {
+  display:inline-block;
+  min-width:60px;
+  border-bottom:3px solid var(--blood);
+  text-align:center;
+  color:var(--blood);
+}
+.quiz-question .ipa {
+  font-family:var(--content);
+  font-size:14px;
+  font-weight:500;
+  color:#8a5a2a;
+  margin-left:6px;
+}
+.quiz-options {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.opt {
+  background:#fff;
+  border:2.5px solid var(--ink);
+  border-radius:4px;
+  padding:12px 10px;
+  font-family:var(--content);
+  font-weight:500;
+  font-size:14px;
+  color:var(--ink);
+  cursor:pointer;
+  transition: transform .1s, box-shadow .1s, background .15s;
+  box-shadow: 0 3px 0 var(--ink);
+  text-align:center;
+  line-height:1.4;
+  letter-spacing:0;
+}
+.opt:active { transform:translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.opt .label {
+  display:inline-block;
+  background:var(--ink);
+  color:var(--gold);
+  font-family:var(--pixel);
+  font-size:8px;
+  padding:2px 5px;
+  border-radius:2px;
+  margin-right:6px;
+  vertical-align:middle;
+}
+.opt.correct { background:#a3d977; animation: correctFlash .5s; }
+.opt.wrong   { background:#f4a3a3; animation: wrongShake .4s; }
+@keyframes correctFlash {
+  0%, 100% { background:#a3d977; }
+  50%      { background:#7dd87d; }
+}
+@keyframes wrongShake {
+  0%, 100% { transform:translateX(0); }
+  25% { transform:translateX(-5px); }
+  75% { transform:translateX(5px); }
+}
+.opt.disabled { pointer-events:none; opacity:.6; }
+
+.battle-back {
+  position:absolute;
+  top:14px; right:14px;
+  background:var(--bg-light);
+  border:2px solid var(--ink);
+  color:var(--paper);
+  font-family:var(--pixel);
+  font-size:9px;
+  padding:5px 8px;
+  border-radius:3px;
+  cursor:pointer;
+  z-index:11;
+}
+
+/* ===================== 模态框 ===================== */
+.modal-mask {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.modal-mask.show { animation: maskFade .3s; }
+@keyframes maskFade { from { opacity:0; } to { opacity:1; } }
+
+.modal-card {
+  background:var(--bg-mid);
+  border:3px solid var(--gold);
+  border-radius:8px;
+  padding:24px 20px;
+  max-width:340px;
+  width:100%;
+  text-align:center;
+  box-shadow: 0 0 30px rgba(255,209,102,.4), inset 0 0 0 2px var(--ink);
+  position:relative;
+  animation: modalIn .4s cubic-bezier(.22,1.3,.5,1);
+}
+@keyframes modalIn {
+  from { opacity:0; transform:scale(.7); }
+  to   { opacity:1; transform:scale(1); }
+}
+.modal-corners {
+  position:absolute;
+  width:14px; height:14px;
+  border:2px solid var(--gold);
+}
+.modal-corners.tl { top:-3px; left:-3px;  border-right:none; border-bottom:none; }
+.modal-corners.tr { top:-3px; right:-3px; border-left:none;  border-bottom:none; }
+.modal-corners.bl { bottom:-3px; left:-3px;  border-right:none; border-top:none; }
+.modal-corners.br { bottom:-3px; right:-3px; border-left:none;  border-top:none; }
+.modal-title {
+  font-family:var(--pixel);
+  font-size:14px;
+  color:var(--gold);
+  letter-spacing:2px;
+  margin-bottom:8px;
+}
+.modal-sub {
+  font-family:var(--display);
+  font-size:18px;
+  color:var(--sand-bright);
+  margin-bottom:14px;
+  letter-spacing:1px;
+}
+.modal-text {
+  font-size:14px;
+  line-height:1.7;
+  color:var(--paper);
+  margin-bottom:18px;
+}
+.modal-text .hl { color:var(--gold); font-weight:700; }
+.modal-text .blood { color:#ff8a8a; }
+
+.loot-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-bottom:14px;
+}
+.loot-item {
+  background:var(--bg-deep);
+  border:2px solid var(--gold);
+  padding:8px 6px;
+  border-radius:3px;
+  font-family:var(--pixel);
+  font-size:8px;
+  color:var(--gold);
+  text-align:center;
+}
+.loot-item .num {
+  display:block;
+  font-size:13px;
+  color:var(--paper);
+  margin-top:3px;
+}
+.learn-card {
+  background:var(--paper);
+  color:var(--ink);
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:11px 12px;
+  margin-bottom:14px;
+  text-align:left;
+}
+.learn-card .word {
+  font-family:var(--content);
+  font-weight:700;
+  font-size:18px;
+  color:var(--blood-dark);
+  margin-bottom:3px;
+  letter-spacing:0;
+}
+.learn-card .word .ipa {
+  font-family:var(--content);
+  font-weight:500;
+  font-size:13px;
+  color:#8a5a2a;
+  margin-left:6px;
+}
+.learn-card .meaning { font-size:13px; margin-bottom:5px; }
+.learn-card .example {
+  font-size:12px;
+  color:#5a3a1a;
+  font-style:italic;
+  border-left:3px solid var(--gold);
+  padding-left:8px;
+  margin-top:5px;
+}
+
+/* 谷sir导师对话 */
+.gusir-bubble {
+  background:linear-gradient(180deg, #2a3f6b, #1a2a4a);
+  border:2px solid var(--mp-blue);
+  border-radius:8px;
+  padding:10px 12px 10px 50px;
+  margin-bottom:14px;
+  text-align:left;
+  font-size:13px;
+  line-height:1.5;
+  color:var(--paper);
+  position:relative;
+}
+.gusir-avatar {
+  position:absolute;
+  left:6px;
+  top:50%;
+  transform:translateY(-50%);
+  width:38px; height:38px;
+  background:var(--gold);
+  border:2px solid var(--ink);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--pixel);
+  font-size:14px;
+  color:var(--ink);
+  font-weight:bold;
+}
+.gusir-name {
+  display:inline-block;
+  font-family:var(--pixel);
+  font-size:9px;
+  color:var(--mp-blue);
+  margin-bottom:3px;
+  letter-spacing:1px;
+}
+
+.modal-btn-row {
+  display:flex;
+  gap:10px;
+}
+.modal-btn-row .btn { flex:1; }
+
+
+/* ===================== v0.4 新增样式 ===================== */
+.map-tool-btn {
+  background:var(--bg-light);
+  border:2px solid var(--gold-deep);
+  color:var(--paper);
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  font-size:18px;
+  cursor:pointer;
+  box-shadow: 0 3px 0 var(--ink);
+  position:relative;
+  margin-right:6px;
+  transition: transform .08s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  line-height:1;
+  user-select:none;
+  -webkit-user-select:none;
+}
+.map-tool-btn:active { transform:translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.map-tool-btn:hover { border-color:var(--gold); }
+.wrong-badge {
+  position:absolute;
+  top:-4px;
+  right:-4px;
+  background:var(--blood);
+  color:#fff;
+  font-family:var(--pixel);
+  font-size:8px;
+  padding:2px 4px;
+  border-radius:8px;
+  border:1.5px solid var(--ink);
+  min-width:18px;
+}
+.hidden-input { display:none; }
+
+/* 自定义题库标记 */
+.custom-pool-tag {
+  position:absolute;
+  top:14px;
+  left:80px;
+  background:var(--green-deep, #3a8a3a);
+  color:#fff;
+  font-family:var(--pixel);
+  font-size:8px;
+  padding:4px 8px;
+  border:2px solid var(--ink);
+  border-radius:3px;
+  z-index:5;
+}
+
+/* 错题本页面 */
+#wrongBookScreen {
+  background: linear-gradient(180deg, #1a1828 0%, #0d0a18 100%);
+  overflow-y:auto;
+}
+.wb-list {
+  flex:1;
+  padding:14px;
+  overflow-y:auto;
+}
+.wb-card {
+  background:var(--bg-paper, #f5e6c8);
+  border:3px solid var(--ink);
+  border-radius:6px;
+  padding:14px;
+  margin-bottom:10px;
+  box-shadow: 0 3px 0 var(--ink);
+  position:relative;
+  color:var(--ink);
+}
+.wb-card .wb-tag {
+  position:absolute;
+  top:-10px;
+  left:14px;
+  background:var(--blood);
+  color:#fff;
+  padding:3px 8px;
+  font-family:var(--pixel);
+  font-size:8px;
+  border:2px solid var(--ink);
+  border-radius:2px;
+}
+.wb-card .wb-prompt {
+  font-size:11px;
+  color:#5a3a1a;
+  margin-bottom:4px;
+  margin-top:4px;
+}
+.wb-card .wb-q {
+  font-family:var(--content);
+  font-weight:600;
+  font-size:17px;
+  margin-bottom:8px;
+  line-height:1.4;
+}
+.wb-card .wb-q .blank {
+  display:inline-block;
+  min-width:50px;
+  border-bottom:2px solid var(--blood);
+  text-align:center;
+  color:var(--blood);
+  padding:0 4px;
+}
+.wb-card .wb-row {
+  display:flex;
+  gap:10px;
+  margin-bottom:6px;
+  flex-wrap:wrap;
+  font-size:13px;
+}
+.wb-card .wb-correct {
+  background:#d4f5d4;
+  border:1.5px solid #3a8a3a;
+  color:#3a8a3a;
+  padding:4px 10px;
+  border-radius:3px;
+  font-weight:700;
+}
+.wb-card .wb-wrong {
+  background:#f5d4d4;
+  border:1.5px solid var(--blood-dark);
+  color:var(--blood-dark);
+  padding:4px 10px;
+  border-radius:3px;
+  text-decoration:line-through;
+}
+.wb-card .wb-learn {
+  background:#fff8e0;
+  border-left:3px solid var(--gold);
+  padding:8px 10px;
+  font-size:12px;
+  margin-top:8px;
+  border-radius:0 3px 3px 0;
+}
+.wb-card .wb-learn b { color:var(--blood-dark); }
+.wb-card .wb-learn i {
+  display:block;
+  color:#5a3a1a;
+  margin-top:3px;
+}
+.wb-card .wb-meta {
+  font-family:var(--pixel);
+  font-size:8px;
+  color:#8a5a2a;
+  margin-top:8px;
+}
+
+.wb-empty {
+  text-align:center;
+  padding:60px 20px;
+  color:var(--paper-dark);
+}
+.wb-empty .icon { font-size:48px; margin-bottom:12px; opacity:.5; }
+.wb-empty .text { font-size:14px; line-height:1.6; }
+
+.wb-toolbar {
+  padding:12px 14px;
+  background:rgba(13,6,4,.9);
+  border-bottom:2px solid var(--gold-deep);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.wb-toolbar .summary {
+  font-family:var(--pixel);
+  font-size:9px;
+  color:var(--gold);
+}
+
+/* 导入对话框 */
+.import-info {
+  background:var(--bg-deep);
+  border:2px dashed var(--gold-deep);
+  padding:14px;
+  border-radius:4px;
+  margin-bottom:14px;
+  font-size:13px;
+  text-align:left;
+  color:var(--paper);
+  line-height:1.6;
+}
+.import-info b { color:var(--gold); }
+.import-info code {
+  background:var(--bg-light);
+  padding:2px 6px;
+  border-radius:2px;
+  font-size:11px;
+}
+
+
+
+/* ===================== v0.5: 章节选择屏幕 ===================== */
+#chapterScreen {
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(255,209,102,.1) 0%, transparent 60%),
+    linear-gradient(180deg, #1a0f08 0%, #0d0604 100%);
+}
+.chapter-list {
+  flex:1;
+  padding:20px 16px;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.chapter-card {
+  background:var(--bg-mid);
+  border:3px solid var(--ink);
+  border-radius:8px;
+  padding:0;
+  cursor:pointer;
+  position:relative;
+  box-shadow: 0 4px 0 var(--ink);
+  transition: transform .1s, border-color .15s;
+  overflow:hidden;
+}
+.chapter-card:active:not(.locked) { transform:translateY(2px); box-shadow: 0 2px 0 var(--ink); }
+.chapter-card.locked { opacity:.55; cursor:not-allowed; }
+.chapter-card.cleared { border-color:var(--gold); box-shadow: 0 4px 0 var(--ink), 0 0 16px rgba(255,209,102,.3); }
+.chapter-cover {
+  height:130px;
+  position:relative;
+  overflow:hidden;
+  border-bottom:3px solid var(--ink);
+}
+.chapter-cover .scene-art {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+.chapter-cover .ch-num {
+  position:absolute;
+  top:10px;
+  left:14px;
+  font-family:var(--pixel);
+  font-size:10px;
+  color:var(--gold);
+  background:rgba(13,6,4,.85);
+  padding:5px 10px;
+  border:2px solid var(--ink);
+  border-radius:3px;
+  letter-spacing:1px;
+}
+.chapter-cover .lock-overlay {
+  position:absolute;
+  inset:0;
+  background:rgba(13,6,4,.7);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+}
+.chapter-info {
+  padding:12px 14px 14px;
+}
+.chapter-info .ch-title {
+  font-family:var(--display);
+  font-weight:700;
+  font-size:18px;
+  color:var(--gold);
+  margin-bottom:3px;
+  letter-spacing:1px;
+}
+.chapter-info .ch-en {
+  font-family:var(--pixel);
+  font-size:9px;
+  color:var(--sand);
+  letter-spacing:1px;
+  margin-bottom:8px;
+}
+.chapter-info .ch-desc {
+  font-size:13px;
+  color:var(--paper-dark);
+  line-height:1.5;
+  margin-bottom:8px;
+}
+.chapter-info .ch-meta {
+  font-family:var(--pixel);
+  font-size:8px;
+  color:var(--sand);
+  display:flex;
+  gap:12px;
+  letter-spacing:1px;
+}
+.chapter-info .ch-meta .progress { color:var(--gold); }
+.chapter-info .ch-tag {
+  display:inline-block;
+  background:var(--bg-deep);
+  border:1.5px solid var(--gold-deep);
+  padding:2px 7px;
+  border-radius:3px;
+  font-family:var(--pixel);
+  font-size:8px;
+  color:var(--sand);
+  margin-right:5px;
+  margin-top:4px;
+}
+
+/* ===================== v0.5: 森林场景 ===================== */
+.forest-scene {
+  background:
+    radial-gradient(ellipse at 50% -20%, rgba(255,235,150,.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, #2d4a1f 0%, transparent 60%),
+    linear-gradient(180deg, #87ce6a 0%, #5a9344 30%, #3d6b2d 60%, #1f3318 100%);
+}
+.forest-scene .tree {
+  position:absolute;
+  bottom:42%;
+  width:0; height:0;
+}
+.forest-scene .tree.t1 {
+  left:5%;
+  border-left:25px solid transparent;
+  border-right:25px solid transparent;
+  border-bottom:90px solid #2d5a1f;
+  filter: drop-shadow(2px 0 0 #1a3a10);
+}
+.forest-scene .tree.t1::after {
+  content:'';
+  position:absolute;
+  top:90px;
+  left:-3px;
+  width:6px;
+  height:30px;
+  background:#5a3a1a;
+}
+.forest-scene .tree.t2 {
+  left:15%;
+  border-left:35px solid transparent;
+  border-right:35px solid transparent;
+  border-bottom:120px solid #1f4a14;
+}
+.forest-scene .tree.t3 {
+  right:8%;
+  border-left:30px solid transparent;
+  border-right:30px solid transparent;
+  border-bottom:100px solid #2d5a1f;
+}
+.forest-scene .tree.t4 {
+  right:20%;
+  border-left:40px solid transparent;
+  border-right:40px solid transparent;
+  border-bottom:140px solid #1a3a10;
+}
+
+.forest-scene .grass-floor {
+  position:absolute;
+  bottom:0; left:0; right:0;
+  height:42%;
+  background:
+    radial-gradient(ellipse at 30% 0%, rgba(255,235,150,.3) 0%, transparent 50%),
+    linear-gradient(180deg, #5a8a3a 0%, #2d4a1f 100%);
+}
+.forest-scene .grass-floor::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:4px;
+  background:repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 8px);
+}
+
+/* 阳光斑驳光晕 */
+.sunlight-rays {
+  position:absolute;
+  top:-10%;
+  left:50%;
+  transform:translateX(-50%);
+  width:140%;
+  height:60%;
+  background:
+    repeating-linear-gradient(110deg,
+      transparent 0,
+      transparent 50px,
+      rgba(255,235,150,.08) 50px,
+      rgba(255,235,150,.08) 80px,
+      transparent 80px,
+      transparent 130px);
+  pointer-events:none;
+  opacity:.6;
+}
+
+/* 萤火虫粒子（替代沙尘） */
+.firefly {
+  position:absolute;
+  width:5px; height:5px;
+  background:#ffd166;
+  border-radius:50%;
+  box-shadow: 0 0 8px #ffd166, 0 0 16px rgba(255,209,102,.5);
+  animation: fireflyFloat linear infinite;
+  opacity:.8;
+}
+@keyframes fireflyFloat {
+  0%   { transform:translate(0, 0); opacity:0; }
+  10%  { opacity:.9; }
+  50%  { transform:translate(-30vw, -10vh); opacity:.6; }
+  90%  { opacity:.9; }
+  100% { transform:translate(-60vw, -20vh); opacity:0; }
+}
+
+/* ===================== v0.5: 章节地图样式 ===================== */
+.map-area.forest-map {
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(255,235,150,.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, #2d5a1f 0%, transparent 60%),
+    linear-gradient(180deg, #87ce6a 0%, #4a8030 50%, #2d4a1f 100%);
+}
+.map-pyr-tree {
+  position:absolute;
+  width:0; height:0;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.3));
+}
+.map-pyr-tree.t1 { bottom:8%; left:5%; border-left:30px solid transparent; border-right:30px solid transparent; border-bottom:80px solid #2d5a1f; }
+.map-pyr-tree.t2 { bottom:10%; right:8%; border-left:38px solid transparent; border-right:38px solid transparent; border-bottom:115px solid #1f4a14; }
+.map-pyr-tree.t3 { bottom:35%; left:35%; border-left:25px solid transparent; border-right:25px solid transparent; border-bottom:65px solid #2d5a1f; opacity:.7; }
+
+
+/* ===================== v0.7: 单元选择屏幕 ===================== */
+#unitScreen {
+  background: linear-gradient(180deg, #1a0f08 0%, #0d0604 100%);
+  overflow-y: auto;
+}
+.unit-list {
+  flex:1;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  overflow-y:auto;
+}
+.unit-card {
+  background:var(--bg-mid);
+  border:3px solid var(--ink);
+  border-radius:8px;
+  padding:16px;
+  cursor:pointer;
+  box-shadow: 0 4px 0 var(--ink);
+  transition: border-color .15s, transform .08s;
+  position:relative;
+}
+.unit-card:active { transform:translateY(2px); box-shadow:0 2px 0 var(--ink); }
+.unit-card.completed { border-color:var(--gold); }
+.unit-card.completed::after {
+  content:'★ 完成';
+  position:absolute;
+  top:12px; right:14px;
+  font-family:var(--pixel);
+  font-size:9px;
+  color:var(--gold);
+  letter-spacing:1px;
+}
+.unit-card .unit-id {
+  font-family:var(--pixel);
+  font-size:9px;
+  color:var(--sand);
+  letter-spacing:1px;
+  margin-bottom:5px;
+}
+.unit-card .unit-name {
+  font-family:var(--display);
+  font-size:18px;
+  font-weight:700;
+  color:var(--gold);
+  margin-bottom:4px;
+}
+.unit-card .unit-desc {
+  font-size:13px;
+  color:var(--paper-dark);
+  line-height:1.5;
+  margin-bottom:8px;
+}
+.unit-card .unit-progress {
+  font-family:var(--pixel);
+  font-size:8px;
+  color:var(--sand);
+  letter-spacing:1px;
+}
+.unit-card .unit-progress .done { color:var(--gold); }
+
+/* 加载中状态 */
+.unit-loading {
+  text-align:center;
+  padding:50px 20px;
+  color:var(--paper-dark);
+  font-family:var(--pixel);
+  font-size:10px;
+  letter-spacing:1px;
+}
+.unit-loading .spinner {
+  font-size:30px;
+  display:block;
+  margin-bottom:14px;
+  animation: spin 1.5s linear infinite;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+
+.unit-error {
+  text-align:center;
+  padding:40px 16px;
+  color:var(--blood);
+}
+.unit-error .icon { font-size:36px; margin-bottom:10px; }
+.unit-error .msg { font-size:13px; line-height:1.6; color:var(--paper-dark); }
+
+/* 单元加载进度条（战斗前） */
+.unit-loading-bar {
+  position:fixed;
+  top:0; left:0; right:0;
+  height:4px;
+  background:var(--bg-deep);
+  z-index:100;
+}
+.unit-loading-bar .fill {
+  height:100%;
+  background:var(--gold);
+  width:0%;
+  transition:width .3s;
+}
+
+</style>
+</head>
+<body>
+
+<div class="app">
+
+<!-- ============================================================
+     场景 1：标题画面
+     ============================================================ -->
+<div class="screen active" id="titleScreen">
+  <div class="title-stars" id="titleStars"></div>
+  <div class="title-content">
+    <svg class="title-pyramid" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="pyrGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#ffd166"/>
+          <stop offset="1" stop-color="#c08a2e"/>
+        </linearGradient>
+      </defs>
+      <!-- 月亮 -->
+      <circle cx="105" cy="22" r="14" fill="#f5e6c8" opacity=".9"/>
+      <circle cx="100" cy="20" r="14" fill="#1a1828"/>
+      <!-- 大金字塔 -->
+      <path d="M70 10 L130 110 L10 110 Z" fill="url(#pyrGrad)" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 阴影面 -->
+      <path d="M70 10 L70 110 L10 110 Z" fill="#1a0f08" opacity=".25"/>
+      <!-- 砖块线条 -->
+      <line x1="40" y1="60" x2="100" y2="60" stroke="#1a0f08" stroke-width="1.5" opacity=".5"/>
+      <line x1="25" y1="85" x2="115" y2="85" stroke="#1a0f08" stroke-width="1.5" opacity=".5"/>
+      <!-- 入口门 -->
+      <rect x="62" y="92" width="16" height="18" fill="#1a0f08"/>
+    </svg>
+
+    <div class="title-main">WORD<br>QUEST</div>
+    <div class="title-sub">SANDS OF AKHET</div>
+    <div class="title-cn">单词远征</div>
+    <div class="title-tagline">▸ 用英语单词的力量征服远古遗迹</div>
+
+    <div class="title-buttons">
+      <button class="btn gold" onclick="goSelect()">▶ 开始冒险</button>
+      <button class="btn dark" onclick="showHelp()">如何游玩</button>
+    </div>
+  </div>
+  <div class="title-credit">谷SIR说英语 · 出品 · v0.2</div>
+</div>
+
+
+<!-- ============================================================
+     场景 2：角色选择
+     ============================================================ -->
+<div class="screen" id="selectScreen">
+  <button class="back-btn" onclick="goTitle()">◂ 返回</button>
+  <div class="scr-header">
+    <div class="scr-title">选择你的英雄</div>
+    <div class="scr-sub">CHOOSE YOUR HERO</div>
+  </div>
+
+  <div class="char-grid" id="charGrid">
+    <!-- 由JS生成 -->
+  </div>
+
+  <div class="select-footer">
+    <div class="select-info" id="selectInfo">
+      <div class="who" id="selectInfoWho">— 选择一位角色 —</div>
+      <div class="desc" id="selectInfoDesc">每位英雄都有独特的能力倾向</div>
+    </div>
+    <div class="confirm-row">
+      <button class="btn dark" onclick="goTitle()">取消</button>
+      <button class="btn gold" id="confirmCharBtn" onclick="confirmChar()" style="opacity:.5; pointer-events:none;">确认 ▶</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     场景 2.5：单元选择 (v0.7 重建)
+     ============================================================ -->
+<div class="screen" id="unitScreen">
+  <button class="back-btn" onclick="goSelect()">◂ 角色</button>
+  <div class="scr-header">
+    <div class="scr-title">选择单元</div>
+    <div class="scr-sub">SELECT UNIT</div>
+  </div>
+  <div class="unit-list" id="unitListContent">
+    <div class="unit-loading"><span class="spinner">⚙</span>正在加载单元列表...</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     场景 3：章节地图
+     ============================================================ -->
+<div class="screen" id="mapScreen">
+  <button class="back-btn" onclick="goUnitSelect()">◂ 单元</button>
+  <div class="scr-header">
+    <div class="scr-title" id="mapChTitle">CHAPTER 1</div>
+    <div class="scr-sub" id="mapChSub">SANDS OF AKHET · 沙漠遗迹</div>
+  </div>
+
+  <div class="map-area" id="mapArea">
+    <div class="map-bg" id="mapBg">
+      <div class="map-pyr p1"></div>
+      <div class="map-pyr p2"></div>
+      <div class="map-pyr p3"></div>
+    </div>
+    <svg class="map-path" viewBox="0 0 100 100" preserveAspectRatio="none" id="mapPathSvg">
+      <!-- 路径线由JS生成 -->
+    </svg>
+    <!-- 关卡节点：由 JS 动态生成 -->
+  </div>
+
+  <div class="map-footer">
+    <label class="map-tool-btn" for="poolImportInput" title="导入自定义题库" id="importBtn">📥</label>
+    <input type="file" id="poolImportInput" class="hidden-input" accept=".json,application/json" onchange="handlePoolImport(event)">
+    <button class="map-tool-btn" onclick="showWrongBook()" title="错题本">📖<span class="wrong-badge" id="wrongBadge" style="display:none;">0</span></button>
+    <button class="map-tool-btn" onclick="showImportInfo()" title="导入说明">❓</button>
+    <div class="player-info">
+      <div class="mini-portrait" id="miniPortrait"></div>
+      <div class="player-meta">
+        <div class="name" id="playerNameTag">PHARAOH</div>
+        <div class="stats">🪙 <span class="gold-num" id="totalCoins">0</span> · LV.<span id="playerLevel">1</span></div>
+      </div>
+    </div>
+    <button class="btn sm dark" onclick="resetProgress()">重置进度</button>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     场景 4：战斗
+     ============================================================ -->
+<div class="screen" id="battleScreen">
+  <button class="battle-back" onclick="quitBattle()">✕ 退出</button>
+
+  <div class="battle-bg-elements" id="battleBg">
+    <div class="pyramid left"></div>
+    <div class="pyramid right"></div>
+    <div class="sand-floor"></div>
+  </div>
+
+  <div class="top-bar">
+    <div class="top-row">
+      <div class="level-tag"><span class="ch1">CH.1</span> · LV.<span id="stageNum">1</span></div>
+      <div class="score-block">
+        <div class="item"><span class="icon">🪙</span><span id="coinNum">0</span></div>
+        <div class="item combo"><span class="icon">⚡</span>x<span id="comboNum">0</span></div>
+      </div>
+    </div>
+    <div class="stage-name" id="stageName">沙丘哨站 · DUNE OUTPOST</div>
+  </div>
+
+  <div class="battle-stage">
+    <div class="char player" id="playerChar">
+      <div class="damage-pop" id="playerDmg"></div>
+      <div class="char-art" id="playerArt"></div>
+      <div class="slash" id="playerSlash">
+        <svg viewBox="0 0 80 80">
+          <path d="M10 70 L70 10" stroke="#ffd166" stroke-width="6" stroke-linecap="round" opacity=".9"/>
+          <path d="M15 75 L75 15" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="name-plate">
+        <div class="char-name" id="playerName">PHARAOH</div>
+        <div class="hp-bar">
+          <div class="hp-fill" id="playerHpFill" style="width:100%;"></div>
+          <div class="hp-text"><span id="playerHpText">100/100</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="char enemy" id="enemyChar">
+      <div class="damage-pop" id="enemyDmg"></div>
+      <div class="char-art" id="enemyArt"></div>
+      <div class="slash" id="enemySlash">
+        <svg viewBox="0 0 80 80">
+          <path d="M10 70 L70 10" stroke="#c1272d" stroke-width="6" stroke-linecap="round" opacity=".9"/>
+          <path d="M15 75 L75 15" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="name-plate">
+        <div class="char-name" id="enemyName">GOBLIN</div>
+        <div class="hp-bar">
+          <div class="hp-fill" id="enemyHpFill" style="width:100%;"></div>
+          <div class="hp-text"><span id="enemyHpText">80/80</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-panel">
+    <div class="quiz-card" id="quizCard">
+      <div class="quiz-corner" id="quizType">基础攻击</div>
+      <div class="quiz-dmg" id="quizDmg">DMG 10</div>
+      <div class="quiz-prompt" id="quizPrompt">选出正确的中文意思</div>
+      <div class="quiz-question" id="quizQuestion">water</div>
+      <div class="quiz-options" id="quizOptions"></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ============================================================
+     场景 5：错题本 (v0.4 新增)
+     ============================================================ -->
+<div class="screen" id="wrongBookScreen">
+  <button class="back-btn" onclick="goMap()">◂ 返回</button>
+  <div class="scr-header">
+    <div class="scr-title">📖 错题本</div>
+    <div class="scr-sub">WRONG ANSWER BOOK</div>
+  </div>
+
+  <div class="wb-toolbar">
+    <div class="summary" id="wbSummary">共 0 道错题</div>
+    <button class="btn sm dark" onclick="clearWrongBook()">清空</button>
+  </div>
+
+  <div class="wb-list" id="wbList">
+    <!-- 由JS生成 -->
+  </div>
+</div>
+
+<!-- 模态框层 -->
+<div id="modalLayer"></div>
+
+<script>
+/* ==========================================================
+   1. 角色 / 敌人 / 关卡数据
+   ========================================================== */
+
+// 角色SVG生成函数（统一画风：100x100, 粗描边Q版）
+const PORTRAITS = {
+  pharaoh_boy: () => `
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <ellipse cx="50" cy="93" rx="22" ry="3" fill="#000" opacity=".4"/>
+      <path d="M30 55 L30 88 L70 88 L70 55 Z" fill="#f5f0e0" stroke="#1a0f08" stroke-width="3"/>
+      <rect x="28" y="68" width="44" height="6" fill="#ffd166" stroke="#1a0f08" stroke-width="2.5"/>
+      <rect x="38" y="74" width="24" height="10" fill="#ffd166" stroke="#1a0f08" stroke-width="2"/>
+      <line x1="50" y1="74" x2="50" y2="84" stroke="#1a0f08" stroke-width="2"/>
+      <rect x="22" y="58" width="9" height="20" fill="#f5deb3" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <rect x="69" y="58" width="9" height="20" fill="#f5deb3" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <ellipse cx="50" cy="40" rx="20" ry="22" fill="#f5deb3" stroke="#1a0f08" stroke-width="3"/>
+      <path d="M28 30 Q28 18 50 16 Q72 18 72 30 L72 50 L62 56 L62 38 L38 38 L38 56 L28 50 Z"
+            fill="#2563a8" stroke="#1a0f08" stroke-width="3"/>
+      <rect x="30" y="22" width="40" height="3" fill="#ffd166"/>
+      <rect x="30" y="30" width="40" height="3" fill="#ffd166"/>
+      <rect x="30" y="38" width="40" height="3" fill="#ffd166"/>
+      <circle cx="50" cy="22" r="3.5" fill="#ffd166" stroke="#1a0f08" stroke-width="2"/>
+      <ellipse cx="42" cy="42" rx="2.5" ry="3" fill="#1a0f08"/>
+      <ellipse cx="58" cy="42" rx="2.5" ry="3" fill="#1a0f08"/>
+      <ellipse cx="38" cy="48" rx="2.5" ry="1.5" fill="#ff9999" opacity=".6"/>
+      <ellipse cx="62" cy="48" rx="2.5" ry="1.5" fill="#ff9999" opacity=".6"/>
+    </svg>`,
+
+  pharaoh_girl: () => `
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <ellipse cx="50" cy="93" rx="22" ry="3" fill="#000" opacity=".4"/>
+      <path d="M30 55 L30 88 L70 88 L70 55 Z" fill="#fff" stroke="#1a0f08" stroke-width="3"/>
+      <rect x="28" y="68" width="44" height="5" fill="#4a9fd4" stroke="#1a0f08" stroke-width="2"/>
+      <path d="M40 73 L60 73 L55 88 L45 88 Z" fill="#ffd166" stroke="#1a0f08" stroke-width="2"/>
+      <rect x="22" y="58" width="9" height="20" fill="#f5deb3" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <rect x="69" y="58" width="9" height="20" fill="#f5deb3" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <ellipse cx="50" cy="40" rx="20" ry="22" fill="#f5deb3" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 长发 -->
+      <path d="M28 32 Q26 50 32 60 L36 56 L36 38 Z" fill="#1a0f08" stroke="#1a0f08" stroke-width="2"/>
+      <path d="M72 32 Q74 50 68 60 L64 56 L64 38 Z" fill="#1a0f08" stroke="#1a0f08" stroke-width="2"/>
+      <!-- 头饰 -->
+      <path d="M30 28 Q30 15 50 13 Q70 15 70 28 L66 32 L34 32 Z"
+            fill="#2563a8" stroke="#1a0f08" stroke-width="3"/>
+      <rect x="32" y="20" width="36" height="3" fill="#ffd166"/>
+      <!-- 额前白色羽毛 -->
+      <path d="M50 8 L46 18 L50 16 L54 18 Z" fill="#fff" stroke="#1a0f08" stroke-width="2"/>
+      <ellipse cx="42" cy="42" rx="2.5" ry="3" fill="#1a0f08"/>
+      <ellipse cx="58" cy="42" rx="2.5" ry="3" fill="#1a0f08"/>
+      <ellipse cx="38" cy="48" rx="2.5" ry="1.5" fill="#ff9999" opacity=".6"/>
+      <ellipse cx="62" cy="48" rx="2.5" ry="1.5" fill="#ff9999" opacity=".6"/>
+    </svg>`,
+
+  warrior_red: () => `
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <ellipse cx="50" cy="93" rx="22" ry="3" fill="#000" opacity=".4"/>
+      <path d="M30 55 L30 88 L70 88 L70 55 Z" fill="#c1272d" stroke="#1a0f08" stroke-width="3"/>
+      <rect x="28" y="70" width="44" height="5" fill="#5a3315" stroke="#1a0f08" stroke-width="2"/>
+      <rect x="46" y="72" width="8" height="4" fill="#ffd166" stroke="#1a0f08" stroke-width="1.5"/>
+      <rect x="22" y="58" width="9" height="20" fill="#f5deb3" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <rect x="69" y="58" width="9" height="20" fill="#f5deb3" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <!-- 武器（扳手/小剑） -->
+      <g transform="translate(15,55)">
+        <rect x="-2" y="0" width="4" height="14" fill="#5a3315" stroke="#1a0f08" stroke-width="2"/>
+        <circle cx="0" cy="-4" r="5" fill="none" stroke="#c0c0c0" stroke-width="3"/>
+      </g>
+      <ellipse cx="50" cy="40" rx="20" ry="22" fill="#f5deb3" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 棕色头发 -->
+      <path d="M30 30 Q30 18 50 16 Q70 18 70 30 L66 28 L60 22 L52 26 L42 22 L36 28 Z" 
+            fill="#5a3315" stroke="#1a0f08" stroke-width="2.5"/>
+      <ellipse cx="42" cy="42" rx="2.5" ry="3" fill="#1a0f08"/>
+      <ellipse cx="58" cy="42" rx="2.5" ry="3" fill="#1a0f08"/>
+      <ellipse cx="38" cy="48" rx="2.5" ry="1.5" fill="#ff9999" opacity=".6"/>
+      <ellipse cx="62" cy="48" rx="2.5" ry="1.5" fill="#ff9999" opacity=".6"/>
+    </svg>`,
+
+  goblin: () => `
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <ellipse cx="50" cy="93" rx="22" ry="3" fill="#000" opacity=".4"/>
+      <rect x="32" y="58" width="36" height="30" fill="#6b4226" stroke="#1a0f08" stroke-width="3" rx="2"/>
+      <rect x="30" y="74" width="40" height="5" fill="#2d1b0f" stroke="#1a0f08" stroke-width="2"/>
+      <rect x="46" y="76" width="8" height="6" fill="#ffd166" stroke="#1a0f08" stroke-width="1.5"/>
+      <rect x="22" y="60" width="9" height="20" fill="#6a8f3a" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <rect x="69" y="60" width="9" height="20" fill="#6a8f3a" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <ellipse cx="50" cy="42" rx="20" ry="20" fill="#6a8f3a" stroke="#1a0f08" stroke-width="3"/>
+      <path d="M40 24 L42 14 L46 22 L50 12 L54 22 L58 14 L60 24 Z" fill="#4a6f1a" stroke="#1a0f08" stroke-width="2.5"/>
+      <path d="M28 38 L20 32 L26 44 Z" fill="#6a8f3a" stroke="#1a0f08" stroke-width="2.5"/>
+      <path d="M72 38 L80 32 L74 44 Z" fill="#6a8f3a" stroke="#1a0f08" stroke-width="2.5"/>
+      <path d="M38 40 L46 42 L40 46 Z" fill="#ffeb3b" stroke="#1a0f08" stroke-width="2"/>
+      <path d="M62 40 L54 42 L60 46 Z" fill="#ffeb3b" stroke="#1a0f08" stroke-width="2"/>
+      <ellipse cx="42" cy="43" rx="1.5" ry="2" fill="#1a0f08"/>
+      <ellipse cx="58" cy="43" rx="1.5" ry="2" fill="#1a0f08"/>
+      <path d="M44 52 L46 58 L48 52 Z" fill="#fff" stroke="#1a0f08" stroke-width="1.5"/>
+      <path d="M52 52 L54 58 L56 52 Z" fill="#fff" stroke="#1a0f08" stroke-width="1.5"/>
+      <g transform="translate(78,55)">
+        <rect x="-2" y="0" width="4" height="14" fill="#5a3315" stroke="#1a0f08" stroke-width="2"/>
+        <path d="M-5 0 L5 0 L3 -16 L-3 -16 Z" fill="#c0c0c0" stroke="#1a0f08" stroke-width="2"/>
+      </g>
+    </svg>`,
+
+  scarab: () => `
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <ellipse cx="50" cy="93" rx="22" ry="3" fill="#000" opacity=".4"/>
+      <!-- 身体（甲虫） -->
+      <ellipse cx="50" cy="60" rx="28" ry="22" fill="#3a2a4a" stroke="#1a0f08" stroke-width="3"/>
+      <line x1="50" y1="40" x2="50" y2="80" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 翅膀纹路 -->
+      <ellipse cx="38" cy="55" rx="10" ry="14" fill="#5a4a7a" stroke="#1a0f08" stroke-width="2" opacity=".7"/>
+      <ellipse cx="62" cy="55" rx="10" ry="14" fill="#5a4a7a" stroke="#1a0f08" stroke-width="2" opacity=".7"/>
+      <!-- 头 -->
+      <ellipse cx="50" cy="35" rx="12" ry="10" fill="#2a1a3a" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 触角 -->
+      <line x1="44" y1="27" x2="38" y2="18" stroke="#1a0f08" stroke-width="2.5"/>
+      <line x1="56" y1="27" x2="62" y2="18" stroke="#1a0f08" stroke-width="2.5"/>
+      <circle cx="38" cy="18" r="3" fill="#ffd166" stroke="#1a0f08" stroke-width="2"/>
+      <circle cx="62" cy="18" r="3" fill="#ffd166" stroke="#1a0f08" stroke-width="2"/>
+      <!-- 眼睛 -->
+      <circle cx="44" cy="34" r="3" fill="#ff6b6b" stroke="#1a0f08" stroke-width="1.5"/>
+      <circle cx="56" cy="34" r="3" fill="#ff6b6b" stroke="#1a0f08" stroke-width="1.5"/>
+      <!-- 腿 -->
+      <line x1="22" y1="55" x2="14" y2="50" stroke="#1a0f08" stroke-width="3"/>
+      <line x1="22" y1="65" x2="14" y2="70" stroke="#1a0f08" stroke-width="3"/>
+      <line x1="78" y1="55" x2="86" y2="50" stroke="#1a0f08" stroke-width="3"/>
+      <line x1="78" y1="65" x2="86" y2="70" stroke="#1a0f08" stroke-width="3"/>
+    </svg>`,
+
+  mummy: () => `
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <ellipse cx="50" cy="93" rx="22" ry="3" fill="#000" opacity=".4"/>
+      <!-- 身体 -->
+      <rect x="32" y="56" width="36" height="32" fill="#d4c4a0" stroke="#1a0f08" stroke-width="3" rx="2"/>
+      <!-- 绷带条纹 -->
+      <line x1="32" y1="62" x2="68" y2="64" stroke="#1a0f08" stroke-width="1.5"/>
+      <line x1="32" y1="70" x2="68" y2="68" stroke="#1a0f08" stroke-width="1.5"/>
+      <line x1="32" y1="76" x2="68" y2="78" stroke="#1a0f08" stroke-width="1.5"/>
+      <line x1="32" y1="82" x2="68" y2="80" stroke="#1a0f08" stroke-width="1.5"/>
+      <!-- 双臂前伸 -->
+      <rect x="14" y="58" width="20" height="9" fill="#d4c4a0" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <rect x="66" y="58" width="20" height="9" fill="#d4c4a0" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <line x1="16" y1="63" x2="34" y2="63" stroke="#1a0f08" stroke-width="1"/>
+      <line x1="66" y1="63" x2="84" y2="63" stroke="#1a0f08" stroke-width="1"/>
+      <!-- 头 -->
+      <ellipse cx="50" cy="38" rx="20" ry="22" fill="#d4c4a0" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 头部绷带 -->
+      <line x1="30" y1="30" x2="70" y2="32" stroke="#1a0f08" stroke-width="1.5"/>
+      <line x1="30" y1="38" x2="70" y2="36" stroke="#1a0f08" stroke-width="1.5"/>
+      <line x1="30" y1="46" x2="70" y2="48" stroke="#1a0f08" stroke-width="1.5"/>
+      <!-- 黑色眼洞 -->
+      <ellipse cx="42" cy="42" rx="3.5" ry="4" fill="#1a0f08"/>
+      <ellipse cx="58" cy="42" rx="3.5" ry="4" fill="#1a0f08"/>
+      <!-- 红色光点 -->
+      <circle cx="42" cy="42" r="1.2" fill="#ff6b6b"/>
+      <circle cx="58" cy="42" r="1.2" fill="#ff6b6b"/>
+    </svg>`,
+
+  pharaoh_boss: () => `
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <ellipse cx="50" cy="94" rx="24" ry="3" fill="#000" opacity=".5"/>
+      <!-- 身体（更宽的紫袍） -->
+      <path d="M26 56 L26 90 L74 90 L74 56 Z" fill="#3a1a4a" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 金色腰带 -->
+      <rect x="24" y="68" width="52" height="7" fill="#ffd166" stroke="#1a0f08" stroke-width="2.5"/>
+      <!-- 圣甲虫装饰 -->
+      <ellipse cx="50" cy="80" rx="6" ry="4" fill="#ffd166" stroke="#1a0f08" stroke-width="2"/>
+      <!-- 双臂 -->
+      <rect x="18" y="58" width="10" height="22" fill="#7a3a8a" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <rect x="72" y="58" width="10" height="22" fill="#7a3a8a" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <!-- 法杖 -->
+      <line x1="14" y1="40" x2="14" y2="80" stroke="#5a3315" stroke-width="3"/>
+      <circle cx="14" cy="36" r="6" fill="#4a9fd4" stroke="#1a0f08" stroke-width="2.5"/>
+      <circle cx="14" cy="36" r="2.5" fill="#fff"/>
+      <!-- 头 -->
+      <ellipse cx="50" cy="40" rx="22" ry="22" fill="#f5deb3" stroke="#1a0f08" stroke-width="3"/>
+      <!-- Boss头巾（金黑条纹） -->
+      <path d="M26 30 Q26 14 50 12 Q74 14 74 30 L74 52 L62 58 L62 38 L38 38 L38 58 L26 52 Z"
+            fill="#1a0f08" stroke="#1a0f08" stroke-width="3"/>
+      <rect x="28" y="20" width="44" height="3" fill="#ffd166"/>
+      <rect x="28" y="28" width="44" height="3" fill="#ffd166"/>
+      <rect x="28" y="36" width="44" height="3" fill="#ffd166"/>
+      <!-- 王冠/头饰 -->
+      <path d="M40 12 L42 4 L48 10 L50 2 L52 10 L58 4 L60 12 Z" fill="#ffd166" stroke="#1a0f08" stroke-width="2.5"/>
+      <!-- 眼镜蛇 -->
+      <circle cx="50" cy="22" r="4" fill="#c1272d" stroke="#1a0f08" stroke-width="2"/>
+      <!-- 凶狠的眼 -->
+      <path d="M38 40 L46 42 L40 46 Z" fill="#ff6b6b" stroke="#1a0f08" stroke-width="2"/>
+      <path d="M62 40 L54 42 L60 46 Z" fill="#ff6b6b" stroke="#1a0f08" stroke-width="2"/>
+      <ellipse cx="42" cy="43" rx="1.5" ry="2" fill="#1a0f08"/>
+      <ellipse cx="58" cy="43" rx="1.5" ry="2" fill="#1a0f08"/>
+      <!-- 法老胡须 -->
+      <rect x="46" y="56" width="8" height="10" fill="#1a0f08" stroke="#1a0f08" stroke-width="2"/>
+      <rect x="46" y="58" width="8" height="2" fill="#ffd166"/>
+      <rect x="46" y="62" width="8" height="2" fill="#ffd166"/>
+    </svg>`,
+
+  /* ============ Chapter 2 新角色 ============ */
+  goblin_warrior: () => `
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <ellipse cx="50" cy="93" rx="22" ry="3" fill="#000" opacity=".4"/>
+      <!-- 身体（深绿+银色护甲） -->
+      <rect x="32" y="58" width="36" height="30" fill="#3a5a2a" stroke="#1a0f08" stroke-width="3" rx="2"/>
+      <!-- 胸甲 -->
+      <path d="M36 58 L50 68 L64 58 L62 75 L38 75 Z" fill="#a0a0a0" stroke="#1a0f08" stroke-width="2.5"/>
+      <rect x="46" y="74" width="8" height="6" fill="#ffd166" stroke="#1a0f08" stroke-width="1.5"/>
+      <!-- 双臂 -->
+      <rect x="22" y="60" width="9" height="20" fill="#5a8a3a" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <rect x="69" y="60" width="9" height="20" fill="#5a8a3a" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <!-- 头（绿皮） -->
+      <ellipse cx="50" cy="42" rx="20" ry="20" fill="#5a8a3a" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 头盔 -->
+      <path d="M30 36 Q30 22 50 22 Q70 22 70 36 L66 38 L34 38 Z" fill="#a0a0a0" stroke="#1a0f08" stroke-width="2.5"/>
+      <line x1="50" y1="22" x2="50" y2="36" stroke="#1a0f08" stroke-width="2"/>
+      <!-- 尖耳朵 -->
+      <path d="M28 38 L20 32 L26 44 Z" fill="#5a8a3a" stroke="#1a0f08" stroke-width="2.5"/>
+      <path d="M72 38 L80 32 L74 44 Z" fill="#5a8a3a" stroke="#1a0f08" stroke-width="2.5"/>
+      <!-- 凶眼 -->
+      <path d="M38 42 L46 44 L40 48 Z" fill="#ff6b6b" stroke="#1a0f08" stroke-width="2"/>
+      <path d="M62 42 L54 44 L60 48 Z" fill="#ff6b6b" stroke="#1a0f08" stroke-width="2"/>
+      <ellipse cx="42" cy="45" rx="1.5" ry="2" fill="#1a0f08"/>
+      <ellipse cx="58" cy="45" rx="1.5" ry="2" fill="#1a0f08"/>
+      <!-- 獠牙 -->
+      <path d="M44 54 L46 60 L48 54 Z" fill="#fff" stroke="#1a0f08" stroke-width="1.5"/>
+      <path d="M52 54 L54 60 L56 54 Z" fill="#fff" stroke="#1a0f08" stroke-width="1.5"/>
+      <!-- 大剑 -->
+      <g transform="translate(82,55)">
+        <rect x="-2" y="0" width="4" height="14" fill="#5a3315" stroke="#1a0f08" stroke-width="2"/>
+        <path d="M-7 -2 L7 -2 L4 -22 L-4 -22 Z" fill="#d0d0d0" stroke="#1a0f08" stroke-width="2"/>
+        <line x1="-5" y1="-12" x2="5" y2="-12" stroke="#1a0f08" stroke-width="1.5"/>
+      </g>
+    </svg>`,
+
+  elf_mage: () => `
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <ellipse cx="50" cy="93" rx="22" ry="3" fill="#000" opacity=".4"/>
+      <!-- 紫色长袍 -->
+      <path d="M28 56 L26 90 L74 90 L72 56 Z" fill="#6a3a8a" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 兜帽 -->
+      <path d="M28 30 Q28 14 50 12 Q72 14 72 30 L72 50 L62 56 L62 38 L38 38 L38 56 L28 50 Z"
+            fill="#6a3a8a" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 兜帽内阴影 -->
+      <path d="M38 38 L38 30 L62 30 L62 38 Z" fill="#1a0f08" opacity=".3"/>
+      <!-- 金色装饰带 -->
+      <rect x="28" y="68" width="44" height="5" fill="#ffd166" stroke="#1a0f08" stroke-width="2"/>
+      <!-- 双臂（紫袖） -->
+      <rect x="20" y="58" width="10" height="22" fill="#7a4a9a" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <rect x="70" y="58" width="10" height="22" fill="#7a4a9a" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <!-- 法杖 -->
+      <line x1="14" y1="40" x2="14" y2="80" stroke="#5a3315" stroke-width="3"/>
+      <circle cx="14" cy="34" r="7" fill="#7dd87d" stroke="#1a0f08" stroke-width="2.5"/>
+      <circle cx="14" cy="34" r="3" fill="#fff" opacity=".7"/>
+      <!-- 头（淡黄精灵肤色） -->
+      <ellipse cx="50" cy="40" rx="18" ry="20" fill="#ffe4b3" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 尖耳朵（精灵特征） -->
+      <path d="M32 38 L24 30 L30 44 Z" fill="#ffe4b3" stroke="#1a0f08" stroke-width="2.5"/>
+      <path d="M68 38 L76 30 L70 44 Z" fill="#ffe4b3" stroke="#1a0f08" stroke-width="2.5"/>
+      <!-- 眼睛（蓝色，神秘） -->
+      <ellipse cx="42" cy="42" rx="2.5" ry="3" fill="#4a9fd4"/>
+      <ellipse cx="58" cy="42" rx="2.5" ry="3" fill="#4a9fd4"/>
+      <ellipse cx="42" cy="42" rx="1" ry="1.5" fill="#1a0f08"/>
+      <ellipse cx="58" cy="42" rx="1" ry="1.5" fill="#1a0f08"/>
+      <!-- 眉毛 -->
+      <line x1="38" y1="36" x2="46" y2="38" stroke="#1a0f08" stroke-width="2"/>
+      <line x1="62" y1="36" x2="54" y2="38" stroke="#1a0f08" stroke-width="2"/>
+    </svg>`,
+
+  troll: () => `
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <ellipse cx="50" cy="94" rx="26" ry="3" fill="#000" opacity=".5"/>
+      <!-- 大块头身体 -->
+      <rect x="26" y="56" width="48" height="34" fill="#7a8a4a" stroke="#1a0f08" stroke-width="3" rx="2"/>
+      <!-- 腰带 -->
+      <rect x="24" y="74" width="52" height="6" fill="#3a2a1a" stroke="#1a0f08" stroke-width="2"/>
+      <rect x="46" y="76" width="8" height="4" fill="#a08030" stroke="#1a0f08" stroke-width="1.5"/>
+      <!-- 粗壮的双臂 -->
+      <rect x="14" y="58" width="14" height="26" fill="#7a8a4a" stroke="#1a0f08" stroke-width="2.5" rx="3"/>
+      <rect x="72" y="58" width="14" height="26" fill="#7a8a4a" stroke="#1a0f08" stroke-width="2.5" rx="3"/>
+      <!-- 拳头 -->
+      <circle cx="21" cy="84" r="6" fill="#7a8a4a" stroke="#1a0f08" stroke-width="2.5"/>
+      <circle cx="79" cy="84" r="6" fill="#7a8a4a" stroke="#1a0f08" stroke-width="2.5"/>
+      <!-- 大头 -->
+      <ellipse cx="50" cy="38" rx="22" ry="20" fill="#7a8a4a" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 头顶角（双角） -->
+      <path d="M34 22 L30 12 L38 18 Z" fill="#ddc5a0" stroke="#1a0f08" stroke-width="2.5"/>
+      <path d="M66 22 L70 12 L62 18 Z" fill="#ddc5a0" stroke="#1a0f08" stroke-width="2.5"/>
+      <!-- 凹陷的眼 -->
+      <ellipse cx="42" cy="40" rx="3.5" ry="4" fill="#1a0f08"/>
+      <ellipse cx="58" cy="40" rx="3.5" ry="4" fill="#1a0f08"/>
+      <circle cx="42" cy="40" r="1.5" fill="#ffeb3b"/>
+      <circle cx="58" cy="40" r="1.5" fill="#ffeb3b"/>
+      <!-- 大鼻子 -->
+      <path d="M50 44 L46 52 L54 52 Z" fill="#5a6a30" stroke="#1a0f08" stroke-width="2"/>
+      <!-- 獠牙（向上） -->
+      <path d="M44 52 L42 60 L48 56 Z" fill="#fff" stroke="#1a0f08" stroke-width="1.5"/>
+      <path d="M56 52 L58 60 L52 56 Z" fill="#fff" stroke="#1a0f08" stroke-width="1.5"/>
+    </svg>`,
+
+  forest_queen: () => `
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <ellipse cx="50" cy="94" rx="24" ry="3" fill="#000" opacity=".5"/>
+      <!-- 绿色长袍 -->
+      <path d="M26 56 L24 90 L76 90 L74 56 Z" fill="#2d5a1f" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 金色腰带 -->
+      <rect x="24" y="68" width="52" height="7" fill="#ffd166" stroke="#1a0f08" stroke-width="2.5"/>
+      <!-- 腰带圣徽（叶子图案） -->
+      <path d="M50 78 Q44 80 44 86 Q50 84 50 78 Z" fill="#5cb85c" stroke="#1a0f08" stroke-width="2"/>
+      <path d="M50 78 Q56 80 56 86 Q50 84 50 78 Z" fill="#5cb85c" stroke="#1a0f08" stroke-width="2"/>
+      <!-- 双臂（深绿） -->
+      <rect x="18" y="58" width="10" height="22" fill="#3a6a2a" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <rect x="72" y="58" width="10" height="22" fill="#3a6a2a" stroke="#1a0f08" stroke-width="2.5" rx="2"/>
+      <!-- 法杖（藤蔓） -->
+      <line x1="14" y1="38" x2="14" y2="80" stroke="#3a2a1a" stroke-width="3"/>
+      <path d="M14 38 Q8 32 14 28 Q20 32 14 38 Z" fill="#5cb85c" stroke="#1a0f08" stroke-width="2.5"/>
+      <circle cx="14" cy="32" r="3" fill="#ffd166" stroke="#1a0f08" stroke-width="1.5"/>
+      <!-- 头 -->
+      <ellipse cx="50" cy="40" rx="20" ry="22" fill="#f5deb3" stroke="#1a0f08" stroke-width="3"/>
+      <!-- 长绿色头发 -->
+      <path d="M28 32 Q24 56 32 66 L36 60 L36 38 Z" fill="#2d5a1f" stroke="#1a0f08" stroke-width="2.5"/>
+      <path d="M72 32 Q76 56 68 66 L64 60 L64 38 Z" fill="#2d5a1f" stroke="#1a0f08" stroke-width="2.5"/>
+      <!-- 树叶王冠 -->
+      <path d="M30 18 Q40 8 50 12 Q60 8 70 18 L66 22 L60 16 L52 20 L40 16 L34 22 Z" 
+            fill="#5cb85c" stroke="#1a0f08" stroke-width="2.5"/>
+      <!-- 王冠中央宝石 -->
+      <circle cx="50" cy="14" r="3.5" fill="#ff6b6b" stroke="#1a0f08" stroke-width="2"/>
+      <!-- 绿色眼睛 -->
+      <ellipse cx="42" cy="42" rx="2.5" ry="3" fill="#5cb85c"/>
+      <ellipse cx="58" cy="42" rx="2.5" ry="3" fill="#5cb85c"/>
+      <ellipse cx="42" cy="42" rx="1.2" ry="1.8" fill="#1a0f08"/>
+      <ellipse cx="58" cy="42" rx="1.2" ry="1.8" fill="#1a0f08"/>
+      <!-- 颊红 -->
+      <ellipse cx="38" cy="48" rx="2.5" ry="1.5" fill="#ff9999" opacity=".6"/>
+      <ellipse cx="62" cy="48" rx="2.5" ry="1.5" fill="#ff9999" opacity=".6"/>
+      <!-- 唇 -->
+      <path d="M46 52 Q50 54 54 52" stroke="#c1272d" stroke-width="2" fill="none"/>
+    </svg>`,
+};
+
+// 角色数据
+const HEROES = [
+  { id:'pharaoh_boy',  name:'PHARAOH',  cn:'法老男孩',   role:'平衡型·新手',   hp:100, atk:1.0, locked:false,
+    desc:'平衡型英雄，HP 100，攻击力标准。法老的灵魂之子，掌握平衡之道。' },
+  { id:'pharaoh_girl', name:'NEFERTI',  cn:'法老女孩',   role:'防御型·辅助',   hp:130, atk:0.85, locked:false,
+    desc:'防御型英雄，HP 130，攻击力 -15%，但更耐打。适合稳扎稳打的玩家。' },
+  { id:'warrior_red',  name:'EMBER',    cn:'红衣勇士',   role:'攻击型·猛攻',   hp:80,  atk:1.25, locked:false,
+    desc:'攻击型英雄，HP 80，攻击力 +25%。一击制敌的高风险高回报选择。' },
+];
+
+// 敌人模板
+const ENEMIES = {
+  // Chapter 1
+  goblin:    { name:'GOBLIN',   cn:'哥布林',     hp:80,  atk:15, art:'goblin' },
+  goblin2:   { name:'WAR-GOBLIN',cn:'哥布林战士', hp:120, atk:18, art:'goblin' },
+  scarab:    { name:'SCARAB',   cn:'圣甲虫',     hp:100, atk:14, art:'scarab' },
+  mummy:     { name:'MUMMY',    cn:'木乃伊',     hp:140, atk:20, art:'mummy' },
+  boss:      { name:'PHARAOH-X',cn:'暗黑法老',   hp:200, atk:22, art:'pharaoh_boss' },
+  // Chapter 2
+  goblin_warrior: { name:'GOBLIN-WARRIOR', cn:'哥布林战士', hp:130, atk:18, art:'goblin_warrior' },
+  elf_mage:       { name:'ELF-MAGE',       cn:'精灵法师',   hp:110, atk:20, art:'elf_mage' },
+  troll:          { name:'TROLL',          cn:'森林巨魔',   hp:170, atk:22, art:'troll' },
+  forest_queen:   { name:'FOREST-QUEEN',   cn:'森林女王',   hp:240, atk:25, art:'forest_queen' },
+};
+
+// 关卡定义
+const STAGES = [
+  { id:1, name:'沙丘哨站',   en:'DUNE OUTPOST',     enemy:'goblin',   qNum:5 },
+  { id:2, name:'圣甲虫巢',   en:'SCARAB NEST',      enemy:'scarab',   qNum:6 },
+  { id:3, name:'遗迹回廊',   en:'RUIN CORRIDOR',    enemy:'goblin2',  qNum:6 },
+  { id:4, name:'秘宝祭坛',   en:'TREASURE ALTAR',   enemy:'mummy',    qNum:7 },
+  { id:5, name:'法老之墓',   en:'PHARAOH\'S TOMB',  enemy:'boss',     qNum:8, isBoss:true },
+];
+
+/* ==========================================================
+   v0.5 新增：章节系统
+   ========================================================== */
+// v0.7: 章节系统已升级为"单元"系统
+// 战斗关卡结构（固定5关，题库从外部动态加载）
+const BATTLE_STAGES = [
+  { id:1, name:'遗迹入口',  en:'DUNGEON I',   enemy:'goblin',  qNum:6 },
+  { id:2, name:'幽暗通道',  en:'DUNGEON II',  enemy:'scarab',  qNum:6 },
+  { id:3, name:'古老大厅',  en:'DUNGEON III', enemy:'goblin2', qNum:7 },
+  { id:4, name:'祭祀之间',  en:'DUNGEON IV',  enemy:'mummy',   qNum:7 },
+  { id:5, name:'BOSS决战',  en:'BOSS FINAL',  enemy:'boss',    qNum:9, isBoss:true },
+];
+
+// 当前选中的单元
+let currentUnit = null;    // { id, name, desc, pool }
+let unitList = [];         // 从 GitHub index.json 拉取的单元目录
+let githubBase = '';       // GitHub Pages 根路径（自动检测）
+
+// v0.7: 内嵌 Unit1 题库（作为离线备用 + 默认单元）
+const EMBEDDED_UNITS = {
+  '7B_Unit1': {"stage1": [{"type": "normal", "dmg": 10, "prompt": "选出 active 的中文意思", "q": "active", "ipa": "/ˈæktɪv/", "options": ["安静的", "懒惰的", "孤独的", "忙碌的；活跃的"], "correct": 3, "learn": {"word": "active", "ipa": "/ˈæktɪv/", "meaning": "adj. 忙碌的；活跃的", "example": "She is very active in school activities."}}, {"type": "normal", "dmg": 10, "prompt": "选出 bored 的中文意思", "q": "bored", "ipa": "/bɔːrd/", "options": ["开心的", "活跃的", "厌倦的；烦闷的", "严格的"], "correct": 2, "learn": {"word": "bored", "ipa": "/bɔːrd/", "meaning": "adj. 厌倦的；烦闷的（boring 指事物无聊，bored 指人感到无聊）", "example": "I felt bored because the class was too slow."}}, {"type": "normal", "dmg": 10, "prompt": "选出\"聪明的；机敏的\"的英文", "q": "聪明的；机敏的", "options": ["active", "strict", "smart", "bored"], "correct": 2, "learn": {"word": "smart", "ipa": "/smɑːrt/", "meaning": "adj. 聪明的；机敏的（= clever）", "example": "Tom is smart — he always finds a good way."}}, {"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "她很少用手机，总是专注于学习。", "options": ["She seldom use her smartphone and always focuses on study.", "She seldom uses her smartphone and always focuses on study.", "She seldom uses her smartphone and always focus on study.", "She seldom using her smartphone and always focuses on study."], "correct": 1, "learn": {"word": "seldom uses", "ipa": "", "meaning": "gram. 三单主语 She + seldom + 动词加 s", "example": "She seldom uses social media."}}, {"type": "crit", "dmg": 25, "prompt": "选出 bored 和 boring 的区别", "q": "The lesson was ___. I felt ___ after five minutes.", "options": ["bored / boring", "bored / bored", "boring / boring", "boring / bored"], "correct": 3, "learn": {"word": "boring / bored", "ipa": "", "meaning": "boring 描述事物（令人无聊），bored 描述人（感到无聊）", "example": "The film was boring. I was bored."}}, {"type": "normal", "dmg": 10, "prompt": "选出 seldom 的中文意思", "q": "seldom", "ipa": "/ˈseldəm/", "options": ["总是", "不常；很少", "经常", "从不"], "correct": 1, "learn": {"word": "seldom", "ipa": "/ˈseldəm/", "meaning": "adv. 不常；很少（= rarely）", "example": "He seldom watches TV — he prefers reading."}}, {"type": "crit", "dmg": 25, "prompt": "选出最合适的词", "q": "My grandfather ___ goes to the park. He goes almost every day.", "options": ["often", "never", "seldom", "bored"], "correct": 0, "learn": {"word": "often（语境）", "ipa": "", "meaning": "adv. 经常——「几乎每天」说明频率很高，用 often", "example": "He often goes to the park."}}, {"type": "crit", "dmg": 25, "prompt": "选出 strict 的正确搭配", "q": "Our teacher is ___ about being on time.", "options": ["strict", "be strict about", "strictly", "strict with"], "correct": 1, "learn": {"word": "be strict about", "ipa": "", "meaning": "phr. 对（某事）要求严格（about + 事情）", "example": "She is strict about homework quality."}}, {"type": "crit", "dmg": 25, "prompt": "选出 seldom 在句中的正确位置", "q": "She ___ eats fried food.", "options": ["seldomly", "is seldom", "seldom", "a seldom"], "correct": 2, "learn": {"word": "seldom（频率副词）", "ipa": "", "meaning": "gram. seldom 是频率副词，放在行为动词前", "example": "She seldom eats junk food."}}, {"type": "ulti", "dmg": 50, "prompt": "选出语法正确的句子", "q": "_____", "options": ["He is seldom late for school.", "He seldom is late for school.", "He is late seldom for school.", "Seldom he is late for school."], "correct": 0, "learn": {"word": "seldom + be 动词", "ipa": "", "meaning": "gram. seldom 在 be 动词后（is/are/was/were）", "example": "He is seldom late. She is seldom bored."}}, {"type": "normal", "dmg": 10, "prompt": "选出 cheerful 的中文意思", "q": "cheerful", "ipa": "/ˈtʃɪrfl/", "options": ["开朗的", "严格的", "烦闷的", "忙碌的"], "correct": 0, "learn": {"word": "cheerful", "ipa": "/ˈtʃɪrfl/", "meaning": "adj. 开朗的；高兴的", "example": "She is always cheerful and makes everyone happy."}}, {"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "他开朗、积极，从不感到无聊。", "options": ["He is cheerful, active and never feels boring.", "He is cheerful, active and never feel bored.", "He cheerful, active and never feels bored.", "He is cheerful, active and never feels bored."], "correct": 3, "learn": {"word": "feels bored", "ipa": "", "meaning": "gram. feel + 形容词；人感到无聊用 bored（不是 boring）", "example": "He never feels bored because he is always active."}}], "stage2": [{"type": "normal", "dmg": 10, "prompt": "选出 characteristic 的中文意思", "q": "characteristic", "ipa": "/ˌkærəktəˈrɪstɪk/", "options": ["话题", "特点；品质", "成员", "竞赛"], "correct": 1, "learn": {"word": "characteristic", "ipa": "/ˌkærəktəˈrɪstɪk/", "meaning": "n. 特点；品质（= feature）", "example": "Patience is one of her best characteristics."}}, {"type": "crit", "dmg": 25, "prompt": "选出 advice 的正确用法", "q": "Can you give me ___ advice?", "options": ["an", "some", "a", "many"], "correct": 1, "learn": {"word": "some advice", "ipa": "", "meaning": "gram. advice 是不可数名词，用 some/a piece of，不用 an/many", "example": "some advice, a piece of advice (NOT: an advice)"}}, {"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "我父亲在建筑工地工作，他很少早回家。", "options": ["My father works at a building site and seldom come home early.", "My father work at a building site and seldom comes home early.", "My father works at a building site and seldom comes home early.", "My father works at a building sites and seldom comes home early."], "correct": 2, "learn": {"word": "works / seldom comes", "ipa": "", "meaning": "gram. 三单主语用 works 和 comes；site 这里单数", "example": "He works at a site and seldom rests."}}, {"type": "normal", "dmg": 10, "prompt": "选出\"亲戚；亲属\"的英文", "q": "亲戚；亲属", "options": ["community", "topic", "personality", "relative"], "correct": 3, "learn": {"word": "relative", "ipa": "/ˈrelətɪv/", "meaning": "n. 亲戚；亲属", "example": "We visited our relatives during the holiday."}}, {"type": "normal", "dmg": 10, "prompt": "选出 competition 的中文意思", "q": "competition", "ipa": "/ˌkɒmpəˈtɪʃn/", "options": ["比赛；竞赛", "建议", "注意力", "社区"], "correct": 0, "learn": {"word": "competition", "ipa": "/ˌkɒmpəˈtɪʃn/", "meaning": "n. 比赛；竞赛", "example": "She won first place in the English competition."}}, {"type": "normal", "dmg": 10, "prompt": "选出 community 的中文意思", "q": "community", "ipa": "/kəˈmjuːnəti/", "options": ["学校", "社区", "家庭", "团队"], "correct": 1, "learn": {"word": "community", "ipa": "/kəˈmjuːnəti/", "meaning": "n. 社区；社会群体", "example": "She volunteers to help the local community."}}, {"type": "crit", "dmg": 25, "prompt": "选出最合适的词", "q": "She has a great ___ — she is kind, funny and generous.", "options": ["topic", "uniform", "competition", "personality"], "correct": 3, "learn": {"word": "personality（语境）", "ipa": "", "meaning": "n. 性格——列举了性格特点，所以填 personality", "example": "A great personality makes a great friend."}}, {"type": "normal", "dmg": 10, "prompt": "选出 site 的中文意思", "q": "site", "ipa": "/saɪt/", "options": ["淋浴", "超人", "网站", "建筑工地"], "correct": 3, "learn": {"word": "site", "ipa": "/saɪt/", "meaning": "n. 建筑工地；地点（website 网站）", "example": "My father works at a building site."}}, {"type": "normal", "dmg": 10, "prompt": "选出 personality 的中文意思", "q": "personality", "ipa": "/ˌpɜːrsəˈnæləti/", "options": ["性格；个性", "外貌", "话题", "特点"], "correct": 0, "learn": {"word": "personality", "ipa": "/ˌpɜːrsəˈnæləti/", "meaning": "n. 性格；个性", "example": "She has a warm and friendly personality."}}, {"type": "crit", "dmg": 25, "prompt": "选出 attention 的正确搭配", "q": "Please pay ___ to the teacher.", "options": ["attentions", "an attention", "attention", "the attentions"], "correct": 2, "learn": {"word": "pay attention to", "ipa": "", "meaning": "phr. 注意；专心（pay attention to 固定搭配）", "example": "Pay attention to the teacher in class."}}, {"type": "normal", "dmg": 10, "prompt": "选出 advice 的中文意思", "q": "advice", "ipa": "/ədˈvaɪs/", "options": ["建议", "广告", "竞赛", "话题"], "correct": 0, "learn": {"word": "advice", "ipa": "/ədˈvaɪs/", "meaning": "n. 建议（不可数！不说 an advice / advices）", "example": "She gave me some useful advice."}}, {"type": "normal", "dmg": 10, "prompt": "选出 uniform 的中文意思", "q": "uniform", "ipa": "/ˈjuːnɪfɔːrm/", "options": ["特点", "个性", "制服；校服", "话题"], "correct": 2, "learn": {"word": "uniform", "ipa": "/ˈjuːnɪfɔːrm/", "meaning": "n. 制服；校服", "example": "We wear a school uniform every day."}}], "stage3": [{"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "无论你在哪里，我都会鼓励你。", "options": ["Wherever you are, I will encouraging you.", "Wherever you are, I will encourage you.", "Wherever are you, I will encourage you.", "Wherever you are, I encourage you will."], "correct": 1, "learn": {"word": "wherever + 主从句", "ipa": "", "meaning": "gram. wherever 引导地点状语从句，主句正常语序", "example": "Wherever you go, I'll support you."}}, {"type": "normal", "dmg": 10, "prompt": "选出 medical 的中文意思", "q": "medical", "ipa": "/ˈmedɪkl/", "options": ["音乐的", "数学的", "医学的；医疗的", "科技的"], "correct": 2, "learn": {"word": "medical", "ipa": "/ˈmedɪkl/", "meaning": "adj. 医学的；医疗的（medicine n. 医学）", "example": "She wants to have a medical career."}}, {"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "我爷爷退休后，很快就开始在社区做志愿者。", "options": ["After my grandfather retired, he soon started volunteering in the community.", "After my grandfather retire, he soon started volunteering in the community.", "After my grandfather retired, he soon start volunteering in the community.", "After my grandfather retired, he soon started volunteer in the community."], "correct": 0, "learn": {"word": "retired / started volunteering", "ipa": "", "meaning": "gram. 从句过去时 retired；start + V-ing 表开始做", "example": "After he retired, he started volunteering."}}, {"type": "crit", "dmg": 25, "prompt": "选出最合适的词", "q": "You should use your smartphone ___, not just for games.", "options": ["seldom", "bored", "wisely", "narrow"], "correct": 2, "learn": {"word": "wisely（语境）", "ipa": "", "meaning": "adv. 明智地——手机要用得明智，不能只玩游戏", "example": "Use your time wisely."}}, {"type": "normal", "dmg": 10, "prompt": "选出 retire 的中文意思", "q": "retire", "ipa": "/rɪˈtaɪər/", "options": ["工作", "升职", "辞职", "退休"], "correct": 3, "learn": {"word": "retire", "ipa": "/rɪˈtaɪər/", "meaning": "v.（令）退休；退职", "example": "My grandfather retired at the age of 60."}}, {"type": "normal", "dmg": 10, "prompt": "选出\"在线的\"的英文", "q": "在线的", "options": ["active", "smart", "online", "medical"], "correct": 2, "learn": {"word": "online", "ipa": "/ˌɒnˈlaɪn/", "meaning": "adj. 在线的　adv. 在线地", "example": "We have online classes when it rains heavily."}}, {"type": "normal", "dmg": 10, "prompt": "选出 encourage 的中文意思", "q": "encourage", "ipa": "/ɪnˈkɜːrɪdʒ/", "options": ["要求", "建议", "退休", "鼓励；激励"], "correct": 3, "learn": {"word": "encourage", "ipa": "/ɪnˈkɜːrɪdʒ/", "meaning": "v. 鼓励；激励", "example": "My teacher encourages me to speak English every day."}}, {"type": "crit", "dmg": 25, "prompt": "选出 encourage 的正确形式", "q": "My mum always ___ me to read more books.", "options": ["encourage", "encourages", "encouraging", "encouraged"], "correct": 1, "learn": {"word": "encourages（三单）", "ipa": "", "meaning": "gram. 主语 My mum 是三单，动词加 -es", "example": "She encourages me every day."}}, {"type": "normal", "dmg": 10, "prompt": "选出 wisely 的中文意思", "q": "wisely", "ipa": "/ˈwaɪzli/", "options": ["勇敢地", "活跃地", "严格地", "聪明地；明智地"], "correct": 3, "learn": {"word": "wisely", "ipa": "/ˈwaɪzli/", "meaning": "adv. 聪明地；明智地（wise adj. 明智的 + ly）", "example": "She used her time wisely and finished early."}}, {"type": "normal", "dmg": 10, "prompt": "选出 narrow 的中文意思", "q": "narrow", "ipa": "/ˈnærəʊ/", "options": ["狭窄的；窄小的", "长的", "宽阔的", "高大的"], "correct": 0, "learn": {"word": "narrow", "ipa": "/ˈnærəʊ/", "meaning": "adj. 狭窄的；窄小的（反义 wide 宽的）", "example": "The road near the site is very narrow."}}, {"type": "crit", "dmg": 25, "prompt": "选出 wherever 的中文意思", "q": "wherever", "ipa": "/weərˈevər/", "options": ["无论何时", "无论何地；各处", "无论如何", "无论谁"], "correct": 1, "learn": {"word": "wherever", "ipa": "/weərˈevər/", "meaning": "conj. 无论在哪里；各处", "example": "Wherever you go, I will support you."}}, {"type": "normal", "dmg": 10, "prompt": "选出 shower 在句中的意思", "q": "I always take a shower before school.", "options": ["淋浴", "阵雨", "超人", "竞赛"], "correct": 0, "learn": {"word": "shower", "ipa": "/ˈʃaʊər/", "meaning": "n. 淋浴（take a shower 洗澡）　也指阵雨", "example": "I take a shower every morning."}}], "stage4": [{"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "在未来，我想成为一名医生，帮助社区里的人。", "options": ["In the future, I want to be doctor and help people in the community.", "In future, I want to be a doctor and help people in the community.", "In the future, I want to be a doctor and help people in the community.", "In the future, I want to be a doctor and helping people in the community."], "correct": 2, "learn": {"word": "in the future（the 不能省）", "ipa": "", "meaning": "gram. 固定表达 in the future，the 不可省略", "example": "In the future, robots may do our work."}}, {"type": "crit", "dmg": 25, "prompt": "选出 used to 的正确用法", "q": "My dad ___ smoke, but he stopped five years ago.", "options": ["is used to", "use to", "used to", "was used to"], "correct": 2, "learn": {"word": "used to + 动词原形", "ipa": "", "meaning": "gram. used to 后接动词原形（不是 V-ing）", "example": "He used to smoke. She used to live here."}}, {"type": "crit", "dmg": 25, "prompt": "选出 give up 的中文意思", "q": "give up", "options": ["坚持", "放弃；认输", "鼓励", "支持"], "correct": 1, "learn": {"word": "give up", "ipa": "", "meaning": "phr. 放弃；认输（give up + V-ing 放弃做某事）", "example": "Never give up your dreams!"}}, {"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "我父母对我用手机很担心，所以他们对此很严格。", "options": ["My parents worried about my smartphone use, so they strict about it.", "My parents are worried about my smartphone use, so they are strict with it.", "My parents are worried about my smartphone use, so they are strict about it.", "My parents are worry about my smartphone use, so they are strict about it."], "correct": 2, "learn": {"word": "are worried about / are strict about", "ipa": "", "meaning": "gram. 两个 be + 形容词结构平行；about 不换成 with", "example": "They are worried about it and strict about it."}}, {"type": "crit", "dmg": 25, "prompt": "选出 give up 的正确形式", "q": "She decided to ___ playing video games.", "options": ["give up", "give up to", "giving up", "gave up to"], "correct": 0, "learn": {"word": "give up + V-ing", "ipa": "", "meaning": "gram. give up 后接动名词（V-ing），不接 to do", "example": "She gave up playing games. He gave up smoking."}}, {"type": "crit", "dmg": 25, "prompt": "选出正确的介词", "q": "My parents are always ___ my health.", "options": ["worried for", "worried about", "be worried about", "worry about"], "correct": 1, "learn": {"word": "be worried about", "ipa": "", "meaning": "phr. 担心……（worried 是形容词，前加 be 动词）", "example": "She is worried about the exam."}}, {"type": "crit", "dmg": 25, "prompt": "选出 used to 的中文意思", "q": "used to", "ipa": "", "options": ["习惯于", "曾经（过去常做）", "用来", "被使用"], "correct": 1, "learn": {"word": "used to + 动词原形", "ipa": "", "meaning": "phr. 曾经（表示过去的习惯，现在已改变）", "example": "I used to be shy, but now I'm confident."}}, {"type": "crit", "dmg": 25, "prompt": "选出最合适的词", "q": "My teacher is very ___ about our handwriting.", "options": ["strict", "seldom", "worried", "bored"], "correct": 0, "learn": {"word": "be strict about", "ipa": "", "meaning": "phr. 对……严格（strict 后接 about + 名词/V-ing）", "example": "She is strict about punctuality."}}, {"type": "ulti", "dmg": 50, "prompt": "选出语法正确的句子", "q": "_____", "options": ["I used to afraid of speaking English.", "I was used to afraid of speaking English.", "I am used to afraid of speaking English.", "I used to be afraid of speaking English."], "correct": 3, "learn": {"word": "used to be", "ipa": "", "meaning": "gram. used to + be（形容词做表语时需要 be）", "example": "I used to be shy. She used to be active."}}, {"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "他过去很少锻炼，但现在他每天都去健身房。", "options": ["He used to seldom exercise, but now he go to the gym every day.", "He use to seldom exercise, but now he goes to the gym every day.", "He used to seldom exercised, but now he goes to the gym every day.", "He used to seldom exercise, but now he goes to the gym every day."], "correct": 3, "learn": {"word": "used to + 动词原形", "ipa": "", "meaning": "gram. used to 后接动词原形（exercise，不是 exercised）", "example": "He used to seldom exercise."}}, {"type": "crit", "dmg": 25, "prompt": "选出 in the future 的中文意思", "q": "in the future", "options": ["在过去", "在现在", "最近", "在未来"], "correct": 3, "learn": {"word": "in the future", "ipa": "", "meaning": "phr. 在未来；将来（表示将来时间）", "example": "I want to be a doctor in the future."}}, {"type": "crit", "dmg": 25, "prompt": "选出 used to 的否定形式", "q": "He ___ like vegetables when he was young.", "options": ["didn't use to", "used to not", "didn't used to", "not used to"], "correct": 0, "learn": {"word": "didn't use to", "ipa": "", "meaning": "gram. used to 否定：didn't use to + 动词原形（use 不加 d）", "example": "He didn't use to like vegetables."}}], "stage5": [{"type": "ulti", "dmg": 60, "prompt": "选出最佳翻译", "q": "他曾经对学英语不感兴趣，但现在他在比赛中表现很聪明。", "options": ["He used to be uninterested in English, but now he performs wisely in competitions.", "He used to uninterested in English, but now he performs wisely in competitions.", "He used to be uninterested in English, but now he perform wisely in competitions.", "He used to be uninterested in English, but now he performs wise in competitions."], "correct": 0, "learn": {"word": "used to be / performs wisely", "ipa": "", "meaning": "gram. used to be（形容词前加 be）；perform + adv. 副词修饰动词", "example": "He used to be shy but now performs confidently."}}, {"type": "crit", "dmg": 30, "prompt": "选出 topic 的中文意思", "q": "topic", "ipa": "/ˈtɒpɪk/", "options": ["性格", "段落", "话题；标题", "特点"], "correct": 2, "learn": {"word": "topic", "ipa": "/ˈtɒpɪk/", "meaning": "n. 话题；标题", "example": "The topic of today's class is personality."}}, {"type": "ulti", "dmg": 60, "prompt": "选出最佳翻译", "q": "无论你身在何处，都不应该放弃。", "options": ["Wherever you are, you shouldn't give up.", "Wherever you are, you shouldn't give up to.", "Wherever are you, you shouldn't give up.", "Wherever you are, you shouldn't giving up."], "correct": 0, "learn": {"word": "wherever / give up", "ipa": "", "meaning": "gram. wherever 引导从句，主句正常；give up 后不加 to", "example": "Wherever you are, never give up."}}, {"type": "crit", "dmg": 30, "prompt": "选出 be worried about 的正确形式", "q": "Why ___ you worried about the competition?", "options": ["do", "are", "is", "were"], "correct": 1, "learn": {"word": "be worried about（疑问句）", "ipa": "", "meaning": "gram. worried 是形容词，疑问句用 be 动词（are/is/was）提前", "example": "Are you worried about the exam?"}}, {"type": "ulti", "dmg": 60, "prompt": "选出最佳翻译", "q": "我的父亲在建筑工地上认真工作，他用智慧和努力养活了整个家庭。", "options": ["My father works hard at the building site and support the whole family with wisdom and hard work.", "My father work hard at the building site and supports the whole family with wisdom and hard work.", "My father works hard at building site and supports the whole family with wisdom and hard work.", "My father works hard at the building site and supports the whole family with wisdom and hard work."], "correct": 3, "learn": {"word": "works / the building site / supports", "ipa": "", "meaning": "gram. 三单用 works 和 supports；the 不可省略", "example": "He works at the site and supports us all."}}, {"type": "crit", "dmg": 30, "prompt": "选出最合适的词", "q": "She ___ eats fried food — she prefers healthy meals.", "options": ["always", "often", "never", "seldom"], "correct": 3, "learn": {"word": "seldom（语境）", "ipa": "", "meaning": "adv. 很少——她喜欢健康饮食，所以很少吃炸食", "example": "She seldom eats fried food."}}, {"type": "crit", "dmg": 30, "prompt": "选出 smart 的派生词关系", "q": "She acted very ___ in the competition.", "options": ["smart", "smarts", "smartness", "smartly"], "correct": 3, "learn": {"word": "smartly（副词）", "ipa": "", "meaning": "gram. 修饰动词 acted 用副词 smartly（smart + ly）", "example": "She acted smartly and won first place."}}, {"type": "crit", "dmg": 30, "prompt": "选出 advice 的正确用法（数量表达）", "q": "My teacher gave me two ___ of advice.", "options": ["pieces of", "pieces", "advices", "piece"], "correct": 0, "learn": {"word": "pieces of advice", "ipa": "", "meaning": "gram. advice 不可数，数量用 a piece of / two pieces of", "example": "She gave me two pieces of useful advice."}}, {"type": "crit", "dmg": 30, "prompt": "选出最合适的词", "q": "She has a lot of great ___, like being kind and honest.", "options": ["personality", "characteristics", "topics", "attentions"], "correct": 1, "learn": {"word": "characteristics（复数）", "ipa": "", "meaning": "n. 特点；品质（这里列举多个，用复数）", "example": "Kindness and honesty are great characteristics."}}, {"type": "ulti", "dmg": 60, "prompt": "选出最佳翻译", "q": "她过去很害羞，但现在她活跃，而且经常参加比赛。", "options": ["She used to be shy, but now she active and often joins competitions.", "She used to shy, but now she is active and often joins competitions.", "She used to be shy, but now she is active and often joins competitions.", "She used to be shy, but now she is active and often join competitions."], "correct": 2, "learn": {"word": "used to be / is active / joins", "ipa": "", "meaning": "gram. 三个时态：used to be（过去），is（现在），joins（三单）", "example": "She used to be shy but now she is confident."}}, {"type": "ulti", "dmg": 60, "prompt": "选出最佳翻译", "q": "我们应该聪明地使用智能手机，而不是整天刷社交媒体。", "options": ["We should wisely use smartphones, not spend all day on social media.", "We should use smartphones wisely, not spending all day on social media.", "We should use smartphones wisely, not spend all day on social media.", "We should use smartphones wisely, not to spend all day on social media."], "correct": 2, "learn": {"word": "not spend（平行结构）", "ipa": "", "meaning": "gram. not + 动词原形（与 use 平行；not to do 不用在此）", "example": "Use time wisely, not waste it."}}, {"type": "crit", "dmg": 30, "prompt": "选出 future 的正确用法", "q": "___ the future, she wants to work in a medical field.", "options": ["At", "In", "On", "For"], "correct": 1, "learn": {"word": "in the future", "ipa": "", "meaning": "gram. 表达将来时间用 in the future（不用 at/on/for）", "example": "In the future, I hope to help the community."}}]},
+  '7B_Unit2': {"stage1": [{"type": "crit", "dmg": 25, "prompt": "选出 perfect 的正确用法", "q": "The weather was ___ for sightseeing.", "options": ["perfectness", "perfectly", "perfection", "perfect"], "correct": 3, "learn": {"word": "perfect（形容词）", "ipa": "/ˈpɜːfɪkt/", "meaning": "adj. 正合适的；完美的（修饰名词用形容词，不用副词）", "example": "It was a perfect day for a trip."}}, {"type": "normal", "dmg": 10, "prompt": "选出\"海岸；海滨\"的英文", "q": "海岸；海滨", "options": ["range", "wild", "coast", "volcano"], "correct": 2, "learn": {"word": "coast", "ipa": "/kəʊst/", "meaning": "n. 海岸；海滨", "example": "We drove along the coast for hours."}}, {"type": "normal", "dmg": 10, "prompt": "选出 unique 的中文意思", "q": "unique", "ipa": "/juːˈniːk/", "options": ["普通的", "常见的", "独特的；罕见的", "危险的"], "correct": 2, "learn": {"word": "unique", "ipa": "/juːˈniːk/", "meaning": "adj. 独特的；罕见的（只有一个，无法比较）", "example": "Every person is unique."}}, {"type": "crit", "dmg": 25, "prompt": "选出最合适的词", "q": "She loves coffee. Let's find a nice ___ nearby.", "options": ["coast", "café", "lift", "stair"], "correct": 1, "learn": {"word": "café", "ipa": "/ˈkæfeɪ/", "meaning": "n. 咖啡馆；小餐馆（法语词，注意重音在后）", "example": "Let's have a rest in that café."}}, {"type": "crit", "dmg": 25, "prompt": "选出最合适的词", "q": "The giant panda is ___ to China — you can only find it there.", "options": ["perfect", "huge", "excellent", "unique"], "correct": 3, "learn": {"word": "unique to", "ipa": "", "meaning": "phr. 独属于……（unique to + 地点/人）", "example": "The giant panda is unique to China."}}, {"type": "normal", "dmg": 10, "prompt": "选出 rich 的中文意思", "q": "rich", "ipa": "/rɪtʃ/", "options": ["贫穷的", "丰富多彩的；富有的", "简单的", "普通的"], "correct": 1, "learn": {"word": "rich", "ipa": "/rɪtʃ/", "meaning": "adj. 丰富多彩的；富有的（反义 poor）", "example": "China has a rich culture and history."}}, {"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "这片海岸独特而美丽，是游览的绝佳之地。", "options": ["This coast is unique and beautiful, and is a perfect place for sightseeing.", "This coast is unique and beautiful, and is a perfectly place for sightseeing.", "This coast unique and beautiful, and is a perfect place for sightseeing.", "This coast is unique and beautiful, and is perfect places for sightseeing."], "correct": 0, "learn": {"word": "unique / perfect / sightseeing", "ipa": "", "meaning": "gram. is a perfect place（冠词+形容词+名词）；place 单数", "example": "It is a perfect place for sightseeing."}}, {"type": "normal", "dmg": 10, "prompt": "选出 huge 的中文意思", "q": "huge", "ipa": "/hjuːdʒ/", "options": ["微小的", "巨大的；极多的", "普通的", "危险的"], "correct": 1, "learn": {"word": "huge", "ipa": "/hjuːdʒ/", "meaning": "adj. 巨大的；极多的（= very big）", "example": "The volcano was huge and scary."}}, {"type": "normal", "dmg": 10, "prompt": "选出 wild 的中文意思", "q": "wild", "ipa": "/waɪld/", "options": ["驯服的", "安全的", "野生的；野的　n.自然环境", "城市的"], "correct": 2, "learn": {"word": "wild", "ipa": "/waɪld/", "meaning": "adj. 野生的；野的　n. 自然环境；野生状态", "example": "Wild animals should live in the wild."}}, {"type": "crit", "dmg": 25, "prompt": "选出 excellent 的反义词", "q": "excellent ↔ ___", "options": ["terrible", "perfect", "good", "unique"], "correct": 0, "learn": {"word": "excellent / terrible", "ipa": "", "meaning": "adj. 极好的 / 极差的（一对反义词）", "example": "The food was excellent, but the service was terrible."}}, {"type": "normal", "dmg": 10, "prompt": "选出 excellent 的中文意思", "q": "excellent", "ipa": "/ˈeksələnt/", "options": ["优秀的；极好的", "良好的", "一般的", "完美的"], "correct": 0, "learn": {"word": "excellent", "ipa": "/ˈeksələnt/", "meaning": "adj. 优秀的；极好的（比 good 语气更强）", "example": "The food at this café is excellent!"}}, {"type": "ulti", "dmg": 50, "prompt": "选出语法正确的句子", "q": "_____", "options": ["The view from the coast are hugely beautiful.", "The views from the coast are huge beautiful.", "The view from the coast is huge beautiful.", "The view from the coast is hugely beautiful."], "correct": 3, "learn": {"word": "hugely（副词修饰形容词）", "ipa": "", "meaning": "gram. huge 是形容词，修饰动词/形容词要用副词 hugely", "example": "The scenery is hugely beautiful."}}], "stage2": [{"type": "crit", "dmg": 25, "prompt": "选出正确的搭配", "q": "We went ___ in Beijing and visited the Great Wall.", "options": ["sightsee", "sightseeing", "go sightseeing", "to sightseeing"], "correct": 1, "learn": {"word": "go sightseeing", "ipa": "", "meaning": "phr. 去观光（go + V-ing 表示去做某活动）", "example": "We went sightseeing in the old town."}}, {"type": "normal", "dmg": 10, "prompt": "选出 imagine 的中文意思", "q": "imagine", "ipa": "/ɪˈmædʒɪm/", "options": ["计划", "想象；设想", "记住", "描述"], "correct": 1, "learn": {"word": "imagine", "ipa": "/ɪˈmædʒɪm/", "meaning": "v. 想象；设想（imagination n. 想象力）", "example": "Imagine standing on top of a volcano!"}}, {"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "那座山脉绵延数百公里，景色壮观。", "options": ["The mountain range stretches hundreds of kilometres and the scenery is magnificent.", "The mountain range stretch for hundreds of kilometres and the scenery is magnificent.", "The mountain range stretches for hundreds of kilometres and the scenery is magnificent.", "The mountain range is stretching for hundreds kilometres and the scenery is magnificent."], "correct": 2, "learn": {"word": "stretches for + 距离", "ipa": "", "meaning": "gram. stretch for + 数字 + 单位（绵延多远，介词 for 不可省）", "example": "The road stretches for 500 kilometres."}}, {"type": "normal", "dmg": 10, "prompt": "选出 receive 的中文意思", "q": "receive", "ipa": "/rɪˈsiːv/", "options": ["发送", "拒绝", "失去", "接待；招待；收到"], "correct": 3, "learn": {"word": "receive", "ipa": "/rɪˈsiːv/", "meaning": "v. 接待；招待；收到", "example": "The hotel received us warmly."}}, {"type": "normal", "dmg": 10, "prompt": "选出 match 的中文意思", "q": "match", "ipa": "/mætʃ/", "options": ["配对；相配", "断开", "竞争", "失败"], "correct": 0, "learn": {"word": "match", "ipa": "/mætʃ/", "meaning": "v. 配对；相配　n. 比赛；火柴", "example": "The colour of the shirt matches your eyes."}}, {"type": "crit", "dmg": 25, "prompt": "选出 imagine 的正确搭配", "q": "I can't ___ living without music.", "options": ["imagine", "imagine living", "imagine to live", "imagining"], "correct": 1, "learn": {"word": "imagine + V-ing", "ipa": "", "meaning": "gram. imagine 后接动名词（V-ing），不接 to do", "example": "I can't imagine living without music."}}, {"type": "crit", "dmg": 25, "prompt": "选出 lie 的过去式（位于）", "q": "The ancient city ___ near the river.", "options": ["lied", "laid", "lain", "lay"], "correct": 3, "learn": {"word": "lie / lay / lain（位于）", "ipa": "", "meaning": "gram. 表\"位于\"的 lie 过去式是 lay（不规则）", "example": "The ancient city lay near the river."}}, {"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "很难想象没有网络的生活。", "options": ["It's hard imagining live without the Internet.", "It's hard to imagine live without the Internet.", "It's hard to imagine to live without the Internet.", "It's hard to imagine living without the Internet."], "correct": 3, "learn": {"word": "imagine + V-ing", "ipa": "", "meaning": "gram. imagine 后必须接 V-ing；it's hard to do 固定句型", "example": "It's hard to imagine living without electricity."}}, {"type": "crit", "dmg": 25, "prompt": "选出 stretch 的中文意思", "q": "stretch", "ipa": "/stretʃ/", "options": ["延伸；绵延", "缩短", "弯曲", "消失"], "correct": 0, "learn": {"word": "stretch", "ipa": "/stretʃ/", "meaning": "v. 延伸；绵延（描述地形连续延展）", "example": "The mountains stretch for hundreds of kilometres."}}, {"type": "crit", "dmg": 25, "prompt": "选出最合适的词", "q": "Scientists ___ that the species had been living there for thousands of years.", "options": ["imagined", "received", "discovered", "matched"], "correct": 2, "learn": {"word": "discovered（语境）", "ipa": "", "meaning": "v. 发现——科学家研究后得出结论，用 discovered", "example": "Scientists discovered that pandas eat mostly bamboo."}}, {"type": "normal", "dmg": 10, "prompt": "选出 discover 的中文意思", "q": "discover", "ipa": "/dɪˈskʌvər/", "options": ["发现；了解到", "隐藏", "发明", "忘记"], "correct": 0, "learn": {"word": "discover", "ipa": "/dɪˈskʌvər/", "meaning": "v. 发现；了解到（discover 是偶然发现，invent 是发明）", "example": "We discovered a beautiful waterfall on our trip."}}, {"type": "normal", "dmg": 10, "prompt": "选出 lie 在句中的意思", "q": "The village lies between two mountains.", "options": ["说谎", "躺下", "位于；坐落在", "消失"], "correct": 2, "learn": {"word": "lie", "ipa": "/laɪ/", "meaning": "v. 位于；坐落在（lie-lay-lain）　也可指说谎、躺下", "example": "The city lies on the coast."}}], "stage3": [{"type": "crit", "dmg": 25, "prompt": "选出 department store 的中文意思", "q": "department store", "options": ["便利店", "百货商店", "超市", "书店"], "correct": 1, "learn": {"word": "department store", "ipa": "", "meaning": "n. 百货商店（department 部门 + store 商店）", "example": "You can buy almost anything in a department store."}}, {"type": "crit", "dmg": 25, "prompt": "选出正确的搭配", "q": "What's your home ___? I need to send you a letter.", "options": ["destination", "government", "address", "range"], "correct": 2, "learn": {"word": "address", "ipa": "/əˈdres/", "meaning": "n. 住址；地址（home address 家庭住址）", "example": "Please write your full address here."}}, {"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "我们的目的地是云南，那里有独特的自然风光。", "options": ["Our destination is Yunnan, which has unique natural scenery.", "Our destination is Yunnan, that has unique natural scenery.", "Our destination is Yunnan, which have unique natural scenery.", "Our destination Yunnan, which has unique natural scenery."], "correct": 0, "learn": {"word": "which（定语从句）", "ipa": "", "meaning": "gram. which 引导非限制性定语从句，补充说明前面的名词", "example": "We visited Yunnan, which has unique scenery."}}, {"type": "crit", "dmg": 25, "prompt": "选出 volcano 的正确复数", "q": "volcano → ___", "options": ["volcanos", "volcano's", "volcanoes", "volcanes"], "correct": 2, "learn": {"word": "volcanoes", "ipa": "", "meaning": "gram. 以 o 结尾且有生命感的名词加 -es（volcanoes, heroes, potatoes）", "example": "There are many active volcanoes in Japan."}}, {"type": "normal", "dmg": 10, "prompt": "选出\"政府\"的英文", "q": "政府", "options": ["department", "destination", "address", "government"], "correct": 3, "learn": {"word": "government", "ipa": "/ˈɡʌvənmənt/", "meaning": "n. 政府", "example": "The government set up a nature reserve to protect pandas."}}, {"type": "crit", "dmg": 25, "prompt": "选出最合适的词", "q": "In winter, people in the snowy north use ___ to travel across the ice.", "options": ["motorcycle", "lift", "snowmobile", "stair"], "correct": 2, "learn": {"word": "snowmobile", "ipa": "/ˈsnəʊməbiːl/", "meaning": "n. 雪地机动车（snow+mobile，雪地专用交通工具）", "example": "We took a snowmobile across the frozen lake."}}, {"type": "normal", "dmg": 10, "prompt": "选出 destination 的中文意思", "q": "destination", "ipa": "/ˌdestrˈneɪʃn/", "options": ["出发地", "途中", "方向", "终点；目的地"], "correct": 3, "learn": {"word": "destination", "ipa": "/ˌdestrˈneɪʃn/", "meaning": "n. 终点；目的地", "example": "Our destination is Yunnan province."}}, {"type": "normal", "dmg": 10, "prompt": "选出 endangered 的中文意思", "q": "endangered", "ipa": "/ɪnˈdeɪndʒəd/", "options": ["受保护的", "濒危的", "普通的", "野生的"], "correct": 1, "learn": {"word": "endangered", "ipa": "/ɪnˈdeɪndʒəd/", "meaning": "adj. 濒危的（endanger v. 使危险 + ed）", "example": "The giant panda is an endangered animal."}}, {"type": "normal", "dmg": 10, "prompt": "选出 range 的中文意思", "q": "range", "ipa": "/reɪndʒ/", "options": ["火山", "湖泊", "平原", "山脉"], "correct": 3, "learn": {"word": "range", "ipa": "/reɪndʒ/", "meaning": "n. 山脉；范围（mountain range 山脉）", "example": "The Himalayas is the highest mountain range in the world."}}, {"type": "normal", "dmg": 10, "prompt": "选出 wolf 的中文意思", "q": "wolf", "ipa": "/wʊlf/", "options": ["狼", "熊", "狐狸", "老虎"], "correct": 0, "learn": {"word": "wolf", "ipa": "/wʊlf/", "meaning": "n. 狼（复数 wolves）", "example": "Golden monkeys and wolves both live in the wild."}}, {"type": "normal", "dmg": 10, "prompt": "选出 volcano 的中文意思", "q": "volcano", "ipa": "/vɒlˈkeɪməʊ/", "options": ["山脉", "火山", "沙漠", "海岛"], "correct": 1, "learn": {"word": "volcano", "ipa": "/vɒlˈkeɪməʊ/", "meaning": "n. 火山（复数 volcanoes）", "example": "Hawaii has several active volcanoes."}}, {"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "政府建立了自然保护区来保护濒危动物。", "options": ["The government set up a nature reserve to protect endangered animals.", "The government set up a nature reserve to protect endangering animals.", "The government sets up nature reserve to protect endangered animals.", "The government set up a nature reserve for protect endangered animals."], "correct": 0, "learn": {"word": "set up / to protect / endangered", "ipa": "", "meaning": "gram. set up 建立（过去时）；to protect 目的状语；protect + 宾语", "example": "They set up a reserve to protect endangered animals."}}], "stage4": [{"type": "crit", "dmg": 25, "prompt": "选出 all year round 的中文意思", "q": "all year round", "options": ["每年一次", "一年一半", "全年；一年到头", "仅在夏天"], "correct": 2, "learn": {"word": "all year round", "ipa": "", "meaning": "phr. 全年；一年到头（round = around，强调持续不断）", "example": "Sanya has warm weather all year round."}}, {"type": "normal", "dmg": 10, "prompt": "选出 mostly 的中文意思", "q": "mostly", "ipa": "/ˈməʊstli/", "options": ["从不", "很少", "主要地；通常", "总是"], "correct": 2, "learn": {"word": "mostly", "ipa": "/ˈməʊstli/", "meaning": "adv. 主要地；通常（= mainly）", "example": "Giant pandas eat mostly bamboo."}}, {"type": "crit", "dmg": 25, "prompt": "选出 prefer to 的正确用法", "q": "I ___ travel by train than by plane.", "options": ["prefer", "prefer to", "prefer to travel", "prefer travelling"], "correct": 1, "learn": {"word": "prefer to do rather than do", "ipa": "", "meaning": "phr. 更喜欢做A而不是B（prefer to A rather than B）", "example": "I prefer to travel by train rather than by plane."}}, {"type": "crit", "dmg": 25, "prompt": "选出 remain 的正确用法", "q": "The number of wild pandas ___ very small.", "options": ["remaining", "remain", "remains", "remained"], "correct": 2, "learn": {"word": "remains（三单）", "ipa": "", "meaning": "gram. 主语 The number（单数）用三单 remains；remain + 形容词", "example": "The number of wild pandas remains very small."}}, {"type": "crit", "dmg": 25, "prompt": "选出 by hand 的中文意思", "q": "by hand", "options": ["用手工", "用机器", "亲自", "手动关闭"], "correct": 0, "learn": {"word": "by hand", "ipa": "", "meaning": "phr. 用手工（不用机器，强调手工制作）", "example": "This bag was made by hand, not by machine."}}, {"type": "crit", "dmg": 25, "prompt": "选出正确的搭配", "q": "Let's ___ in the mountains this weekend.", "options": ["go to hike", "go hiking", "go hike", "hiking go"], "correct": 1, "learn": {"word": "go hiking", "ipa": "", "meaning": "phr. 去远足（go + V-ing 表示进行某种活动）", "example": "We go hiking every weekend."}}, {"type": "crit", "dmg": 25, "prompt": "选出正确的搭配", "q": "We're going ___ a trip to Sichuan next month.", "options": ["to", "on", "in", "for"], "correct": 1, "learn": {"word": "go on a trip", "ipa": "", "meaning": "phr. 去旅行（固定搭配，on 不能换成 to/in/for）", "example": "We go on a trip every summer holiday."}}, {"type": "crit", "dmg": 25, "prompt": "选出 set up 的中文意思", "q": "set up", "options": ["建立；创立", "拆除", "找到", "打扫"], "correct": 0, "learn": {"word": "set up", "ipa": "", "meaning": "phr. 建立；创立（set up a school/company/reserve）", "example": "They set up a nature reserve for giant pandas."}}, {"type": "normal", "dmg": 10, "prompt": "选出 key 在句中的词性和意思", "q": "Water is a key resource for all living things.", "options": ["n. 钥匙", "adv. 关键地", "v. 输入", "adj. 主要的；关键的"], "correct": 3, "learn": {"word": "key（形容词）", "ipa": "/kiː/", "meaning": "adj. 主要的；关键的（key 既可作名词也可作形容词）", "example": "Tourism is a key industry in this area."}}, {"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "这件衬衫是手工制作的，是这家商店的主打产品。", "options": ["This shirt made by hand and is a key product of the shop.", "This shirt was make by hand and is a key product of the shop.", "This shirt was made by hand and is a key products of the shop.", "This shirt was made by hand and is a key product of the shop."], "correct": 3, "learn": {"word": "made by hand / key product", "ipa": "", "meaning": "gram. 被动语态 was made；key 作形容词修饰 product（单数）", "example": "This is made by hand and is a key product."}}, {"type": "crit", "dmg": 25, "prompt": "选出 in the wild 的中文意思", "q": "in the wild", "options": ["在动物园", "在学校", "在家里", "在野外"], "correct": 3, "learn": {"word": "in the wild", "ipa": "", "meaning": "phr. 在野外；在自然环境中（反义 in captivity 在人工饲养中）", "example": "There are fewer than 2,000 giant pandas living in the wild."}}, {"type": "ulti", "dmg": 50, "prompt": "选出最佳翻译", "q": "熊猫全年都生活在野外，主要以竹子为食。", "options": ["Both A and B are correct.", "Pandas live in the wild all year round and eat mostly bamboo.", "Pandas live in the wild all year round and mostly eats bamboo.", "Pandas live in the wild all year round and mostly eat bamboo."], "correct": 0, "learn": {"word": "mostly 的位置", "ipa": "", "meaning": "gram. mostly 既可放动词前（mostly eat）也可放宾语前（eat mostly bamboo），两者均正确", "example": "They mostly eat bamboo. / They eat mostly bamboo."}}], "stage5": [{"type": "normal", "dmg": 12, "prompt": "选出\"去远足\"的英文", "q": "去远足", "options": ["go hiking", "go sightseeing", "go on a trip", "go swimming"], "correct": 0, "learn": {"word": "go hiking", "ipa": "", "meaning": "phr. 去远足（hiking 指长时间徒步旅行，比 walking 更有目的性）", "example": "We go hiking in the mountains every spring."}}, {"type": "crit", "dmg": 30, "prompt": "选出 sightseeing 的正确搭配", "q": "We ___ in the old town and took lots of photos.", "options": ["went to sightseeing", "go sightseeing", "went sightseeing", "did sightseeing"], "correct": 2, "learn": {"word": "went sightseeing（过去时）", "ipa": "", "meaning": "gram. go sightseeing 的过去时 went sightseeing（不规则）", "example": "We went sightseeing yesterday."}}, {"type": "crit", "dmg": 30, "prompt": "选出 prefer to 的完整句型", "q": "I prefer ___ by bike ___ by bus.", "options": ["to travel / rather than", "travelling / than", "to travel / than", "travel / rather than"], "correct": 0, "learn": {"word": "prefer to do rather than do", "ipa": "", "meaning": "gram. prefer to A rather than B（宁可A也不B）", "example": "I prefer to walk rather than take the bus."}}, {"type": "ulti", "dmg": 60, "prompt": "选出最佳翻译", "q": "我们宁愿乘雪地机动车探索荒野，也不愿待在酒店里。", "options": ["We prefer to explore the wild by snowmobile rather than stay in the hotel.", "Both A and C are correct.", "We prefer exploring the wild by snowmobile rather than staying in the hotel.", "We prefer to explore the wild by snowmobile than to stay in the hotel."], "correct": 1, "learn": {"word": "prefer to do rather than do / prefer doing rather than doing", "ipa": "", "meaning": "gram. 两种句型都正确：prefer to do A rather than do B / prefer doing A rather than doing B", "example": "We prefer to explore rather than stay. = We prefer exploring rather than staying."}}, {"type": "crit", "dmg": 30, "prompt": "选出 rich 的最合适用法", "q": "Yunnan is ___ in natural resources and cultural diversity.", "options": ["richness", "richly", "richer", "rich"], "correct": 3, "learn": {"word": "be rich in", "ipa": "", "meaning": "phr. 富含……；在……方面丰富（be rich in + 名词）", "example": "China is rich in natural resources."}}, {"type": "ulti", "dmg": 60, "prompt": "选出最佳翻译", "q": "由于政府的努力，濒危动物的数量仍然保持稳定。", "options": ["Thanks to the government's efforts, the number of endangered animals remain stable.", "Thanks to the government's efforts, the numbers of endangered animals remain stable.", "Thanks to the government efforts, the number of endangered animals remains stable.", "Thanks to the government's efforts, the number of endangered animals remains stable."], "correct": 3, "learn": {"word": "the number of + 复数 + 单数动词", "ipa": "", "meaning": "gram. the number of 后接复数名词，但谓语动词用单数（因主语是 the number）", "example": "The number of pandas remains stable."}}, {"type": "ulti", "dmg": 60, "prompt": "选出最佳翻译", "q": "保护野生动物是当今世界的关键问题之一。", "options": ["Protecting wild animals is one of the keys issues in today's world.", "Protect wild animals is one of the key issues in today's world.", "Protecting wild animals are one of the key issues in today's world.", "Protecting wild animals is one of the key issues in today's world."], "correct": 3, "learn": {"word": "V-ing 作主语 + 单数动词", "ipa": "", "meaning": "gram. 动名词做主语，谓语用单数；key 作形容词修饰 issues，本身不加 s", "example": "Protecting animals is important."}}, {"type": "normal", "dmg": 12, "prompt": "选出 address 在句中的词性和意思", "q": "Please write your address on the form.", "options": ["n. 住址；地址", "adj. 详细的", "v. 演讲", "v. 处理"], "correct": 0, "learn": {"word": "address（名词）", "ipa": "/əˈdres/", "meaning": "n. 住址；地址　也可作动词（address a problem 处理问题）", "example": "Write your name and address at the top."}}, {"type": "crit", "dmg": 30, "prompt": "选出 endangered 的构词法分析", "q": "endangered = en + danger + ___", "options": ["s", "ed", "ly", "ment"], "correct": 1, "learn": {"word": "endangered（词根分析）", "ipa": "", "meaning": "en（使）+ danger（危险）+ ed（形容词后缀）= 使处于危险中的 = 濒危的", "example": "The panda is endangered. There are only 1,800 left."}}, {"type": "ulti", "dmg": 60, "prompt": "选出最佳翻译", "q": "这座城市坐落在两座火山之间，全年气候温暖。", "options": ["The city lays between two volcanoes and has warm weather all year round.", "The city lies between two volcano and has warm weather all year round.", "The city lies between two volcanoes and has warm weather all year round.", "The city lies between two volcanoes and has warm weather all the year round."], "correct": 2, "learn": {"word": "lies between / volcanoes / all year round", "ipa": "", "meaning": "gram. lie 表位于，三单 lies；volcano 复数 volcanoes；all year round（不加 the）", "example": "The city lies between two volcanoes."}}, {"type": "crit", "dmg": 30, "prompt": "选出 destination 的正确用法", "q": "Chengdu is a popular tourist ___.", "options": ["destinate", "destiny", "destination", "destinational"], "correct": 2, "learn": {"word": "tourist destination", "ipa": "", "meaning": "phr. 旅游目的地（固定搭配）", "example": "Paris is one of the most popular tourist destinations in the world."}}, {"type": "crit", "dmg": 30, "prompt": "选出 mostly 在句中的正确位置", "q": "Tourists ___ visit the coast in summer.", "options": ["most", "mostly", "almost", "nearly"], "correct": 1, "learn": {"word": "mostly（频率副词）", "ipa": "", "meaning": "gram. mostly 是频率副词，放在行为动词前（visit 前）", "example": "Tourists mostly visit in summer."}}]}
+};
+
+// v0.7: getPoolForChapter / getCurrentChapter 已删除
+
+
+/* ==========================================================
+   2. 题库（按关卡分组，可扩展）
+   ========================================================== */
+
+const QUESTION_POOL = {
+  /* =========================================================
+     关卡 1 · 沙丘哨站
+     主题：身体部位 & 动物（PEP3-4 起始单元核心词）
+     题型：单词中英互译为主，初识词组
+     ========================================================= */
+  stage1: [
+    // —— 1. 单词中→英 ——
+    { type:'normal', dmg:10, prompt:'选出"眼睛"的英文',
+      q:'眼睛',
+      options:['ear','eye','nose','mouth'], correct:1,
+      learn:{ word:'eye', ipa:'/aɪ/', meaning:'n. 眼睛', example:'I have two eyes.' } },
+
+    // —— 2. 单词英→中 ——
+    { type:'normal', dmg:10, prompt:'选出 hand 的中文意思',
+      q:'hand', ipa:'/hænd/',
+      options:['脚','头','手','腿'], correct:2,
+      learn:{ word:'hand', ipa:'/hænd/', meaning:'n. 手；指针　v. 递交', example:'Wash your hands before dinner.' } },
+
+    // —— 3. 单词中→英 ——
+    { type:'normal', dmg:10, prompt:'选出"猫"的英文',
+      q:'猫',
+      options:['dog','cat','pig','rat'], correct:1,
+      learn:{ word:'cat', ipa:'/kæt/', meaning:'n. 猫', example:'A black cat is on the wall.' } },
+
+    // —— 4. 词组搭配 ——
+    { type:'crit', dmg:25, prompt:'选出正确的搭配',
+      q:'I have ___ eyes.',
+      options:['a','two','many','much'], correct:1,
+      learn:{ word:'two eyes', ipa:'', meaning:'phr. 两只眼睛（复数前用数词）', example:'I have two eyes and one nose.' } },
+
+    // —— 5. 单词英→中 ——
+    { type:'normal', dmg:10, prompt:'选出 fish 的中文意思',
+      q:'fish', ipa:'/fɪʃ/',
+      options:['鸟','鱼','虫','马'], correct:1,
+      learn:{ word:'fish', ipa:'/fɪʃ/', meaning:'n. 鱼　v. 钓鱼', example:'Fish can swim in the water.' } },
+
+    // —— 6. 语境填词 ——
+    { type:'crit', dmg:25, prompt:'选出最合适的词',
+      q:'A ___ has wings and can fly.',
+      options:['fish','bird','dog','cow'], correct:1,
+      learn:{ word:'bird', ipa:'/bɜːrd/', meaning:'n. 鸟；禽', example:'A bird flies in the sky.' } },
+
+    // —— 7. 单词中→英 ——
+    { type:'normal', dmg:10, prompt:'选出"脚"的英文',
+      q:'脚',
+      options:['foot','head','arm','knee'], correct:0,
+      learn:{ word:'foot', ipa:'/fʊt/', meaning:'n. 脚（复数 feet）', example:'My foot hurts after running.' } },
+
+    // —— 8. 词组搭配 ——
+    { type:'crit', dmg:25, prompt:'选出正确的搭配',
+      q:'Look ___ me!',
+      options:['at','on','in','to'], correct:0,
+      learn:{ word:'look at', ipa:'', meaning:'phr. 看；注视', example:'Look at the desert sun!' } },
+
+    // —— 9. 单词英→中 ——
+    { type:'normal', dmg:10, prompt:'选出 mouth 的中文意思',
+      q:'mouth', ipa:'/maʊθ/',
+      options:['鼻子','耳朵','嘴巴','下巴'], correct:2,
+      learn:{ word:'mouth', ipa:'/maʊθ/', meaning:'n. 嘴；口', example:'Open your mouth, please.' } },
+
+    // —— 10. 语法选择（this/these） ——
+    { type:'ulti', dmg:50, prompt:'选出语法正确的句子',
+      q:'_____',
+      options:[
+        'This are my hand.',
+        'This is my hands.',
+        'These are my hands.',
+        'These is my hand.'
+      ], correct:2,
+      learn:{ word:'this/these', ipa:'', meaning:'gram. 单数用this is，复数用these are', example:'These are my hands. This is my hand.' } },
+
+    // —— 11. 语境填词（动物分类） ——
+    { type:'crit', dmg:25, prompt:'选出最合适的词',
+      q:'A ___ says "woof woof".',
+      options:['cat','dog','duck','sheep'], correct:1,
+      learn:{ word:'dog', ipa:'/dɔːɡ/', meaning:'n. 狗', example:'My dog likes to run on the sand.' } },
+
+    // —— 12. 单词中→英 ——
+    { type:'normal', dmg:10, prompt:'选出"耳朵"的英文',
+      q:'耳朵',
+      options:['eye','ear','nose','hair'], correct:1,
+      learn:{ word:'ear', ipa:'/ɪr/', meaning:'n. 耳朵', example:'A rabbit has long ears.' } },
+  ],
+
+  /* =========================================================
+     关卡 2 · 圣甲虫巢
+     主题：动作动词（PEP4 My day / Weekend）
+     题型：单词翻译 + 词组 + 现在进行时语法
+     ========================================================= */
+  stage2: [
+    // —— 1. 单词英→中 ——
+    { type:'normal', dmg:10, prompt:'选出 run 的中文意思',
+      q:'run', ipa:'/rʌn/',
+      options:['走','跑','跳','飞'], correct:1,
+      learn:{ word:'run', ipa:'/rʌn/', meaning:'v. 跑　n. 奔跑', example:'I run every morning.' } },
+
+    // —— 2. 单词中→英 ——
+    { type:'normal', dmg:10, prompt:'选出"游泳"的英文',
+      q:'游泳',
+      options:['swim','dance','sing','jump'], correct:0,
+      learn:{ word:'swim', ipa:'/swɪm/', meaning:'v. 游泳　n. 游水', example:'Fish can swim very fast.' } },
+
+    // —— 3. 词组搭配 ——
+    { type:'crit', dmg:25, prompt:'选出正确的搭配',
+      q:'I want to ___ TV.',
+      options:['look','watch','see','read'], correct:1,
+      learn:{ word:'watch TV', ipa:'', meaning:'phr. 看电视（固定搭配，不用look/see）', example:'I watch TV after dinner.' } },
+
+    // —— 4. 单词英→中 ——
+    { type:'normal', dmg:10, prompt:'选出 read 的中文意思',
+      q:'read', ipa:'/riːd/',
+      options:['写','读','听','说'], correct:1,
+      learn:{ word:'read', ipa:'/riːd/', meaning:'v. 阅读；朗读', example:'I read books every night.' } },
+
+    // —— 5. 词组搭配 ——
+    { type:'crit', dmg:25, prompt:'选出正确的搭配',
+      q:'listen ___ music',
+      options:['at','on','to','for'], correct:2,
+      learn:{ word:'listen to', ipa:'', meaning:'phr. 听……（固定搭配 to 不可省）', example:'I listen to music every day.' } },
+
+    // —— 6. 语境填词 ——
+    { type:'crit', dmg:25, prompt:'选出最合适的词',
+      q:'I am thirsty. I want to ___ water.',
+      options:['eat','drink','take','make'], correct:1,
+      learn:{ word:'drink', ipa:'/drɪŋk/', meaning:'v. 喝　n. 饮料', example:'Drink more water in summer.' } },
+
+    // —— 7. 单词中→英 ——
+    { type:'normal', dmg:10, prompt:'选出"唱歌"的英文',
+      q:'唱歌',
+      options:['dance','sing','play','smile'], correct:1,
+      learn:{ word:'sing', ipa:'/sɪŋ/', meaning:'v. 唱歌', example:'Birds sing in the morning.' } },
+
+    // —— 8. 语法选择：现在进行时 ——
+    { type:'ulti', dmg:50, prompt:'选出语法正确的句子',
+      q:'_____',
+      options:[
+        'I am run now.',
+        'I am running now.',
+        'I running now.',
+        'I is running now.'
+      ], correct:1,
+      learn:{ word:'be + V-ing', ipa:'', meaning:'gram. 现在进行时：am/is/are + 动词ing', example:'I am running. He is reading. They are singing.' } },
+
+    // —— 9. 语法选择：be动词 ——
+    { type:'crit', dmg:25, prompt:'选出正确的be动词',
+      q:'She ___ writing a letter.',
+      options:['am','is','are','be'], correct:1,
+      learn:{ word:'is + V-ing', ipa:'', meaning:'gram. 第三人称单数(she/he/it)用 is', example:'She is writing. He is reading.' } },
+
+    // —— 10. 单词英→中 ——
+    { type:'normal', dmg:10, prompt:'选出 jump 的中文意思',
+      q:'jump', ipa:'/dʒʌmp/',
+      options:['爬','飞','跳','滑'], correct:2,
+      learn:{ word:'jump', ipa:'/dʒʌmp/', meaning:'v. 跳；跃过', example:'The cat can jump high.' } },
+
+    // —— 11. 语境填词 ——
+    { type:'crit', dmg:25, prompt:'选出最合适的词',
+      q:'I am hungry. Let\'s ___ something.',
+      options:['drink','eat','watch','sing'], correct:1,
+      learn:{ word:'eat', ipa:'/iːt/', meaning:'v. 吃', example:'We eat lunch at 12 o\'clock.' } },
+
+    // —— 12. 句子翻译 ——
+    { type:'ulti', dmg:50, prompt:'选出最佳翻译',
+      q:'圣甲虫正在飞。',
+      options:[
+        'A scarab can fly.',
+        'A scarab is flying.',
+        'A scarab flies now.',
+        'A scarab fly now.'
+      ], correct:1,
+      learn:{ word:'is flying', ipa:'', meaning:'gram. 现在进行时：表达"正在……"', example:'Look! A scarab is flying.' } },
+  ],
+
+  /* =========================================================
+     关卡 3 · 遗迹回廊
+     主题：颜色 & 形容词（PEP3-4）
+     题型：反义词 + 形容词位置 + 语境填词
+     ========================================================= */
+  stage3: [
+    // —— 1. 单词英→中 ——
+    { type:'normal', dmg:10, prompt:'选出 red 的中文意思',
+      q:'red', ipa:'/red/',
+      options:['黑色','红色','蓝色','绿色'], correct:1,
+      learn:{ word:'red', ipa:'/red/', meaning:'adj./n. 红色（的）', example:'The desert sun is red at dusk.' } },
+
+    // —— 2. 反义词 ——
+    { type:'crit', dmg:25, prompt:'选出 big 的反义词',
+      q:'big ↔ ___',
+      options:['tall','small','short','old'], correct:1,
+      learn:{ word:'big / small', ipa:'', meaning:'adj. 大的 / 小的（一对反义词）', example:'A big lion vs. a small cat.' } },
+
+    // —— 3. 单词中→英 ——
+    { type:'normal', dmg:10, prompt:'选出"高的"的英文',
+      q:'高的',
+      options:['short','tall','long','large'], correct:1,
+      learn:{ word:'tall', ipa:'/tɔːl/', meaning:'adj. 高的（指人或建筑）', example:'A tall pyramid stands here.' } },
+
+    // —— 4. 反义词 ——
+    { type:'crit', dmg:25, prompt:'选出 happy 的反义词',
+      q:'happy ↔ ___',
+      options:['sad','angry','tired','sleepy'], correct:0,
+      learn:{ word:'happy / sad', ipa:'', meaning:'adj. 快乐的 / 伤心的', example:'I am happy today, not sad.' } },
+
+    // —— 5. 语境填词 ——
+    { type:'crit', dmg:25, prompt:'选出最合适的颜色',
+      q:'The grass is ___.',
+      options:['red','green','black','pink'], correct:1,
+      learn:{ word:'green', ipa:'/ɡriːn/', meaning:'adj./n. 绿色（的）', example:'The grass is green in spring.' } },
+
+    // —— 6. 单词英→中 ——
+    { type:'normal', dmg:10, prompt:'选出 cold 的中文意思',
+      q:'cold', ipa:'/koʊld/',
+      options:['热的','暖的','冷的','凉的'], correct:2,
+      learn:{ word:'cold', ipa:'/koʊld/', meaning:'adj. 冷的；寒冷的', example:'It is cold at night in the desert.' } },
+
+    // —— 7. 语法选择：形容词位置 ——
+    { type:'ulti', dmg:50, prompt:'选出语法正确的句子',
+      q:'_____',
+      options:[
+        'I have a cat black.',
+        'I have black a cat.',
+        'I have a black cat.',
+        'I have black cat a.'
+      ], correct:2,
+      learn:{ word:'a + 形容词 + 名词', ipa:'', meaning:'gram. 形容词放在名词前面', example:'a red apple, a tall boy, a black cat' } },
+
+    // —— 8. 单词中→英 ——
+    { type:'normal', dmg:10, prompt:'选出"老的/旧的"的英文',
+      q:'老的；旧的',
+      options:['new','old','young','fresh'], correct:1,
+      learn:{ word:'old', ipa:'/oʊld/', meaning:'adj. 老的；旧的；古老的', example:'My grandpa is old. The book is old too.' } },
+
+    // —— 9. 词组搭配 ——
+    { type:'crit', dmg:25, prompt:'选出正确的搭配',
+      q:'How ___ are you? — I\'m 1.5 meters.',
+      options:['old','tall','many','much'], correct:1,
+      learn:{ word:'How tall', ipa:'', meaning:'phr. 多高（问身高/高度）', example:'How tall is the pyramid?' } },
+
+    // —— 10. 反义词 ——
+    { type:'crit', dmg:25, prompt:'选出 hot 的反义词',
+      q:'hot ↔ ___',
+      options:['warm','cool','cold','cool'], correct:2,
+      learn:{ word:'hot / cold', ipa:'', meaning:'adj. 热的 / 冷的', example:'The desert is hot by day, cold by night.' } },
+
+    // —— 11. 语境填词 ——
+    { type:'crit', dmg:25, prompt:'选出最合适的词',
+      q:'An elephant is very ___.',
+      options:['small','tiny','big','short'], correct:2,
+      learn:{ word:'big', ipa:'/bɪɡ/', meaning:'adj. 大的；重大的', example:'An elephant is big and strong.' } },
+
+    // —— 12. 句子翻译 ——
+    { type:'ulti', dmg:50, prompt:'选出最佳翻译',
+      q:'我有一只小白狗。',
+      options:[
+        'I have a dog small white.',
+        'I have a small white dog.',
+        'I have a white small dog.',
+        'I have small a white dog.'
+      ], correct:1,
+      learn:{ word:'形容词排序', ipa:'', meaning:'gram. 大小+颜色+名词（small white dog）', example:'a small white dog, a big red apple' } },
+  ],
+
+  /* =========================================================
+     关卡 4 · 秘宝祭坛
+     主题：日常物品 & 介词（PEP5 My home / In the classroom）
+     题型：介词搭配 + There be 句型 + 语境填词
+     ========================================================= */
+  stage4: [
+    // —— 1. 单词英→中 ——
+    { type:'normal', dmg:10, prompt:'选出 book 的中文意思',
+      q:'book', ipa:'/bʊk/',
+      options:['钢笔','书','尺子','袋子'], correct:1,
+      learn:{ word:'book', ipa:'/bʊk/', meaning:'n. 书；本子　v. 预订', example:'I read a book every day.' } },
+
+    // —— 2. 介词搭配 ——
+    { type:'crit', dmg:25, prompt:'选出正确的介词',
+      q:'The cat is ___ the box.',
+      options:['in','on','under','at'], correct:0,
+      learn:{ word:'in', ipa:'/ɪn/', meaning:'prep. 在……里面', example:'The cat is in the box. (在盒子"里")' } },
+
+    // —— 3. 介词搭配 ——
+    { type:'crit', dmg:25, prompt:'选出正确的介词',
+      q:'The book is ___ the desk.',
+      options:['in','on','under','behind'], correct:1,
+      learn:{ word:'on', ipa:'/ɒn/', meaning:'prep. 在……上面（接触表面）', example:'The book is on the desk.' } },
+
+    // —— 4. 单词中→英 ——
+    { type:'normal', dmg:10, prompt:'选出"钢笔"的英文',
+      q:'钢笔',
+      options:['pen','pencil','book','bag'], correct:0,
+      learn:{ word:'pen', ipa:'/pen/', meaning:'n. 钢笔；笔', example:'I have a new pen.' } },
+
+    // —— 5. 介词区分 ——
+    { type:'ulti', dmg:50, prompt:'选出最合适的介词',
+      q:'The ball is ___ the bed (在床下面).',
+      options:['on','in','under','behind'], correct:2,
+      learn:{ word:'in / on / under', ipa:'', meaning:'prep. 在里面 / 在上面 / 在下面（三个最常考的方位词）', example:'in the box, on the desk, under the bed' } },
+
+    // —— 6. There be 句型 ——
+    { type:'crit', dmg:25, prompt:'选出正确的句型',
+      q:'___ a book on the desk.',
+      options:['It is','There is','This is','Have'], correct:1,
+      learn:{ word:'There is/are', ipa:'', meaning:'gram. 有……（There be 句型，单数用 is，复数用 are）', example:'There is a book. There are two pens.' } },
+
+    // —— 7. There be 语法 ——
+    { type:'ulti', dmg:50, prompt:'选出语法正确的句子',
+      q:'_____',
+      options:[
+        'There is two pens on the desk.',
+        'There are two pen on the desk.',
+        'There are two pens on the desk.',
+        'There is two pen on the desk.'
+      ], correct:2,
+      learn:{ word:'There are + 复数', ipa:'', meaning:'gram. 复数名词前用 are，且名词加 s', example:'There are two pens. There are three books.' } },
+
+    // —— 8. 词组搭配 ——
+    { type:'crit', dmg:25, prompt:'选出正确的搭配',
+      q:'The map is ___ the wall.',
+      options:['in','on','under','at'], correct:1,
+      learn:{ word:'on the wall', ipa:'', meaning:'phr. 在墙上（贴/挂在墙面，用 on）', example:'There is a map on the wall.' } },
+
+    // —— 9. 单词英→中 ——
+    { type:'normal', dmg:10, prompt:'选出 bag 的中文意思',
+      q:'bag', ipa:'/bæɡ/',
+      options:['桌子','椅子','袋子','床'], correct:2,
+      learn:{ word:'bag', ipa:'/bæɡ/', meaning:'n. 包；袋子', example:'My bag is heavy today.' } },
+
+    // —— 10. 语境填词 ——
+    { type:'crit', dmg:25, prompt:'选出最合适的词',
+      q:'I write with a ___.',
+      options:['book','pen','bag','hat'], correct:1,
+      learn:{ word:'write with', ipa:'', meaning:'phr. 用……写（工具用 with）', example:'I write with a pen, not a pencil.' } },
+
+    // —— 11. 单词中→英 ——
+    { type:'normal', dmg:10, prompt:'选出"尺子"的英文',
+      q:'尺子',
+      options:['ruler','rubber','pencil','marker'], correct:0,
+      learn:{ word:'ruler', ipa:'/ˈruːlər/', meaning:'n. 尺子；统治者', example:'Use a ruler to draw a line.' } },
+
+    // —— 12. 句子翻译 ——
+    { type:'ulti', dmg:50, prompt:'选出最佳翻译',
+      q:'桌子下面有一只猫。',
+      options:[
+        'There is a cat on the desk.',
+        'There is a cat in the desk.',
+        'There is a cat under the desk.',
+        'A cat is the desk.'
+      ], correct:2,
+      learn:{ word:'under the desk', ipa:'', meaning:'phr. 在桌子下面（There be + 物 + 介词短语）', example:'There is a cat under the desk.' } },
+  ],
+
+  /* =========================================================
+     关卡 5 · 法老之墓 (BOSS战)
+     主题：综合复习 + can/will/过去式（PEP6）
+     题型：四种题型混合，难度最高
+     ========================================================= */
+  stage5: [
+    // —— 1. 情态动词 can ——
+    { type:'crit', dmg:30, prompt:'选出正确的句子',
+      q:'A bird ___ fly.',
+      options:['cans','can','can to','is can'], correct:1,
+      learn:{ word:'can + 动词原形', ipa:'', meaning:'gram. can 后面直接接动词原形，不加 to', example:'I can swim. She can sing.' } },
+
+    // —— 2. 比较级 ——
+    { type:'crit', dmg:30, prompt:'选出 tall 的比较级',
+      q:'tall → ___',
+      options:['taller','more tall','tallest','tall'], correct:0,
+      learn:{ word:'tall / taller', ipa:'', meaning:'gram. 短形容词的比较级直接加 -er', example:'Tom is taller than Jim.' } },
+
+    // —— 3. 一般过去时（不规则） ——
+    { type:'crit', dmg:30, prompt:'选出 go 的过去式',
+      q:'go → ___',
+      options:['goed','went','goes','going'], correct:1,
+      learn:{ word:'go / went', ipa:'', meaning:'gram. go 的过去式是 went（不规则）', example:'I went to school yesterday.' } },
+
+    // —— 4. 单词英→中 ——
+    { type:'normal', dmg:12, prompt:'选出 yesterday 的中文意思',
+      q:'yesterday', ipa:'/ˈjestərdeɪ/',
+      options:['今天','明天','昨天','前天'], correct:2,
+      learn:{ word:'yesterday', ipa:'/ˈjestərdeɪ/', meaning:'n./adv. 昨天', example:'I read a book yesterday.' } },
+
+    // —— 5. 语境填词 ——
+    { type:'crit', dmg:30, prompt:'选出最合适的词',
+      q:'It rained yesterday, so the road was ___.',
+      options:['dry','wet','hot','clean'], correct:1,
+      learn:{ word:'wet', ipa:'/wet/', meaning:'adj. 湿的；潮湿的', example:'My clothes are wet after the rain.' } },
+
+    // —— 6. 一般将来时 ——
+    { type:'crit', dmg:30, prompt:'选出正确的句子',
+      q:'I ___ visit Egypt next year.',
+      options:['am','will','was','do'], correct:1,
+      learn:{ word:'will + 动词原形', ipa:'', meaning:'gram. 一般将来时：表达"将要……"', example:'I will visit Egypt next year.' } },
+
+    // —— 7. 句子翻译 ——
+    { type:'ulti', dmg:60, prompt:'选出最佳翻译',
+      q:'我比我哥哥更高。',
+      options:[
+        'I am taller than my brother.',
+        'I am tall than my brother.',
+        'I am more tall my brother.',
+        'I taller than my brother.'
+      ], correct:0,
+      learn:{ word:'比较级 + than', ipa:'', meaning:'gram. A + be + 比较级 + than + B', example:'I am taller than my brother.' } },
+
+    // —— 8. 反义词 ——
+    { type:'crit', dmg:30, prompt:'选出 strong 的反义词',
+      q:'strong ↔ ___',
+      options:['weak','tall','small','bad'], correct:0,
+      learn:{ word:'strong / weak', ipa:'', meaning:'adj. 强壮的 / 虚弱的', example:'The lion is strong, the cat is weak.' } },
+
+    // —— 9. 单词中→英 ——
+    { type:'normal', dmg:12, prompt:'选出"国王"的英文',
+      q:'国王',
+      options:['queen','prince','king','knight'], correct:2,
+      learn:{ word:'king', ipa:'/kɪŋ/', meaning:'n. 国王', example:'The king ruled the desert kingdom.' } },
+
+    // —— 10. 介词搭配 ——
+    { type:'crit', dmg:30, prompt:'选出正确的介词',
+      q:'I am good ___ English.',
+      options:['in','on','at','for'], correct:2,
+      learn:{ word:'be good at', ipa:'', meaning:'phr. 擅长……（固定搭配，介词 at）', example:'I am good at English and math.' } },
+
+    // —— 11. 语境填词 ——
+    { type:'ulti', dmg:60, prompt:'选出最合适的词',
+      q:'A: Where ___ you yesterday? B: I was at home.',
+      options:['are','were','is','was'], correct:1,
+      learn:{ word:'were (you/we/they)', ipa:'', meaning:'gram. be 动词过去式：you/we/they 用 were', example:'Where were you yesterday? — I was at home.' } },
+
+    // —— 12. 句子翻译（终极） ——
+    { type:'ulti', dmg:60, prompt:'选出最佳翻译',
+      q:'勇者打败了暗黑法老。',
+      options:[
+        'The warrior beats the dark pharaoh.',
+        'The warrior beat the dark pharaoh.',
+        'The warrior is beat the dark pharaoh.',
+        'The warrior beated the dark pharaoh.'
+      ], correct:1,
+      learn:{ word:'beat / beat / beaten', ipa:'/biːt/', meaning:'v. 打败（不规则动词，过去式仍是 beat）', example:'The warrior beat the dark pharaoh at last.' } },
+  ],
+};
+
+
+/* ==========================================================
+   3. 全局状态 + 存档系统
+   ========================================================== */
+
+// 用内存存档（artifacts 不能用 localStorage）
+const SAVE = {
+  selectedHero: 'pharaoh_boy',
+  clearedStages: [],          // 通关的关卡 ID 列表
+  totalCoins: 0,
+  level: 1,
+  wrongBook: [],              // 错题本 [{q, learn, stage, time}]
+};
+
+// 题库切换：默认 vs 自定义
+let ACTIVE_POOL = QUESTION_POOL;  // 当前生效的题库
+let isCustomPool = false;
+
+let battle = null;  // 当前战斗实例
+
+/* ==========================================================
+   4. 8-bit 音效（Web Audio API）
+   ========================================================== */
+let audioCtx = null;
+function getAudio() {
+  if (!audioCtx) {
+    try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+    catch(e) { audioCtx = null; }
+  }
+  return audioCtx;
+}
+function beep(freq, dur, type='square', vol=0.05) {
+  const ctx = getAudio();
+  if (!ctx) return;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type;
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(vol, ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+  osc.connect(gain).connect(ctx.destination);
+  osc.start();
+  osc.stop(ctx.currentTime + dur);
+}
+function sfxClick()    { beep(420, 0.06, 'square', 0.04); }
+function sfxCorrect()  { beep(660, 0.08); setTimeout(()=>beep(880, 0.12), 70); }
+function sfxWrong()    { beep(180, 0.15, 'sawtooth', 0.05); setTimeout(()=>beep(120, 0.2, 'sawtooth', 0.05), 80); }
+function sfxAttack()   { beep(880, 0.05, 'square'); setTimeout(()=>beep(440, 0.08, 'triangle'), 50); }
+function sfxCrit()     { beep(990, 0.06); setTimeout(()=>beep(660, 0.06), 40); setTimeout(()=>beep(1320, 0.1), 100); }
+function sfxHit()      { beep(120, 0.12, 'sawtooth', 0.06); }
+function sfxVictory()  {
+  const notes = [523, 659, 784, 1047];
+  notes.forEach((f,i)=> setTimeout(()=>beep(f, 0.18, 'square', 0.05), i*120));
+}
+function sfxDefeat()   {
+  const notes = [440, 349, 262, 196];
+  notes.forEach((f,i)=> setTimeout(()=>beep(f, 0.25, 'sawtooth', 0.05), i*180));
+}
+
+/* ==========================================================
+   5. 屏幕切换
+   ========================================================== */
+const $ = id => document.getElementById(id);
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  $(id).classList.add('active');
+}
+
+function goTitle()  { sfxClick(); showScreen('titleScreen'); }
+function goSelect() { sfxClick(); renderHeroes(); showScreen('selectScreen'); }
+function goMap()    { sfxClick(); renderMap(); showScreen('mapScreen'); }
+
+/* ==========================================================
+   6. 标题画面：星空粒子
+   ========================================================== */
+function spawnStars() {
+  const box = $('titleStars');
+  box.innerHTML = '';
+  for (let i = 0; i < 40; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random()*100 + '%';
+    s.style.top = Math.random()*60 + '%';
+    s.style.animationDuration = (1.5 + Math.random()*3) + 's';
+    s.style.animationDelay = Math.random()*3 + 's';
+    box.appendChild(s);
+  }
+}
+spawnStars();
+
+/* ==========================================================
+   7. 角色选择
+   ========================================================== */
+let pendingHero = null;
+
+function renderHeroes() {
+  const grid = $('charGrid');
+  grid.innerHTML = '';
+  HEROES.forEach(h => {
+    const card = document.createElement('div');
+    card.className = 'char-card' + (h.locked ? ' locked' : '') + (pendingHero === h.id ? ' selected' : '');
+    card.innerHTML = `
+      ${h.locked ? '<div class="lock-icon">🔒</div>' : ''}
+      <div class="char-portrait">${PORTRAITS[h.id]()}</div>
+      <div class="name">${h.name}</div>
+      <div class="role">${h.cn} · ${h.role}</div>
+      <div class="char-stats">
+        <span class="stat-pill hp">HP ${h.hp}</span>
+        <span class="stat-pill atk">ATK ${Math.round(h.atk*100)}%</span>
+      </div>
+    `;
+    if (!h.locked) {
+      card.onclick = () => {
+        sfxClick();
+        pendingHero = h.id;
+        renderHeroes();
+        $('selectInfoWho').textContent = `${h.name} · ${h.cn}`;
+        $('selectInfoDesc').textContent = h.desc;
+        $('confirmCharBtn').style.opacity = '1';
+        $('confirmCharBtn').style.pointerEvents = 'auto';
+      };
+    }
+    grid.appendChild(card);
+  });
+}
+
+function confirmChar() {
+  if (!pendingHero) return;
+  sfxClick();
+  SAVE.selectedHero = pendingHero;
+  goUnitSelect();
+}
+
+/* ==========================================================
+   8. 章节地图
+   ========================================================== */
+function renderMap() {
+  const hero = HEROES.find(h => h.id === SAVE.selectedHero);
+  $('miniPortrait').innerHTML = PORTRAITS[hero.id]();
+  $('playerNameTag').textContent = hero.name;
+  $('totalCoins').textContent = SAVE.totalCoins;
+  $('playerLevel').textContent = SAVE.level;
+
+  // 关卡节点状态
+  const cleared = SAVE.clearedStages;
+  const nextStage = cleared.length === 0 ? 1 : Math.max(...cleared) + 1;
+
+  document.querySelectorAll('.stage-node').forEach(node => {
+    const s = parseInt(node.dataset.stage);
+    node.classList.remove('cleared','current','locked');
+    if (cleared.includes(s)) node.classList.add('cleared');
+    else if (s === nextStage) node.classList.add('current');
+    else node.classList.add('locked');
+
+    node.onclick = () => {
+      if (node.classList.contains('locked')) {
+        sfxWrong();
+        showToast('完成前置关卡才能解锁');
+        return;
+      }
+      sfxClick();
+      startBattle(s);
+    };
+  });
+
+  // 路径线
+  const positions = [
+    {x:20, y:78}, {x:55, y:65}, {x:30, y:46}, {x:70, y:32}, {x:45, y:14}
+  ];
+  let svg = '';
+  for (let i = 0; i < positions.length-1; i++) {
+    const a = positions[i], b = positions[i+1];
+    const isActive = cleared.includes(i+1);
+    svg += `<line class="path-line ${isActive ? 'active':''}" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"/>`;
+  }
+  $('mapPathSvg').innerHTML = svg;
+
+  // 错题徽章
+  updateWrongBadge();
+
+  // 自定义题库标记
+  let customTag = document.querySelector('.custom-pool-tag');
+  if (isCustomPool) {
+    if (!customTag) {
+      customTag = document.createElement('div');
+      customTag.className = 'custom-pool-tag';
+      customTag.textContent = '✓ 自定义题库';
+      document.getElementById('mapScreen').appendChild(customTag);
+    }
+  } else if (customTag) {
+    customTag.remove();
+  }
+}
+
+function resetProgress() {
+  if (!confirm('确定重置进度？所有通关记录和金币将清空。')) return;
+  SAVE.clearedStages = [];
+  SAVE.totalCoins = 0;
+  SAVE.level = 1;
+  renderMap();
+  sfxClick();
+}
+
+/* ==========================================================
+   9. 战斗系统
+   ========================================================== */
+function startBattle(stageId) {
+  const stage = STAGES.find(s => s.id === stageId);
+  const hero = HEROES.find(h => h.id === SAVE.selectedHero);
+  const enemyData = ENEMIES[stage.enemy];
+
+  // 题库（不够时循环）
+  const pool = ACTIVE_POOL['stage'+stageId] || ACTIVE_POOL.stage1;
+  const questions = [];
+  for (let i = 0; i < stage.qNum; i++) {
+    questions.push(pool[i % pool.length]);
+  }
+
+  battle = {
+    stage, hero, enemyData,
+    questions,
+    qIdx: 0,
+    player: { hp:hero.hp, maxHp:hero.hp, atk:hero.atk },
+    enemy:  { hp:enemyData.hp, maxHp:enemyData.hp, atk:enemyData.atk },
+    correct: 0,
+    combo: 0,
+    maxCombo: 0,
+    coins: 0,
+    locked: false,
+    lastLearn: null,
+  };
+
+  // 渲染战斗界面
+  $('stageNum').textContent = stage.id;
+  $('stageName').textContent = `${stage.name} · ${stage.en}`;
+  $('playerArt').innerHTML = PORTRAITS[hero.id]();
+  $('enemyArt').innerHTML = PORTRAITS[enemyData.art]();
+  $('playerName').textContent = hero.name;
+  $('enemyName').textContent = enemyData.name;
+
+  updateBars(); updateTopBar();
+  spawnDust();
+
+  showScreen('battleScreen');
+
+  // 开场谷sir提示（前两关给）
+  if (stage.id <= 2) {
+    setTimeout(() => showGusirIntro(stage), 500);
+  } else {
+    loadQuestion();
+  }
+}
+
+function showGusirIntro(stage) {
+  const intros = {
+    1: '欢迎来到沙漠遗迹！答对题目就能攻击哥布林。<br>连续答对3次有<span class="hl">连击加成</span>哦！',
+    2: '注意：黄色<span class="hl">暴击题</span>伤害更高，紫色<span class="hl">必杀题</span>是终极武器！',
+  };
+  const html = `
+    <div class="modal-mask show">
+      <div class="modal-card">
+        <div class="modal-corners tl"></div><div class="modal-corners tr"></div>
+        <div class="modal-corners bl"></div><div class="modal-corners br"></div>
+        <div class="modal-title" style="color:#4a9fd4;">导师提示</div>
+        <div class="gusir-bubble">
+          <div class="gusir-avatar">谷</div>
+          <div class="gusir-name">谷SIR · MENTOR</div>
+          <div>${intros[stage.id]}</div>
+        </div>
+        <button class="btn gold" onclick="closeModal(); loadQuestion();">明白了 ▶</button>
+      </div>
+    </div>
+  `;
+  $('modalLayer').innerHTML = html;
+}
+
+function quitBattle() {
+  if (!confirm('退出战斗将放弃当前进度，确定吗？')) return;
+  battle = null;
+  goMap();
+}
+
+function updateBars() {
+  if (!battle) return;
+  const pPct = Math.max(0, battle.player.hp / battle.player.maxHp * 100);
+  const ePct = Math.max(0, battle.enemy.hp / battle.enemy.maxHp * 100);
+  $('playerHpFill').style.width = pPct + '%';
+  $('enemyHpFill').style.width = ePct + '%';
+  $('playerHpText').textContent = `${Math.max(0,battle.player.hp)}/${battle.player.maxHp}`;
+  $('enemyHpText').textContent = `${Math.max(0,battle.enemy.hp)}/${battle.enemy.maxHp}`;
+}
+
+function updateTopBar() {
+  if (!battle) return;
+  $('coinNum').textContent = battle.coins;
+  $('comboNum').textContent = battle.combo;
+}
+
+function loadQuestion() {
+  if (!battle) return;
+  if (battle.qIdx >= battle.questions.length) battle.qIdx = 0; // 循环
+
+  const q = battle.questions[battle.qIdx];
+  battle.lastLearn = q.learn;
+
+  const card = $('quizCard');
+  card.classList.remove('exit');
+
+  const typeLabel = { normal:'基础攻击', crit:'暴击 · 词组', ulti:'必杀 · 句子' };
+  $('quizType').textContent = typeLabel[q.type];
+  $('quizType').className = 'quiz-corner ' + q.type;
+  $('quizDmg').textContent = `DMG ${q.dmg}`;
+  $('quizPrompt').textContent = q.prompt;
+  $('quizQuestion').innerHTML = q.q.replace('___','<span class="blank">___</span>')
+    + (q.ipa ? `<span class="ipa">${q.ipa}</span>` : '');
+
+  const optsBox = $('quizOptions');
+  optsBox.innerHTML = '';
+  const labels = ['A','B','C','D'];
+  q.options.forEach((text, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.innerHTML = `<span class="label">${labels[idx]}</span>${text}`;
+    btn.onclick = () => answerQuestion(idx);
+    optsBox.appendChild(btn);
+  });
+
+  battle.locked = false;
+}
+
+function answerQuestion(idx) {
+  if (!battle || battle.locked) return;
+  battle.locked = true;
+
+  const q = battle.questions[battle.qIdx];
+  const isCorrect = idx === q.correct;
+  const opts = $('quizOptions').children;
+
+  opts[idx].classList.add(isCorrect ? 'correct' : 'wrong');
+  if (!isCorrect) opts[q.correct].classList.add('correct');
+  for (let o of opts) o.classList.add('disabled');
+
+  if (isCorrect) {
+    sfxCorrect();
+    battle.correct++;
+    battle.combo++;
+    battle.maxCombo = Math.max(battle.maxCombo, battle.combo);
+    battle.coins += (q.type === 'ulti' ? 8 : q.type === 'crit' ? 5 : 3);
+    updateTopBar();
+
+    let dmg = Math.floor(q.dmg * battle.player.atk);
+    if (battle.combo >= 3) dmg = Math.floor(dmg * 1.5);
+
+    setTimeout(() => playerAttack(dmg, q.type), 600);
+  } else {
+    sfxWrong();
+    battle.combo = 0;
+    updateTopBar();
+    // 记录错题
+    addToWrongBook(q, idx);
+    setTimeout(() => enemyAttack(battle.enemy.atk), 700);
+  }
+}
+
+function addToWrongBook(q, userChoice) {
+  // 避免重复（同一题已存在则跳过，但更新时间）
+  const existing = SAVE.wrongBook.findIndex(w =>
+    w.q === q.q && w.prompt === q.prompt
+  );
+  const entry = {
+    type: q.type,
+    dmg: q.dmg,
+    prompt: q.prompt,
+    q: q.q,
+    ipa: q.ipa || '',
+    options: q.options.slice(),
+    correct: q.correct,
+    userChoice: userChoice,
+    learn: { ...q.learn },
+    stage: battle.stage.id,
+    stageName: battle.stage.name,
+    time: Date.now(),
+  };
+  if (existing >= 0) {
+    SAVE.wrongBook[existing] = entry;
+  } else {
+    SAVE.wrongBook.unshift(entry); // 新错题放最前面
+  }
+  updateWrongBadge();
+}
+
+function updateWrongBadge() {
+  const badge = document.getElementById('wrongBadge');
+  if (!badge) return;
+  const n = SAVE.wrongBook.length;
+  if (n > 0) {
+    badge.style.display = 'block';
+    badge.textContent = n > 99 ? '99+' : n;
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+function playerAttack(dmg, dmgClass) {
+  const player = $('playerChar');
+  const enemy = $('enemyChar');
+
+  player.classList.add('attacking');
+  setTimeout(() => player.classList.remove('attacking'), 350);
+
+  setTimeout(() => {
+    if (dmgClass === 'crit' || dmgClass === 'ulti') sfxCrit();
+    else sfxAttack();
+
+    const slash = $('enemySlash');
+    slash.classList.remove('show'); void slash.offsetWidth;
+    slash.classList.add('show');
+
+    enemy.classList.add('hit');
+    setTimeout(() => enemy.classList.remove('hit'), 400);
+    setTimeout(() => sfxHit(), 100);
+
+    battle.enemy.hp -= dmg;
+    showDamage('enemyDmg', dmg, dmgClass);
+    updateBars();
+
+    if (battle.enemy.hp <= 0) {
+      setTimeout(() => victorySequence(), 700);
+    } else {
+      setTimeout(() => nextQuestion(), 1100);
+    }
+  }, 250);
+}
+
+function enemyAttack(dmg) {
+  const player = $('playerChar');
+  const enemy = $('enemyChar');
+
+  enemy.classList.add('attacking');
+  setTimeout(() => enemy.classList.remove('attacking'), 350);
+
+  setTimeout(() => {
+    sfxAttack();
+    const slash = $('playerSlash');
+    slash.classList.remove('show'); void slash.offsetWidth;
+    slash.classList.add('show');
+
+    player.classList.add('hit');
+    setTimeout(() => player.classList.remove('hit'), 400);
+    setTimeout(() => sfxHit(), 100);
+
+    battle.player.hp -= dmg;
+    showDamage('playerDmg', dmg, 'normal');
+    updateBars();
+
+    if (battle.player.hp <= 0) {
+      setTimeout(() => defeatSequence(), 700);
+    } else {
+      setTimeout(() => nextQuestion(), 1100);
+    }
+  }, 250);
+}
+
+function showDamage(elId, dmg, cls) {
+  const el = $(elId);
+  el.className = 'damage-pop ' + cls;
+  el.textContent = '-' + dmg;
+  el.classList.remove('show'); void el.offsetWidth;
+  el.classList.add('show');
+}
+
+function nextQuestion() {
+  battle.qIdx++;
+  $('quizCard').classList.add('exit');
+  setTimeout(() => loadQuestion(), 320);
+}
+
+function victorySequence() {
+  sfxVictory();
+  $('enemyChar').classList.add('defeated');
+
+  // 记录通关
+  if (!SAVE.clearedStages.includes(battle.stage.id)) {
+    SAVE.clearedStages.push(battle.stage.id);
+  }
+  SAVE.totalCoins += battle.coins;
+  SAVE.level = SAVE.clearedStages.length + 1;
+
+  setTimeout(() => {
+    const l = battle.lastLearn || {};
+    const isFinal = battle.stage.id === 5;
+    const html = `
+      <div class="modal-mask show">
+        <div class="modal-card">
+          <div class="modal-corners tl"></div><div class="modal-corners tr"></div>
+          <div class="modal-corners bl"></div><div class="modal-corners br"></div>
+          <div class="modal-title">${isFinal ? 'CHAPTER CLEAR!' : 'VICTORY!'}</div>
+          <div class="modal-sub">${isFinal ? '第一章·全部通关！' : '通关胜利'}</div>
+
+          ${isFinal ? `
+            <div class="gusir-bubble">
+              <div class="gusir-avatar">谷</div>
+              <div class="gusir-name">谷SIR · MENTOR</div>
+              <div>恭喜征服第一章！<br>你已掌握 <span class="hl">${SAVE.clearedStages.length * 6}+</span> 个核心单词。<br>更深的遗迹正在等待你…</div>
+            </div>
+          ` : `
+            <div class="learn-card">
+              <div class="word">${l.word||''} <span class="ipa">${l.ipa||''}</span></div>
+              <div class="meaning">${l.meaning||''}</div>
+              ${l.example ? `<div class="example">"${l.example}"</div>` : ''}
+            </div>
+          `}
+
+          <div class="loot-grid">
+            <div class="loot-item">EXP<span class="num">+${50 + battle.maxCombo * 5}</span></div>
+            <div class="loot-item">COINS<span class="num">+${battle.coins}</span></div>
+            <div class="loot-item">CORRECT<span class="num">${battle.correct}/${battle.questions.length}</span></div>
+            <div class="loot-item">MAX COMBO<span class="num">x${battle.maxCombo}</span></div>
+          </div>
+
+          <div class="modal-btn-row">
+            <button class="btn dark" onclick="closeModal(); goMap();">返回地图</button>
+            <button class="btn gold" onclick="closeModal(); startBattle(${Math.min(battle.stage.id+1, 5)});">下一关 ▶</button>
+          </div>
+        </div>
+      </div>
+    `;
+    $('modalLayer').innerHTML = html;
+  }, 1200);
+}
+
+function defeatSequence() {
+  sfxDefeat();
+  const html = `
+    <div class="modal-mask show">
+      <div class="modal-card" style="border-color:var(--blood);">
+        <div class="modal-corners tl" style="border-color:var(--blood);"></div>
+        <div class="modal-corners tr" style="border-color:var(--blood);"></div>
+        <div class="modal-corners bl" style="border-color:var(--blood);"></div>
+        <div class="modal-corners br" style="border-color:var(--blood);"></div>
+        <div class="modal-title" style="color:var(--blood);">DEFEATED</div>
+        <div class="modal-sub" style="color:#ff8a8a;">挑战失败</div>
+        <div class="gusir-bubble">
+          <div class="gusir-avatar">谷</div>
+          <div class="gusir-name">谷SIR · MENTOR</div>
+          <div>不要灰心！<br>每个错题都是<span class="hl">下一次的伏笔</span>。<br>再来一次！</div>
+        </div>
+        <div class="modal-btn-row">
+          <button class="btn dark" onclick="closeModal(); goMap();">返回地图</button>
+          <button class="btn gold" onclick="closeModal(); startBattle(${battle.stage.id});">⟳ 重新挑战</button>
+        </div>
+      </div>
+    </div>
+  `;
+  $('modalLayer').innerHTML = html;
+}
+
+function closeModal() { $('modalLayer').innerHTML = ''; }
+
+function showToast(text) {
+  const t = document.createElement('div');
+  t.style.cssText = 'position:fixed;top:30%;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:10px 18px;border:2px solid var(--gold);border-radius:4px;font-size:13px;z-index:100;animation:maskFade .3s;';
+  t.textContent = text;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 1800);
+}
+
+function showHelp() {
+  sfxClick();
+  const html = `
+    <div class="modal-mask show">
+      <div class="modal-card">
+        <div class="modal-corners tl"></div><div class="modal-corners tr"></div>
+        <div class="modal-corners bl"></div><div class="modal-corners br"></div>
+        <div class="modal-title">如何游玩</div>
+        <div class="modal-sub" style="font-size:14px;">HOW TO PLAY</div>
+        <div class="modal-text" style="text-align:left; font-size:13px;">
+          ▸ 选择英雄角色<br>
+          ▸ 在章节地图选择关卡<br>
+          ▸ <span class="hl">答对题目</span>可对怪物造成伤害<br>
+          ▸ 答错则被怪物反击 HP -15<br>
+          ▸ 连续答对3题触发 <span class="hl">连击 x1.5</span><br>
+          ▸ 红色=10伤害　黄色=25　紫色=50<br>
+          ▸ 击败BOSS解锁下一章
+        </div>
+        <button class="btn gold" onclick="closeModal();">明白了 ▶</button>
+      </div>
+    </div>
+  `;
+  $('modalLayer').innerHTML = html;
+}
+
+/* ==========================================================
+   10. 沙尘粒子（战斗场景）
+   ========================================================== */
+function spawnDust() {
+  const battleScreen = $('battleScreen');
+  // 清掉旧的
+  battleScreen.querySelectorAll('.dust').forEach(d => d.remove());
+  for (let i = 0; i < 12; i++) {
+    const d = document.createElement('div');
+    d.className = 'dust';
+    d.style.left = (60 + Math.random() * 50) + '%';
+    d.style.bottom = (Math.random() * 50) + '%';
+    d.style.animationDuration = (8 + Math.random() * 8) + 's';
+    d.style.animationDelay = (Math.random() * 8) + 's';
+    d.style.width = d.style.height = (2 + Math.random() * 3) + 'px';
+    battleScreen.querySelector('.battle-bg-elements').appendChild(d);
+  }
+}
+
+/* ==========================================================
+   11. 防止双指缩放
+   ========================================================== */
+document.addEventListener('dblclick', e => e.preventDefault());
+document.addEventListener('touchmove', e => {
+  if (e.touches.length > 1) e.preventDefault();
+}, { passive:false });
+
+// 用户首次交互时初始化音频上下文
+document.addEventListener('click', () => getAudio(), { once:true });
+
+
+/* ==========================================================
+   v0.4 新增：错题本系统
+   ========================================================== */
+function showWrongBook() {
+  sfxClick();
+  renderWrongBook();
+  showScreen('wrongBookScreen');
+}
+
+function renderWrongBook() {
+  const list = $('wbList');
+  const summary = $('wbSummary');
+  const wb = SAVE.wrongBook || [];
+
+  summary.textContent = `共 ${wb.length} 道错题`;
+
+  if (wb.length === 0) {
+    list.innerHTML = `
+      <div class="wb-empty">
+        <div class="icon">📭</div>
+        <div class="text">还没有错题哦！<br>继续挑战关卡，遇到不会的题目<br>会自动收集到这里供复习。</div>
+      </div>
+    `;
+    return;
+  }
+
+  list.innerHTML = '';
+  wb.forEach((w, idx) => {
+    const card = document.createElement('div');
+    card.className = 'wb-card';
+    const typeLabel = { normal:'基础攻击', crit:'暴击', ulti:'必杀' }[w.type];
+    const qHtml = w.q.replace(/___/g, '<span class="blank">___</span>');
+    const ipa = w.ipa ? `<span style="font-size:13px; color:#8a5a2a; font-weight:500; margin-left:6px;">${w.ipa}</span>` : '';
+
+    const correctText = w.options[w.correct];
+    const wrongText = w.userChoice >= 0 ? w.options[w.userChoice] : '';
+
+    const date = new Date(w.time);
+    const dateStr = `${date.getMonth()+1}/${date.getDate()} ${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`;
+
+    card.innerHTML = `
+      <div class="wb-tag">${typeLabel} · 关卡${w.stage}</div>
+      <div class="wb-prompt">${w.prompt}</div>
+      <div class="wb-q">${qHtml}${ipa}</div>
+      <div class="wb-row">
+        <span class="wb-correct">✓ ${'ABCD'[w.correct]}. ${correctText}</span>
+        ${wrongText ? `<span class="wb-wrong">✗ ${'ABCD'[w.userChoice]}. ${wrongText}</span>` : ''}
+      </div>
+      <div class="wb-learn">
+        <b>${w.learn.word}</b> ${w.learn.ipa || ''} · ${w.learn.meaning}
+        ${w.learn.example ? `<i>"${w.learn.example}"</i>` : ''}
+      </div>
+      <div class="wb-meta">📍 ${w.stageName} · ${dateStr}</div>
+    `;
+    list.appendChild(card);
+  });
+}
+
+function clearWrongBook() {
+  if (SAVE.wrongBook.length === 0) return;
+  if (!confirm(`确认清空全部 ${SAVE.wrongBook.length} 道错题？`)) return;
+  SAVE.wrongBook = [];
+  renderWrongBook();
+  updateWrongBadge();
+  sfxClick();
+}
+
+/* ==========================================================
+   v0.4 新增：题库导入功能
+   ========================================================== */
+function openImportDialog() {
+  // 已废弃：直接用 label-for 触发文件选择
+}
+
+function showImportInfo() {
+  sfxClick();
+  const html = `
+    <div class="modal-mask show">
+      <div class="modal-card" style="max-width:380px;">
+        <div class="modal-corners tl"></div><div class="modal-corners tr"></div>
+        <div class="modal-corners bl"></div><div class="modal-corners br"></div>
+        <div class="modal-title">如何导入题库</div>
+        <div class="modal-sub" style="font-size:14px;">HOW TO IMPORT</div>
+        <div class="import-info">
+          📥 点击 <b>📥 按钮</b> 即可选择 .json 题库文件<br><br>
+          支持<b>题库编辑器</b>导出的格式，<br>
+          以及预制题包（小升初、初中、CET-4 等）<br><br>
+          ⚠️ 关闭页面后会还原默认题库
+        </div>
+        ${isCustomPool ? `<button class="btn" style="background:var(--blood-dark); margin-top:6px;" onclick="resetToDefaultPool();">↺ 还原默认题库</button><br>` : ''}
+        <button class="btn gold" style="margin-top:10px;" onclick="closeModal();">明白了</button>
+      </div>
+    </div>
+  `;
+  $('modalLayer').innerHTML = html;
+}
+
+function handlePoolImport(event) {
+  console.log('[Import] 开始处理文件选择');
+  const file = event.target.files && event.target.files[0];
+  if (!file) {
+    console.log('[Import] 没有选中文件');
+    return;
+  }
+  console.log('[Import] 文件:', file.name, file.size, 'bytes');
+
+  const reader = new FileReader();
+
+  reader.onerror = () => {
+    console.error('[Import] FileReader error');
+    showImportResult(false, '文件读取失败，请重试');
+    sfxWrong();
+  };
+
+  reader.onload = e => {
+    let data;
+    try {
+      data = JSON.parse(e.target.result);
+      console.log('[Import] JSON解析成功');
+    } catch (err) {
+      console.error('[Import] JSON解析失败:', err);
+      showImportResult(false, 'JSON格式错误：' + err.message);
+      sfxWrong();
+      return;
+    }
+
+    try {
+      if (typeof data !== 'object' || data === null) {
+        throw new Error('文件内容不是有效的对象');
+      }
+      const validKeys = ['stage1','stage2','stage3','stage4','stage5'];
+      const foundKeys = Object.keys(data).filter(k => validKeys.includes(k));
+      console.log('[Import] 找到的关卡:', foundKeys);
+      if (foundKeys.length === 0) {
+        throw new Error('文件里没有找到 stage1~stage5 数据');
+      }
+
+      // 校验题目结构
+      let totalQs = 0;
+      for (const k of foundKeys) {
+        if (!Array.isArray(data[k])) {
+          throw new Error(k + ' 不是数组');
+        }
+        for (const [idx, q] of data[k].entries()) {
+          const errs = [];
+          if (!q.q) errs.push('q缺失');
+          if (!q.options) errs.push('options缺失');
+          else if (q.options.length !== 4) errs.push('options长度='+q.options.length);
+          if (typeof q.correct !== 'number') errs.push('correct类型='+typeof q.correct);
+          if (!q.learn) errs.push('learn缺失');
+          if (errs.length > 0) {
+            throw new Error(k + ' 第' + (idx+1) + '题: ' + errs.join('; '));
+          }
+          totalQs++;
+        }
+      }
+      console.log('[Import] 校验通过，共', totalQs, '道题');
+
+      if (totalQs === 0) throw new Error('题库为空');
+
+      // 应用题库
+      const merged = Object.assign({}, QUESTION_POOL, data);
+      ACTIVE_POOL = merged;
+      isCustomPool = true;
+      renderMap();
+      sfxVictory();
+      showImportResult(true, '已导入 ' + totalQs + ' 道题', foundKeys);
+    } catch (err) {
+      console.error('[Import] 校验失败:', err);
+      showImportResult(false, err.message);
+      sfxWrong();
+    }
+  };
+
+  try {
+    reader.readAsText(file);
+  } catch (err) {
+    console.error('[Import] readAsText 失败:', err);
+    showImportResult(false, '无法读取文件: ' + err.message);
+    sfxWrong();
+  }
+
+  // 重置 input 以便同一个文件可以重复选择
+  event.target.value = '';
+}
+
+function showImportResult(success, message, stageKeys) {
+  const stageList = stageKeys && stageKeys.length > 0
+    ? '<div style="font-size:12px; color:var(--paper-dark); margin-top:6px;">已加载: ' + stageKeys.join(', ') + '</div>'
+    : '';
+
+  const html = `
+    <div class="modal-mask show">
+      <div class="modal-card" style="max-width:340px; border-color:${success ? 'var(--gold)' : 'var(--blood)'};">
+        <div class="modal-corners tl" style="border-color:${success ? 'var(--gold)' : 'var(--blood)'};"></div>
+        <div class="modal-corners tr" style="border-color:${success ? 'var(--gold)' : 'var(--blood)'};"></div>
+        <div class="modal-corners bl" style="border-color:${success ? 'var(--gold)' : 'var(--blood)'};"></div>
+        <div class="modal-corners br" style="border-color:${success ? 'var(--gold)' : 'var(--blood)'};"></div>
+        <div class="modal-title" style="color:${success ? 'var(--gold)' : 'var(--blood)'};">${success ? '✓ 导入成功' : '✗ 导入失败'}</div>
+        <div class="modal-text" style="font-size:14px;">
+          ${message}
+          ${stageList}
+        </div>
+        <button class="btn ${success ? 'gold' : 'dark'}" onclick="closeModal();">${success ? '开始挑战 ▶' : '知道了'}</button>
+      </div>
+    </div>
+  `;
+  $('modalLayer').innerHTML = html;
+}
+
+function resetToDefaultPool() {
+  ACTIVE_POOL = QUESTION_POOL;
+  isCustomPool = false;
+  closeModal();
+  renderMap();
+  showToast('已还原默认题库');
+  sfxClick();
+}
+
+
+
+
+/* ==========================================================
+   v0.5: 章节选择
+   ========================================================== */
+// v0.7: goChapterSelect 已替换为 goUnitSelect
+
+// v0.7: renderChapterSelect 已删除
+
+/* ==========================================================
+   v0.5: 重写 renderMap 以适配多章节
+   ========================================================== */
+const _origRenderMap = (typeof renderMap === 'function') ? renderMap : null;
+
+function renderMap() {
+  const hero = HEROES.find(h => h.id === SAVE.selectedHero);
+
+  // 标题
+  $('mapChTitle').textContent = currentUnit ? currentUnit.id.replace('_',' ') : 'WORD QUEST';
+  $('mapChSub').textContent = currentUnit ? currentUnit.name : 'SELECT A UNIT';
+
+  // 玩家信息
+  $('miniPortrait').innerHTML = PORTRAITS[hero.id]();
+  $('playerNameTag').textContent = hero.name;
+  $('totalCoins').textContent = SAVE.totalCoins;
+  $('playerLevel').textContent = SAVE.level;
+
+  // v0.7: 统一沙漠主题
+  const mapArea = $('mapArea');
+  const mapBg = $('mapBg');
+  mapArea.classList.remove('forest-map');
+  mapBg.innerHTML = `
+    <div class="map-pyr p1"></div>
+    <div class="map-pyr p2"></div>
+    <div class="map-pyr p3"></div>
+  `;
+
+  // v0.7: 关卡节点从 BATTLE_STAGES 取，进度从 currentUnit 取
+  SAVE.unitProgress = SAVE.unitProgress || {};
+  const unitKey = currentUnit ? currentUnit.id : 'default';
+  SAVE.unitProgress[unitKey] = SAVE.unitProgress[unitKey] || [];
+  const cleared = SAVE.unitProgress[unitKey];
+
+  const positions = [
+    {x:20, y:78}, {x:55, y:65}, {x:30, y:46}, {x:70, y:32}, {x:45, y:14}
+  ];
+  const nextStage = cleared.length === 0 ? 1 : Math.max(...cleared) + 1;
+
+  // 移除旧节点
+  mapArea.querySelectorAll('.stage-node').forEach(n => n.remove());
+
+  // 生成新节点（用 BATTLE_STAGES）
+  BATTLE_STAGES.forEach((stg, idx) => {
+    const pos = positions[idx];
+    const node = document.createElement('div');
+    let nodeClass = 'stage-node';
+    if (cleared.includes(stg.id)) nodeClass += ' cleared';
+    else if (stg.id === nextStage) nodeClass += ' current';
+    else nodeClass += ' locked';
+
+    node.className = nodeClass;
+    node.style.left = pos.x + '%';
+    node.style.top = pos.y + '%';
+    node.dataset.stage = stg.id;
+    node.innerHTML = `
+      <div class="node-circle">${stg.id}</div>
+      <div class="stage-label">${stg.name}</div>
+    `;
+    node.onclick = () => {
+      if (node.classList.contains('locked')) {
+        sfxWrong();
+        showToast('完成前置关卡才能解锁');
+        return;
+      }
+      sfxClick();
+      startBattle(stg.id);
+    };
+    mapArea.appendChild(node);
+  });
+
+  // 路径线
+  let svg = '';
+  for (let i = 0; i < positions.length-1; i++) {
+    const a = positions[i], b = positions[i+1];
+    const isActive = cleared.includes(i+1);
+    svg += `<line class="path-line ${isActive ? 'active':''}" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"/>`;
+  }
+  $('mapPathSvg').innerHTML = svg;
+
+  // 错题徽章
+  updateWrongBadge();
+
+  // 自定义题库标记（仅Ch1）
+  let customTag = document.querySelector('.custom-pool-tag');
+  if (isCustomPool) {
+    if (!customTag) {
+      customTag = document.createElement('div');
+      customTag.className = 'custom-pool-tag';
+      customTag.textContent = '✓ 自定义题库';
+      document.getElementById('mapScreen').appendChild(customTag);
+    }
+  } else if (customTag) {
+    customTag.remove();
+  }
+}
+
+/* ==========================================================
+   v0.5: 改造 startBattle 以支持多章节
+   ========================================================== */
+function startBattle(stageId) {
+  // v0.7: 从 BATTLE_STAGES 取关卡定义，从 currentUnit 取题库
+  const stage = BATTLE_STAGES.find(s => s.id === stageId);
+  const hero = HEROES.find(h => h.id === SAVE.selectedHero);
+  const enemyData = ENEMIES[stage.enemy];
+
+  // 题库：优先用当前选中单元的题库，否则用默认
+  const POOL = (currentUnit && currentUnit.pool) ? currentUnit.pool : ACTIVE_POOL;
+  const pool = POOL['stage'+stageId] || POOL.stage1;
+  const questions = [];
+  for (let i = 0; i < stage.qNum; i++) {
+    questions.push(pool[i % pool.length]);
+  }
+
+  battle = {
+    stage, hero, enemyData, chapter: currentUnit,
+    questions,
+    qIdx: 0,
+    player: { hp:hero.hp, maxHp:hero.hp, atk:hero.atk },
+    enemy:  { hp:enemyData.hp, maxHp:enemyData.hp, atk:enemyData.atk },
+    correct: 0,
+    combo: 0,
+    maxCombo: 0,
+    coins: 0,
+    locked: false,
+    lastLearn: null,
+  };
+
+  // 渲染战斗界面
+  $('stageNum').textContent = stage.id;
+  // 显示单元名 + 关卡名
+  const unitLabel = currentUnit ? currentUnit.name + ' · ' : '';
+  $('stageName').textContent = `${unitLabel}${stage.name}`;
+  $('playerArt').innerHTML = PORTRAITS[hero.id]();
+  $('enemyArt').innerHTML = PORTRAITS[enemyData.art]();
+  $('playerName').textContent = hero.name;
+  $('enemyName').textContent = enemyData.name;
+
+  // v0.7: 统一使用沙漠主题（去掉森林切换）
+  const battleScreen = $('battleScreen');
+  const battleBg = $('battleBg');
+  if (false) {  // v0.7 只用沙漠主题
+    battleScreen.classList.add('forest-scene');
+    battleBg.innerHTML = `
+      <div class="sunlight-rays"></div>
+      <div class="tree t1"></div>
+      <div class="tree t2"></div>
+      <div class="tree t3"></div>
+      <div class="tree t4"></div>
+      <div class="grass-floor"></div>
+    `;
+  } else {
+    battleScreen.classList.remove('forest-scene');
+    battleBg.innerHTML = `
+      <div class="pyramid left"></div>
+      <div class="pyramid right"></div>
+      <div class="sand-floor"></div>
+    `;
+  }
+
+  updateBars(); updateTopBar();
+  spawnAmbientParticles();
+
+  showScreen('battleScreen');
+
+  // 开场谷sir提示（前两关）
+  if (stage.id <= 2) {
+    setTimeout(() => showGusirIntro(stage, null), 500);
+  } else {
+    loadQuestion();
+  }
+}
+
+// 重写 spawn 函数以根据章节切换粒子
+function spawnAmbientParticles() {
+  const battleScreen = $('battleScreen');
+  battleScreen.querySelectorAll('.dust, .firefly').forEach(d => d.remove());
+  const isForest = false; // v0.7 统一沙漠主题
+
+  for (let i = 0; i < 14; i++) {
+    const d = document.createElement('div');
+    d.className = isForest ? 'firefly' : 'dust';
+    d.style.left = (60 + Math.random() * 50) + '%';
+    d.style.bottom = (Math.random() * 60) + '%';
+    d.style.animationDuration = (8 + Math.random() * 8) + 's';
+    d.style.animationDelay = (Math.random() * 8) + 's';
+    if (!isForest) {
+      d.style.width = d.style.height = (2 + Math.random() * 3) + 'px';
+    }
+    battleScreen.querySelector('.battle-bg-elements').appendChild(d);
+  }
+}
+
+// 旧的 spawnDust 重定向到新函数
+function spawnDust() { spawnAmbientParticles(); }
+
+// 改造 showGusirIntro 接受 chapter
+function showGusirIntro(stage, ch) {
+  const intros = {
+    '1': '欢迎！答对题目就能攻击怪物。<br>连续答对3次有<span class="hl">连击加成</span>，伤害×1.5！',
+    '2': '注意：黄色<span class="hl">暴击题</span>伤害×2.5，紫色<span class="hl">必杀题</span>是终极武器！',
+  };
+  const text = intros[String(stage.id)] || '准备战斗，加油！';
+  const html = `
+    <div class="modal-mask show">
+      <div class="modal-card">
+        <div class="modal-corners tl"></div><div class="modal-corners tr"></div>
+        <div class="modal-corners bl"></div><div class="modal-corners br"></div>
+        <div class="modal-title" style="color:#4a9fd4;">导师提示</div>
+        <div class="gusir-bubble">
+          <div class="gusir-avatar">谷</div>
+          <div class="gusir-name">谷SIR · MENTOR</div>
+          <div>${text}</div>
+        </div>
+        <button class="btn gold" onclick="closeModal(); loadQuestion();">明白了 ▶</button>
+      </div>
+    </div>
+  `;
+  $('modalLayer').innerHTML = html;
+}
+
+// 改造 victorySequence 以记录章节进度
+const _origVictory = victorySequence;
+victorySequence = function() {
+  sfxVictory();
+  $('enemyChar').classList.add('defeated');
+
+  // v0.7: 记录到当前单元的进度
+  SAVE.unitProgress = SAVE.unitProgress || {};
+  const unitKey = currentUnit ? currentUnit.id : 'default';
+  SAVE.unitProgress[unitKey] = SAVE.unitProgress[unitKey] || [];
+  if (!SAVE.unitProgress[unitKey].includes(battle.stage.id)) {
+    SAVE.unitProgress[unitKey].push(battle.stage.id);
+  }
+  SAVE.totalCoins += battle.coins;
+  // 等级 = 所有单元通关关卡总数
+  SAVE.level = Object.values(SAVE.unitProgress).reduce((s, arr) => s + arr.length, 0) + 1;
+
+  setTimeout(() => {
+    const l = battle.lastLearn || {};
+    const isFinal = battle.stage.id === 5;
+    const hasNextChapter = false;
+    const html = `
+      <div class="modal-mask show">
+        <div class="modal-card">
+          <div class="modal-corners tl"></div><div class="modal-corners tr"></div>
+          <div class="modal-corners bl"></div><div class="modal-corners br"></div>
+          <div class="modal-title">${isFinal ? 'UNIT CLEAR!' : 'VICTORY!'}</div>
+          <div class="modal-sub">${isFinal ? '本单元全部通关！' : '通关胜利'}</div>
+
+          ${isFinal ? `
+            <div class="gusir-bubble">
+              <div class="gusir-avatar">谷</div>
+              <div class="gusir-name">谷SIR · MENTOR</div>
+              <div>恭喜完成 <span class='hl'>${currentUnit ? currentUnit.name : '本单元'}</span>！<br>所有单词都掌握了吗？回去选下一个单元！</div>
+            </div>
+          ` : `
+            <div class="learn-card">
+              <div class="word">${l.word||''} <span class="ipa">${l.ipa||''}</span></div>
+              <div class="meaning">${l.meaning||''}</div>
+              ${l.example ? `<div class="example">"${l.example}"</div>` : ''}
+            </div>
+          `}
+
+          <div class="loot-grid">
+            <div class="loot-item">EXP<span class="num">+${50 + battle.maxCombo * 5}</span></div>
+            <div class="loot-item">COINS<span class="num">+${battle.coins}</span></div>
+            <div class="loot-item">CORRECT<span class="num">${battle.correct}/${battle.questions.length}</span></div>
+            <div class="loot-item">MAX COMBO<span class="num">x${battle.maxCombo}</span></div>
+          </div>
+
+          <div class="modal-btn-row">
+            <button class="btn dark" onclick="closeModal(); goMap();">返回地图</button>
+            ${battle.stage.id < 5 ? `<button class="btn gold" onclick="closeModal(); startBattle(${battle.stage.id+1});">下一关 ▶</button>` : (`<button class="btn gold" onclick="closeModal(); goUnitSelect();">选其他单元 ▶</button>`)}
+          </div>
+        </div>
+      </div>
+    `;
+    $('modalLayer').innerHTML = html;
+  }, 1200);
+};
+
+
+
+
+/* ==========================================================
+   v0.7: 单元系统核心函数
+   ========================================================== */
+
+// 自动检测 GitHub Pages base URL
+function detectGithubBase() {
+  const loc = window.location.href;
+  // 去掉 html 文件名，得到目录
+  const base = loc.substring(0, loc.lastIndexOf('/') + 1);
+  return base;
+}
+
+// 从 GitHub 拉取单元目录
+async function fetchUnitIndex() {
+  // 先尝试从 GitHub 拉取（可能有更多单元）
+  const base = detectGithubBase();
+  const indexUrl = base + 'units/index.json';
+  try {
+    const res = await fetch(indexUrl);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    console.log('[Units] index.json 加载成功:', data.length, '个单元');
+    return data;
+  } catch (e) {
+    console.warn('[Units] 无法加载 index.json，使用内嵌索引:', e.message);
+    // 降级：从内嵌数据构建索引
+    const unitMeta = {
+      '7B_Unit1': { name: 'Unit 1 · People', desc: '人物性格描写 · 形容词 · 词组 · used to / give up' },
+      '7B_Unit2': { name: 'Unit 2 · Travel & Nature', desc: '旅游自然 · 形容词 · 词组 · prefer to / go hiking' },
+    };
+    return Object.keys(EMBEDDED_UNITS).map(id => ({
+      id,
+      name: unitMeta[id]?.name || id,
+      desc: unitMeta[id]?.desc || '',
+      count: Object.values(EMBEDDED_UNITS[id]).reduce((s, a) => s + a.length, 0)
+    }));
+  }
+}
+
+// 从 GitHub 拉取单个单元的题库
+async function fetchUnitPool(unitId) {
+  // 先检查内嵌题库
+  if (EMBEDDED_UNITS[unitId]) {
+    console.log('[Units] 使用内嵌题库:', unitId);
+    return EMBEDDED_UNITS[unitId];
+  }
+  // 否则从 GitHub 拉取
+  const base = detectGithubBase();
+  const url = base + 'units/' + unitId + '.json';
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    return await res.json();
+  } catch (e) {
+    console.error('[Units] 无法加载题库:', unitId, e.message);
+    return null;
+  }
+}
+
+// 进入单元选择
+async function goUnitSelect() {
+  sfxClick();
+  showScreen('unitScreen');
+  renderUnitList();
+}
+
+// 渲染单元列表
+async function renderUnitList() {
+  const container = $('unitListContent');
+  container.innerHTML = '<div class="unit-loading"><span class="spinner">⚙</span>正在加载单元列表...</div>';
+
+  const index = await fetchUnitIndex();
+
+  if (!index || index.length === 0) {
+    // 没有网络或没有 index.json，显示提示
+    container.innerHTML = `
+      <div class="unit-error">
+        <div class="icon">📭</div>
+        <div class="msg">
+          暂时无法加载单元列表。<br><br>
+          可能原因：<br>
+          ① 游戏是本地打开的（file://），需要上传到 GitHub Pages<br>
+          ② units/index.json 还没有创建<br><br>
+          <b style="color:var(--gold);">老师正在为你准备题库，请稍候～</b>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  unitList = index;
+  container.innerHTML = '';
+
+  index.forEach(unit => {
+    SAVE.unitProgress = SAVE.unitProgress || {};
+    const progress = SAVE.unitProgress[unit.id] || [];
+    const isCompleted = progress.length >= 5;
+
+    const card = document.createElement('div');
+    card.className = 'unit-card' + (isCompleted ? ' completed' : '');
+    card.innerHTML = `
+      <div class="unit-id">📖 ${unit.id.replace('_', ' ')}</div>
+      <div class="unit-name">${unit.name}</div>
+      <div class="unit-desc">${unit.desc}</div>
+      <div class="unit-progress">
+        关卡进度：<span class="done">${progress.length}</span> / 5
+        ${unit.count ? ' · 共 ' + unit.count + ' 道题' : ''}
+      </div>
+    `;
+    card.onclick = () => selectUnit(unit);
+    container.appendChild(card);
+  });
+}
+
+// 选择并加载一个单元
+async function selectUnit(unit) {
+  sfxClick();
+
+  // 立刻显示加载弹窗（让用户知道点击生效了）
+  $('modalLayer').innerHTML = `
+    <div class="modal-mask show">
+      <div class="modal-card" style="max-width:300px; text-align:center;">
+        <div class="modal-title" style="color:#4a9fd4; font-size:12px;">正在加载题库...</div>
+        <div style="font-size:13px; color:var(--paper); margin:12px 0;">
+          ${unit.name}
+        </div>
+        <div style="font-family:var(--pixel); font-size:20px; letter-spacing:4px; color:var(--gold);">
+          ⚙ ⚙ ⚙
+        </div>
+      </div>
+    </div>
+  `;
+
+  try {
+    const base = detectGithubBase();
+    const url = base + 'units/' + unit.id + '.json';
+    console.log('[Unit] 正在拉取:', url);
+
+    const res = await fetch(url);
+    console.log('[Unit] HTTP 状态:', res.status);
+
+    if (!res.ok) {
+      throw new Error('文件不存在或无法访问 (HTTP ' + res.status + ')\n\n请确认 units/' + unit.id + '.json 已上传到 GitHub');
+    }
+
+    const pool = await res.json();
+    console.log('[Unit] 题库加载成功，关卡:', Object.keys(pool));
+
+    // 验证题库结构
+    const validKeys = Object.keys(pool).filter(k => k.startsWith('stage'));
+    if (validKeys.length === 0) {
+      throw new Error('题库格式不正确，请重新上传 JSON 文件');
+    }
+
+    // 成功！关闭加载弹窗，进入地图
+    closeModal();
+    currentUnit = { ...unit, pool };
+    sfxVictory();
+
+    $('mapChTitle').textContent = unit.id.replace('_', ' ');
+    $('mapChSub').textContent = unit.name;
+
+    renderMap();
+    showScreen('mapScreen');
+
+  } catch (err) {
+    console.error('[Unit] 加载失败:', err);
+    sfxWrong();
+
+    // 显示详细错误弹窗
+    $('modalLayer').innerHTML = `
+      <div class="modal-mask show">
+        <div class="modal-card" style="border-color:var(--blood); max-width:340px;">
+          <div class="modal-corners tl" style="border-color:var(--blood);"></div>
+          <div class="modal-corners tr" style="border-color:var(--blood);"></div>
+          <div class="modal-corners bl" style="border-color:var(--blood);"></div>
+          <div class="modal-corners br" style="border-color:var(--blood);"></div>
+          <div class="modal-title" style="color:var(--blood); font-size:11px;">题库加载失败</div>
+          <div style="font-size:12px; color:var(--paper); margin:10px 0; line-height:1.7; text-align:left; background:rgba(0,0,0,.3); padding:10px; border-radius:4px; font-family:monospace; word-break:break-all;">
+            ${err.message}
+          </div>
+          <div style="font-size:12px; color:var(--paper-dark); margin-bottom:14px; line-height:1.6;">
+            请截图发给谷sir，或检查 GitHub 上 units/ 文件夹里是否有 <b style="color:var(--gold);">${unit.id}.json</b>
+          </div>
+          <button class="btn dark" onclick="closeModal();">返回</button>
+        </div>
+      </div>
+    `;
+  }
+}
+
+// 解析URL里的学生专属题库（v0.6已有，保留并增强）
+// 如果URL有 #wq=... 参数，直接进入战斗模式，跳过单元选择
+const _origParseStudent = parseStudentURL;
+
+
+</script>
+</body>
+</html>
