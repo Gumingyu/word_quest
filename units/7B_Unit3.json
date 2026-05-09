@@ -50,7 +50,7 @@
       "learn": { "word": "stick", "ipa": "/stɪk/", "meaning": "n. 棍；条", "example": "He picked up a stick from the ground." }
     },
     {
-      "type": "norm", 
+      "type": "normal",
       "dmg": 10,
       "prompt": "选出 dig 的中文意思",
       "q": "dig",
@@ -236,6 +236,15 @@
       "options": ["最后一点", "首先；第一点", "中间", "总之"],
       "correct": 1,
       "learn": { "word": "to begin with", "ipa": "", "meaning": "phr. 首先；第一点", "example": "To begin with, let's talk about why trees matter." }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 look around 的中文意思",
+      "q": "look around",
+      "options": ["寻找", "环视；四下察看", "向上看", "回头看"],
+      "correct": 1,
+      "learn": { "word": "look around", "ipa": "", "meaning": "phr. 环视；环顾；四下察看", "example": "He looked around the forest and felt amazed." }
     }
   ],
   "stage3": [
@@ -352,6 +361,15 @@
       "options": ["例如；譬如", "总结", "对比", "转折"],
       "correct": 0,
       "learn": { "word": "for example", "ipa": "", "meaning": "phr. 例如；譬如", "example": "Many trees are important, for example, oaks and pines." }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 borrow 和 lend 的区别",
+      "q": "Can you ___ me your pen? I forgot mine.",
+      "options": ["borrow", "lend", "give", "take"],
+      "correct": 1,
+      "learn": { "word": "lend（借出）", "ipa": "", "meaning": "gram. lend sb sth 借给某人某物；borrow sth from sb 向某人借", "example": "Can you lend me your pen? = Can I borrow your pen?" }
     }
   ],
   "stage4": [
@@ -561,11 +579,11 @@
     {
       "type": "crit",
       "dmg": 30,
-      "prompt": "选出 look around 的中文意思",
-      "q": "look around",
-      "options": ["寻找", "环视；四下察看", "期待", "回顾"],
+      "prompt": "选出 look around 的语境用法",
+      "q": "When I entered the forest, I ___ and saw beautiful trees everywhere.",
+      "options": ["looked after", "looked around", "looked for", "looked up"],
       "correct": 1,
-      "learn": { "word": "look around", "ipa": "", "meaning": "phr. 环视；环顾；四下察看", "example": "He looked around the forest and felt amazed." }
+      "learn": { "word": "look around（语境）", "ipa": "", "meaning": "phr. 环顾——进入森林后四下看", "example": "I looked around and felt the beauty of nature." }
     },
     {
       "type": "ulti",
@@ -596,13 +614,22 @@
       "prompt": "选出语法正确的句子",
       "q": "_____",
       "options": [
-        "According to the study, trees produce oxygen and takes in CO₂.",
-        "According to the study, trees produces oxygen and take in CO₂.",
-        "According to the study, trees produce oxygen and take in CO₂.",
-        "According the study, trees produce oxygen and take in CO₂."
+        "According to the study, trees absorb carbon dioxide and take in CO₂.",
+        "According to the study, trees produce oxygen and absorbs CO₂.",
+        "According to the study, trees produce oxygen and absorb CO₂.",
+        "Accordings to the study, trees produce oxygen and absorb CO₂."
       ],
       "correct": 2,
-      "learn": { "word": "according to / 主语一致", "ipa": "", "meaning": "gram. according to 必须加 to；主语 trees 复数，动词 produce 和 take 都用原形", "example": "According to the study, trees help clean the air." }
+      "learn": { "word": "according to / 主语一致", "ipa": "", "meaning": "gram. according to 必须加 to；主语 trees 复数，动词 produce 和 absorb 都用原形", "example": "According to the study, trees help clean the air." }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 species 的正确用法",
+      "q": "Many ___ of plants live in this forest.",
+      "options": ["specie", "species", "specieses", "speciess"],
+      "correct": 1,
+      "learn": { "word": "species（单复数同形）", "ipa": "", "meaning": "gram. species 单数和复数形式一样，不加 -s 或 -es", "example": "one species → many species" }
     }
   ]
 }
