@@ -1,0 +1,1171 @@
+{
+  "stage1": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 active 的中文意思",
+      "q": "active",
+      "ipa": "/ˈæktɪv/",
+      "options": [
+        "安静的",
+        "懒惰的",
+        "孤独的",
+        "忙碌的；活跃的"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "active",
+        "ipa": "/ˈæktɪv/",
+        "meaning": "adj. 忙碌的；活跃的",
+        "example": "She is very active in school activities."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 bored 的中文意思",
+      "q": "bored",
+      "ipa": "/bɔːrd/",
+      "options": [
+        "开心的",
+        "活跃的",
+        "厌倦的；烦闷的",
+        "严格的"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "bored",
+        "ipa": "/bɔːrd/",
+        "meaning": "adj. 厌倦的；烦闷的（boring 指事物无聊，bored 指人感到无聊）",
+        "example": "I felt bored because the class was too slow."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出\"聪明的；机敏的\"的英文",
+      "q": "聪明的；机敏的",
+      "options": [
+        "active",
+        "strict",
+        "smart",
+        "bored"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "smart",
+        "ipa": "/smɑːrt/",
+        "meaning": "adj. 聪明的；机敏的（= clever）",
+        "example": "Tom is smart — he always finds a good way."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "她很少用手机，总是专注于学习。",
+      "options": [
+        "She seldom use her smartphone and always focuses on study.",
+        "She seldom uses her smartphone and always focuses on study.",
+        "She seldom uses her smartphone and always focus on study.",
+        "She seldom using her smartphone and always focuses on study."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "seldom uses",
+        "ipa": "",
+        "meaning": "gram. 三单主语 She + seldom + 动词加 s",
+        "example": "She seldom uses social media."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 bored 和 boring 的区别",
+      "q": "The lesson was ___. I felt ___ after five minutes.",
+      "options": [
+        "bored / boring",
+        "bored / bored",
+        "boring / boring",
+        "boring / bored"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "boring / bored",
+        "ipa": "",
+        "meaning": "boring 描述事物（令人无聊），bored 描述人（感到无聊）",
+        "example": "The film was boring. I was bored."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 seldom 的中文意思",
+      "q": "seldom",
+      "ipa": "/ˈseldəm/",
+      "options": [
+        "总是",
+        "不常；很少",
+        "经常",
+        "从不"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "seldom",
+        "ipa": "/ˈseldəm/",
+        "meaning": "adv. 不常；很少（= rarely）",
+        "example": "He seldom watches TV — he prefers reading."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出最合适的词",
+      "q": "My grandfather ___ goes to the park. He goes almost every day.",
+      "options": [
+        "often",
+        "never",
+        "seldom",
+        "bored"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "often（语境）",
+        "ipa": "",
+        "meaning": "adv. 经常——「几乎每天」说明频率很高，用 often",
+        "example": "He often goes to the park."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 strict 的正确搭配",
+      "q": "Our teacher is ___ about being on time.",
+      "options": [
+        "strict",
+        "be strict about",
+        "strictly",
+        "strict with"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "be strict about",
+        "ipa": "",
+        "meaning": "phr. 对（某事）要求严格（about + 事情）",
+        "example": "She is strict about homework quality."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 seldom 在句中的正确位置",
+      "q": "She ___ eats fried food.",
+      "options": [
+        "seldomly",
+        "is seldom",
+        "seldom",
+        "a seldom"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "seldom（频率副词）",
+        "ipa": "",
+        "meaning": "gram. seldom 是频率副词，放在行为动词前",
+        "example": "She seldom eats junk food."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出语法正确的句子",
+      "q": "_____",
+      "options": [
+        "He is seldom late for school.",
+        "He seldom is late for school.",
+        "He is late seldom for school.",
+        "Seldom he is late for school."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "seldom + be 动词",
+        "ipa": "",
+        "meaning": "gram. seldom 在 be 动词后（is/are/was/were）",
+        "example": "He is seldom late. She is seldom bored."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 cheerful 的中文意思",
+      "q": "cheerful",
+      "ipa": "/ˈtʃɪrfl/",
+      "options": [
+        "开朗的",
+        "严格的",
+        "烦闷的",
+        "忙碌的"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "cheerful",
+        "ipa": "/ˈtʃɪrfl/",
+        "meaning": "adj. 开朗的；高兴的",
+        "example": "She is always cheerful and makes everyone happy."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "他开朗、积极，从不感到无聊。",
+      "options": [
+        "He is cheerful, active and never feels boring.",
+        "He is cheerful, active and never feel bored.",
+        "He cheerful, active and never feels bored.",
+        "He is cheerful, active and never feels bored."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "feels bored",
+        "ipa": "",
+        "meaning": "gram. feel + 形容词；人感到无聊用 bored（不是 boring）",
+        "example": "He never feels bored because he is always active."
+      }
+    }
+  ],
+  "stage2": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 characteristic 的中文意思",
+      "q": "characteristic",
+      "ipa": "/ˌkærəktəˈrɪstɪk/",
+      "options": [
+        "话题",
+        "特点；品质",
+        "成员",
+        "竞赛"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "characteristic",
+        "ipa": "/ˌkærəktəˈrɪstɪk/",
+        "meaning": "n. 特点；品质（= feature）",
+        "example": "Patience is one of her best characteristics."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 advice 的正确用法",
+      "q": "Can you give me ___ advice?",
+      "options": [
+        "an",
+        "some",
+        "a",
+        "many"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "some advice",
+        "ipa": "",
+        "meaning": "gram. advice 是不可数名词，用 some/a piece of，不用 an/many",
+        "example": "some advice, a piece of advice (NOT: an advice)"
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "我父亲在建筑工地工作，他很少早回家。",
+      "options": [
+        "My father works at a building site and seldom come home early.",
+        "My father work at a building site and seldom comes home early.",
+        "My father works at a building site and seldom comes home early.",
+        "My father works at a building sites and seldom comes home early."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "works / seldom comes",
+        "ipa": "",
+        "meaning": "gram. 三单主语用 works 和 comes；site 这里单数",
+        "example": "He works at a site and seldom rests."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出\"亲戚；亲属\"的英文",
+      "q": "亲戚；亲属",
+      "options": [
+        "community",
+        "topic",
+        "personality",
+        "relative"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "relative",
+        "ipa": "/ˈrelətɪv/",
+        "meaning": "n. 亲戚；亲属",
+        "example": "We visited our relatives during the holiday."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 competition 的中文意思",
+      "q": "competition",
+      "ipa": "/ˌkɒmpəˈtɪʃn/",
+      "options": [
+        "比赛；竞赛",
+        "建议",
+        "注意力",
+        "社区"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "competition",
+        "ipa": "/ˌkɒmpəˈtɪʃn/",
+        "meaning": "n. 比赛；竞赛",
+        "example": "She won first place in the English competition."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 community 的中文意思",
+      "q": "community",
+      "ipa": "/kəˈmjuːnəti/",
+      "options": [
+        "学校",
+        "社区",
+        "家庭",
+        "团队"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "community",
+        "ipa": "/kəˈmjuːnəti/",
+        "meaning": "n. 社区；社会群体",
+        "example": "She volunteers to help the local community."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出最合适的词",
+      "q": "She has a great ___ — she is kind, funny and generous.",
+      "options": [
+        "topic",
+        "uniform",
+        "competition",
+        "personality"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "personality（语境）",
+        "ipa": "",
+        "meaning": "n. 性格——列举了性格特点，所以填 personality",
+        "example": "A great personality makes a great friend."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 site 的中文意思",
+      "q": "site",
+      "ipa": "/saɪt/",
+      "options": [
+        "淋浴",
+        "超人",
+        "网站",
+        "建筑工地"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "site",
+        "ipa": "/saɪt/",
+        "meaning": "n. 建筑工地；地点（website 网站）",
+        "example": "My father works at a building site."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 personality 的中文意思",
+      "q": "personality",
+      "ipa": "/ˌpɜːrsəˈnæləti/",
+      "options": [
+        "性格；个性",
+        "外貌",
+        "话题",
+        "特点"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "personality",
+        "ipa": "/ˌpɜːrsəˈnæləti/",
+        "meaning": "n. 性格；个性",
+        "example": "She has a warm and friendly personality."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 attention 的正确搭配",
+      "q": "Please pay ___ to the teacher.",
+      "options": [
+        "attentions",
+        "an attention",
+        "attention",
+        "the attentions"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "pay attention to",
+        "ipa": "",
+        "meaning": "phr. 注意；专心（pay attention to 固定搭配）",
+        "example": "Pay attention to the teacher in class."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 advice 的中文意思",
+      "q": "advice",
+      "ipa": "/ədˈvaɪs/",
+      "options": [
+        "建议",
+        "广告",
+        "竞赛",
+        "话题"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "advice",
+        "ipa": "/ədˈvaɪs/",
+        "meaning": "n. 建议（不可数！不说 an advice / advices）",
+        "example": "She gave me some useful advice."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 uniform 的中文意思",
+      "q": "uniform",
+      "ipa": "/ˈjuːnɪfɔːrm/",
+      "options": [
+        "特点",
+        "个性",
+        "制服；校服",
+        "话题"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "uniform",
+        "ipa": "/ˈjuːnɪfɔːrm/",
+        "meaning": "n. 制服；校服",
+        "example": "We wear a school uniform every day."
+      }
+    }
+  ],
+  "stage3": [
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "无论你在哪里，我都会鼓励你。",
+      "options": [
+        "Wherever you are, I will encouraging you.",
+        "Wherever you are, I will encourage you.",
+        "Wherever are you, I will encourage you.",
+        "Wherever you are, I encourage you will."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "wherever + 主从句",
+        "ipa": "",
+        "meaning": "gram. wherever 引导地点状语从句，主句正常语序",
+        "example": "Wherever you go, I'll support you."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 medical 的中文意思",
+      "q": "medical",
+      "ipa": "/ˈmedɪkl/",
+      "options": [
+        "音乐的",
+        "数学的",
+        "医学的；医疗的",
+        "科技的"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "medical",
+        "ipa": "/ˈmedɪkl/",
+        "meaning": "adj. 医学的；医疗的（medicine n. 医学）",
+        "example": "She wants to have a medical career."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "我爷爷退休后，很快就开始在社区做志愿者。",
+      "options": [
+        "After my grandfather retired, he soon started volunteering in the community.",
+        "After my grandfather retire, he soon started volunteering in the community.",
+        "After my grandfather retired, he soon start volunteering in the community.",
+        "After my grandfather retired, he soon started volunteer in the community."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "retired / started volunteering",
+        "ipa": "",
+        "meaning": "gram. 从句过去时 retired；start + V-ing 表开始做",
+        "example": "After he retired, he started volunteering."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出最合适的词",
+      "q": "You should use your smartphone ___, not just for games.",
+      "options": [
+        "seldom",
+        "bored",
+        "wisely",
+        "narrow"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "wisely（语境）",
+        "ipa": "",
+        "meaning": "adv. 明智地——手机要用得明智，不能只玩游戏",
+        "example": "Use your time wisely."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 retire 的中文意思",
+      "q": "retire",
+      "ipa": "/rɪˈtaɪər/",
+      "options": [
+        "工作",
+        "升职",
+        "辞职",
+        "退休"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "retire",
+        "ipa": "/rɪˈtaɪər/",
+        "meaning": "v.（令）退休；退职",
+        "example": "My grandfather retired at the age of 60."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出\"在线的\"的英文",
+      "q": "在线的",
+      "options": [
+        "active",
+        "smart",
+        "online",
+        "medical"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "online",
+        "ipa": "/ˌɒnˈlaɪn/",
+        "meaning": "adj. 在线的　adv. 在线地",
+        "example": "We have online classes when it rains heavily."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 encourage 的中文意思",
+      "q": "encourage",
+      "ipa": "/ɪnˈkɜːrɪdʒ/",
+      "options": [
+        "要求",
+        "建议",
+        "退休",
+        "鼓励；激励"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "encourage",
+        "ipa": "/ɪnˈkɜːrɪdʒ/",
+        "meaning": "v. 鼓励；激励",
+        "example": "My teacher encourages me to speak English every day."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 encourage 的正确形式",
+      "q": "My mum always ___ me to read more books.",
+      "options": [
+        "encourage",
+        "encourages",
+        "encouraging",
+        "encouraged"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "encourages（三单）",
+        "ipa": "",
+        "meaning": "gram. 主语 My mum 是三单，动词加 -es",
+        "example": "She encourages me every day."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 wisely 的中文意思",
+      "q": "wisely",
+      "ipa": "/ˈwaɪzli/",
+      "options": [
+        "勇敢地",
+        "活跃地",
+        "严格地",
+        "聪明地；明智地"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "wisely",
+        "ipa": "/ˈwaɪzli/",
+        "meaning": "adv. 聪明地；明智地（wise adj. 明智的 + ly）",
+        "example": "She used her time wisely and finished early."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 narrow 的中文意思",
+      "q": "narrow",
+      "ipa": "/ˈnærəʊ/",
+      "options": [
+        "狭窄的；窄小的",
+        "长的",
+        "宽阔的",
+        "高大的"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "narrow",
+        "ipa": "/ˈnærəʊ/",
+        "meaning": "adj. 狭窄的；窄小的（反义 wide 宽的）",
+        "example": "The road near the site is very narrow."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 wherever 的中文意思",
+      "q": "wherever",
+      "ipa": "/weərˈevər/",
+      "options": [
+        "无论何时",
+        "无论何地；各处",
+        "无论如何",
+        "无论谁"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "wherever",
+        "ipa": "/weərˈevər/",
+        "meaning": "conj. 无论在哪里；各处",
+        "example": "Wherever you go, I will support you."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 shower 在句中的意思",
+      "q": "I always take a shower before school.",
+      "options": [
+        "淋浴",
+        "阵雨",
+        "超人",
+        "竞赛"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "shower",
+        "ipa": "/ˈʃaʊər/",
+        "meaning": "n. 淋浴（take a shower 洗澡）　也指阵雨",
+        "example": "I take a shower every morning."
+      }
+    }
+  ],
+  "stage4": [
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "在未来，我想成为一名医生，帮助社区里的人。",
+      "options": [
+        "In the future, I want to be doctor and help people in the community.",
+        "In future, I want to be a doctor and help people in the community.",
+        "In the future, I want to be a doctor and help people in the community.",
+        "In the future, I want to be a doctor and helping people in the community."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "in the future（the 不能省）",
+        "ipa": "",
+        "meaning": "gram. 固定表达 in the future，the 不可省略",
+        "example": "In the future, robots may do our work."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 used to 的正确用法",
+      "q": "My dad ___ smoke, but he stopped five years ago.",
+      "options": [
+        "is used to",
+        "use to",
+        "used to",
+        "was used to"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "used to + 动词原形",
+        "ipa": "",
+        "meaning": "gram. used to 后接动词原形（不是 V-ing）",
+        "example": "He used to smoke. She used to live here."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 give up 的中文意思",
+      "q": "give up",
+      "options": [
+        "坚持",
+        "放弃；认输",
+        "鼓励",
+        "支持"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "give up",
+        "ipa": "",
+        "meaning": "phr. 放弃；认输（give up + V-ing 放弃做某事）",
+        "example": "Never give up your dreams!"
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "我父母对我用手机很担心，所以他们对此很严格。",
+      "options": [
+        "My parents worried about my smartphone use, so they strict about it.",
+        "My parents are worried about my smartphone use, so they are strict with it.",
+        "My parents are worried about my smartphone use, so they are strict about it.",
+        "My parents are worry about my smartphone use, so they are strict about it."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "are worried about / are strict about",
+        "ipa": "",
+        "meaning": "gram. 两个 be + 形容词结构平行；about 不换成 with",
+        "example": "They are worried about it and strict about it."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 give up 的正确形式",
+      "q": "She decided to ___ playing video games.",
+      "options": [
+        "give up",
+        "give up to",
+        "giving up",
+        "gave up to"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "give up + V-ing",
+        "ipa": "",
+        "meaning": "gram. give up 后接动名词（V-ing），不接 to do",
+        "example": "She gave up playing games. He gave up smoking."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出正确的介词",
+      "q": "My parents are always ___ my health.",
+      "options": [
+        "worried for",
+        "worried about",
+        "be worried about",
+        "worry about"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "be worried about",
+        "ipa": "",
+        "meaning": "phr. 担心……（worried 是形容词，前加 be 动词）",
+        "example": "She is worried about the exam."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 used to 的中文意思",
+      "q": "used to",
+      "ipa": "",
+      "options": [
+        "习惯于",
+        "曾经（过去常做）",
+        "用来",
+        "被使用"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "used to + 动词原形",
+        "ipa": "",
+        "meaning": "phr. 曾经（表示过去的习惯，现在已改变）",
+        "example": "I used to be shy, but now I'm confident."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出最合适的词",
+      "q": "My teacher is very ___ about our handwriting.",
+      "options": [
+        "strict",
+        "seldom",
+        "worried",
+        "bored"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "be strict about",
+        "ipa": "",
+        "meaning": "phr. 对……严格（strict 后接 about + 名词/V-ing）",
+        "example": "She is strict about punctuality."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出语法正确的句子",
+      "q": "_____",
+      "options": [
+        "I used to afraid of speaking English.",
+        "I was used to afraid of speaking English.",
+        "I am used to afraid of speaking English.",
+        "I used to be afraid of speaking English."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "used to be",
+        "ipa": "",
+        "meaning": "gram. used to + be（形容词做表语时需要 be）",
+        "example": "I used to be shy. She used to be active."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "他过去很少锻炼，但现在他每天都去健身房。",
+      "options": [
+        "He used to seldom exercise, but now he go to the gym every day.",
+        "He use to seldom exercise, but now he goes to the gym every day.",
+        "He used to seldom exercised, but now he goes to the gym every day.",
+        "He used to seldom exercise, but now he goes to the gym every day."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "used to + 动词原形",
+        "ipa": "",
+        "meaning": "gram. used to 后接动词原形（exercise，不是 exercised）",
+        "example": "He used to seldom exercise."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 in the future 的中文意思",
+      "q": "in the future",
+      "options": [
+        "在过去",
+        "在现在",
+        "最近",
+        "在未来"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "in the future",
+        "ipa": "",
+        "meaning": "phr. 在未来；将来（表示将来时间）",
+        "example": "I want to be a doctor in the future."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 used to 的否定形式",
+      "q": "He ___ like vegetables when he was young.",
+      "options": [
+        "didn't use to",
+        "used to not",
+        "didn't used to",
+        "not used to"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "didn't use to",
+        "ipa": "",
+        "meaning": "gram. used to 否定：didn't use to + 动词原形（use 不加 d）",
+        "example": "He didn't use to like vegetables."
+      }
+    }
+  ],
+  "stage5": [
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译",
+      "q": "他曾经对学英语不感兴趣，但现在他在比赛中表现很聪明。",
+      "options": [
+        "He used to be uninterested in English, but now he performs wisely in competitions.",
+        "He used to uninterested in English, but now he performs wisely in competitions.",
+        "He used to be uninterested in English, but now he perform wisely in competitions.",
+        "He used to be uninterested in English, but now he performs wise in competitions."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "used to be / performs wisely",
+        "ipa": "",
+        "meaning": "gram. used to be（形容词前加 be）；perform + adv. 副词修饰动词",
+        "example": "He used to be shy but now performs confidently."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 topic 的中文意思",
+      "q": "topic",
+      "ipa": "/ˈtɒpɪk/",
+      "options": [
+        "性格",
+        "段落",
+        "话题；标题",
+        "特点"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "topic",
+        "ipa": "/ˈtɒpɪk/",
+        "meaning": "n. 话题；标题",
+        "example": "The topic of today's class is personality."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译",
+      "q": "无论你身在何处，都不应该放弃。",
+      "options": [
+        "Wherever you are, you shouldn't give up.",
+        "Wherever you are, you shouldn't give up to.",
+        "Wherever are you, you shouldn't give up.",
+        "Wherever you are, you shouldn't giving up."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "wherever / give up",
+        "ipa": "",
+        "meaning": "gram. wherever 引导从句，主句正常；give up 后不加 to",
+        "example": "Wherever you are, never give up."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 be worried about 的正确形式",
+      "q": "Why ___ you worried about the competition?",
+      "options": [
+        "do",
+        "are",
+        "is",
+        "were"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "be worried about（疑问句）",
+        "ipa": "",
+        "meaning": "gram. worried 是形容词，疑问句用 be 动词（are/is/was）提前",
+        "example": "Are you worried about the exam?"
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译",
+      "q": "我的父亲在建筑工地上认真工作，他用智慧和努力养活了整个家庭。",
+      "options": [
+        "My father works hard at the building site and support the whole family with wisdom and hard work.",
+        "My father work hard at the building site and supports the whole family with wisdom and hard work.",
+        "My father works hard at building site and supports the whole family with wisdom and hard work.",
+        "My father works hard at the building site and supports the whole family with wisdom and hard work."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "works / the building site / supports",
+        "ipa": "",
+        "meaning": "gram. 三单用 works 和 supports；the 不可省略",
+        "example": "He works at the site and supports us all."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出最合适的词",
+      "q": "She ___ eats fried food — she prefers healthy meals.",
+      "options": [
+        "always",
+        "often",
+        "never",
+        "seldom"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "seldom（语境）",
+        "ipa": "",
+        "meaning": "adv. 很少——她喜欢健康饮食，所以很少吃炸食",
+        "example": "She seldom eats fried food."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 smart 的派生词关系",
+      "q": "She acted very ___ in the competition.",
+      "options": [
+        "smart",
+        "smarts",
+        "smartness",
+        "smartly"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "smartly（副词）",
+        "ipa": "",
+        "meaning": "gram. 修饰动词 acted 用副词 smartly（smart + ly）",
+        "example": "She acted smartly and won first place."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 advice 的正确用法（数量表达）",
+      "q": "My teacher gave me two ___ of advice.",
+      "options": [
+        "pieces of",
+        "pieces",
+        "advices",
+        "piece"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "pieces of advice",
+        "ipa": "",
+        "meaning": "gram. advice 不可数，数量用 a piece of / two pieces of",
+        "example": "She gave me two pieces of useful advice."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出最合适的词",
+      "q": "She has a lot of great ___, like being kind and honest.",
+      "options": [
+        "personality",
+        "characteristics",
+        "topics",
+        "attentions"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "characteristics（复数）",
+        "ipa": "",
+        "meaning": "n. 特点；品质（这里列举多个，用复数）",
+        "example": "Kindness and honesty are great characteristics."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译",
+      "q": "她过去很害羞，但现在她活跃，而且经常参加比赛。",
+      "options": [
+        "She used to be shy, but now she active and often joins competitions.",
+        "She used to shy, but now she is active and often joins competitions.",
+        "She used to be shy, but now she is active and often joins competitions.",
+        "She used to be shy, but now she is active and often join competitions."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "used to be / is active / joins",
+        "ipa": "",
+        "meaning": "gram. 三个时态：used to be（过去），is（现在），joins（三单）",
+        "example": "She used to be shy but now she is confident."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译",
+      "q": "我们应该聪明地使用智能手机，而不是整天刷社交媒体。",
+      "options": [
+        "We should wisely use smartphones, not spend all day on social media.",
+        "We should use smartphones wisely, not spending all day on social media.",
+        "We should use smartphones wisely, not spend all day on social media.",
+        "We should use smartphones wisely, not to spend all day on social media."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "not spend（平行结构）",
+        "ipa": "",
+        "meaning": "gram. not + 动词原形（与 use 平行；not to do 不用在此）",
+        "example": "Use time wisely, not waste it."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 future 的正确用法",
+      "q": "___ the future, she wants to work in a medical field.",
+      "options": [
+        "At",
+        "In",
+        "On",
+        "For"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "in the future",
+        "ipa": "",
+        "meaning": "gram. 表达将来时间用 in the future（不用 at/on/for）",
+        "example": "In the future, I hope to help the community."
+      }
+    }
+  ]
+}
