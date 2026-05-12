@@ -1,0 +1,1181 @@
+{
+  "stage1": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 hen 的中文意思",
+      "q": "hen",
+      "ipa": "/hen/",
+      "options": [
+        "小鸡",
+        "公鸡",
+        "母鸡",
+        "鸭子"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "hen",
+        "ipa": "/hen/",
+        "meaning": "n. 母鸡（rooster/cock 公鸡，chick 小鸡。三个词一起记）",
+        "example": "The hen lays eggs every morning."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出最合适的词",
+      "q": "She was so tired that she ___ asleep in class.",
+      "options": [
+        "fell",
+        "falled",
+        "felt",
+        "fallen"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "fall → fell（过去式）",
+        "ipa": "",
+        "meaning": "gram. fall 过去式是 fell（不规则）！不是 falled！felt 是 feel 的过去式，意思完全不同。",
+        "example": "She fell asleep quickly. (NOT: falled / felt)"
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 dolphin 的中文意思",
+      "q": "dolphin",
+      "ipa": "/ˈdɒlfɪn/",
+      "options": [
+        "海豚",
+        "鲨鱼",
+        "鲸鱼",
+        "海豹"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "dolphin",
+        "ipa": "/ˈdɒlfɪn/",
+        "meaning": "n. 海豚（注意：dolphin 和 shark 都是海洋动物，经常在同一篇文章出现，不要搞混）",
+        "example": "Dolphins are very smart animals."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 blind 的正确用法",
+      "q": "The old dog is ___ in one eye.",
+      "options": [
+        "blind",
+        "a blind",
+        "blinded",
+        "blinding"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "blind（形容词）",
+        "ipa": "/blaɪnd/",
+        "meaning": "adj. 瞎的；失明的。be blind in + 部位。不说 a blind。",
+        "example": "He is blind in one eye. (NOT: He is a blind.)"
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 scared 的中文意思",
+      "q": "scared",
+      "ipa": "/skeəd/",
+      "options": [
+        "危险的",
+        "恐怖的",
+        "害怕；恐惧",
+        "担心的"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "scared",
+        "ipa": "/skeəd/",
+        "meaning": "adj. 害怕；恐惧（scared 指人感到害怕；scary 指事物令人害怕。和 bored/boring 是同一规则）",
+        "example": "I'm scared of sharks. / Sharks are scary."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 grey 的中文意思",
+      "q": "grey",
+      "ipa": "/ɡreɪ/",
+      "options": [
+        "白色的",
+        "灰色的",
+        "黑色的",
+        "棕色的"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "grey/gray",
+        "ipa": "/ɡreɪ/",
+        "meaning": "adj. 灰色的（英式 grey，美式 gray，两种拼写都对）",
+        "example": "The dolphin's skin is grey."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出语法正确的句子",
+      "q": "关于海豚和鲨鱼",
+      "options": [
+        "Dolphins are friendly, but sharks are scared.",
+        "Dolphins are friendly, but sharks are scary.",
+        "Dolphins is friendly, but sharks is scary.",
+        "Dolphin are friendly, but shark are scary."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "scary / 主语一致",
+        "ipa": "",
+        "meaning": "gram. 鲨鱼是令人害怕的→scary（不是 scared）。主语是复数→Dolphins are / Sharks are。",
+        "example": "Dolphins are friendly, but sharks are scary."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 asleep 的中文意思",
+      "q": "asleep",
+      "ipa": "/əˈsliːp/",
+      "options": [
+        "困的",
+        "睡着",
+        "做梦",
+        "躺下"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "asleep",
+        "ipa": "/əˈsliːp/",
+        "meaning": "adj. 睡着（表语形容词，只能放在 be/fall 后面，不能放在名词前！不说 an asleep boy，要说 a sleeping boy）",
+        "example": "The baby is asleep. → a sleeping baby"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 shark 的中文意思",
+      "q": "shark",
+      "ipa": "/ʃɑːk/",
+      "options": [
+        "海豚",
+        "鲸鱼",
+        "鲨鱼",
+        "海狮"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "shark",
+        "ipa": "/ʃɑːk/",
+        "meaning": "n. 鲨鱼（dolphin 海豚 vs shark 鲨鱼，海洋阅读最常见混淆对）",
+        "example": "Some people are scared of sharks."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 fall asleep 的中文意思",
+      "q": "fall asleep",
+      "options": [
+        "躺下",
+        "摔倒",
+        "感到困",
+        "入睡；睡着"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "fall asleep",
+        "ipa": "",
+        "meaning": "phr. 入睡；睡着（fall-fell-fallen + asleep。表示\"入睡的过程\"）",
+        "example": "I fell asleep as soon as I lay down."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 scared 和 scary 的区别",
+      "q": "The movie was ___. I felt ___ after watching it.",
+      "options": [
+        "scary / scary",
+        "scared / scary",
+        "scared / scared",
+        "scary / scared"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "scary / scared",
+        "ipa": "",
+        "meaning": "gram. -ing 形容事物（令人害怕），-ed 形容人的感受（感到害怕）。和 boring/bored 完全一样。",
+        "example": "The shark is scary. I am scared of the shark."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译（检查 asleep 的用法）",
+      "q": "小狗是瞎的，但它很快就睡着了。",
+      "options": [
+        "The puppy is blind, but it felt asleep quickly.",
+        "The puppy is a blind, but it fell asleep quickly.",
+        "The puppy is blind, but it falled asleep quickly.",
+        "The puppy is blind, but it fell asleep quickly."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "blind / fell asleep",
+        "ipa": "",
+        "meaning": "gram. 四个考点：①blind 是形容词，不加 a（不是 a blind）②fall 过去式 fell（不是 falled）③felt 是 feel 的过去式（不是\"入睡\"）④asleep 是表语形容词",
+        "example": "The puppy is blind, but it fell asleep quickly."
+      }
+    }
+  ],
+  "stage2": [
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出最合适的词",
+      "q": "The ___ at the front desk greeted every ___ with a smile.",
+      "options": [
+        "guest / receptionist",
+        "fireman / patient",
+        "receptionist / guest",
+        "sir / guest"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "receptionist / guest",
+        "ipa": "",
+        "meaning": "语境：前台接待员迎接房客。receptionist 接待员 + guest 房客，是最自然的搭配。",
+        "example": "The receptionist greeted every guest warmly."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 team 的中文意思",
+      "q": "team",
+      "ipa": "/tiːm/",
+      "options": [
+        "比赛",
+        "组；班；团队",
+        "公司",
+        "班级"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "team",
+        "ipa": "/tiːm/",
+        "meaning": "n. 组；班（a team of + 复数名词，谓语可用单数或复数）。search-and-rescue team 搜救队。",
+        "example": "A team of firemen arrived at the scene."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 wool 的中文意思",
+      "q": "wool",
+      "ipa": "/wʊl/",
+      "options": [
+        "布料",
+        "棉花",
+        "丝绸",
+        "毛；羊毛"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "wool",
+        "ipa": "/wʊl/",
+        "meaning": "n.（羊等的）毛；羊毛。不可数名词。woolen 羊毛制的（形容词）。",
+        "example": "This sweater is made of wool. → a woolen sweater"
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "消防队员组成搜救队，为社区提供服务。",
+      "options": [
+        "Firemen form a search-and-rescue team and provide service to the community.",
+        "Firemans form a search-and-rescue team and provide services to the community.",
+        "Firemen form a search-and-rescue team and provide services to the community.",
+        "Fireman form a search-and-rescue team and provides services to the community."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "firemen / team / services",
+        "ipa": "",
+        "meaning": "gram. ①fireman 复数 firemen ②主语 firemen 复数→动词原形 form 和 provide ③service 可数，services 复数",
+        "example": "Firemen form a team and provide services."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 fire engine 的中文意思",
+      "q": "fire engine",
+      "options": [
+        "灭火器",
+        "火车",
+        "消防员",
+        "消防车"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "fire engine",
+        "ipa": "",
+        "meaning": "n. 消防车（engine 指引擎/车头，不是\"消防发动机\"）。不要和 fire truck（美式）混淆，两者都指消防车。",
+        "example": "The fire engine arrived in five minutes."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出语法正确的句子",
+      "q": "关于 sir 和 Mr 的区别",
+      "options": [
+        "Good morning, Mr Smith.",
+        "Good morning, sir Smith.",
+        "Both A and B are correct.",
+        "Good morning, Sir."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "sir vs Mr",
+        "ipa": "",
+        "meaning": "gram. sir 单独使用（Good morning, sir.），后面不跟姓氏。Mr 后面必须跟姓氏（Mr Smith）。sir 不大写（除非在句首），Mr 始终首字母大写。",
+        "example": "Good morning, sir. / Good morning, Mr Smith."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 receptionist 的中文意思",
+      "q": "receptionist",
+      "ipa": "/rɪˈsepʃənɪst/",
+      "options": [
+        "接待员",
+        "服务员",
+        "经理",
+        "秘书"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "receptionist",
+        "ipa": "/rɪˈsepʃənɪst/",
+        "meaning": "n. 接待员（reception 接待处 + ist 做……的人。在酒店/医院/公司前台工作的人）",
+        "example": "The receptionist at the hotel was very helpful."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 fireman 的中文意思",
+      "q": "fireman",
+      "ipa": "/ˈfaɪəmən/",
+      "options": [
+        "警察",
+        "消防队员",
+        "士兵",
+        "保安"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "fireman",
+        "ipa": "/ˈfaɪəmən/",
+        "meaning": "n. 消防队员（复数 firemen，不是 firemans）",
+        "example": "The fireman saved the child from the fire."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 sir 的正确用法",
+      "q": "___ , can I help you?",
+      "options": [
+        "Mr",
+        "Teacher",
+        "Mister",
+        "Sir"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "sir",
+        "ipa": "/sɜː(r)/",
+        "meaning": "n. 先生（单独用，对男性的尊称。不和姓氏连用。Mr 后面必须加姓氏）。Good morning, sir. (NOT: Good morning, Mr.)",
+        "example": "Excuse me, sir. Can I ask a question?"
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 guest 的中文意思",
+      "q": "guest",
+      "ipa": "/ɡest/",
+      "options": [
+        "旅客；房客",
+        "主人",
+        "服务员",
+        "游客"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "guest",
+        "ipa": "/ɡest/",
+        "meaning": "n. 旅客；房客（酒店用语）。反义 host 主人。guest room 客房。",
+        "example": "The hotel can hold up to 200 guests."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 search-and-rescue 的中文意思",
+      "q": "search-and-rescue",
+      "ipa": "/ˌsɜːtʃ ænd ˈreskjuː/",
+      "options": [
+        "寻找与拯救",
+        "搜索并找到",
+        "搜索救援",
+        "搜查"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "search-and-rescue",
+        "ipa": "",
+        "meaning": "n. 搜索救援（固定搭配，三个词用连字符。search 搜索 + rescue 救援）",
+        "example": "The search-and-rescue team saved many lives."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 service 的中文意思",
+      "q": "service",
+      "ipa": "/ˈsɜːvɪs/",
+      "options": [
+        "工作",
+        "服务",
+        "帮助",
+        "接待"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "service",
+        "ipa": "/ˈsɜːvɪs/",
+        "meaning": "n. 服务（serve v. 服务 → service n.）。search-and-rescue service 搜救服务。",
+        "example": "The hotel provides excellent service."
+      }
+    }
+  ],
+  "stage3": [
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 guard 的中文意思",
+      "q": "guard",
+      "ipa": "/ɡɑːd/",
+      "options": [
+        "观察",
+        "攻击",
+        "跟随",
+        "守卫；保卫"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "guard",
+        "ipa": "/ɡɑːd/",
+        "meaning": "v. 守卫；保卫。guard against 防范……。guard dog 看门狗。",
+        "example": "The dog guards the house at night."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译（检查 apologize 和 allow）",
+      "q": "他为未经允许就进入而道歉。",
+      "options": [
+        "He apologized for entering without allowing.",
+        "He apologized for entering without allowing to.",
+        "He apologized to enter without being allowed.",
+        "He apologized for entering without being allowed."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "apologize for / without being allowed",
+        "ipa": "",
+        "meaning": "gram. ①apologize for + V-ing ②\"未经允许\"用被动 without being allowed（没有被告知允许 = 没被允许）③without 是介词",
+        "example": "He apologized for entering without being allowed."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 apologize 的中文意思",
+      "q": "apologize",
+      "ipa": "/əˈpɒlədʒaɪz/",
+      "options": [
+        "解释",
+        "感谢",
+        "道歉",
+        "拒绝"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "apologize",
+        "ipa": "/əˈpɒlədʒaɪz/",
+        "meaning": "v. 道歉。不及物动词！后接 for：apologize for sth/doing sth。名词 apology。",
+        "example": "He apologized for being late. (NOT: apologized being late)"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 lead 的过去式",
+      "q": "The receptionist ___ us to our room yesterday.",
+      "options": [
+        "lead",
+        "leads",
+        "leaded",
+        "led"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "lead → led（过去式）",
+        "ipa": "",
+        "meaning": "gram. lead 过去式是 led（不规则）！不是 leaded。注意：lead 也可读作 /led/（铅），和过去式 led 同音。",
+        "example": "She led us to the room. (NOT: leaded)"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 allow 的正确句型",
+      "q": "My parents don't ___ me ___ out late.",
+      "options": [
+        "allow to / stay",
+        "allow / staying",
+        "allow / to stay",
+        "allowing / to stay"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "allow sb to do",
+        "ipa": "",
+        "meaning": "gram. allow sb to do sth（必须加 to）。不说 allow sb doing sth。和 ask/tell/want 同类。",
+        "example": "They don't allow me to stay out late. (NOT: allow me staying)"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 apologize 的正确搭配",
+      "q": "She ___ for ___ my pen without asking.",
+      "options": [
+        "apologized / borrow",
+        "apologized / borrowing",
+        "apologized to / borrowing",
+        "apologize / borrowed"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "apologize for doing",
+        "ipa": "",
+        "meaning": "gram. apologize for + V-ing（不是动词原形）。for 是介词，后面用动名词 borrowing。",
+        "example": "She apologized for borrowing my pen. (NOT: for borrow)"
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 allow 的中文意思",
+      "q": "allow",
+      "ipa": "/əˈlaʊ/",
+      "options": [
+        "允许进入",
+        "禁止",
+        "邀请",
+        "跟随"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "allow",
+        "ipa": "/əˈlaʊ/",
+        "meaning": "v. 允许进入（或出去、通过）。allow sb to do sth 允许某人做某事。",
+        "example": "The guard allowed us to enter the building."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 transport 的中文意思",
+      "q": "transport",
+      "ipa": "/trænˈspɔːt/",
+      "options": [
+        "转移",
+        "运输；运送",
+        "旅行",
+        "搬运"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "transport",
+        "ipa": "/trænˈspɔːt/",
+        "meaning": "v. 运输；运送（trans- 跨 + port 搬运 → 从一个地方搬到另一个地方）。名词 transportation。",
+        "example": "The goods were transported by ship."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 get down 的中文意思",
+      "q": "get down",
+      "options": [
+        "坐下",
+        "下来",
+        "俯身；趴下；跪下",
+        "躺下"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "get down",
+        "ipa": "",
+        "meaning": "phr. 俯身；趴下；跪下（in a fire：发生火灾时的安全动作）。不是简单的\"下来\"（come down）。",
+        "example": "If there is smoke, get down low and crawl out."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 smoke 的中文意思",
+      "q": "smoke",
+      "ipa": "/sməʊk/",
+      "options": [
+        "火",
+        "烟",
+        "蒸汽",
+        "雾"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "smoke",
+        "ipa": "/sməʊk/",
+        "meaning": "n. 烟（不可数）。也可作动词\"吸烟\"。smoke detector 烟雾报警器。",
+        "example": "We could see smoke coming from the building."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译（检查语法点）",
+      "q": "发生火灾时，消防队员教导人们要趴低并爬出去。",
+      "options": [
+        "During a fire, firemen teach people to get down and crawl out.",
+        "During a fire, firemen teach people getting down and crawl out.",
+        "During a fire, firemen teaches people to get down and crawl out.",
+        "During a fire, fireman teach people to get down and crawling out."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "teach sb to do / get down",
+        "ipa": "",
+        "meaning": "gram. ①teach sb to do（和 allow sb to do 同类）②主语 firemen 复数→ teach 原形 ③get down 俯身 ④crawl 和 get 并列，都用原形",
+        "example": "Firemen teach people to get down and crawl out."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 lead to 的中文意思",
+      "q": "lead (somebody) to",
+      "options": [
+        "带着（某人）到",
+        "导致",
+        "领导",
+        "领先"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "lead sb to",
+        "ipa": "",
+        "meaning": "phr. 带着（某人）到（lead-led-led）。注意：lead to 也可指\"导致\"（lead to sth），意思取决于宾语是人还是物。",
+        "example": "The guide led us to the exit. / Smoking can lead to health problems."
+      }
+    }
+  ],
+  "stage4": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 disaster 的中文意思",
+      "q": "disaster",
+      "ipa": "/dɪˈzɑːstə(r)/",
+      "options": [
+        "问题",
+        "事故",
+        "灾难；灾害",
+        "危机"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "disaster",
+        "ipa": "/dɪˈzɑːstə(r)/",
+        "meaning": "n. 灾难；灾害（natural disaster 自然灾害）。注意：accident 是\"意外事故\"，disaster 更严重。",
+        "example": "The earthquake was a terrible disaster."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 extinct 的中文意思",
+      "q": "extinct",
+      "ipa": "/ɪkˈstɪŋkt/",
+      "options": [
+        "消失的",
+        "濒危的",
+        "稀有的",
+        "已灭绝的；绝种的"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "extinct",
+        "ipa": "/ɪkˈstɪŋkt/",
+        "meaning": "adj. 已灭绝的；绝种的（extinct = 完全消失；endangered = 濒危，还有存活）。become extinct 灭绝。",
+        "example": "Dinosaurs became extinct millions of years ago."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 source 的中文意思",
+      "q": "source",
+      "ipa": "/sɔːs/",
+      "options": [
+        "起点",
+        "资源",
+        "原因",
+        "来源；出处"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "source",
+        "ipa": "/sɔːs/",
+        "meaning": "n. 来源；出处（source of... 的来源）。不要和 resource 混淆：source 是来源，resource 是资源。",
+        "example": "What is the source of this information?"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 extinct 和 endangered 的区别",
+      "q": "Giant pandas are ___, but not ___ yet.",
+      "options": [
+        "endangered / extinct",
+        "extinct / endangered",
+        "extinct / danger",
+        "endanger / extinct"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "endangered vs extinct",
+        "ipa": "",
+        "meaning": "gram. endangered 濒危的（还有存活），extinct 已灭绝的（没了）。两者都是形容词，但程度完全不同。",
+        "example": "Pandas are endangered. Dinosaurs are extinct."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 honey 的中文意思",
+      "q": "honey",
+      "ipa": "/ˈhʌni/",
+      "options": [
+        "蜜糖",
+        "糖",
+        "蜂蜜",
+        "甜味"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "honey",
+        "ipa": "/ˈhʌni/",
+        "meaning": "n. 蜂蜜。不可数名词。honey bee 蜜蜂。也可指\"亲爱的\"（口语）。",
+        "example": "Bees make honey from flowers."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 material 的中文意思",
+      "q": "material",
+      "ipa": "/məˈtɪəriəl/",
+      "options": [
+        "物质",
+        "材料；原料",
+        "东西",
+        "布料"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "material",
+        "ipa": "/məˈtɪəriəl/",
+        "meaning": "n. 材料；原料（可数/不可数均可）。building materials 建筑材料。",
+        "example": "Wool is a warm material for winter clothes."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 effort 的中文意思",
+      "q": "effort",
+      "ipa": "/ˈefət/",
+      "options": [
+        "艰难的尝试；努力",
+        "结果",
+        "影响",
+        "力量"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "effort",
+        "ipa": "/ˈefət/",
+        "meaning": "n. 艰难的尝试；努力（make an effort to do 努力做某事）。可数名词。",
+        "example": "They made a great effort to save the animals."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 source 和 resource 的区别",
+      "q": "Water is an important natural ___.",
+      "options": [
+        "source",
+        "sourceness",
+        "resource",
+        "resourceness"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "source vs resource",
+        "ipa": "",
+        "meaning": "水是自然资源（resource）。水源用 water source。source = 来源，resource = 资源。常考混淆。",
+        "example": "Water is a resource. The source of the river is in the mountains."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 material 的正确用法",
+      "q": "Wool is a good ___ for making warm clothes.",
+      "options": [
+        "resource",
+        "material",
+        "source",
+        "type"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "material（语境）",
+        "ipa": "",
+        "meaning": "语境：羊毛是做衣服的\"材料\"→ material。不要和 source（来源）、resource（资源）混淆。",
+        "example": "Wool is a good material for sweaters."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "我们必须努力保护濒危动物，否则它们会灭绝。",
+      "options": [
+        "We must do an effort to protect endangered animals, or they will become extinct.",
+        "We must make an effort to protect endangered animals, or they will become extinct.",
+        "We must make effort to protect endanger animals, or they will be extincted.",
+        "We must make an effort to protect extinct animals, or they will become endangered."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "make an effort / endangered / extinct",
+        "ipa": "",
+        "meaning": "gram. ①make an effort（不是 do）②endangered animals（濒危，不是 extinct）③become extinct（灭绝，不是 extincted）",
+        "example": "We must make an effort to protect endangered animals."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 effort 的正确搭配",
+      "q": "We should ___ an effort to protect endangered animals.",
+      "options": [
+        "give",
+        "do",
+        "take",
+        "make"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "make an effort",
+        "ipa": "",
+        "meaning": "phr. 努力做某事。固定搭配用 make，不是 do/take。make an effort to do sth。",
+        "example": "She made an effort to arrive on time. (NOT: did an effort)"
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 type 的中文意思",
+      "q": "type",
+      "ipa": "/taɪp/",
+      "options": [
+        "类型；种类",
+        "形状",
+        "型号",
+        "方式"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "type",
+        "ipa": "/taɪp/",
+        "meaning": "n. 类型；种类（a type of + 名词）。也可作动词\"打字\"。kind/sort/type 三者都表\"种类\"。",
+        "example": "What type of animal is a dolphin?"
+      }
+    }
+  ],
+  "stage5": [
+    {
+      "type": "normal",
+      "dmg": 12,
+      "prompt": "选出 sometime 的中文意思",
+      "q": "sometime",
+      "ipa": "/ˈsʌmtaɪm/",
+      "options": [
+        "一段时间",
+        "有时候",
+        "某次",
+        "在某时"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "sometime",
+        "ipa": "/ˈsʌmtaɪm/",
+        "meaning": "adv. 在某时（指不确定的时间）。注意：sometime ≠ sometimes（有时候）≠ some time（一段时间）。三者常考混淆。",
+        "example": "Let's meet sometime next week."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 probably 在句中的正确位置",
+      "q": "The dolphin ___ knows the way back.",
+      "options": [
+        "probable",
+        "is probably",
+        "probably",
+        "is probable"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "probably（副词位置）",
+        "ipa": "",
+        "meaning": "gram. probably 放在行为动词前（knows 前）。如果是 be 动词，放在 be 动词后（is probably）。",
+        "example": "She probably knows. / She is probably right."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出正确的词（辨析陷阱）",
+      "q": "The ___ of the fire was a cigarette. Firemen made a great ___ to put it out.",
+      "options": [
+        "resource / effort",
+        "source / effort",
+        "source / affect",
+        "resource / effect"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "source / effort",
+        "ipa": "",
+        "meaning": "语境：火灾的\"来源\"→ source（不是 resource）。消防员\"努力\"灭火→ make an effort。source 和 resource 是 Unit 4 核心混淆对。",
+        "example": "The source of the fire / They made an effort."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 12,
+      "prompt": "选出 somewhere 的中文意思",
+      "q": "somewhere",
+      "ipa": "/ˈsʌmweə(r)/",
+      "options": [
+        "任何地方",
+        "无处",
+        "到处",
+        "在某处；到某处"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "somewhere",
+        "ipa": "/ˈsʌmweə(r)/",
+        "meaning": "adv. 在某处；到某处（肯定句）。否定/疑问句用 anywhere。",
+        "example": "I left my book somewhere in the classroom."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译",
+      "q": "消防队员可能在某个时候带领搜救队到某处去。",
+      "options": [
+        "Firemen will probably lead the search-and-rescue team somewhere sometime.",
+        "Firemen will probably lead the search-and-rescue team anywhere sometime.",
+        "Firemen probable lead the search-and-rescue team somewhere sometimes.",
+        "Firemen will probably lead the search-and-rescue team somewhere sometimes."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "probably / somewhere / sometime",
+        "ipa": "",
+        "meaning": "gram. ①probably 副词（不是 probable）②肯定句用 somewhere ③sometime 某个时间（不是 sometimes 有时候）",
+        "example": "They will probably lead the team somewhere sometime."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 either 和 too 的区别",
+      "q": "I'm not scared of sharks. My brother isn't scared ___.",
+      "options": [
+        "also",
+        "too",
+        "either",
+        "as well"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "either（否定句尾）",
+        "ipa": "",
+        "meaning": "gram. isn't 否定句 → 用 either（不是 too）。too/also/as well 都用于肯定句。",
+        "example": "I'm not scared either. (NOT: too) / I'm scared too."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译（陷阱题）",
+      "q": "海豚不害怕鲨鱼。人类也不必害怕。",
+      "options": [
+        "Dolphins is not scared of sharks. Humans doesn't need to be scared either.",
+        "Dolphins aren't scared of sharks. Humans don't need to be scared too.",
+        "Both A and B are correct.",
+        "Dolphins aren't scared of sharks. Humans don't need to be scared either."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "either（否定句） / 主语一致",
+        "ipa": "",
+        "meaning": "gram. ①否定句尾用 either（不用 too）②Dolphins 复数 + aren't ③Humans 复数 + don't。B 把 either 错用为 too。",
+        "example": "Dolphins aren't scared. Humans aren't either."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 probably 的中文意思",
+      "q": "probably",
+      "ipa": "/ˈprɒbəbli/",
+      "options": [
+        "很可能；大概",
+        "可能的",
+        "可能地",
+        "一定"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "probably",
+        "ipa": "/ˈprɒbəbli/",
+        "meaning": "adv. 很可能；大概（表示很大的可能性）。放在 be 动词后/行为动词前。probable adj. → probably adv.。",
+        "example": "She is probably at home. / She probably knows the answer."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出语法正确的句子",
+      "q": "关于 effort 和 extinct",
+      "options": [
+        "We made a great effort, but the species still became extinct.",
+        "We did a great effort, but the species still became extinct.",
+        "We made a great effort, but the species still become extincted.",
+        "We makes a great effort, but the species still became extinct."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "make an effort / became extinct",
+        "ipa": "",
+        "meaning": "gram. ①make an effort（不用 do）②became extinct（灭绝，过去时，不是 extincted）③主语 We 复数→ made（不是 makes）",
+        "example": "We made an effort, but the species became extinct."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 12,
+      "prompt": "选出 either 的中文意思",
+      "q": "either",
+      "ipa": "/ˈaɪðə(r)/",
+      "options": [
+        "也（肯定句）",
+        "也（否定句）",
+        "或者",
+        "两者都"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "either",
+        "ipa": "/ˈaɪðə(r)/",
+        "meaning": "adv. 也（用于否定句句尾）。too 用于肯定句。I don't like it either. / I like it too.",
+        "example": "She doesn't smoke, and I don't either."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 sometime/sometimes/some time 的区别",
+      "q": "I ___ go swimming after school.",
+      "options": [
+        "sometime",
+        "some time",
+        "sometimes",
+        "some times"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "sometimes（有时候）",
+        "ipa": "",
+        "meaning": "gram. sometimes 频率副词\"有时候\"。sometime 指\"某个不确定的时间\"。some time 指\"一段时间\"（名词短语）。",
+        "example": "I sometimes swim. / Let's meet sometime. / I need some time."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 somewhere 和 anywhere 的区别",
+      "q": "I can't find my pen ___.",
+      "options": [
+        "somewhere",
+        "anywhere",
+        "nowhere",
+        "everywhere"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "anywhere（否定句）",
+        "ipa": "",
+        "meaning": "gram. can't 否定句 → 用 anywhere。肯定句用 somewhere。some- 系列用于肯定，any- 用于否定/疑问。",
+        "example": "I can't find it anywhere. / I found it somewhere."
+      }
+    }
+  ]
+}
