@@ -1,0 +1,1186 @@
+{
+  "stage1": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 hero 的中文意思",
+      "q": "hero",
+      "ipa": "/ˈhɪərəʊ/",
+      "options": [
+        "主角",
+        "勇士",
+        "英雄",
+        "偶像"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "hero",
+        "ipa": "/ˈhɪərəʊ/",
+        "meaning": "n. 英雄（复数 heroes，加 -es 不是 -s）。heroine 女英雄。",
+        "example": "Firefighters are true heroes."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 in the field of 的中文意思",
+      "q": "in the field of",
+      "options": [
+        "在……领域",
+        "在……田野",
+        "在……方面",
+        "在……行业"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "in the field of",
+        "ipa": "",
+        "meaning": "phr. 在……领域（field 这里指'领域'不是'田野'）。in the field of science 在科学领域。",
+        "example": "He is an expert in the field of medicine."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 contribution 的中文意思",
+      "q": "contribution",
+      "ipa": "/ˌkɒntrɪˈbjuːʃn/",
+      "options": [
+        "贡献",
+        "捐款",
+        "奉献",
+        "成就"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "contribution",
+        "ipa": "/ˌkɒntrɪˈbjuːʃn/",
+        "meaning": "n. 贡献。make a contribution to... 对……做出贡献。动词 contribute。",
+        "example": "She made a great contribution to science."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 pioneer 的中文意思",
+      "q": "pioneer",
+      "ipa": "/ˌpaɪəˈnɪə(r)/",
+      "options": [
+        "先锋；先驱",
+        "创始人",
+        "探险家",
+        "领袖"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "pioneer",
+        "ipa": "/ˌpaɪəˈnɪə(r)/",
+        "meaning": "n. 先锋；先驱（a pioneer in the field of... 在……领域的先驱）。",
+        "example": "She was a pioneer in the field of engineering."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 education 的中文意思",
+      "q": "education",
+      "ipa": "/ˌedʒuˈkeɪʃn/",
+      "options": [
+        "培养",
+        "教学",
+        "教育",
+        "学术"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "education",
+        "ipa": "/ˌedʒuˈkeɪʃn/",
+        "meaning": "n. 教育（不可数）。higher education 高等教育。动词 educate。",
+        "example": "Education is the key to success."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "作为工程学领域的先驱，她为科技发展做出了巨大贡献。",
+      "options": [
+        "As a pioneer in the field of engineering, she made great contribution to the development of technology.",
+        "As a pioneer in the field of engineering, she made great contributions to the development of technology.",
+        "As pioneer in the field of engineering, she made great contributions to the development of technology.",
+        "As a pioneer in the field of engineering, she made great contributions for the development of technology."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "a pioneer / contributions / to",
+        "ipa": "",
+        "meaning": "gram. ①a pioneer 需要冠词 ②contributions 复数 ③make contributions to（介词 to，不是 for）。",
+        "example": "She made great contributions to technology."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 role model 的中文意思",
+      "q": "role model",
+      "options": [
+        "角色",
+        "楷模；行为榜样",
+        "模范生",
+        "领导者"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "role model",
+        "ipa": "",
+        "meaning": "n. 楷模；行为榜样（role 角色 + model 模范）。a role model for young people 年轻人的榜样。",
+        "example": "She is a role model for many students."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 technology 的中文意思",
+      "q": "technology",
+      "ipa": "/tekˈnɒlədʒi/",
+      "options": [
+        "技术",
+        "科技",
+        "工艺",
+        "工程"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "technology",
+        "ipa": "/tekˈnɒlədʒi/",
+        "meaning": "n. 科技（不可数）。modern technology 现代科技。形容词 technological。",
+        "example": "Technology is changing our lives."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 hero 的正确复数",
+      "q": "Many ___ have made great ___ to society.",
+      "options": [
+        "heroes / contribution",
+        "heros / contributions",
+        "heroes / contributions",
+        "heroies / contributions"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "heroes（复数）",
+        "ipa": "",
+        "meaning": "gram. 以 -o 结尾的有生命名词加 -es：hero → heroes。contribution 可数，复数 contributions。",
+        "example": "Many heroes have made great contributions."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 engineering 的中文意思",
+      "q": "engineering",
+      "ipa": "/ˌendʒɪˈnɪərɪŋ/",
+      "options": [
+        "建造",
+        "工程师",
+        "设计",
+        "工程学"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "engineering",
+        "ipa": "/ˌendʒɪˈnɪərɪŋ/",
+        "meaning": "n. 工程学（engineer 工程师 + ing）。in the field of engineering 在工程领域。",
+        "example": "She studied engineering at university."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 devote oneself to 的准确用法",
+      "q": "She ___ herself ___ helping poor children.",
+      "options": [
+        "devote / for",
+        "devoted / for",
+        "devotes / to",
+        "devoted / to"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "devote oneself to + V-ing",
+        "ipa": "",
+        "meaning": "phr. 献身于；致力于。to 是介词，后接 V-ing（不是动词原形）！devote oneself to doing。",
+        "example": "He devoted himself to teaching. (NOT: to teach)"
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出语法正确的句子",
+      "q": "关于 hero 和 contribution",
+      "options": [
+        "Heroes are those who devote themself to making our society better.",
+        "Heroes are those who devote themselves to make our society better.",
+        "Heros are those who devote themselves to making our society better.",
+        "Heroes are those who devote themselves to making our society better."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "heroes / devote to doing / themselves",
+        "ipa": "",
+        "meaning": "gram. ①heroes 复数 ②devote to + V-ing ③themselves（反身代词，与 those 一致）。",
+        "example": "Heroes devote themselves to helping others."
+      }
+    }
+  ],
+  "stage2": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 well-respected 的中文意思",
+      "q": "well-respected",
+      "ipa": "/ˌwel rɪˈspektɪd/",
+      "options": [
+        "受人喜爱的",
+        "有礼貌的",
+        "受尊敬的",
+        "著名的"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "well-respected",
+        "ipa": "/ˌwel rɪˈspektɪd/",
+        "meaning": "adj. 受尊敬的（well + respected）。well-known 著名的，well-educated 受过良好教育的。",
+        "example": "She is a well-respected scientist in her field."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 spend 的中文意思",
+      "q": "spend",
+      "ipa": "/spend/",
+      "options": [
+        "花费（金钱）",
+        "花（时间）；度过",
+        "消耗",
+        "用"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "spend",
+        "ipa": "/spend/",
+        "meaning": "v. 花（时间）；度过。spend time (in) doing sth 花时间做某事。spend money on sth 花钱买某物。",
+        "example": "She spent years doing research."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 eager 的中文意思",
+      "q": "eager",
+      "ipa": "/ˈiːɡə(r)/",
+      "options": [
+        "焦虑的",
+        "着急的",
+        "兴奋的",
+        "热切的；渴望的"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "eager",
+        "ipa": "/ˈiːɡə(r)/",
+        "meaning": "adj. 热切的；渴望的。be eager to do 渴望做某事。be eager for sth 渴望某物。",
+        "example": "She is eager to learn new technology."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 found 和 find 的区别",
+      "q": "The hero ___ the lost child and later ___ a charity for children.",
+      "options": [
+        "founded / found",
+        "found / found",
+        "found / founded",
+        "founded / founded"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "found vs founded",
+        "ipa": "",
+        "meaning": "gram. find 过去式 found（找到）。found 表'建立'的过去式是 founded。第一空是'找到'→ found，第二空是'建立'→ founded。",
+        "example": "He found the child and founded a charity."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 achieve 的中文意思",
+      "q": "achieve",
+      "ipa": "/əˈtʃiːv/",
+      "options": [
+        "实现",
+        "获得",
+        "完成",
+        "达到（目标）"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "achieve",
+        "ipa": "/əˈtʃiːv/",
+        "meaning": "v.（凭长期努力）达到（某目标、地位、标准）。achieve one's dream/goal 实现梦想/目标。名词 achievement 成就。",
+        "example": "She achieved her goal of becoming a scientist."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "这位受人尊敬的科学家花了几十年研究，最终获得了国际奖项。",
+      "options": [
+        "The well-respected scientist spent decades doing research and finally received an international award.",
+        "The well-respected scientist spent decades to do research and finally received an international award.",
+        "The well-respected scientist spent decades doing research and finally accepted an international award.",
+        "The well-respected scientist spent decades doing researches and finally received an international award."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "spend doing / receive / research 不可数",
+        "ipa": "",
+        "meaning": "gram. ①spend + V-ing（不是 to do）②receive 收到（不是 accept 接受）③research 不可数（不加 s）。",
+        "example": "She spent decades researching and received an award."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 award 作名词的中文意思",
+      "q": "award",
+      "ipa": "/əˈwɔːd/",
+      "options": [
+        "奖",
+        "奖金",
+        "奖励",
+        "奖品"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "award",
+        "ipa": "/əˈwɔːd/",
+        "meaning": "n. 奖（win/receive an award 获奖）。也可作动词'授予'：award sb sth。注意 award 和 reward 区别：award 偏'奖项'，reward 偏'回报/酬劳'。",
+        "example": "He received an award for his contribution."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 receive 的中文意思",
+      "q": "receive",
+      "ipa": "/rɪˈsiːv/",
+      "options": [
+        "接受",
+        "拿到；接到；收到",
+        "给予",
+        "发送"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "receive",
+        "ipa": "/rɪˈsiːv/",
+        "meaning": "v. 拿到；接到；收到。receive an award 获得奖项。注意：receive 偏'收到'，accept 偏'接受'。",
+        "example": "She received a medal for her bravery."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 award 作动词的正确用法",
+      "q": "They ___ her a medal for her courage.",
+      "options": [
+        "award",
+        "rewarded",
+        "gave award",
+        "awarded"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "award sb sth（授予）",
+        "ipa": "",
+        "meaning": "gram. award sb sth 授予某人某物（双宾语）。reward sb with sth 用某物酬谢某人。两者搭配不同。",
+        "example": "They awarded her a prize. / They rewarded her with money."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 research 的中文意思",
+      "q": "research",
+      "ipa": "/rɪˈsɜːtʃ/",
+      "options": [
+        "研究；调查",
+        "搜索",
+        "探索",
+        "实验"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "research",
+        "ipa": "/rɪˈsɜːtʃ/",
+        "meaning": "n. 研究；调查（不可数）。do research on... 做关于……的研究。注意发音：search 在 research 中也读 /sɜːtʃ/。",
+        "example": "She is doing research on new energy."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 found 作动词的准确含义",
+      "q": "found",
+      "ipa": "/faʊnd/",
+      "options": [
+        "成立",
+        "找到（find的过去式）",
+        "建立（城镇或国家）",
+        "发现"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "found（建立）",
+        "ipa": "/faʊnd/",
+        "meaning": "v. 建立（城镇或国家）。注意：found 同时也是 find 的过去式/过去分词！两个意思完全不同，看语境判断。",
+        "example": "He founded the company in 1990. / I found my keys."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 spend 的正确句型",
+      "q": "He ___ five years ___ on this project.",
+      "options": [
+        "spent / to work",
+        "spent / working",
+        "spends / working",
+        "spend / working"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "spend time (in) doing",
+        "ipa": "",
+        "meaning": "gram. spend time + (in) + V-ing（in 可省，但动词必须用 -ing）。不说 spend time to do。",
+        "example": "He spent years working on it. (NOT: to work)"
+      }
+    }
+  ],
+  "stage3": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 public 作名词的中文意思",
+      "q": "public",
+      "ipa": "/ˈpʌblɪk/",
+      "options": [
+        "公众",
+        "公共场所",
+        "大众",
+        "百姓；民众"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "public",
+        "ipa": "/ˈpʌblɪk/",
+        "meaning": "n. 百姓；民众（the public 公众）。也可作形容词'公共的'。the general public 普通民众。",
+        "example": "The hero won the public's praise."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "这个奖项是对她为社会所做贡献的认可，她赢得了民众的高度赞扬。",
+      "options": [
+        "This award is in recognition of her contributions for society, and she won high praise from the public.",
+        "This award is in recognition of her contributions to society, and she won high praises from the public.",
+        "This award is in recognition of her contribution to society, and she won high praise from the public.",
+        "This award is in recognition of her contributions to society, and she won high praise from the public."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "contributions to / praise 不可数",
+        "ipa": "",
+        "meaning": "gram. ①contribution to（介词 to，不是 for）②praise 不可数（不加 s）③contributions 可用复数。",
+        "example": "She made contributions to society and won high praise."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 honour 的中文意思",
+      "q": "honour",
+      "ipa": "/ˈɒnə(r)/",
+      "options": [
+        "奖项",
+        "尊敬",
+        "荣誉；名誉",
+        "光荣"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "honour",
+        "ipa": "/ˈɒnə(r)/",
+        "meaning": "n. 荣誉；名誉（美式拼写 honor）。in honour of 为纪念……。形容词 honourable 光荣的。",
+        "example": "It's a great honour to receive this award."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "先锋们以提高教育水平为使命，这赢得了全社会的赞同。",
+      "options": [
+        "The pioneers made it their mission to raise the level of education, which won the approval of whole society.",
+        "The pioneers made it their mission to rise the level of education, which won the approval of the whole society.",
+        "The pioneers made it their mission raising the level of education, which won the approval of the whole society.",
+        "The pioneers made it their mission to raise the level of education, which won the approval of the whole society."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "raise / mission to do / the whole society",
+        "ipa": "",
+        "meaning": "gram. ①raise + 宾语（提高，不是 rise）②mission to do（不定式作后置定语）③the whole society（需要 the）。",
+        "example": "Their mission was to raise the level of education."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 raise 和 rise 的区别",
+      "q": "The hero ___ money to help the poor. The sun ___ in the east.",
+      "options": [
+        "raised / raises",
+        "rose / raises",
+        "raised / rises",
+        "rose / rises"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "raise + 宾语 / rise 不及物",
+        "ipa": "",
+        "meaning": "gram. raise 及物动词+宾语（raised money）。rise 不及物动词，无宾语（the sun rises）。",
+        "example": "She raised her hand. / The sun rises every day."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 praise 的中文意思",
+      "q": "praise",
+      "ipa": "/preɪz/",
+      "options": [
+        "奖励",
+        "赞扬；称赞；赞美",
+        "鼓掌",
+        "表扬"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "praise",
+        "ipa": "/preɪz/",
+        "meaning": "n./v. 赞扬；称赞；赞美。give praise to sb 表扬某人。praise sb for sth 因某事表扬某人。",
+        "example": "He received high praise for his work."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 raise 的中文意思",
+      "q": "raise",
+      "ipa": "/reɪz/",
+      "options": [
+        "增加；提高",
+        "养育",
+        "举起",
+        "筹集"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "raise",
+        "ipa": "/reɪz/",
+        "meaning": "v. 增加；提高（raise awareness 提高意识）。也可指'养育、筹集'。注意 raise 和 rise 区别：raise + 宾语，rise 不及物。",
+        "example": "They want to raise money for education."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 approval 的中文意思",
+      "q": "approval",
+      "ipa": "/əˈpruːvl/",
+      "options": [
+        "支持",
+        "赞成；同意",
+        "批准",
+        "认可"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "approval",
+        "ipa": "/əˈpruːvl/",
+        "meaning": "n. 赞成；同意（不可数）。动词 approve。approve of... 赞成……。",
+        "example": "The plan won the approval of the public."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 society 的中文意思",
+      "q": "society",
+      "ipa": "/səˈsaɪəti/",
+      "options": [
+        "社团",
+        "社区",
+        "社会",
+        "群体"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "society",
+        "ipa": "/səˈsaɪəti/",
+        "meaning": "n. 社会（make contributions to society 为社会做贡献）。可数/不可数。",
+        "example": "Heroes play an important role in society."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 mission 的中文意思",
+      "q": "mission",
+      "ipa": "/ˈmɪʃn/",
+      "options": [
+        "任务",
+        "使命",
+        "目标",
+        "使命任务"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "mission",
+        "ipa": "/ˈmɪʃn/",
+        "meaning": "n. 使命（a mission to do sth 做某事的使命）。和 task 区别：mission 更高远，task 更日常。",
+        "example": "Their mission is to protect the forest."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 praise 的正确介词搭配",
+      "q": "The public praised the firefighter ___ his bravery.",
+      "options": [
+        "for",
+        "of",
+        "to",
+        "with"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "praise sb for sth",
+        "ipa": "",
+        "meaning": "phr. praise sb for + 名词/V-ing（因某事表扬某人）。不说 praise sb of/to。",
+        "example": "She praised him for his hard work. (NOT: praised of)"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 approval 和 approve 的关系",
+      "q": "Her parents don't ___ of her plan, but she hopes to win their ___.",
+      "options": [
+        "approve / approval",
+        "approval / approve",
+        "approve / approve",
+        "approval / approval"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "approve v. / approval n.",
+        "ipa": "",
+        "meaning": "gram. 第一空需要动词 approve（don't + 原形），第二空需要名词 approval（their 后接名词）。",
+        "example": "They don't approve, but she wants their approval."
+      }
+    }
+  ],
+  "stage4": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 female 的中文意思",
+      "q": "female",
+      "ipa": "/ˈfiːmeɪl/",
+      "options": [
+        "女性",
+        "雌性的",
+        "女的；女性的",
+        "妇女"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "female",
+        "ipa": "/ˈfiːmeɪl/",
+        "meaning": "adj. 女的；女性的（female scientist 女科学家）。也可作名词'女性'。反义 male。",
+        "example": "She was a female pioneer in engineering."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 look up to 和 admire 的互换",
+      "q": "I really ___ my father. He's the person I ___ most.",
+      "options": [
+        "admire / admire",
+        "look up / admire",
+        "look up to / look up to",
+        "look up to / admire"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "look up to = admire",
+        "ipa": "",
+        "meaning": "phr. look up to 和 admire 意思相近，可以互换。但 look up to 更口语化。",
+        "example": "I look up to him. = I admire him."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 admire 的正确介词搭配",
+      "q": "We all ___ the firefighter ___ his bravery.",
+      "options": [
+        "admired / for",
+        "admire / to",
+        "admire / of",
+        "admire / for"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "admire sb for sth",
+        "ipa": "",
+        "meaning": "phr. admire sb for + 名词/V-ing（因某事钦佩某人）。和 praise sb for 是同样的搭配模式。",
+        "example": "I admire her for her hard work. / He praised her for her courage."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 regular 的中文意思",
+      "q": "regular",
+      "ipa": "/ˈreɡjələ(r)/",
+      "options": [
+        "通常的；平常的",
+        "规则的",
+        "定期的",
+        "经常的"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "regular",
+        "ipa": "/ˈreɡjələ(r)/",
+        "meaning": "adj. 通常的；平常的（regular exercise 平常的锻炼）。也可指'规则的、定期的'。",
+        "example": "He is not a hero — he's just a regular person."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "作为一名普通的女性科学家，她激励了许多女孩仰望她并追求科学事业。",
+      "options": [
+        "As a regular woman scientist, she inspired many girls to look up to her and pursue a career in science.",
+        "As a regular female scientist, she inspired many girls looking up to her and pursuing a career in science.",
+        "As a regular female scientist, she inspired many girls to look up to her and pursue a career in science.",
+        "As a regular female scientist, she inspired many girls to look up her and pursue a career in science."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "inspire sb to do / look up to",
+        "ipa": "",
+        "meaning": "gram. ①inspire sb to do（不是 doing）②look up to（to 不可省，不是 look up）③female 比 woman 更正式。",
+        "example": "She inspired girls to look up to her."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 admire 的中文意思",
+      "q": "admire",
+      "ipa": "/ədˈmaɪə(r)/",
+      "options": [
+        "喜欢",
+        "钦佩；仰慕",
+        "羡慕",
+        "崇拜"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "admire",
+        "ipa": "/ədˈmaɪə(r)/",
+        "meaning": "v. 钦佩；仰慕。admire sb for sth 因某事钦佩某人。名词 admiration。",
+        "example": "I admire her for her courage."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 inspire 和 encourage 的区别",
+      "q": "Her speech ___ everyone to take action.",
+      "options": [
+        "inspired",
+        "encouraged",
+        "required",
+        "forced"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "inspire vs encourage",
+        "ipa": "",
+        "meaning": "inspire 激励（让人心中燃起热情），encourage 鼓励（让人有信心）。inspire to do 燃起行动热情。",
+        "example": "She inspired us to dream big. / She encouraged us to try again."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 inspire 的中文意思",
+      "q": "inspire",
+      "ipa": "/ɪnˈspaɪə(r)/",
+      "options": [
+        "鼓励",
+        "启发",
+        "激励；鼓舞",
+        "感动"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "inspire",
+        "ipa": "/ɪnˈspaɪə(r)/",
+        "meaning": "v. 激励；鼓舞。inspire sb to do sth 激励某人做某事。名词 inspiration。",
+        "example": "Her story inspired many people to study hard."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 chief engineer 的中文意思",
+      "q": "chief engineer",
+      "options": [
+        "首席工程师",
+        "总工程师",
+        "工程师主管",
+        "工程总监"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "chief engineer",
+        "ipa": "",
+        "meaning": "n. 总工程师（chief 首席的 + engineer 工程师）。chief 放在名词前表示'首席/总'。",
+        "example": "She became the chief engineer of the project."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 college entrance examination 的中文意思",
+      "q": "college entrance examination",
+      "options": [
+        "大学考试",
+        "大学入学考试",
+        "入学测试",
+        "高考英文"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "college entrance examination",
+        "ipa": "",
+        "meaning": "n. 大学入学考试（college 大学 + entrance 入口/入学 + examination 考试）。= gaokao。",
+        "example": "She did well in the college entrance examination."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 feed 的中文意思",
+      "q": "feed",
+      "ipa": "/fiːd/",
+      "options": [
+        "供给",
+        "喂养",
+        "喂食",
+        "养活；提供食物"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "feed",
+        "ipa": "/fiːd/",
+        "meaning": "v. 养活；提供食物（feed-fed-fed）。feed the family 养家。feed on 以……为食。",
+        "example": "She works hard to feed her family."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 look up to 的中文意思",
+      "q": "look up to",
+      "options": [
+        "敬仰；钦佩",
+        "向上看",
+        "仰望",
+        "尊重"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "look up to",
+        "ipa": "",
+        "meaning": "phr. 敬仰；钦佩（= admire）。look up to sb 把某人当榜样。注意：look down on 是'看不起'。",
+        "example": "Many students look up to their teachers."
+      }
+    }
+  ],
+  "stage5": [
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 fit 的中文意思",
+      "q": "fit",
+      "ipa": "/fɪt/",
+      "options": [
+        "能胜任的",
+        "合适的",
+        "合身的",
+        "健壮的；健康的"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "fit",
+        "ipa": "/fɪt/",
+        "meaning": "adj. 健壮的；健康的。keep fit 保持健康。fit 偏'通过锻炼保持体能好'，healthy 偏'不生病'。",
+        "example": "Smoke jumpers must be fit and brave."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 tough 的中文意思",
+      "q": "tough",
+      "ipa": "/tʌf/",
+      "options": [
+        "强硬的",
+        "困难的",
+        "健壮的；坚韧不拔的",
+        "粗糙的"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "tough",
+        "ipa": "/tʌf/",
+        "meaning": "adj. 健壮的；坚韧不拔的（指人身体素质和精神都强）。也可指'困难的'。",
+        "example": "Smoke jumpers need to be tough — both in body and mind."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 be proud of 的正确搭配",
+      "q": "The public ___ the brave smoke jumpers.",
+      "options": [
+        "are proud of",
+        "is proud of",
+        "is proud for",
+        "are proud to"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "be proud of",
+        "ipa": "",
+        "meaning": "phr. be proud of sb/sth 为……自豪（介词 of 不是 for/to）。the public 通常用单数 is。",
+        "example": "We are proud of you. / The public is proud of them."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 12,
+      "prompt": "选出 smoke jumper 的中文意思",
+      "q": "smoke jumper",
+      "ipa": "/ˈsməʊkˌdʒʌmpə(r)/",
+      "options": [
+        "跳伞消防员",
+        "烟雾跳跃者",
+        "消防员",
+        "空降消防员"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "smoke jumper",
+        "ipa": "/ˈsməʊkˌdʒʌmpə(r)/",
+        "meaning": "n. 空降消防员（smoke 烟雾 + jumper 跳跃者 → 空降到火灾现场的消防员）。",
+        "example": "Smoke jumpers are brave firefighters."
+      }
+    },
+    {
+      "type": "norm",
+      "dmg": 12,
+      "prompt": "选出 survive 的中文意思",
+      "q": "survive",
+      "ipa": "/səˈvaɪv/",
+      "options": [
+        "生存；存活",
+        "幸存",
+        "存活下来",
+        "逃生"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "survive",
+        "ipa": "/səˈvaɪv/",
+        "meaning": "v. 生存；存活（survive + 灾难/事故 = 在……中幸存）。名词 survival，survivor 幸存者。",
+        "example": "Only tough firefighters can survive such conditions."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 survive 的正确用法",
+      "q": "Only the ___ firefighters ___ the terrible fire.",
+      "options": [
+        "tough / survived",
+        "toughest / survived from",
+        "toughest / survived",
+        "toughly / survived"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "survive + 直接宾语",
+        "ipa": "",
+        "meaning": "gram. survive + 灾难（直接宾语，不用 from）。最 tough 的消防员 → the toughest。",
+        "example": "They survived the fire. (NOT: survived from the fire)"
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译（陷阱题）",
+      "q": "空降消防员必须既勇敢又健康，否则他们无法在茂密森林中生存。",
+      "options": [
+        "Smoke jumpers must be both brave and fit, otherwise they cannot survive in the thick forest.",
+        "Smoke jumpers must be both brave and fit, or else they cannot survive in the thick forest.",
+        "Smoke jumpers must both be brave and fit, otherwise they cannot survive the thick forest.",
+        "Both A and B are correct."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "otherwise = or else",
+        "ipa": "",
+        "meaning": "gram. otherwise = or else 否则，两者都可。D 错在 both 位置不当（must be both brave and fit）。",
+        "example": "Be brave, otherwise/or else you can't survive."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 12,
+      "prompt": "选出 brave 的中文意思",
+      "q": "brave",
+      "ipa": "/breɪv/",
+      "options": [
+        "勇敢的；无畏的",
+        "大胆的",
+        "英勇的",
+        "冒险的"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "brave",
+        "ipa": "/breɪv/",
+        "meaning": "adj. 勇敢的；无畏的。名词 bravery。Firefighters are brave. = Firefighters show great bravery.",
+        "example": "The brave smoke jumper saved many lives."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 12,
+      "prompt": "选出 proud 的中文意思",
+      "q": "proud",
+      "ipa": "/praʊd/",
+      "options": [
+        "骄傲的；自豪的",
+        "傲慢的",
+        "自大的",
+        "满足的"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "proud",
+        "ipa": "/praʊd/",
+        "meaning": "adj. 骄傲的；自豪的。be proud of... 为……而自豪。名词 pride。",
+        "example": "We are proud of our heroes."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 otherwise 的中文意思",
+      "q": "otherwise",
+      "ipa": "/ˈʌðəwaɪz/",
+      "options": [
+        "另外",
+        "否则；不然",
+        "在其他方面",
+        "相反的"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "otherwise",
+        "ipa": "/ˈʌðəwaɪz/",
+        "meaning": "adv. 否则；不然（= or else）。They must be brave, otherwise they can't survive.",
+        "example": "Hurry up, otherwise we'll be late."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 put out 的中文意思",
+      "q": "put out",
+      "options": [
+        "关掉",
+        "拿出",
+        "熄灭；扑灭",
+        "放出"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "put out",
+        "ipa": "",
+        "meaning": "phr. 熄灭；扑灭（put out a fire 灭火）。注意 put out 和 put off 区别：put off 推迟。",
+        "example": "The firemen put out the forest fire quickly."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 12,
+      "prompt": "选出 thick 的中文意思",
+      "q": "thick",
+      "ipa": "/θɪk/",
+      "options": [
+        "厚的",
+        "茂密的",
+        "浓的",
+        "稠的"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "thick",
+        "ipa": "/θɪk/",
+        "meaning": "adj. 茂密的（thick forest 茂密的森林）。也可指'厚的、浓的'。反义 thin。",
+        "example": "Smoke jumpers parachute into thick forests."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1178 @@
+{
+  "stage1": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 biologist 的中文意思",
+      "q": "biologist",
+      "ipa": "/baɪˈɒlədʒɪst/",
+      "options": [
+        "生态学家",
+        "生物老师",
+        "生物学家",
+        "科学家"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "biologist",
+        "ipa": "/baɪˈɒlədʒɪst/",
+        "meaning": "n. 生物学家（biology 生物学 + ist 人）。类似：scientist 科学家。",
+        "example": "She wants to be a marine biologist."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 audience 的中文意思",
+      "q": "audience",
+      "ipa": "/ˈɔːdiəns/",
+      "options": [
+        "观众；听众",
+        "听众席",
+        "粉丝",
+        "人群"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "audience",
+        "ipa": "/ˈɔːdiəns/",
+        "meaning": "n. 观众；听众（集合名词，谓语可用单数或复数）。the audience was/were excited.",
+        "example": "The audience clapped loudly."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 athlete 的中文意思",
+      "q": "athlete",
+      "ipa": "/ˈæθliːt/",
+      "options": [
+        "运动员",
+        "教练",
+        "裁判",
+        "观众"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "athlete",
+        "ipa": "/ˈæθliːt/",
+        "meaning": "n. 运动员（可数）。注意发音：ath-lete，不是 ath-e-lete。",
+        "example": "She is a professional athlete."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 career 的中文意思",
+      "q": "career",
+      "ipa": "/kəˈrɪə(r)/",
+      "options": [
+        "生涯；职业",
+        "工作",
+        "事业",
+        "行业"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "career",
+        "ipa": "/kəˈrɪə(r)/",
+        "meaning": "n. 生涯；职业（长期的职业生涯）。job 是一份工作，career 是整个职业生涯。",
+        "example": "She had a successful career as a biologist."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 audience 的谓语一致",
+      "q": "The audience ___ huge. The audience ___ all standing and cheering.",
+      "options": [
+        "was / was",
+        "were / was",
+        "was / were",
+        "were / were"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "audience 集合名词",
+        "ipa": "",
+        "meaning": "gram. audience 整体看用单数，强调个体成员用复数。size 是整体特征→ was；standing 是个体动作→ were。",
+        "example": "The audience was large. The audience were cheering."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 interest 的中文意思",
+      "q": "interest",
+      "ipa": "/ˈɪntrəst/",
+      "options": [
+        "利息",
+        "兴趣；业余爱好",
+        "利益",
+        "爱好"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "interest",
+        "ipa": "/ˈɪntrəst/",
+        "meaning": "n. 兴趣；业余爱好。have an interest in... 对……有兴趣。也可指'利息'。",
+        "example": "She has a strong interest in music."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "这位生物学家有广泛的兴趣，她主持的节目吸引了大量观众。",
+      "options": [
+        "The biologist has a wide range of interests, and the show she hosted attracted a large number of audience.",
+        "The biologist has a wide range of interests, and the show she hosted attracted a large audience.",
+        "The biologist has a wide range of interest, and the show she host attracted a large audience.",
+        "The biologist have a wide range of interests, and the show she hosted attracted a large audience."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "interests / audience / hosted",
+        "ipa": "",
+        "meaning": "gram. ①a range of + 复数 interests ②audience 用 large 修饰（不用 number）③主语单数 has，hosted 过去式。",
+        "example": "She has wide interests and the show attracted a large audience."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 lifetime 的中文意思",
+      "q": "lifetime",
+      "ipa": "/ˈlaɪftaɪm/",
+      "options": [
+        "余生",
+        "一生；终身",
+        "一生时间",
+        "寿命"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "lifetime",
+        "ipa": "/ˈlaɪftaɪm/",
+        "meaning": "n. 一生；终身（life + time）。the chance of a lifetime 千载难逢的机会。",
+        "example": "This is the opportunity of a lifetime."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 instrument 的中文意思",
+      "q": "instrument",
+      "ipa": "/ˈɪnstrəmənt/",
+      "options": [
+        "设备",
+        "工具",
+        "乐器；仪器",
+        "器械"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "instrument",
+        "ipa": "/ˈɪnstrəmənt/",
+        "meaning": "n. 乐器；仪器（musical instrument 乐器，scientific instrument 科学仪器）。注意拼写：in-stru-ment。",
+        "example": "She can play several musical instruments."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 host 作动词的中文意思",
+      "q": "host",
+      "ipa": "/həʊst/",
+      "options": [
+        "拥有",
+        "主办",
+        "招待",
+        "主持"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "host",
+        "ipa": "/həʊst/",
+        "meaning": "v. 主持（host a show 主持节目）。名词也可指'主人/东道主'。",
+        "example": "She hosted a talent show."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 lively 的中文意思",
+      "q": "lively",
+      "ipa": "/ˈlaɪvli/",
+      "options": [
+        "热闹的",
+        "活泼的",
+        "生动的",
+        "充满趣味的；令人兴奋的"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "lively",
+        "ipa": "/ˈlaɪvli/",
+        "meaning": "adj. 充满趣味的；令人兴奋的。副词 lively 仍是形容词！不能说 sing lively，要说 sing in a lively way。",
+        "example": "The show was very lively and fun."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 possible 的中文意思",
+      "q": "possible",
+      "ipa": "/ˈpɒsəbl/",
+      "options": [
+        "允许的",
+        "合适的",
+        "可以的",
+        "可能"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "possible",
+        "ipa": "/ˈpɒsəbl/",
+        "meaning": "adj. 可能的（it is possible to do 有可能做某事）。反义 impossible。",
+        "example": "It is possible to achieve your dreams."
+      }
+    }
+  ],
+  "stage2": [
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 compare 的中文意思",
+      "q": "compare",
+      "ipa": "/kəmˈpeə(r)/",
+      "options": [
+        "比喻",
+        "比得上",
+        "比较；对比",
+        "相比"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "compare",
+        "ipa": "/kəmˈpeə(r)/",
+        "meaning": "v. 比较；对比。compare A with/to B 把 A 和 B 比较。compared to/with 与……相比。",
+        "example": "Don't compare yourself with others."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 increase 的介词搭配",
+      "q": "The audience increased ___ 200 ___ 500.",
+      "options": [
+        "by / to",
+        "from / to",
+        "from / by",
+        "to / from"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "increase from... to...",
+        "ipa": "",
+        "meaning": "phr. increase from A to B 从 A 增长到 B。increase by 增长了（后接差值）。",
+        "example": "It increased from 200 to 500. / It increased by 300."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出语法正确的句子",
+      "q": "关于 compare 的用法",
+      "options": [
+        "Compared with last year, the number of audience has increased by 30%.",
+        "Comparing with last year, the number of audience has increased by 30%.",
+        "Compared to last year, the number of audience has increased by 30%.",
+        "Both A and C are correct."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "compared with = compared to",
+        "ipa": "",
+        "meaning": "gram. compared with 和 compared to 都可表示'与……相比'，位于句首用过去分词 compared（不是 comparing）。",
+        "example": "Compared with/to last year, it increased."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 perform 的中文意思",
+      "q": "perform",
+      "ipa": "/pəˈfɔːm/",
+      "options": [
+        "完成",
+        "执行",
+        "表演；演出",
+        "表现"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "perform",
+        "ipa": "/pəˈfɔːm/",
+        "meaning": "v. 表演；演出（perform on stage 在舞台上表演）。也可指'执行任务'。名词 performance。",
+        "example": "She performed beautifully on the talent show."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 actually 的中文意思",
+      "q": "actually",
+      "ipa": "/ˈæktʃuəli/",
+      "options": [
+        "真实地",
+        "目前",
+        "实际地",
+        "事实上"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "actually",
+        "ipa": "/ˈæktʃuəli/",
+        "meaning": "adv. 事实上（= in fact）。用来纠正或强调。注意拼写：actual + ly。",
+        "example": "Actually, I don't agree with you."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "实际上，她对表演的好奇心极大地增加了，这使她走上了职业运动员以外的道路。",
+      "options": [
+        "Actually, her curiosity about performing increased extremely, which took her beyond the path of a professional athlete.",
+        "Actually, her curious about performing increased extremely, which took her beyond the path of a professional athlete.",
+        "Actually, her curiosity about performing increased extremely, which led her beyond the path of a professional athlete.",
+        "Actually, her curiosity for performing increased extremely, which took her beyond the path of a professional athlete."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "curiosity / curiosity about / lead sb beyond",
+        "ipa": "",
+        "meaning": "gram. ①curiosity 名词（不是 curious）②curiosity about（介词 about）③take sb beyond 带某人超越。",
+        "example": "Her curiosity about performing led her beyond sports."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 extremely 的中文意思",
+      "q": "extremely",
+      "ipa": "/ɪkˈstriːmli/",
+      "options": [
+        "极其；极端；非常",
+        "非常",
+        "特别",
+        "十分"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "extremely",
+        "ipa": "/ɪkˈstriːmli/",
+        "meaning": "adv. 极其；极端；非常（比 very 语气更强）。extreme adj. 极端的。",
+        "example": "It was an extremely difficult task."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 shoot 的中文意思",
+      "q": "shoot",
+      "ipa": "/ʃuːt/",
+      "options": [
+        "射击",
+        "冲；奔；飞驰",
+        "拍摄",
+        "投篮"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "shoot",
+        "ipa": "/ʃuːt/",
+        "meaning": "v. 冲；奔；飞驰（shoot past 飞快经过）。过去式 shot。也可指'射击/拍摄'。",
+        "example": "A car shot past us."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 curious 的中文意思",
+      "q": "curious",
+      "ipa": "/ˈkjʊəriəs/",
+      "options": [
+        "独特的",
+        "奇怪的",
+        "古怪的",
+        "求知欲强的；好奇的"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "curious",
+        "ipa": "/ˈkjʊəriəs/",
+        "meaning": "adj. 求知欲强的；好奇的。be curious about... 对……好奇。名词 curiosity。",
+        "example": "Children are naturally curious about the world."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 increase 的中文意思",
+      "q": "increase",
+      "ipa": "/ɪnˈkriːs/",
+      "options": [
+        "增长；增多；增加",
+        "减少",
+        "提高",
+        "扩大"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "increase",
+        "ipa": "/ɪnˈkriːs/",
+        "meaning": "v. 增长；增多；增加（increase by 增加了；increase to 增加到）。名词读作 /ˈɪnkriːs/。",
+        "example": "The number of viewers increased by 20%."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 sail 的中文意思",
+      "q": "sail",
+      "ipa": "/seɪl/",
+      "options": [
+        "划船",
+        "航行",
+        "驾驶帆船航行",
+        "出海"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "sail",
+        "ipa": "/seɪl/",
+        "meaning": "v. 驾驶(或乘坐)帆船航行。sail around the world 环球航行。注意 sail 和 sale（销售）同音不同义。",
+        "example": "They sailed across the ocean."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 beyond 的中文意思",
+      "q": "beyond",
+      "ipa": "/bɪˈjɒnd/",
+      "options": [
+        "超过",
+        "在另一边；在更远处",
+        "超越",
+        "越过"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "beyond",
+        "ipa": "/bɪˈjɒnd/",
+        "meaning": "adv. 在另一边；在(或向)更远处（go beyond 超越）。也可作介词。",
+        "example": "We could see the mountains beyond."
+      }
+    }
+  ],
+  "stage3": [
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 dream of 的正确形式",
+      "q": "She dreams of ___ a famous biologist one day.",
+      "options": [
+        "becomed",
+        "to become",
+        "become",
+        "becoming"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "dream of + V-ing",
+        "ipa": "",
+        "meaning": "gram. dream of 后接动名词（V-ing），不是 to do。of 是介词。",
+        "example": "She dreams of becoming a scientist. (NOT: to become)"
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "她梦想成为一名生物学家，而且她有实现这个梦想的能力。",
+      "options": [
+        "She dream of becoming a biologist, and she has the ability to make this dream come true.",
+        "She dreams to become a biologist, and she has the ability to make this dream come true.",
+        "She dreams of becoming a biologist, and she has the ability of making this dream come true.",
+        "She dreams of becoming a biologist, and she has the ability to make this dream come true."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "dream of doing / the ability to do",
+        "ipa": "",
+        "meaning": "gram. ①dream of + V-ing ②the ability to do（不是 of doing）③主语 She 三单 dreams。",
+        "example": "She dreams of becoming a scientist and has the ability to achieve it."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 method 的中文意思",
+      "q": "method",
+      "ipa": "/ˈmeθəd/",
+      "options": [
+        "手段",
+        "方式",
+        "方法；办法",
+        "途径"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "method",
+        "ipa": "/ˈmeθəd/",
+        "meaning": "n. 方法；办法（a method of doing 做某事的方法）。way 更通用，method 更系统。",
+        "example": "This is a good method for learning English."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 nowadays 的中文意思",
+      "q": "nowadays",
+      "ipa": "/ˈnaʊədeɪz/",
+      "options": [
+        "现今",
+        "当今",
+        "目前",
+        "现在；如今"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "nowadays",
+        "ipa": "/ˈnaʊədeɪz/",
+        "meaning": "adv. 现在；如今（= these days）。用于对比过去和现在。",
+        "example": "Nowadays, many people dream of becoming athletes."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 lecture 的中文意思",
+      "q": "lecture",
+      "ipa": "/ˈlektʃə(r)/",
+      "options": [
+        "课堂",
+        "演讲",
+        "讲座；讲课",
+        "报告"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "lecture",
+        "ipa": "/ˈlektʃə(r)/",
+        "meaning": "n. 讲座；讲课（give a lecture 做讲座）。也可作动词。",
+        "example": "She attended a lecture on biology."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 ability 的中文意思",
+      "q": "ability",
+      "ipa": "/əˈbɪləti/",
+      "options": [
+        "能力",
+        "才能；本领",
+        "技能",
+        "天赋"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "ability",
+        "ipa": "/əˈbɪləti/",
+        "meaning": "n. 才能；本领（have the ability to do 有能力做某事）。able adj. 能够的。",
+        "example": "She has the ability to learn quickly."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 body language 的中文意思",
+      "q": "body language",
+      "options": [
+        "身体语言；肢体语言",
+        "语言",
+        "手势",
+        "表情"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "body language",
+        "ipa": "",
+        "meaning": "n. 身体语言；肢体语言（不可数）。通过手势、表情等传达信息。",
+        "example": "Body language is important in communication."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 dream of 的中文意思",
+      "q": "dream of",
+      "options": [
+        "梦到",
+        "梦想；渴望",
+        "幻想着",
+        "梦见"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "dream of",
+        "ipa": "",
+        "meaning": "phr. 梦想；渴望（dream of doing 梦想做某事）。of 是介词，后接 V-ing。",
+        "example": "She dreams of becoming an athlete."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 come true 的中文意思",
+      "q": "come true",
+      "options": [
+        "到来",
+        "变成真的",
+        "实现；成真",
+        "真实"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "come true",
+        "ipa": "",
+        "meaning": "phr. 实现；成真（梦想/愿望实现）。主语是梦想，不用被动语态。",
+        "example": "Her dream came true. (NOT: was come true)"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 ability 的固定搭配",
+      "q": "He has the ___ to solve complex problems.",
+      "options": [
+        "able",
+        "ability",
+        "capable",
+        "capacity"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "the ability to do",
+        "ipa": "",
+        "meaning": "phr. have the ability to do（to 是不定式）。capable 后用 of doing：be capable of doing。",
+        "example": "She has the ability to succeed. / She is capable of succeeding."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 come true 的主谓一致",
+      "q": "I hope your dreams ___ true.",
+      "options": [
+        "come",
+        "comes",
+        "will come",
+        "came"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "dreams come true",
+        "ipa": "",
+        "meaning": "gram. 主语 dreams 复数 → come（原形）。come true 不用被动。I hope (that) your dreams come true.",
+        "example": "May all your dreams come true."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 go outside 的中文意思",
+      "q": "go outside",
+      "options": [
+        "出去；到户外",
+        "外出",
+        "出门",
+        "去外面玩"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "go outside",
+        "ipa": "",
+        "meaning": "phr. 出去；到户外（= go out）。go outside to play 到外面去玩。",
+        "example": "Let's go outside and enjoy the sunshine."
+      }
+    }
+  ],
+  "stage4": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 perform 的语境理解",
+      "q": "The athlete will ___ in the talent show tonight.",
+      "options": [
+        "performing",
+        "perform on",
+        "perform",
+        "performance"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "perform vi.",
+        "ipa": "",
+        "meaning": "v. 表演。不及物时直接说 perform，不用加 on。will + 原形。",
+        "example": "She will perform tonight. (NOT: perform on)"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 lecture 的正确搭配",
+      "q": "The scientist will ___ a lecture on body language.",
+      "options": [
+        "speak",
+        "make",
+        "do",
+        "give"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "give a lecture",
+        "ipa": "",
+        "meaning": "phr. 做讲座。固定搭配 give a lecture，不用 make/do。类似 give a speech。",
+        "example": "He gave a lecture on biology. (NOT: made a lecture)"
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 human being 的中文意思",
+      "q": "human being",
+      "options": [
+        "生命",
+        "人",
+        "生物",
+        "人类"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "human being",
+        "ipa": "",
+        "meaning": "n. 人类（复数 human beings）。比 human 更正式，强调'作为人的存在'。",
+        "example": "All human beings have dreams."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "如今，越来越多的人对肢体语言感兴趣，因为它是一种强大的交流方法。",
+      "options": [
+        "Nowadays, more and more people are interested in body language because it is a powerful method of communication.",
+        "Nowadays, more and more people are interesting in body language because it is a powerful method of communication.",
+        "Nowadays, more and more people are interested in body language because it is a powerful method for communication.",
+        "Nowadays, more and more people interested in body language because it is a powerful method of communication."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "be interested in / method of",
+        "ipa": "",
+        "meaning": "gram. ①人感兴趣用 interested（不是 interesting）②method of + V-ing（也可用 for，但 of 更常见）③are 不可省。",
+        "example": "More and more people are interested in it."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 come true 和 dream of 的综合",
+      "q": "If you work hard, your dream of ___ a biologist will ___ true.",
+      "options": [
+        "to become / come",
+        "becoming / comes",
+        "becoming / come",
+        "becoming / be come"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "dream of doing / come true",
+        "ipa": "",
+        "meaning": "gram. ①dream of + V-ing ②your dream 三单，will + 原形 come。",
+        "example": "Your dream of becoming a scientist will come true."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 more and more 的中文意思",
+      "q": "more and more",
+      "options": [
+        "更多更多",
+        "越来越……",
+        "越来越多",
+        "逐渐增多"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "more and more",
+        "ipa": "",
+        "meaning": "phr. 越来越……（后接形容词/名词）。more and more popular 越来越流行。",
+        "example": "More and more people are interested in talent shows."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 kiss 的中文意思",
+      "q": "kiss",
+      "ipa": "/kɪs/",
+      "options": [
+        "亲吻",
+        "碰触",
+        "拥抱",
+        "挥手"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "kiss",
+        "ipa": "/kɪs/",
+        "meaning": "v./n. 亲吻。kiss sb goodbye 吻别。",
+        "example": "She kissed her mother goodbye."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 nowadays 的位置",
+      "q": "___, many athletes use scientific methods to improve.",
+      "options": [
+        "Now a day",
+        "Nowaday",
+        "Nowadays",
+        "Nowdays"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "nowadays（拼写）",
+        "ipa": "",
+        "meaning": "adv. 现在；如今。拼写是一个词 nowadays，不是 nowdays 或 now a day。",
+        "example": "Nowadays, technology plays a key role in sports."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 compare 的过去分词用法",
+      "q": "___ with the past, people nowadays have more career choices.",
+      "options": [
+        "Comparing",
+        "Compared",
+        "Compare",
+        "To compare"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "Compared with（句首分词）",
+        "ipa": "",
+        "meaning": "gram. 句首分词作状语，people 是被比较 → 用过去分词 Compared。",
+        "example": "Compared with the past, we have more choices."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "拥抱和亲吻是常见的肢体语言，它们在人类交流中发挥着重要作用。",
+      "options": [
+        "Hug and kiss are common forms of body language, and they play an important role in human being communication.",
+        "Hugging and kissing are common forms of body language, and they play an important role in human communication.",
+        "Hugging and kissing is common forms of body language, and they play an important role in human communication.",
+        "Hugging and kissing are common forms of body language, and they play an important role in human beings communication."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "动名词作主语 / human communication",
+        "ipa": "",
+        "meaning": "gram. ①Hugging and kissing 是两件事 → 复数 are ②human communication（human 作形容词，不是 human being）。",
+        "example": "Hugging and kissing are forms of body language."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 hug 的中文意思",
+      "q": "hug",
+      "ipa": "/hʌɡ/",
+      "options": [
+        "握手",
+        "抱住",
+        "紧抱",
+        "拥抱"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "hug",
+        "ipa": "/hʌɡ/",
+        "meaning": "v./n. 拥抱（过去式 hugged，双写 g）。give sb a hug 给某人一个拥抱。",
+        "example": "She hugged her friend tightly."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 hug 的过去式",
+      "q": "She ___ her parents before leaving.",
+      "options": [
+        "hugged",
+        "huged",
+        "hug",
+        "hugs"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "hug → hugged",
+        "ipa": "",
+        "meaning": "gram. 重读闭音节结尾，双写 g 加 -ed → hugged。类似：stop → stopped。",
+        "example": "She hugged me. (NOT: huged)"
+      }
+    }
+  ],
+  "stage5": [
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 extremely 和 curious 的搭配",
+      "q": "The ___ child was ___ eager to learn about everything.",
+      "options": [
+        "curious / very",
+        "curiously / extremely",
+        "curious / extreme",
+        "curious / extremely"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "curious adj. / extremely adv.",
+        "ipa": "",
+        "meaning": "修饰名词用 curious，修饰形容词 eager 用 extremely（副词）。",
+        "example": "A curious child is extremely eager to learn."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译（陷阱题）",
+      "q": "如今，越来越多的年轻人梦想成为运动员，但只有少数人能实现这个梦想。",
+      "options": [
+        "Nowadays, more and more young people dream of becoming athletes, but only a few can make this dream come true.",
+        "Nowadays, more and more young people dream of becoming athletes, but only a few can achieve this dream.",
+        "Both A and B are correct.",
+        "Nowadays, more and more young people dream to become athletes, but only a few can make this dream come true."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "make a dream come true = achieve a dream",
+        "ipa": "",
+        "meaning": "gram. make a dream come true 和 achieve a dream 都正确，两者同义。D 错在 dream to do。",
+        "example": "Only a few can make this dream come true."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 12,
+      "prompt": "选出 diamond 的中文意思",
+      "q": "diamond",
+      "ipa": "/ˈdaɪəmənd/",
+      "options": [
+        "宝石",
+        "钻石",
+        "水晶",
+        "珍珠"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "diamond",
+        "ipa": "/ˈdaɪəmənd/",
+        "meaning": "n. 钻石（可数）。diamond belt 镶钻腰带。也可指'菱形'。",
+        "example": "She wore a beautiful diamond necklace."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 12,
+      "prompt": "选出 host 和 audience 的主谓一致",
+      "q": "The host ___ talking while the audience ___ listening carefully.",
+      "options": [
+        "are / are",
+        "are / is",
+        "is / is",
+        "is / are"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "audience 集合名词",
+        "ipa": "",
+        "meaning": "gram. the host 单数 → is。the audience 这里强调个体在听 → are。",
+        "example": "The host is speaking. The audience are listening."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译",
+      "q": "与过去相比，现在有更多的职业生涯选择，但竞争也变得极其激烈。",
+      "options": [
+        "Compared with the past, there are more career choices nowadays, but the competition has become extremely fierce.",
+        "Comparing with the past, there are more career choices nowadays, but the competition has become extremely intense.",
+        "Compared with the past, there are more career choices nowadays, but the competition has become extremely intensive.",
+        "Compared with the past, there are more career choices nowadays, but the competition became extremely fierce."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "compared with / has become",
+        "ipa": "",
+        "meaning": "gram. ①compared with（过去分词）②has become 现在完成时（表示已经变得）③fierce 激烈的。",
+        "example": "Compared with the past, competition has become fiercer."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 extremely 的位置",
+      "q": "The show was ___ lively and the audience were ___ excited.",
+      "options": [
+        "extremely / extreme",
+        "extreme / extreme",
+        "extremely / extremely",
+        "extreme / extremely"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "extremely + 形容词",
+        "ipa": "",
+        "meaning": "gram. lively 和 excited 都是形容词，需要副词 extremely 修饰。",
+        "example": "It was extremely lively. They were extremely excited."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出语法正确的句子",
+      "q": "关于 ability 和 capable",
+      "options": [
+        "She is able of hosting big events, and she has the capability of handling any situation.",
+        "She has the ability of hosting big events, and she is capable of handling any situation.",
+        "She has the ability to host big events, and she is capable to handle any situation.",
+        "She has the ability to host big events, and she is capable of handling any situation."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "ability to do / capable of doing",
+        "ipa": "",
+        "meaning": "gram. ①ability + to do（不定式）②capable + of doing（动名词）。两者搭配不能混淆。",
+        "example": "She has the ability to succeed. / She is capable of succeeding."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 possible 和 ability 的组合",
+      "q": "Is it ___ for a regular person to have the ___ to sail around the world?",
+      "options": [
+        "possible / ability",
+        "possible / able",
+        "possibly / ability",
+        "possibility / ability"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "possible / ability",
+        "ipa": "",
+        "meaning": "gram. Is it possible（形容词）for sb to do；the ability（名词）。",
+        "example": "Is it possible to have the ability to do it?"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 come true 的主语",
+      "q": "His lifelong dream finally ___ true.",
+      "options": [
+        "came",
+        "comes",
+        "became",
+        "was come"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "come true（不用被动）",
+        "ipa": "",
+        "meaning": "gram. dream comes true（主动形式）。不说 is come true 或 becomes true。finally 暗示过去时 came。",
+        "example": "His dream finally came true. (NOT: was come true)"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 instrument 的动词搭配",
+      "q": "She can ___ several instruments, including the piano and violin.",
+      "options": [
+        "perform",
+        "play",
+        "do",
+        "make"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "play an instrument",
+        "ipa": "",
+        "meaning": "phr. 演奏乐器。固定搭配 play + the + 乐器（play the piano）。不用 perform。",
+        "example": "She plays the guitar. (NOT: performs the guitar)"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 shoot 的过去式",
+      "q": "The athlete ___ past the others and won the race.",
+      "options": [
+        "shoot",
+        "shooted",
+        "shot",
+        "shotten"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "shoot → shot",
+        "ipa": "",
+        "meaning": "gram. shoot 过去式 shot（不规则）。不是 shooted。",
+        "example": "He shot past everyone. (NOT: shooted)"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 beyond 的介词用法",
+      "q": "Her talent goes ___ what we expected.",
+      "options": [
+        "over",
+        "beyond",
+        "above",
+        "more than"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "go beyond",
+        "ipa": "",
+        "meaning": "phr. go beyond 超越；超出。beyond 后直接接名词/从句。go beyond expectations 超出预期。",
+        "example": "Her success went beyond our imagination."
+      }
+    }
+  ]
+}

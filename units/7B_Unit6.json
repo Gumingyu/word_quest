@@ -1,0 +1,1174 @@
+{
+  "stage1": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 battery 的中文意思",
+      "q": "battery",
+      "ipa": "/ˈbætəri/",
+      "options": [
+        "充电器",
+        "电源",
+        "电池",
+        "电线"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "battery",
+        "ipa": "/ˈbætəri/",
+        "meaning": "n. 电池（复数 batteries）。run out of batteries 电池用完了。",
+        "example": "The remote control needs new batteries."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 air conditioner 的中文意思",
+      "q": "air conditioner",
+      "options": [
+        "空调机；空调设备",
+        "空气净化器",
+        "风扇",
+        "暖气"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "air conditioner",
+        "ipa": "",
+        "meaning": "n. 空调机；空调设备（air 空气 + conditioner 调节器）。注意缩略词 AC。",
+        "example": "Turn on the air conditioner. It's too hot."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 electricity 的中文意思",
+      "q": "electricity",
+      "ipa": "/ɪˌlekˈtrɪsəti/",
+      "options": [
+        "电；电能",
+        "电子",
+        "电器",
+        "电力"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "electricity",
+        "ipa": "/ɪˌlekˈtrɪsəti/",
+        "meaning": "n. 电；电能（不可数）。形容词 electric（用电的），electrical（与电有关的）。注意区分：electric car 电动汽车，electrical appliance 电器。",
+        "example": "The fridge uses a lot of electricity."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 tablet 的中文意思",
+      "q": "tablet",
+      "ipa": "/ˈtæblət/",
+      "options": [
+        "平板电脑",
+        "药片",
+        "笔记本",
+        "手机"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "tablet",
+        "ipa": "/ˈtæblət/",
+        "meaning": "n. 平板电脑。也可指'药片'。tablet computer 平板电脑。注意不要和 table（桌子）混淆。",
+        "example": "She uses a tablet to read e-books."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 yogurt 的中文意思",
+      "q": "yogurt",
+      "ipa": "/ˈjɒɡət/",
+      "options": [
+        "奶酪",
+        "牛奶",
+        "酸奶",
+        "奶油"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "yogurt",
+        "ipa": "/ˈjɒɡət/",
+        "meaning": "n. 酸奶（不可数）。美式拼写 yogurt，英式也可拼作 yoghurt。",
+        "example": "The yogurt in the fridge has gone bad."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 switch-off 的中文意思",
+      "q": "switch-off",
+      "ipa": "/ˌswɪtʃ ˈɒf/",
+      "options": [
+        "开关",
+        "关闭的",
+        "打开",
+        "切断"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "switch-off",
+        "ipa": "/ˌswɪtʃ ˈɒf/",
+        "meaning": "adj. 关闭（电灯、机器等）的（= turned off）。switch on 打开，switch off 关掉。",
+        "example": "Make sure all switch-off devices before leaving."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出语法正确的句子",
+      "q": "关于电视机的用电量",
+      "options": [
+        "A television set uses more electricity than a light bulb.",
+        "Both A and B are correct.",
+        "A television set uses more electricity than a light bulb does.",
+        "A television set use more electricity than a light bulb."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "比较级 + does 可省",
+        "ipa": "",
+        "meaning": "gram. than 后面可以省略助动词（does），也可以保留，两者都对。D 错在主语 A television set 单数 + uses（不是 use）。",
+        "example": "It uses more than a light bulb (does)."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 television set 的中文意思",
+      "q": "television set",
+      "ipa": "/ˈtelɪvɪʒən set/",
+      "options": [
+        "电视节目",
+        "电视机",
+        "电视台",
+        "电视信号"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "television set",
+        "ipa": "/ˈtelɪvɪʒən set/",
+        "meaning": "n. 电视机（= TV set。set 指'一台机器'）。注意 television 指'电视'这种媒介，television set 指具体的机器。",
+        "example": "They bought a new television set."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 fridge 的中文意思",
+      "q": "fridge",
+      "ipa": "/frɪdʒ/",
+      "options": [
+        "冷藏箱",
+        "冰柜",
+        "冰箱",
+        "冷冻室"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "fridge",
+        "ipa": "/frɪdʒ/",
+        "meaning": "n. 冰箱（refrigerator 的缩写）。注意拼写：fridge 里有 d，refrigerator 里没有 d。",
+        "example": "Put the yogurt in the fridge, or it will go bad."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 light bulb 的中文意思",
+      "q": "light bulb",
+      "options": [
+        "台灯",
+        "灯管",
+        "灯光",
+        "电灯泡"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "light bulb",
+        "ipa": "",
+        "meaning": "n. 电灯泡（light 光 + bulb 球状物）。注意拼写：bulb 不是 blub。",
+        "example": "The light bulb needs to be changed."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 electric 和 electrical 的区别",
+      "q": "We bought an ___ car and some ___ appliances.",
+      "options": [
+        "electrical / electrical",
+        "electrical / electric",
+        "electric / electric",
+        "electric / electrical"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "electric vs electrical",
+        "ipa": "",
+        "meaning": "adj. electric 指'靠电驱动的'（electric car 电动汽车）；electrical 指'与电相关的'（electrical appliance 电器）。",
+        "example": "an electric car, an electrical engineer"
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译（检查电器词汇）",
+      "q": "冰箱里的酸奶变质了，因为停电时电器都被关掉了。",
+      "options": [
+        "The yogurts in the fridge went bad because all electrical appliance were switched off during the power cut.",
+        "The yogurt in the fridge went bad because all electric appliances were switch-off during the power cut.",
+        "The yogurt in the fridge went badly because all electrical appliances were switched off during the power cut.",
+        "The yogurt in the fridge went bad because all electrical appliances were switched off during the power cut."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "electrical appliances / switched off / go bad",
+        "ipa": "",
+        "meaning": "gram. ①electrical appliances（电器）②switched off（被动语态）③go bad 变质（不用 badly）④yogurt 不可数。",
+        "example": "The yogurt went bad because the fridge was off."
+      }
+    }
+  ],
+  "stage2": [
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译（检查不可数名词）",
+      "q": "我们家的冰箱老是没电，里面的酸奶经常变质。",
+      "options": [
+        "The fridge in our household always runs out of electricity, and the yogurt inside often goes badly.",
+        "The fridge in our household always runs out electricity, and the yogurt inside often goes bad.",
+        "The fridge in our household always runs out of electricity, and the yogurt inside often goes bad.",
+        "The fridge in our household always run out of electricity, and the yogurt inside often go bad."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "run out of / go bad / 主谓一致",
+        "ipa": "",
+        "meaning": "gram. ①run out of + 宾语（of 不可省）②go bad（不用 badly）③主语 The fridge 单数 + runs；yogurt 不可数 + goes。",
+        "example": "The fridge runs out of power. The yogurt goes bad."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 for a while 的正确用法",
+      "q": "The electricity was off ___.",
+      "options": [
+        "for while",
+        "for a while",
+        "for the while",
+        "for a little"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "for a while",
+        "ipa": "",
+        "meaning": "phr. 一会儿（固定搭配，a 不可省）。不说 for while 或 for the while。",
+        "example": "Wait for a while. (NOT: Wait for while.)"
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "关掉空调一会儿能省电，这是我们家的日常任务。",
+      "options": [
+        "Switching off the air conditioner for while saves electricity. It's our daily household task.",
+        "Switch off the air conditioner for a while save electricity. It's our daily household task.",
+        "Switching off the air conditioner for a while saves electricity. It's our daily household tasks.",
+        "Switching off the air conditioner for a while saves electricity. It's our daily household task."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "Switching off... saves / for a while",
+        "ipa": "",
+        "meaning": "gram. ①动名词短语 Switching off... 作主语，谓语用单数 saves ②for a while（a 不可省）③task 单数（指一件事）。",
+        "example": "Switching off the AC saves electricity."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 video game 的中文意思",
+      "q": "video game",
+      "options": [
+        "游戏机",
+        "视频",
+        "电子游戏",
+        "电脑游戏"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "video game",
+        "ipa": "",
+        "meaning": "n. 电子游戏（video 视频 + game 游戏）。play video games 用复数。",
+        "example": "He spends too much time on video games."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 run out of 和 run out 的区别",
+      "q": "The fridge ___ power. The battery finally ___.",
+      "options": [
+        "ran out / ran out",
+        "ran out / ran out of",
+        "run out of / ran out of",
+        "ran out of / ran out"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "run out of + 宾语 / run out（无宾语）",
+        "ipa": "",
+        "meaning": "gram. run out of + 宾语（用完某物）。run out 不及物，主语是物（某物用完了）。",
+        "example": "We ran out of water. / The water ran out."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 while 的介词搭配",
+      "q": "I played video games ___ a while, then did my ___.",
+      "options": [
+        "for / task",
+        "for / tasking",
+        "in / task",
+        "during / task"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "for a while / task",
+        "ipa": "",
+        "meaning": "phr. for a while 固定搭配（介词用 for）；task 是可数名词。",
+        "example": "I read for a while, then did my task."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 apartment 的中文意思",
+      "q": "apartment",
+      "ipa": "/əˈpɑːtmənt/",
+      "options": [
+        "公寓套房",
+        "房子",
+        "别墅",
+        "房间"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "apartment",
+        "ipa": "/əˈpɑːtmənt/",
+        "meaning": "n. 公寓套房（美式）。英式用 flat。apartment building 公寓楼。",
+        "example": "They live in a small apartment."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 household 的中文意思",
+      "q": "household",
+      "ipa": "/ˈhaʊshəʊld/",
+      "options": [
+        "房屋",
+        "家庭的",
+        "家务",
+        "家居"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "household",
+        "ipa": "/ˈhaʊshəʊld/",
+        "meaning": "adj. 家庭的（household appliance 家用电器）。名词 household 可指'全家人'。",
+        "example": "The fridge is a common household appliance."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 task 的中文意思",
+      "q": "task",
+      "ipa": "/tɑːsk/",
+      "options": [
+        "项目",
+        "作业",
+        "工作",
+        "任务；活动"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "task",
+        "ipa": "/tɑːsk/",
+        "meaning": "n. 任务；活动（household tasks 家务）。注意 task 和 homework 区别：task 泛指任何任务，homework 专指家庭作业。",
+        "example": "My daily task is to take out the rubbish."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 while 的中文意思",
+      "q": "while",
+      "ipa": "/waɪl/",
+      "options": [
+        "一段时间；一会儿",
+        "当……时",
+        "尽管",
+        "然而"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "while",
+        "ipa": "/waɪl/",
+        "meaning": "n. 一段时间；一会儿（for a while 一会儿）。也可作连词'当……时'。",
+        "example": "Wait for a while. The battery is charging."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 go bad 的中文意思",
+      "q": "go bad",
+      "options": [
+        "腐烂",
+        "变坏",
+        "变质",
+        "发霉"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "go bad",
+        "ipa": "",
+        "meaning": "phr. 变质（go + 形容词，表示'变得……'）。go bad 专指食物变质。不说 become bad。",
+        "example": "The milk will go bad if you don't put it in the fridge."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 run out of 的中文意思",
+      "q": "run out of",
+      "options": [
+        "跑出",
+        "用完；耗尽",
+        "用完（无宾语）",
+        "消耗"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "run out of",
+        "ipa": "",
+        "meaning": "phr. 用完；耗尽（+ 宾语）。run out 用完了（无宾语）。We ran out of batteries. = The batteries ran out.",
+        "example": "We ran out of electricity. = The electricity ran out."
+      }
+    }
+  ],
+  "stage3": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 rule 的中文意思",
+      "q": "rule",
+      "ipa": "/ruːl/",
+      "options": [
+        "命令",
+        "法律",
+        "制度",
+        "规则；条例"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "rule",
+        "ipa": "/ruːl/",
+        "meaning": "n. 规则；条例（safety rules 安全规则）。也可作动词'统治'。",
+        "example": "Follow the safety rules at all times."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译（检查 connect 和 against）",
+      "q": "根据安全说明，不要把电器靠着墙放置，要先连接好电源。",
+      "options": [
+        "According to the safety instructions, don't put electrical appliances against the wall. Connect them for the power first.",
+        "According to the safety instruction, don't put electrical appliances against the wall. Connect them with the power first.",
+        "According to the safety instructions, don't put electric appliances against the wall. Connect them to the power first.",
+        "According to the safety instructions, don't put electrical appliances against the wall. Connect them to the power first."
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "instructions / electrical appliances / connect to",
+        "ipa": "",
+        "meaning": "gram. ①instructions 复数 ②electrical appliances ③connect...to（不是 with/for）④against the wall 紧靠墙。",
+        "example": "Don't put appliances against the wall. Connect them to power."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 connect 的正确介词搭配",
+      "q": "Connect the tablet ___ the Wi-Fi first.",
+      "options": [
+        "for",
+        "with",
+        "to",
+        "into"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "connect A to B",
+        "ipa": "",
+        "meaning": "phr. 把 A 连接到 B（connect...to...）。connect with 指'与……联系/沟通'（connect with friends）。",
+        "example": "Connect the phone to the charger. / I connect with friends online."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 against 的语境理解",
+      "q": "He leaned the tablet ___ the wall while charging.",
+      "options": [
+        "with",
+        "to",
+        "on",
+        "against"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "against（紧靠）",
+        "ipa": "",
+        "meaning": "prep. lean...against 把……靠在……上。against 在这里是'紧靠着'的意思，不是'反对'。",
+        "example": "He leaned the bike against the tree."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 device 的中文意思",
+      "q": "device",
+      "ipa": "/dɪˈvaɪs/",
+      "options": [
+        "电器",
+        "仪器",
+        "装置；设备",
+        "工具"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "device",
+        "ipa": "/dɪˈvaɪs/",
+        "meaning": "n. 装置；设备（smart device 智能设备）。注意拼写：device 是名词，devise 是动词'设计'。",
+        "example": "Smartphones are common devices today."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 instruction 的中文意思",
+      "q": "instruction",
+      "ipa": "/ɪnˈstrʌkʃn/",
+      "options": [
+        "教导",
+        "用法说明；操作指南",
+        "指示",
+        "说明书"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "instruction",
+        "ipa": "/ɪnˈstrʌkʃn/",
+        "meaning": "n. 用法说明；操作指南（常用复数 instructions。follow the instructions 按照说明操作）。",
+        "example": "Read the instructions before using the device."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 connect 的中文意思",
+      "q": "connect",
+      "ipa": "/kəˈnekt/",
+      "options": [
+        "（使）连接",
+        "联系",
+        "接通",
+        "联网"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "connect",
+        "ipa": "/kəˈnekt/",
+        "meaning": "v.（使）连接。connect A to B 把 A 连接到 B。反义 disconnect 断开。",
+        "example": "Connect the battery to the device."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 safety 的中文意思",
+      "q": "safety",
+      "ipa": "/ˈseɪfti/",
+      "options": [
+        "安全措施",
+        "安全；平安",
+        "保护",
+        "安全感"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "safety",
+        "ipa": "/ˈseɪfti/",
+        "meaning": "n. 安全；平安（safe adj. → safety n.）。safety rules 安全规则。",
+        "example": "Your safety is the most important thing."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 electrical appliance 的中文意思",
+      "q": "electrical appliance",
+      "options": [
+        "家用电器",
+        "电子设备",
+        "电器",
+        "电动工具"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "electrical appliance",
+        "ipa": "",
+        "meaning": "n. 电器（electrical 与电相关的 + appliance 器具）。注意 electrical 不是 electric。",
+        "example": "The fridge is a common electrical appliance."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 instruction 的数",
+      "q": "The safety ___ are on the back of the box.",
+      "options": [
+        "instruction",
+        "instructions",
+        "an instruction",
+        "the instruction"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "instructions（复数）",
+        "ipa": "",
+        "meaning": "gram. 表示'操作指南'时，instruction 通常用复数 instructions。谓语 are 说明主语是复数。",
+        "example": "The instructions are easy to follow."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 against 的中文意思",
+      "q": "against",
+      "ipa": "/əˈɡenst/",
+      "options": [
+        "紧靠；碰；撞",
+        "反对",
+        "对抗",
+        "对着"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "against",
+        "ipa": "/əˈɡenst/",
+        "meaning": "prep. 紧靠；碰；撞（lean against the wall 靠在墙上）。也可指'反对'。本单元取'紧靠'义。",
+        "example": "Don't put the fridge against the wall."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "确保遵守安全规则，在连接设备前阅读说明。",
+      "options": [
+        "Make sure you follow the safety rules and read the instructions before connecting the device.",
+        "Make sure to follow the safety rules and read the instruction before connecting the device.",
+        "Make sure to follow the safety rules and read the instructions before connecting the device to.",
+        "Make sure to follow the safety rules and read the instructions before connecting the device."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "make sure + 从句 / make sure to do",
+        "ipa": "",
+        "meaning": "gram. make sure 后可接 to do 或 (that) 从句，两者都对。选项 A 和 D 都正确，D 用从句更口语化。",
+        "example": "Make sure to read them. = Make sure (that) you read them."
+      }
+    }
+  ],
+  "stage4": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 speed 的中文意思",
+      "q": "speed",
+      "ipa": "/spiːd/",
+      "options": [
+        "加速",
+        "快速",
+        "速度；速率",
+        "步伐"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "speed",
+        "ipa": "/spiːd/",
+        "meaning": "n. 速度；速率（at high speed 高速）。electric car 的 speed 是其重要参数。",
+        "example": "The electric car can reach a high speed."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 landmark 的中文意思",
+      "q": "landmark",
+      "ipa": "/ˈlændmɑːk/",
+      "options": [
+        "景点",
+        "里程碑",
+        "标志",
+        "地标"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "landmark",
+        "ipa": "/ˈlændmɑːk/",
+        "meaning": "n. 地标（land 土地 + mark 标记）。也可指'里程碑'（喻义）。",
+        "example": "The Eiffel Tower is a famous landmark."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 climate 的中文意思",
+      "q": "climate",
+      "ipa": "/ˈklaɪmət/",
+      "options": [
+        "环境",
+        "天气",
+        "气温",
+        "气候"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "climate",
+        "ipa": "/ˈklaɪmət/",
+        "meaning": "n. 气候（长期天气模式）。weather 指短期天气，climate 指长期气候。climate change 气候变化。",
+        "example": "Climate change affects everyone."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 care about 的中文意思",
+      "q": "care about",
+      "options": [
+        "关注；担忧",
+        "关心",
+        "照顾",
+        "喜欢"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "care about",
+        "ipa": "",
+        "meaning": "phr. 关注；担忧（care about + 名词/V-ing）。care for 照顾，care about 关注/在乎。",
+        "example": "We should care about climate change."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 join in 的中文意思",
+      "q": "join in",
+      "options": [
+        "连接",
+        "加入成为成员",
+        "参加；加入",
+        "参与"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "join in",
+        "ipa": "",
+        "meaning": "phr. 参加；加入（join in + 活动）。join + 组织（不加 in）。join in the game，但 join the club。",
+        "example": "Come and join in the game! / She joined the team."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 electric car 的中文意思",
+      "q": "electric car",
+      "options": [
+        "电动车",
+        "电动汽车",
+        "电车",
+        "电力汽车"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "electric car",
+        "ipa": "",
+        "meaning": "n. 电动汽车（electric 靠电驱动的 + car）。注意 electric 不是 electrical。electric car = EV。",
+        "example": "Electric cars are becoming more popular."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 amount 的中文意思",
+      "q": "amount",
+      "ipa": "/əˈmaʊnt/",
+      "options": [
+        "数量；数额",
+        "金额",
+        "总量",
+        "数目"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "amount",
+        "ipa": "/əˈmaʊnt/",
+        "meaning": "n. 数量；数额（an amount of + 不可数名词）。number 用于可数名词。",
+        "example": "A large amount of electricity is wasted every day."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 climate change 的中文意思",
+      "q": "climate change",
+      "options": [
+        "季节变化",
+        "天气变化",
+        "气候变化",
+        "全球变暖"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "climate change",
+        "ipa": "",
+        "meaning": "n. 气候变化（climate 气候 + change 变化）。不同于 global warming（全球变暖），范围更广。",
+        "example": "Climate change is a global problem."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 join in 和 join 的区别",
+      "q": "Would you like to ___ the club or just ___ today's activity?",
+      "options": [
+        "join in / join",
+        "join / join in",
+        "join / join",
+        "join in / join in"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "join + 组织 / join in + 活动",
+        "ipa": "",
+        "meaning": "gram. join + 组织（成为成员）。join in + 活动（参与活动，不是正式成员）。",
+        "example": "He joined the team. / He joined in the game."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "电动汽车的速度很快，而且不会消耗大量电能，所以人们越来越关注它们。",
+      "options": [
+        "Electric cars have high speed and don't use a large number of electricity, so people care about them more and more.",
+        "Electric cars have high speed and don't use a large amount of electricity, so people care about them more and more.",
+        "Electric cars has high speed and don't use a large amount of electricity, so people care about them more and more.",
+        "Electric cars have high speed and don't use a large amount electricity, so people care about them more and more."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "amount of + 不可数 / have + 复数主语",
+        "ipa": "",
+        "meaning": "gram. ①a large amount of electricity（amount 后接 of，不可省）②主语 cars 复数 + have（不是 has）③amount 不换 number。",
+        "example": "Electric cars have high speed and use little electricity."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 amount 的正确搭配",
+      "q": "A large ___ of electricity ___ wasted.",
+      "options": [
+        "number / are",
+        "number / is",
+        "amount / are",
+        "amount / is"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "amount of + 不可数 / 谓语单数",
+        "ipa": "",
+        "meaning": "gram. electricity 不可数 → amount（不是 number）。a large amount of + 不可数名词，谓语用单数 is。",
+        "example": "A large amount of water is wasted. (NOT: number of water)"
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 power 作动词的中文意思",
+      "q": "power",
+      "ipa": "/ˈpaʊə(r)/",
+      "options": [
+        "驱动；推动",
+        "供电",
+        "充电",
+        "发动"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "power",
+        "ipa": "/ˈpaʊə(r)/",
+        "meaning": "v. 驱动；推动（机器或车辆）。The car is powered by electricity. 名词 power 也可指'电力、力量'。",
+        "example": "The device is powered by solar energy."
+      }
+    }
+  ],
+  "stage5": [
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 climate 和 weather 的区别",
+      "q": "Today's ___ is sunny, but the ___ here is usually wet.",
+      "options": [
+        "climate / climate",
+        "climate / weather",
+        "weather / weather",
+        "weather / climate"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "weather vs climate",
+        "ipa": "",
+        "meaning": "weather 短期天气，climate 长期气候。今天 sunny 是 weather，通常 wet 是 climate。",
+        "example": "The weather is nice today. The climate here is warm."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译（综合陷阱）",
+      "q": "这些电器有一个共同点：它们都靠电能驱动，而且我们都应该关心它们的能耗。",
+      "options": [
+        "These electrical appliances has something in common: they are all powered by electricity, and we should all care about how much they use.",
+        "These electrical appliances have something in common: they all powered by electricity, and we should all care about how much they use.",
+        "These electrical appliances have something in common: they are all powered by electricity, and we should all care about how much they use.",
+        "These electrical appliances have something in common: they are all powered by electricity, and we should all care for how much they use."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "have in common / are powered / care about",
+        "ipa": "",
+        "meaning": "gram. ①appliances 复数 + have ②are powered（被动语态，be 不可省）③care about 关注（不是 care for 照顾）。",
+        "example": "They have something in common: they are all powered by electricity."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出语法正确的句子",
+      "q": "关于 have...in common 和 amount",
+      "options": [
+        "All electrical devices has one thing in common: a large amount of electricity are needed to power them.",
+        "All electrical devices have one thing in common: a large amount of electricity is needed to power them.",
+        "All electrical devices have one thing in common: a large amount of electricity are needed to power them.",
+        "All electrical devices have one thing in commonly: a large amount of electricity is needed to power them."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "have in common / amount + 不可数 + is",
+        "ipa": "",
+        "meaning": "gram. ①devices 复数 + have ②in common（不是 commonly）③a large amount of electricity 不可数 + is。",
+        "example": "They have one thing in common: a large amount of energy is needed."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 12,
+      "prompt": "选出 have...in common 的中文意思",
+      "q": "have...in common",
+      "options": [
+        "分享",
+        "有共同点",
+        "共同拥有",
+        "有相同的特征"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "have...in common",
+        "ipa": "",
+        "meaning": "phr. 有相同的特征（或特点等）。have a lot/nothing in common 有很多/没有共同点。",
+        "example": "The two devices have a lot in common."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译",
+      "q": "空调和冰箱都是家用电器，但它们的耗电量差别很大。",
+      "options": [
+        "Air conditioners and fridges are both household appliances, but the amount of electricity they use is very different.",
+        "Air conditioners and fridges are both household appliances, but the number of electricity they use is very different.",
+        "Air conditioners and fridges is both household appliances, but the amount of electricity they use is very different.",
+        "Air conditioner and fridge are both household appliance, but the amount of electricity they use is very different."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "both + 复数 / amount of + 不可数",
+        "ipa": "",
+        "meaning": "gram. ①Air conditioners and fridges 复数 + are ②electricity 不可数 → amount（不是 number）③appliances 复数。",
+        "example": "They are both household appliances, but the amount of electricity they use differs."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译（陷阱题）",
+      "q": "你应该加入我们的节能行动——每关一盏灯，都在为地球省电。",
+      "options": [
+        "You should join in our energy-saving campaign — every light bulb switched off saves electricity for the planet.",
+        "You should join our energy-saving campaign — every light bulb switched off saves electricity for the planet.",
+        "Both A and B are correct.",
+        "You should join in our energy-saving campaign — every light bulb switch-off saves electricity for the planet."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "join / join in 都可用于活动",
+        "ipa": "",
+        "meaning": "gram. campaign 是活动，join 和 join in 都可以。两者在口语中常互换使用。C 错在 switch-off 是形容词。",
+        "example": "You can join (in) the campaign."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 go bad 和 run out 的综合应用",
+      "q": "If the fridge ___ of power, the food inside will ___.",
+      "options": [
+        "runs out / go badly",
+        "runs out / goes bad",
+        "run out / go bad",
+        "runs out / go bad"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "runs out / go bad",
+        "ipa": "",
+        "meaning": "gram. ①主语 the fridge 单数 + runs out ②the food 不可数 + will + 动词原形 go bad（不是 goes，因在 will 后）。",
+        "example": "If the fridge runs out of power, the food will go bad."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 landmark 的正确语境",
+      "q": "The Great Wall is a world-famous ___ and attracts millions of tourists.",
+      "options": [
+        "landmark",
+        "landmarking",
+        "land marked",
+        "land's mark"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "landmark（一个词）",
+        "ipa": "",
+        "meaning": "n. 地标，是一个词 landmark（不是 land mark 或 land's mark）。",
+        "example": "The tower is a famous landmark."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 amount of 和 number of 的区别",
+      "q": "The ___ of electric cars on the road has increased. A large ___ of energy is saved.",
+      "options": [
+        "number / amount",
+        "amount / number",
+        "number / number",
+        "amount / amount"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "number + 可数 / amount + 不可数",
+        "ipa": "",
+        "meaning": "gram. cars 可数 → number of cars。energy 不可数 → amount of energy。两者不能互换。",
+        "example": "The number of cars / A large amount of energy"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 power 作动词的被动语态",
+      "q": "The device ___ by a small battery.",
+      "options": [
+        "powers",
+        "is powered",
+        "is powering",
+        "powered"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "be powered by",
+        "ipa": "",
+        "meaning": "gram. 被动语态 be powered by + 能源。The device is powered by electricity. 不说 The device powers by...",
+        "example": "The car is powered by electricity. (NOT: powers by)"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 instruction 和 information 的区别",
+      "q": "Follow the ___ carefully. They give important ___ about safety.",
+      "options": [
+        "instruction / informations",
+        "information / instructions",
+        "instructions / information",
+        "instructions / informations"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "instructions / information",
+        "ipa": "",
+        "meaning": "instructions 复数（说明），information 不可数（信息）。不说 informations。",
+        "example": "Read the instructions. / The information is useful."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 have...in common 的主谓一致",
+      "q": "The fridge and the air conditioner ___ something ___.",
+      "options": [
+        "has / in common",
+        "have / in common",
+        "have / common",
+        "having / in common"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "have in common",
+        "ipa": "",
+        "meaning": "gram. 主语 The fridge and the air conditioner（两个事物）→ 复数 have。in common 固定搭配，common 前有 in。",
+        "example": "They have something in common."
+      }
+    }
+  ]
+}
