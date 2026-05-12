@@ -1,0 +1,1178 @@
+{
+  "stage1": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 tap 的中文意思",
+      "q": "tap",
+      "ipa": "/tæp/",
+      "options": [
+        "瓶盖",
+        "轻敲",
+        "水龙头",
+        "开关"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "tap",
+        "ipa": "/tæp/",
+        "meaning": "n. 水龙头（turn on/off the tap）。也可作动词'轻敲'。注意不要和 cap（帽子/瓶盖）混淆。",
+        "example": "Turn off the tap after use."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 bath 的中文意思",
+      "q": "bath",
+      "ipa": "/bɑːθ/",
+      "options": [
+        "洗澡；洗浴",
+        "沐浴露",
+        "浴缸",
+        "洗澡水"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "bath",
+        "ipa": "/bɑːθ/",
+        "meaning": "n. 洗澡；洗浴（take a bath 洗澡）。注意 bath 和 bathe（v. 洗澡）的区别。",
+        "example": "I take a bath every evening."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 drop 的中文意思",
+      "q": "drop",
+      "ipa": "/drɒp/",
+      "options": [
+        "滴；水珠",
+        "滴水",
+        "掉落",
+        "水滴石穿"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "drop",
+        "ipa": "/drɒp/",
+        "meaning": "n. 滴；水珠（a drop of water 一滴水）。作动词意为'掉落'，过去式 dropped（双写 p）。",
+        "example": "A drop of water fell from the tap."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 drinking water 的中文意思",
+      "q": "drinking water",
+      "options": [
+        "饮用水",
+        "喝的水",
+        "矿泉水",
+        "自来水"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "drinking water",
+        "ipa": "",
+        "meaning": "n. 饮用水（drinking 是动名词修饰 water，表示用途）。不可数。",
+        "example": "We need clean drinking water."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 journey 的中文意思",
+      "q": "journey",
+      "ipa": "/ˈdʒɜːni/",
+      "options": [
+        "短途",
+        "旅游",
+        "（长途）旅行",
+        "假期"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "journey",
+        "ipa": "/ˈdʒɜːni/",
+        "meaning": "n. （尤指长途）旅行。注意 travel 泛指'旅行'，trip 指'短途往返旅行'，journey 偏'路程'。",
+        "example": "The journey took three days."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 voice 的中文意思",
+      "q": "voice",
+      "ipa": "/vɔɪs/",
+      "options": [
+        "噪音",
+        "说话声；嗓音",
+        "声音",
+        "音调"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "voice",
+        "ipa": "/vɔɪs/",
+        "meaning": "n. 说话声；嗓音（人的声音）。noise 噪音，sound 泛指声音。",
+        "example": "She has a sweet voice."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "一滴水从水龙头滴落，它开始了长途旅程，最终返回大海。",
+      "options": [
+        "A drop of water fell from the tap, started a long journey, and eventually returned back to the sea.",
+        "A drop of water fell from the tap, started a long journey, and eventually returned to the sea.",
+        "A drop of water felt from the tap, started a long journey, and eventually returned to the sea.",
+        "A drop water fell from the tap, started a long trip, and eventually returned to the sea."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "return / fell / journey",
+        "ipa": "",
+        "meaning": "gram. ①return to 不加 back ②fall 过去式 fell（不是 felt）③a drop of 不可省略 of ④journey 比 trip 更强调长途。",
+        "example": "A drop of water fell and eventually returned to the sea."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 rush 的中文意思",
+      "q": "rush",
+      "ipa": "/rʌʃ/",
+      "options": [
+        "匆忙",
+        "迅速移动",
+        "冲撞",
+        "加速"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "rush",
+        "ipa": "/rʌʃ/",
+        "meaning": "v. 迅速移动；冲（rush to do / rush to somewhere）。名词也可指'匆忙'。",
+        "example": "He rushed to the hospital."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 pipe 的中文意思",
+      "q": "pipe",
+      "ipa": "/paɪp/",
+      "options": [
+        "管线",
+        "烟斗",
+        "管子；管道",
+        "水渠"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "pipe",
+        "ipa": "/paɪp/",
+        "meaning": "n. 管子；管道（water pipe 水管）。也可指'烟斗'。注意区别 tube（试管/地铁）和 pipe（管道）。",
+        "example": "The pipe under the sink is leaking."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 return 的准确用法",
+      "q": "He ___ home from his journey yesterday.",
+      "options": [
+        "returns",
+        "return back",
+        "returned back",
+        "returned"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "return（不加 back）",
+        "ipa": "",
+        "meaning": "gram. return = come back，本身就是'回来'，不说 return back。这是中式英语常见错误。",
+        "example": "He returned home. (NOT: returned back home)"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 eventually 的中文意思",
+      "q": "eventually",
+      "ipa": "/ɪˈventʃuəli/",
+      "options": [
+        "通常",
+        "偶然地",
+        "可能地",
+        "最后；终于"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "eventually",
+        "ipa": "/ɪˈventʃuəli/",
+        "meaning": "adv. 最后；终于（强调经过漫长过程）。同义词 finally。",
+        "example": "After many tries, he eventually succeeded."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 everyday 的正确用法",
+      "q": "Drinking water is part of our ___ life.",
+      "options": [
+        "every days",
+        "every day",
+        "everyday's",
+        "everyday"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "everyday（形容词）",
+        "ipa": "",
+        "meaning": "adj. 每天的；日常的（修饰名词）。every day 是副词短语，单独作状语。I drink water every day. This is an everyday habit.",
+        "example": "Cooking is an everyday activity. / I cook every day."
+      }
+    }
+  ],
+  "stage2": [
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 a bit 的中文意思",
+      "q": "a bit",
+      "options": [
+        "很少",
+        "一点",
+        "有点儿；稍微",
+        "一些"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "a bit",
+        "ipa": "",
+        "meaning": "phr. 有点儿；稍微（= a little）。a bit of + 不可数名词。",
+        "example": "I'm a bit tired. / a bit of water"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 leisure 的中文意思",
+      "q": "leisure",
+      "ipa": "/ˈleʒə(r)/",
+      "options": [
+        "娱乐",
+        "闲暇；休闲",
+        "休息",
+        "假期"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "leisure",
+        "ipa": "/ˈleʒə(r)/",
+        "meaning": "n. 闲暇；空闲；休闲（leisure time 空闲时间）。注意发音 /ˈleʒə/，重音在前。",
+        "example": "She enjoys reading in her leisure time."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 at once 的中文意思",
+      "q": "at once",
+      "options": [
+        "同时",
+        "一次",
+        "曾经",
+        "立即；马上"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "at once",
+        "ipa": "",
+        "meaning": "phr. 立即；马上（= right away = immediately）。也可指'同时'（at the same time），但本单元取'立即'。",
+        "example": "He rushed to fix the pipe at once."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 nearly 的中文意思",
+      "q": "nearly",
+      "ipa": "/ˈnɪəli/",
+      "options": [
+        "近的",
+        "附近的",
+        "几乎；差不多",
+        "大约"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "nearly",
+        "ipa": "/ˈnɪəli/",
+        "meaning": "adv. 几乎；差不多（= almost）。nearly 前可用 very/pretty 修饰，almost 不可以。",
+        "example": "It's nearly 10 o'clock."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 goods 的正确用法",
+      "q": "The ship carries ___ from China to Europe.",
+      "options": [
+        "goodes",
+        "good",
+        "a good",
+        "goods"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "goods（复数名词）",
+        "ipa": "",
+        "meaning": "n. 商品；货品（总是复数形式，没有单数）。不能说 a good 表示商品。",
+        "example": "The goods were transported by train. (NOT: a goods)"
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "这几乎是公共休闲区，生意人有时会来这儿喝点儿东西。",
+      "options": [
+        "This is nearly a public leisure area. Businessmen sometimes come here for a bit of drinking water.",
+        "This is near a public leisure area. Businessman sometimes come here for a bit of drinking water.",
+        "This is nearly a public leisure area. Businessmen sometimes come here for a bit drinking water.",
+        "This is nearly public leisure area. Businessmen sometimes come here for a bit of drinking water."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "nearly / a bit of / businessmen",
+        "ipa": "",
+        "meaning": "gram. ①nearly 几乎（不是 near 附近）②a bit of + 名词（of 不可省）③businessmen 复数（-man → -men）",
+        "example": "It's nearly done. / a bit of water"
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 public 的中文意思",
+      "q": "public",
+      "ipa": "/ˈpʌblɪk/",
+      "options": [
+        "公共的；公开的",
+        "公众",
+        "私人的",
+        "开放的"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "public",
+        "ipa": "/ˈpʌblɪk/",
+        "meaning": "adj. 公共的；公开的（public service 公共服务）。反义 private 私人的。",
+        "example": "The library is a public place."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 fix 的中文意思",
+      "q": "fix",
+      "ipa": "/fɪks/",
+      "options": [
+        "固定",
+        "修理",
+        "安装",
+        "解决"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "fix",
+        "ipa": "/fɪks/",
+        "meaning": "v. 修理（fix up）。也可指'固定'。fix the tap 修水龙头。",
+        "example": "Can you fix the broken pipe?"
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 brain 的中文意思",
+      "q": "brain",
+      "ipa": "/breɪn/",
+      "options": [
+        "神经",
+        "大脑",
+        "智力",
+        "脑"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "brain",
+        "ipa": "/breɪn/",
+        "meaning": "n. 脑（可数）。也可指'智力'（brains）。注意 rain（雨）和 brain 的拼写区别。",
+        "example": "The brain controls the body."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 salt 的中文意思",
+      "q": "salt",
+      "ipa": "/sɔːlt/",
+      "options": [
+        "含盐的；咸的",
+        "盐",
+        "糖",
+        "酱油"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "salt",
+        "ipa": "/sɔːlt/",
+        "meaning": "n. 盐；adj. 含盐的；咸的（salty 是更常见的形容词）。salt water 盐水。",
+        "example": "Sea water is salt water."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 income 的中文意思",
+      "q": "income",
+      "ipa": "/ˈɪnkʌm/",
+      "options": [
+        "支出",
+        "工资",
+        "收入；收益",
+        "存款"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "income",
+        "ipa": "/ˈɪnkʌm/",
+        "meaning": "n. 收入；收益；所得（in + come）。反义 expense 支出。",
+        "example": "Her income comes from farming."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 business 的中文意思",
+      "q": "business",
+      "ipa": "/ˈbɪznəs/",
+      "options": [
+        "商业",
+        "买卖；生意",
+        "公司",
+        "工作"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "business",
+        "ipa": "/ˈbɪznəs/",
+        "meaning": "n. 买卖；生意（do business）。可数/不可数。on business 出差。",
+        "example": "They do business with overseas companies."
+      }
+    }
+  ],
+  "stage3": [
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 role 的中文意思",
+      "q": "role",
+      "ipa": "/rəʊl/",
+      "options": [
+        "功能",
+        "角色",
+        "任务",
+        "作用"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "role",
+        "ipa": "/rəʊl/",
+        "meaning": "n. 作用（play a role in... 在……起作用）。也可指'角色'。注意 role 和 roll（滚动/名单）同音不同义。",
+        "example": "Water plays a key role in our daily life."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 as a result 的中文意思",
+      "q": "as a result",
+      "options": [
+        "因为",
+        "结果",
+        "导致",
+        "作为结果；因此"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "as a result",
+        "ipa": "",
+        "meaning": "phr. 作为结果；因此（= therefore）。as a result of 因为……。注意区分：as a result 单独用；as a result of + 名词。",
+        "example": "He forgot water. As a result, he felt thirsty."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 industry 的中文意思",
+      "q": "industry",
+      "ipa": "/ˈɪndəstri/",
+      "options": [
+        "行业",
+        "产业",
+        "工业；生产制造",
+        "工厂"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "industry",
+        "ipa": "/ˈɪndəstri/",
+        "meaning": "n. 工业；生产制造（heavy industry 重工业）。也可泛指'行业'（the tourist industry）。",
+        "example": "Industry creates many jobs."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 goods 和 trade 的正确搭配",
+      "q": "The country's main ___ include agricultural ___ and industrial products.",
+      "options": [
+        "trades / goods",
+        "trade / goods",
+        "goods / trade",
+        "goods / goods"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "goods（商品）",
+        "ipa": "",
+        "meaning": "语境：goods 指'商品'，trade 指'贸易'本身。这里需要 goods 作为主语，后面列举物品。",
+        "example": "The main goods include food and machines."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 agriculture 的中文意思",
+      "q": "agriculture",
+      "ipa": "/ˈæɡrɪkʌltʃə(r)/",
+      "options": [
+        "渔业",
+        "工业",
+        "农业",
+        "种植"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "agriculture",
+        "ipa": "/ˈæɡrɪkʌltʃə(r)/",
+        "meaning": "n. 农业（= farming）。形容词 agricultural。注意拼写 agri + culture。",
+        "example": "Agriculture is important for food production."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 overseas 的中文意思",
+      "q": "overseas",
+      "ipa": "/ˌəʊvəˈsiːz/",
+      "options": [
+        "海外",
+        "在国外；向海外",
+        "外国",
+        "跨海"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "overseas",
+        "ipa": "/ˌəʊvəˈsiːz/",
+        "meaning": "adv. 在国外；向海外（go overseas 出国）。overseas 也可作形容词（overseas markets 海外市场）。",
+        "example": "She worked overseas for two years."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 trade 的中文意思",
+      "q": "trade",
+      "ipa": "/treɪd/",
+      "options": [
+        "贸易；买卖",
+        "交易",
+        "交换",
+        "商业"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "trade",
+        "ipa": "/treɪd/",
+        "meaning": "n. 贸易；买卖（international trade 国际贸易）。动词 trade with 和……做生意。",
+        "example": "Trade between the two countries is growing."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 population 的中文意思",
+      "q": "population",
+      "ipa": "/ˌpɒpjʊˈleɪʃn/",
+      "options": [
+        "人数",
+        "人口",
+        "居民",
+        "群众"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "population",
+        "ipa": "/ˌpɒpjʊˈleɪʃn/",
+        "meaning": "n. 人口（通常单数，谓语用单数）。The population of China is large.",
+        "example": "What's the population of Shanghai?"
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "农业和工业在全球贸易中都起着重要作用。",
+      "options": [
+        "Agriculture and industry both plays important role in global trade.",
+        "Both agriculture and industry plays important roles in global trade.",
+        "Both agriculture and industry play important roles in global trade.",
+        "Both agriculture and industry play important role in global trade."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "play a role / 主谓一致",
+        "ipa": "",
+        "meaning": "gram. ①both A and B + 复数动词 play ②play roles（用复数，因为两个主语）③role 可数。",
+        "example": "Both play important roles in global trade."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 global 的中文意思",
+      "q": "global",
+      "ipa": "/ˈɡləʊbl/",
+      "options": [
+        "国际的",
+        "全球的；全世界的",
+        "地球的",
+        "宇宙的"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "global",
+        "ipa": "/ˈɡləʊbl/",
+        "meaning": "adj. 全球的；全世界的（global warming 全球变暖）。名词 globe 地球。",
+        "example": "Trade has become global."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 steam engine 的中文意思",
+      "q": "steam engine",
+      "options": [
+        "蒸汽机",
+        "蒸汽火车",
+        "发动机",
+        "火炉"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "steam engine",
+        "ipa": "",
+        "meaning": "n. 蒸汽机（steam 蒸汽 + engine 引擎）。工业革命的关键发明。",
+        "example": "The steam engine changed the world."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "由于全球人口增长，饮用水需求也在增加。",
+      "options": [
+        "As a result of global population growth, the demand for drinking water is increasing.",
+        "As a result global population growth, the demand for drinking water is increasing.",
+        "As a result of global population growth, the demand for drinking water are increasing.",
+        "As result of global population growth, the demand for drinking water is increasing."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "as a result of / demand（单数）",
+        "ipa": "",
+        "meaning": "gram. ①as a result of + 名词（of 不可省，a 不可省）②demand 单数 + is。",
+        "example": "As a result of the rain, the match was cancelled."
+      }
+    }
+  ],
+  "stage4": [
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 duty 的中文意思",
+      "q": "duty",
+      "ipa": "/ˈdjuːti/",
+      "options": [
+        "工作",
+        "任务",
+        "责任；义务",
+        "职业"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "duty",
+        "ipa": "/ˈdjuːti/",
+        "meaning": "n. 责任；义务（on duty 值班）。同义词 responsibility。",
+        "example": "It's our duty to protect water resources."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 at once 的语境用法",
+      "q": "The pipe broke, so he called the plumber ___.",
+      "options": [
+        "right away",
+        "at the moment",
+        "just now",
+        "at once"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "at once",
+        "ipa": "",
+        "meaning": "phr. 立即；马上（= right away = immediately）。at the moment 现在，just now 刚才，意思不对。",
+        "example": "He came at once. (NOT: at the moment)"
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 form 的中文意思",
+      "q": "form",
+      "ipa": "/fɔːm/",
+      "options": [
+        "形状",
+        "形式",
+        "表格",
+        "类型；形态"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "form",
+        "ipa": "/fɔːm/",
+        "meaning": "n. 类型；形态（in the form of 以……的形式）。也可作动词'形成'。",
+        "example": "Ice is a form of water."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "蒸汽机的发明对全球工业产生了巨大影响，结果商品贸易迅速增长。",
+      "options": [
+        "The invention of the steam engine had a huge impact on global industry. As a result, trade in goods grew rapidly.",
+        "The invention of steam engine had a huge impact on global industry. As a result, trade in goods grew rapidly.",
+        "The invention of the steam engine had a huge impact on global industry. As result, trade in goods grew rapidly.",
+        "The invention of the steam engine had a huge impact on global industry. As a result, goods trade grew rapidly."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "the steam engine / as a result",
+        "ipa": "",
+        "meaning": "gram. ①steam engine 前加 the 表特指 ②as a result 固定搭配 ③trade in goods 商品贸易（goods trade 也对但不如 trade in goods 自然）。",
+        "example": "The steam engine changed trade. As a result, goods trade grew."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 nearly 的位置",
+      "q": "She ___ forgot her duty.",
+      "options": [
+        "nearly to",
+        "near",
+        "nearly",
+        "nearly did"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "nearly（副词位置）",
+        "ipa": "",
+        "meaning": "gram. nearly 放在行为动词前（forgot 前）。不用 nearly did forget，直接 nearly forgot。",
+        "example": "She nearly forgot. (NOT: She near forgot.)"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 throughout 的中文意思",
+      "q": "throughout",
+      "ipa": "/θruːˈaʊt/",
+      "options": [
+        "通过",
+        "自始至终；贯穿",
+        "在……期间",
+        "整个"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "throughout",
+        "ipa": "/θruːˈaʊt/",
+        "meaning": "prep. 自始至终；贯穿整个时期（throughout history 贯穿整个历史）。注意 throughout 是一个词，不是 through out。",
+        "example": "Water is important throughout our lives."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "确保每一个水龙头都关好，这是我们每个人的责任。",
+      "options": [
+        "Make sure every tap is turned off. It's everyone's duty.",
+        "Make sure every tap are turned off. It's everyone duty.",
+        "Be sure every tap is turned off. It's everyone's duty.",
+        "Make sure every tap to turn off. It's everyone's duties."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "make sure / duty",
+        "ipa": "",
+        "meaning": "gram. ①make sure (that) 从句 ②every tap 单数 + is ③everyone's duty（单数）④turn off the tap（固定搭配）。",
+        "example": "Make sure every tap is off."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 make sure 的中文意思",
+      "q": "make sure",
+      "options": [
+        "确信",
+        "确定",
+        "确保；设法保证",
+        "一定"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "make sure",
+        "ipa": "",
+        "meaning": "phr. 确保；设法保证（make sure + (that) 从句 或 make sure to do）。后接从句时，that 可省。",
+        "example": "Make sure (that) you turn off the tap."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 50,
+      "prompt": "选出最佳翻译",
+      "q": "水以不同的形态出现在我们生活的每个角落——从洗澡水到饮用水，它一直陪伴着我们。",
+      "options": [
+        "Water appears in different forms throughout our lives — from bath water to drinking water, it stay with us.",
+        "Water appears in different forms throughout our lives — from bath water to drinking water, it stays with us.",
+        "Water appears in different forms throughout our life — from bath water to drinking water, it stays with us.",
+        "Water appears in different form throughout our lives — from bath water to drinking water, it stays with us."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "forms / throughout our lives",
+        "ipa": "",
+        "meaning": "gram. ①different + 复数 forms ②throughout our lives（一生中，复数 lives）③主语 Water 三单 stays。",
+        "example": "Water appears in different forms throughout our lives."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 leisure 的正确搭配",
+      "q": "In my ___ time, I enjoy taking a bath.",
+      "options": [
+        "leisurely",
+        "leisure",
+        "leisure's",
+        "leisuring"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "leisure time",
+        "ipa": "",
+        "meaning": "n. 空闲时间（leisure 作定语修饰 time）。不说 leisurely time。",
+        "example": "She reads in her leisure time."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 25,
+      "prompt": "选出 play a role in 的正确用法",
+      "q": "Water ___ a key role ___ our bodies.",
+      "options": [
+        "play / in",
+        "plays / to",
+        "plays / for",
+        "plays / in"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "play a role in",
+        "ipa": "",
+        "meaning": "phr. 在……起作用（play a role in + 名词/V-ing）。主语 Water 三单 → plays。",
+        "example": "Water plays a key role in our health."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 10,
+      "prompt": "选出 nearly 在句中的正确理解",
+      "q": "It's ___ ten o'clock. We need to ___.",
+      "options": [
+        "nearly / rush",
+        "near / rush",
+        "nearly / return",
+        "near / return back"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "nearly / rush",
+        "ipa": "",
+        "meaning": "语境：快十点了，得赶快。nearly = 几乎，rush = 迅速移动。",
+        "example": "It's nearly time. Let's rush!"
+      }
+    }
+  ],
+  "stage5": [
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 duty 和 responsibility 的搭配",
+      "q": "It's our ___ to make ___ that everyone has clean water.",
+      "options": [
+        "duty / certainly",
+        "duty / surely",
+        "responsibility / sure",
+        "duty / sure"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "duty / make sure",
+        "ipa": "",
+        "meaning": "phr. It's one's duty to do 是固定句型；make sure 后接 that 从句。",
+        "example": "It's our duty to make sure everyone has water."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译（考察 nearly 和 form）",
+      "q": "水几乎以各种形态出现在我们的日常旅程中。",
+      "options": [
+        "Water appears in nearly every form of our every day journey.",
+        "Water appears in near every form of our everyday journey.",
+        "Water appears in nearly every form of our everyday journey.",
+        "Water appears in nearly every forms of our everyday journeys."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "nearly / everyday / form",
+        "ipa": "",
+        "meaning": "gram. ①nearly 几乎（不是 near）②everyday 是形容词，修饰 journey ③every + 单数 form。",
+        "example": "Water appears in nearly every form of our everyday life."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译",
+      "q": "全球化意味着商品和服务几乎可以在世界任何地方进行贸易。",
+      "options": [
+        "Globalization means goods and services can trade nearly anywhere in the world.",
+        "Globalization means goods and services can be traded nearly anywhere in the world.",
+        "Globalisation means goods and service can be traded nearly anywhere in the world.",
+        "Globalization mean goods and services can be traded nearly anywhere in the world."
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "be traded / services / means",
+        "ipa": "",
+        "meaning": "gram. ①商品被交易 → be traded（被动）②services 复数 ③主语 Globalization 单数 + means。",
+        "example": "Goods can be traded overseas."
+      }
+    },
+    {
+      "type": "normal",
+      "dmg": 12,
+      "prompt": "选出 everyday 和 every day 的区别",
+      "q": "Drinking water is an ___ habit, but I forget to drink ___.",
+      "options": [
+        "every day / every day",
+        "every day / everyday",
+        "everyday / everyday",
+        "everyday / every day"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "everyday vs every day",
+        "ipa": "",
+        "meaning": "adj. everyday 每天的（修饰名词）；adv. every day 每天（作状语）。最易混淆的一对。",
+        "example": "It's an everyday habit. I do it every day."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出最佳翻译（陷阱题）",
+      "q": "他听到水滴声后就立刻去修水管了。",
+      "options": [
+        "Both A and C are correct.",
+        "As soon as he heard the noise of a drop, he went to fix the pipe at once.",
+        "He heard the sound of a drop and went to fix the pipe at once.",
+        "As soon as he heard the sound of a drop, he went to fix the pipe at once."
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "Both A and C are correct.",
+        "ipa": "",
+        "meaning": "gram. A 的 as soon as 和 C 的 and 连用都表'一……就……'，均为正确表达。B 错在 noise 指噪音。",
+        "example": "As soon as he heard the sound, he went. = He heard the sound and went."
+      }
+    },
+    {
+      "type": "ulti",
+      "dmg": 60,
+      "prompt": "选出语法正确的句子",
+      "q": "关于 trade 和 goods",
+      "options": [
+        "The trade in goods between the two countries has grown near 50% in the past decade.",
+        "The trade of goods between the two countries have grown nearly 50% in the past decade.",
+        "The trade in goods between the two countries has grown nearly 50% in the past decade.",
+        "The trade in good between the two countries has grown nearly 50% in the past decade."
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "trade in goods / nearly / has grown",
+        "ipa": "",
+        "meaning": "gram. ①trade in goods 商品贸易 ②主语 the trade 单数 + has ③nearly 50% ④goods 复数。",
+        "example": "The trade in goods has grown nearly 50%."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 play a role in 的变形",
+      "q": "Agriculture ___ an important role in the economy ___ history.",
+      "options": [
+        "playing / throughout",
+        "play / throughout",
+        "plays / through",
+        "plays / throughout"
+      ],
+      "correct": 3,
+      "learn": {
+        "word": "plays a role / throughout",
+        "ipa": "",
+        "meaning": "gram. 主语 Agriculture 单数 + plays；throughout history 贯穿历史（throughout 一个词）。",
+        "example": "Agriculture plays a role throughout history."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 voice 和 noise 的区别",
+      "q": "I heard a strange ___ outside, but then I recognised my father's ___.",
+      "options": [
+        "noise / voice",
+        "voice / noise",
+        "sound / voice",
+        "noise / sound"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "noise vs voice",
+        "ipa": "",
+        "meaning": "noise 噪音，voice 人声。第一空是'奇怪的声音'→ noise，第二空是'父亲的声音'→ voice。",
+        "example": "I heard a noise, then a voice."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 salt 和 salty 的区别",
+      "q": "The soup is too ___. Did you put too much ___?",
+      "options": [
+        "salty / salt",
+        "salt / salty",
+        "salt / salt",
+        "salty / salty"
+      ],
+      "correct": 0,
+      "learn": {
+        "word": "salty / salt",
+        "ipa": "",
+        "meaning": "adj. salty 咸的（描述味道），n. salt 盐（物质）。too salty 太咸了，too much salt 太多盐。",
+        "example": "The soup is salty because of too much salt."
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 a bit 的正确搭配",
+      "q": "Could I have ___ information about the trade?",
+      "options": [
+        "a bit",
+        "a bit of",
+        "a bit of a",
+        "bit of"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "a bit of + 不可数名词",
+        "ipa": "",
+        "meaning": "gram. a bit of + 不可数名词（information 不可数）。a bit 单独作副词修饰形容词。",
+        "example": "a bit of water, a bit tired"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 goods 的谓语动词",
+      "q": "The goods ___ transported overseas.",
+      "options": [
+        "has",
+        "is",
+        "are",
+        "was"
+      ],
+      "correct": 2,
+      "learn": {
+        "word": "goods（复数谓语）",
+        "ipa": "",
+        "meaning": "gram. goods 本身是复数形式，谓语用复数 are/were。不能说 the goods is。",
+        "example": "The goods are on the ship. (NOT: The goods is)"
+      }
+    },
+    {
+      "type": "crit",
+      "dmg": 30,
+      "prompt": "选出 journey / trip / travel 的区别",
+      "q": "The ___ from Beijing to London was long, but the business ___ was short.",
+      "options": [
+        "travel / trip",
+        "journey / trip",
+        "trip / journey",
+        "journey / travel"
+      ],
+      "correct": 1,
+      "learn": {
+        "word": "journey vs trip",
+        "ipa": "",
+        "meaning": "journey 强调'长途路程'，trip 强调'往返短途'。travel 泛指'旅行'，不可数。",
+        "example": "The journey was tiring. I took a short trip."
+      }
+    }
+  ]
+}
