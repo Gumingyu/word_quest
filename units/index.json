@@ -1,32 +1,10 @@
 [
-  {
-    "id": "7B_Unit1",
-    "name": "Unit 1 · People & Personality",
-    "desc": "人物性格描写 · 形容词 · 词组 · used to / give up / seldom",
-    "count": 60
-  },
-  {
-    "id": "7B_Unit2",
-    "name": "Unit 2 · Travel & Nature",
-    "desc": "旅游自然 · 形容词 · 词组 · prefer to / go hiking / sightseeing",
-    "count": 60
-  },
-  {
-    "id": "7B_Unit3",
-    "name": "Unit 3 · Trees & Environment",
-    "desc": "树木与环境 · 沟通交流 · 词组 · be made of / communicate with / according to",
-    "count": 60
-  },
-  {
-    "id": "7B_Unit4",
-    "name": "Unit 4 · Animals & Services",
-    "desc": "动物与公共服务 · 消防/搜救/酒店 · 词组 · fall asleep / allow to / apologize for",
-    "count": 60
-  },
-  {
-    "id": "7B_Unit5",
-    "name": "Unit 5 · Water & Daily Life",
-    "desc": "水与日常生活 · 旅程/声音/闲暇 · 词组 · a bit / at once / eventually",
-    "count": 60
-  }
+  {"id":"7B_Unit1","name":"Unit 1 · People & Personality","desc":"人物性格描写 · 形容词 · 词组 · used to / give up / seldom","count":60},
+  {"id":"7B_Unit2","name":"Unit 2 · Travel & Nature","desc":"旅游自然 · 形容词 · 词组 · prefer to / go hiking / sightseeing","count":60},
+  {"id":"7B_Unit3","name":"Unit 3 · Trees & Environment","desc":"树木与环境 · 沟通交流 · 词组 · be made of / communicate with / according to","count":60},
+  {"id":"7B_Unit4","name":"Unit 4 · Animals & Services","desc":"动物与公共服务 · 消防/搜救/酒店 · 词组 · fall asleep / allow to / apologize for","count":60},
+  {"id":"7B_Unit5","name":"Unit 5 · Water & Daily Life","desc":"水与日常生活 · 旅程/声音/闲暇 · 词组 · a bit / at once / eventually","count":60},
+  {"id":"7B_Unit6","name":"Unit 6 · Electricity & Technology","desc":"电器与科技 · 节能环保 · 词组 · battery / electricity / air conditioner","count":60},
+  {"id":"7B_Unit7","name":"Unit 7 · Heroes & Contributions","desc":"英雄与贡献 · 先驱/教育/发现 · 词组 · in the field of / contribute to / pioneer","count":60},
+  {"id":"7B_Unit8","name":"Unit 8 · Careers & Talents","desc":"职业与才能 · 生物学家/运动员/观众 · 词组 · career / audience / athlete","count":60}
 ]
