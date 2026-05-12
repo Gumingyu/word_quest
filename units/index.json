@@ -1,4 +1,3 @@
-
 [
   {
     "id": "7B_Unit1",
@@ -22,6 +21,12 @@
     "id": "7B_Unit4",
     "name": "Unit 4 · Animals & Services",
     "desc": "动物与公共服务 · 消防/搜救/酒店 · 词组 · fall asleep / allow to / apologize for",
+    "count": 60
+  },
+  {
+    "id": "7B_Unit5",
+    "name": "Unit 5 · Water & Daily Life",
+    "desc": "水与日常生活 · 旅程/声音/闲暇 · 词组 · a bit / at once / eventually",
     "count": 60
   }
 ]
